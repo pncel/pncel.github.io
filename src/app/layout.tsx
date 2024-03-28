@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 import Nav from "./nav";
+import Footer from "./footer";
 
 export const metadata: Metadata = {
   title: "PᴺCEL | Home",
@@ -17,9 +18,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Nav ></Nav>
-        <main className="container mx-auto">
+        <main className="container mx-auto bg-base-100 text-base-content">
           {children}
         </main>
+        <Footer ></Footer>
       </body>
     </html>
   );
