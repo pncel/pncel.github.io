@@ -1,12 +1,15 @@
+import React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 
 import Nav from "./nav";
 import Footer from "./footer";
+import { ContextProvider } from "./context";
 
 export const metadata: Metadata = {
   title: "PᴺCEL | Home",
-  description: "PNCEL: {Programmable, Parallel, high-Performance, Power-efficient, ...} Computer Engineering Lab at University of Washington (UW)",
+  description:
+    "PNCEL: {Programmable, Parallel, high-Performance, Power-efficient, ...} Computer Engineering Lab at University of Washington (UW)",
 };
 
 export default function RootLayout({
@@ -15,15 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <Nav ></Nav>
+    <React.StrictMode>
+      <ContextProvider>
+        <Nav></Nav>
         <main className="container mx-auto bg-base-100 text-base-content">
           {children}
         </main>
-        <Footer ></Footer>
-      </body>
-    </html>
+        <Footer></Footer>
+      </ContextProvider>
+    </React.StrictMode>
   );
 }
-
