@@ -20,7 +20,7 @@ export default function Nav() {
 
   return (
     <nav className="navbar text-neutral-content bg-neutral justify-between">
-      <div className="flex grow flex-row justify-start">
+      <div className="flex grow flex-row justify-start gap-1">
         {navData.length > 0 && (
           <div className="dropdown flex-none lg:hidden">
             <div tabIndex={0} role="button" className="btn btn-ghost">
@@ -108,7 +108,7 @@ export default function Nav() {
           </div>
         )}
       </div>
-      <div className="flex navbar-end pr-2">
+      <div className="flex navbar-end pr-2 gap-1">
         <div className="form-control hidden lg:flex">
           <input
             type="text"
