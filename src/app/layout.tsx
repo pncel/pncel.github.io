@@ -20,14 +20,12 @@ export default function RootLayout({
   return (
     <React.StrictMode>
       <ContextProvider>
-        <body className="min-h-screen flex flex-col bg-base-100 text-base-content">
-          <NavAndDrawer>
-            <main className="grow-1 flex-auto container mx-auto p-4">
-              {children}
-            </main>
-            <Footer></Footer>
-          </NavAndDrawer>
-        </body>
+        <NavAndDrawer>
+          <main className="grow-1 flex-auto container mx-auto p-4">
+            {children}
+          </main>
+          <Footer></Footer>
+        </NavAndDrawer>
       </ContextProvider>
     </React.StrictMode>
   );

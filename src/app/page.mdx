@@ -1,0 +1,15 @@
+import FancySlogan from "@/components/fancyslogan";
+import React from 'react';
+
+Welcome to PᴺCEL's website!
+
+export default function Home({children}) {
+  return <>
+    <div className="py-8">
+      <FancySlogan />
+    </div>
+    <div className="prose-sm md:prose lg:prose-lg xl:prose-xl 2xl:prose-2xl">
+      {children}
+    </div>
+  </>
+}

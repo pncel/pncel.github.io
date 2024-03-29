@@ -20,9 +20,9 @@ export default function NavAndDrawer({
   ];
 
   return (
-    <div className="drawer">
+    <body className="drawer">
       <input id="navDrawer" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content bg-base">
+      <div className="drawer-content bg-base-100 text-base-content flex flex-col min-h-screen">
         <div className="bg-neutral w-full">
           <nav className="navbar text-neutral-content justify-between container mx-auto">
             <div className="flex grow flex-row justify-start gap-1">
@@ -158,6 +158,6 @@ export default function NavAndDrawer({
           ))}
         </ul>
       </div>
-    </div>
+    </body>
   );
 }

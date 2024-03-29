@@ -18,7 +18,7 @@ export default function FancySlogan() {
   }, 3000);
 
   return (
-    <div className="font-serif text-2xl md:text-3xl">
+    <div className="font-serif text-2xl md:text-3xl text-center">
       <span className="text-3xl md:text-4xl">&#8203;</span>
       <div className="inline-block">
         <Typewriter
