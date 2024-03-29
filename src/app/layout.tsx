@@ -21,7 +21,7 @@ export default function RootLayout({
     <React.StrictMode>
       <ContextProvider>
         <NavAndDrawer>
-          <main className="grow-1 flex-auto container mx-auto p-4">
+          <main className="grow-1 flex-auto container mx-auto my-4">
             {children}
           </main>
           <Footer></Footer>

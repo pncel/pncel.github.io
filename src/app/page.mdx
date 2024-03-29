@@ -1,15 +1,13 @@
 import FancySlogan from "@/components/fancyslogan";
-import React from 'react';
+import DefaulMDX from "@/layouts/defaultMdx";
 
 Welcome to PᴺCEL's website!
 
 export default function Home({children}) {
   return <>
-    <div className="py-8">
+    <div className="my-8">
       <FancySlogan />
     </div>
-    <div className="prose prose-sm lg:max-w-[800px] 2xl:max-w-[1280px] 2xl:prose-lg mx-auto">
-      {children}
-    </div>
+    <DefaulMDX>{children}</DefaulMDX>
   </>
 }
