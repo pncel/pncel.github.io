@@ -1,5 +1,5 @@
 import React from 'react';
-import Profile from "../profile";
+import MemberProfile from "@/layouts/memberProfile";
 import avatar from "/public/avatar/ang.jpg";
 
 export const metadata = {
@@ -29,7 +29,7 @@ First set up two divs. One represents the main page content and should extend pa
 And `inline` code
 
 export default function Ang({children}) {
-  return <Profile
+  return <MemberProfile
     name="Ang Li"
     position="Assistant Professor"
     avatar={avatar}
@@ -42,5 +42,5 @@ export default function Ang({children}) {
     twitter="https://twitter.com/ang_pncel"
   >
     {children}
-  </Profile>
+  </MemberProfile>
 }

@@ -2,11 +2,7 @@
 import React, { useContext } from "react";
 import DataContext from "./context";
 
-export default function ThemeToggle({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function ThemeToggle() {
   const context = useContext(DataContext);
   if (!context) {
     throw new Error(

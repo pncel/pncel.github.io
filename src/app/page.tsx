@@ -1,4 +1,4 @@
-import FancySlogan from "./fancyslogan";
+import FancySlogan from "@/components/fancyslogan";
 
 export default function Home() {
   return (

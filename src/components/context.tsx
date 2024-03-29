@@ -1,7 +1,12 @@
 "use client";
 import React, { createContext, useState, useEffect } from "react";
 
-const DataContext = createContext(null);
+export interface DataContextType {
+  useDarkTheme: boolean,
+  setAndSaveUseDarkTheme: (newUseDarkTheme:boolean) => void,
+}
+
+const DataContext = createContext<DataContextType | null>(null);
 
 export function ContextProvider({
   children,
@@ -11,7 +16,7 @@ export function ContextProvider({
   // useDarkTheme
   const [useDarkTheme, setUseDarkTheme] = useState(true);
 
-  const setAndSaveUseDarkTheme = (newUseDarkTheme: boolean) => {
+  const setAndSaveUseDarkTheme = (newUseDarkTheme: boolean):void => {
     setUseDarkTheme(newUseDarkTheme);
     localStorage.setItem("theme", newUseDarkTheme ? "dark" : "light");
   };

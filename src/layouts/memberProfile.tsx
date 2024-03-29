@@ -5,10 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin, faGithub, faXTwitter, faFacebook, faInstagram, faGoogleScholar, faOrcid, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { gscholarSvg, orcidSvg } from "./icons";
 config.autoAddCss = false;
 
-export default function Profile({
+export default function MemberProfile({
   children,
 
   // required arguments

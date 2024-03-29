@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 import React, { Children } from "react";
-import CopyableCode from "./copyableCode";
+import CopyableCode from "./components/copyableCode";
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {

@@ -2,9 +2,9 @@ import React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
 
-import Nav from "./nav";
-import Footer from "./footer";
-import { ContextProvider } from "./context";
+import NavAndDrawer from "@/components/navAndDrawer";
+import Footer from "@/components/footer";
+import { ContextProvider } from "@/components/context";
 
 export const metadata: Metadata = {
   title: "PᴺCEL | Home",
@@ -21,11 +21,12 @@ export default function RootLayout({
     <React.StrictMode>
       <ContextProvider>
         <body className="min-h-screen flex flex-col bg-base-100 text-base-content">
-          <Nav></Nav>
-          <main className="grow-1 flex-auto container mx-auto p-4">
-            {children}
-          </main>
-          <Footer></Footer>
+          <NavAndDrawer>
+            <main className="grow-1 flex-auto container mx-auto p-4">
+              {children}
+            </main>
+            <Footer></Footer>
+          </NavAndDrawer>
         </body>
       </ContextProvider>
     </React.StrictMode>
