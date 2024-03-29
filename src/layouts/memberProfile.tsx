@@ -180,7 +180,7 @@ export default function MemberProfile({
           )}
         </div>
       </div>
-      <div className="flex-auto prose prose-sm lg:max-w-[640px] 2xl:max-w-[1024px] 2xl:prose-lg md:py-4">
+      <div className="flex-auto prose lg:max-w-[640px] 2xl:max-w-[1024px] 2xl:prose-lg md:py-4">
         {children}
       </div>
     </div>
