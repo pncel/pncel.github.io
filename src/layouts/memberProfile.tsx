@@ -3,7 +3,16 @@ import React from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { faLinkedin, faGithub, faXTwitter, faFacebook, faInstagram, faGoogleScholar, faOrcid, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import {
+  faLinkedin,
+  faGithub,
+  faXTwitter,
+  faFacebook,
+  faInstagram,
+  faGoogleScholar,
+  faOrcid,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
 
@@ -60,7 +69,7 @@ export default function MemberProfile({
         }
       >
         <div className="avatar flex-none self-start md:self-center">
-          <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl">
+          <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl ring ring-neutral">
             <Image className="m-0" src={avatar} alt={name}></Image>
           </div>
         </div>
@@ -83,42 +92,82 @@ export default function MemberProfile({
           </p>
           <div className="flex flex-row h-8 w-full gap-2 justify-start md:justify-center items-center content-center text-lg">
             {gscholar && (
-              <a href={gscholar} target="_blank" className="tooltip" data-tip="Google Scholar">
+              <a
+                href={gscholar}
+                target="_blank"
+                className="tooltip"
+                data-tip="Google Scholar"
+              >
                 <FontAwesomeIcon icon={faGoogleScholar}></FontAwesomeIcon>
               </a>
             )}
             {orcid && (
-              <a href={orcid} target="_blank" className="tooltip" data-tip="ORCiD">
+              <a
+                href={orcid}
+                target="_blank"
+                className="tooltip"
+                data-tip="ORCiD"
+              >
                 <FontAwesomeIcon icon={faOrcid}></FontAwesomeIcon>
               </a>
             )}
             {github && (
-              <a href={github} target="_blank" className="tooltip" data-tip="GitHub">
+              <a
+                href={github}
+                target="_blank"
+                className="tooltip"
+                data-tip="GitHub"
+              >
                 <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon>
               </a>
             )}
             {linkedin && (
-              <a href={linkedin} target="_blank" className="tooltip" data-tip="LinkedIn">
+              <a
+                href={linkedin}
+                target="_blank"
+                className="tooltip"
+                data-tip="LinkedIn"
+              >
                 <FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon>
               </a>
             )}
             {twitter && (
-              <a href={twitter} target="_blank" className="tooltip" data-tip="X (Twitter)">
+              <a
+                href={twitter}
+                target="_blank"
+                className="tooltip"
+                data-tip="X (Twitter)"
+              >
                 <FontAwesomeIcon icon={faXTwitter}></FontAwesomeIcon>
               </a>
             )}
             {instagram && (
-              <a href={instagram} target="_blank" className="tooltip" data-tip="Instagram">
+              <a
+                href={instagram}
+                target="_blank"
+                className="tooltip"
+                data-tip="Instagram"
+              >
                 <FontAwesomeIcon icon={faInstagram}></FontAwesomeIcon>
               </a>
             )}
             {facebook && (
-              <a href={facebook} target="_blank" className="tooltip" data-tip="Facebook">
+              <a
+                href={facebook}
+                target="_blank"
+                className="tooltip"
+                data-tip="Facebook"
+              >
                 <FontAwesomeIcon icon={faFacebook}></FontAwesomeIcon>
               </a>
             )}
             {youtube && (
-              <a href={youtube} target="_blank" className="tooltip" data-tip="Youtube">
+              <a
+                href={youtube}
+                target="_blank"
+                className="tooltip"
+                data-tip="Youtube"
+              >
                 <FontAwesomeIcon icon={faYoutube}></FontAwesomeIcon>
               </a>
             )}
@@ -131,7 +180,7 @@ export default function MemberProfile({
           )}
         </div>
       </div>
-      <div className="flex-auto prose-sm md:prose lg:prose-lg xl:prose-xl 2xl:prose-2xl md:py-4">
+      <div className="flex-auto prose prose-sm md:prose-base lg:prose-lg xl:prose-xl 2xl:prose-2xl md:py-4">
         {children}
       </div>
     </div>

@@ -43,7 +43,7 @@ export default function NavAndDrawer({
                 </Link>
               </div>
               {navData.length > 0 && (
-                <div className="flex-none lg:hidden">
+                <div className="flex-none lg:hidden tooltip tooltip-bottom" data-tip="Open sidebar">
                   <label
                     htmlFor="navDrawer"
                     aria-label="open navigation sidebar"

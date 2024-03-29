@@ -14,10 +14,11 @@ export default function ThemeToggle() {
 
   return (
     <button
-      className="btn btn-ghost"
+      className="btn btn-ghost tooltip tooltip-bottom"
       onClick={(e) => {
         setAndSaveUseDarkTheme(!useDarkTheme);
       }}
+      data-tip={useDarkTheme ? "Light mode" : "Dark mode"}
     >
       {useDarkTheme ? (
         <svg
