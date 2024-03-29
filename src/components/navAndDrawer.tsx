@@ -7,7 +7,18 @@ export default function NavAndDrawer({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const navData = [
+  interface NavDataSubType {
+    title: string,
+    target: string,
+  };
+
+  interface NavDataType {
+    title: string,
+    target: string | null,
+    sub: NavDataSubType[],
+  };
+
+  const navData: NavDataType[] = [
     { title: "News", target: "/news", sub: [] },
     { title: "Blogs", target: "/blogs", sub: [] },
     {
