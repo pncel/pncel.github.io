@@ -9,7 +9,7 @@ export function ContextProvider({
   children: React.ReactNode;
 }>) {
   // useDarkTheme
-  const [useDarkTheme, setUseDarkTheme] = useState(false);
+  const [useDarkTheme, setUseDarkTheme] = useState(true);
 
   const setAndSaveUseDarkTheme = (newUseDarkTheme: boolean) => {
     setUseDarkTheme(newUseDarkTheme);
@@ -22,16 +22,8 @@ export function ContextProvider({
       (!("theme" in localStorage) &&
         window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
-      console.log(
-        "initialized to dark mode b/c of %s",
-        localStorage.theme === "dark" ? "storage" : "media"
-      );
       setAndSaveUseDarkTheme(true);
     } else {
-      console.log(
-        "initialized to light mode b/c of %s",
-        localStorage.theme === "light" ? "storage" : "else"
-      );
       setAndSaveUseDarkTheme(false);
     }
 
@@ -45,7 +37,7 @@ export function ContextProvider({
   return (
     <DataContext.Provider value={{ useDarkTheme, setAndSaveUseDarkTheme }}>
       <html lang="en" data-theme={useDarkTheme ? "dim" : "cupcake"}>
-        <body>{children}</body>
+        {children}
       </html>
     </DataContext.Provider>
   );
