@@ -25,15 +25,15 @@ export default function MemberCard({
             </div>
           ) : (
             <div className="avatar placeholder">
-              <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl">
-                <span className="text-3xl">
+              <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl bg-base-100">
+                <span className="text-3xl text-base-content">
                   {[firstname[0], lastname[0]].join("").toUpperCase()}
                 </span>
               </div>
             </div>
           )}
         </figure>
-        <div className="card-body items-center text-center">
+        <div className="card-body items-center text-center text-neutral-content">
           <h2 className="card-title">{firstname + " " + lastname}</h2>
           <p>{position}</p>
         </div>
