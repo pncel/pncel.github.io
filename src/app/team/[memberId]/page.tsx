@@ -1,8 +1,10 @@
 import MemberProfile from "@/layouts/memberProfile";
 import { MDXRemote } from "next-mdx-remote/rsc";
+import { useMDXComponents } from "@/mdx-components";
 import { members } from "@/data/team";
 import { metadataTmpl } from "@/data/metadata";
 import { promises as fs } from "fs";
+import { propagateServerField } from "next/dist/server/lib/render-server";
 
 interface Params {
   params: {
@@ -45,7 +47,7 @@ export default async function Member({ params: { memberId } }: Params) {
 
   return (
     <MemberProfile member={member}>
-      <MDXRemote source={mdxSrc} />
+      <MDXRemote source={mdxSrc} components={useMDXComponents({})}/>
     </MemberProfile>
   );
 }
