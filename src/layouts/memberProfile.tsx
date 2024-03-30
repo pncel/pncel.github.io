@@ -2,7 +2,11 @@ import Image from "next/image";
 import React from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEnvelope,
+  faLocationDot,
+  faGlobe,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   faLinkedin,
   faGithub,
@@ -18,44 +22,27 @@ config.autoAddCss = false;
 
 export default function MemberProfile({
   children,
-
-  // required arguments
-  name, // your name!
-  position, // your position in the lab -- PI, PhD student, etc.
-  avatar, // photo filename under /public/avatar, e.g. "ang.jpg"
-  email, // email
-
-  // optional arguments with default values
-  shortbio = "", // short bio
-  office = null, // office address. can be null if no office or not on campus
-
-  // optional links to professional network websites
-  gscholar = null,
-  orcid = null,
-  github = null,
-  linkedin = null,
-
-  // optional links to other social media websites
-  twitter = null,
-  facebook = null,
-  instagram = null,
-  youtube = null,
+  member: {
+    firstname,
+    lastname,
+    position,
+    avatar,
+    email,
+    shortbio,
+    office,
+    website,
+    gscholar,
+    orcid,
+    github,
+    linkedin,
+    twitter,
+    facebook,
+    instagram,
+    youtube,
+  },
 }: Readonly<{
   children: React.ReactNode;
-  name: string;
-  position: string;
-  avatar: string;
-  email: string;
-  shortbio: string;
-  office: string | null;
-  linkedin: string | null;
-  github: string | null;
-  gscholar: string | null;
-  orcid: string | null;
-  twitter: string | null;
-  facebook: string | null;
-  instagram: string | null;
-  youtube: string | null;
+  member: Member;
 }>) {
   return (
     <div className="flex flex-col md:flex-row gap-4 justify-center">
@@ -68,13 +55,33 @@ export default function MemberProfile({
           "md:sticky md:self-start md:top-0 md:max-h-screen md:overflow-y-auto"
         }
       >
-        <div className="avatar flex-none self-start md:self-center">
-          <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl ring ring-neutral">
-            <Image className="m-0" src={avatar} alt={name}></Image>
-          </div>
+        <div className="flex-none self-start md:self-center">
+          {avatar ? (
+            <div className="avatar">
+              <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl ring ring-neutral">
+                <Image
+                  className="m-0"
+                  width={512}
+                  height={512}
+                  src={avatar}
+                  alt={firstname + " " + lastname}
+                ></Image>
+              </div>
+            </div>
+          ) : (
+            <div className="avatar placeholder">
+              <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl ring ring-neutral">
+                <span className="text-3xl">
+                  {[firstname[0], lastname[0]].join("").toUpperCase()}
+                </span>
+              </div>
+            </div>
+          )}
         </div>
         <div className="flex-grow">
-          <p className="text-lg font-bold md:text-center text-left">{name}</p>
+          <p className="text-lg font-bold md:text-center text-left">
+            {firstname + " " + lastname}
+          </p>
           <p className="md:text-center text-left">{position}</p>
           {office && (
             <p className="md:text-center text-left">
@@ -91,6 +98,16 @@ export default function MemberProfile({
             </a>
           </p>
           <div className="flex flex-row h-8 w-full gap-2 justify-start md:justify-center items-center content-center text-lg">
+            {website && (
+              <a
+                href={website}
+                target="_blank"
+                className="tooltip"
+                data-tip="Personal Website"
+              >
+                <FontAwesomeIcon icon={faGlobe}></FontAwesomeIcon>
+              </a>
+            )}
             {gscholar && (
               <a
                 href={gscholar}
@@ -174,7 +191,7 @@ export default function MemberProfile({
           </div>
           {shortbio && (
             <>
-              <div className="divider">Short Bio</div>
+              <div className="divider"></div>
               <p>{shortbio}</p>
             </>
           )}
