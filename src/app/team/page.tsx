@@ -2,16 +2,13 @@ import DefaultMDX from "@/layouts/defaultMdx";
 import MemberCard from "@/components/memberCard";
 import { members } from "@/data/team";
 import { metadataTmpl } from "@/data/metadata";
-import React from "react";
 
 export const metadata = {
   ...metadataTmpl,
   title: metadataTmpl.title + " | Team",
 };
 
-export default async function Team({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default async function Team() {
   var pi = [],
     phd = [],
     ms = [],
@@ -40,7 +37,7 @@ export default async function Team({
       <div className="divider">PI</div>
       <div className="flex flex-row justify-start flex-wrap content-start p-4 gap-4">
         {pi.map((m) => (
-          <MemberCard member={m}></MemberCard>
+          <MemberCard member={m} key={m.id}></MemberCard>
         ))}
       </div>
       {phd.length > 0 && (
@@ -48,7 +45,7 @@ export default async function Team({
           <div className="divider">PhD</div>
           <div className="flex flex-row justify-start flex-wrap content-start p-4 gap-4">
             {phd.map((m) => (
-              <MemberCard member={m}></MemberCard>
+              <MemberCard member={m} key={m.id}></MemberCard>
             ))}
           </div>
         </>
@@ -58,7 +55,7 @@ export default async function Team({
           <div className="divider">Master</div>
           <div className="flex flex-row justify-start flex-wrap content-start p-4 gap-4">
             {ms.map((m) => (
-              <MemberCard member={m}></MemberCard>
+              <MemberCard member={m} key={m.id}></MemberCard>
             ))}
           </div>
         </>
@@ -68,7 +65,7 @@ export default async function Team({
           <div className="divider">Undergraduate</div>
           <div className="flex flex-row justify-start flex-wrap content-start p-4 gap-4">
             {ug.map((m) => (
-              <MemberCard member={m}></MemberCard>
+              <MemberCard member={m} key={m.id}></MemberCard>
             ))}
           </div>
         </>
@@ -78,7 +75,7 @@ export default async function Team({
           <div className="divider">Others</div>
           <div className="flex flex-row justify-start flex-wrap content-start p-4 gap-4">
             {other.map((m) => (
-              <MemberCard member={m}></MemberCard>
+              <MemberCard member={m} key={m.id}></MemberCard>
             ))}
           </div>
         </>

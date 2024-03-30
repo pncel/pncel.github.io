@@ -1,15 +1,12 @@
 import { metadataTmpl } from "@/data/metadata";
 import DefaultMDX from "@/layouts/defaultMdx";
-import React from "react";
 
 export const metadata = {
   ...metadataTmpl,
   title: metadataTmpl.title + " | News",
 };
 
-export default async function News({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default async function News() {
   return <div>
     <DefaultMDX>
       <p>Under construction...</p>
