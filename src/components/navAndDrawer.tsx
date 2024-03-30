@@ -102,12 +102,13 @@ export default function NavAndDrawer({
             <div className="flex navbar-end pr-2 gap-1">
               <div className="form-control hidden lg:flex">
                 <input
+                  disabled
                   type="text"
                   placeholder="Search"
                   className="input input-bordered w-64"
                 />
               </div>
-              <button className="btn btn-ghost lg:hidden">
+              <button className="btn btn-ghost btn-disabled lg:hidden">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"

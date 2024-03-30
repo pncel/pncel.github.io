@@ -1,15 +1,15 @@
 import React from "react";
 import type { Metadata } from "next";
 import "./globals.css";
+import { metadataTmpl } from "@/data/metadata";
 
 import NavAndDrawer from "@/components/navAndDrawer";
 import Footer from "@/components/footer";
 import { ContextProvider } from "@/components/context";
 
 export const metadata: Metadata = {
-  title: "PᴺCEL | Home",
-  description:
-    "PNCEL: {Programmable, Parallel, high-Performance, Power-efficient, ...} Computer Engineering Lab at University of Washington (UW)",
+  ...metadataTmpl,
+  title: metadataTmpl.title + " | Home",
 };
 
 export default function RootLayout({
@@ -21,7 +21,7 @@ export default function RootLayout({
     <React.StrictMode>
       <ContextProvider>
         <NavAndDrawer>
-          <main className="grow-1 flex-auto container mx-auto my-4">
+          <main className="grow-1 flex-auto container mx-auto p-4">
             {children}
           </main>
           <Footer></Footer>
