@@ -125,7 +125,7 @@ export default async function MemberPage({ params: { memberId } }: Params) {
             facebook ||
             instagram ||
             youtube) && (
-            <div className="flex flex-row h-8 w-full gap-2 justify-start md:justify-center items-center content-center text-lg">
+            <div className="flex flex-row w-full flex-wrap gap-x-2 gap-y-0 justify-start md:justify-center items-center content-center text-lg">
               {website && (
                 <a
                   href={website}
