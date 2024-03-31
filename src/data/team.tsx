@@ -12,15 +12,17 @@ export async function getAllMemberIds() {
 export async function getMemberMdxSrc(memberId: string) {
   const mdxSrc = await readFile(
     process.cwd() + `/src/app/team/[memberId]/${memberId}.mdx`,
-    "utf-8"
-  )
+    "utf-8",
+  );
 
-  const { frontmatter: fm } = await serialize(mdxSrc, { parseFrontmatter: true })
+  const { frontmatter: fm } = await serialize(mdxSrc, {
+    parseFrontmatter: true,
+  });
 
   for (let key of ["firstname", "lastname", "position"]) {
     if (!(key in fm)) {
       throw new Error(
-        `Source code error: missing frontmatter key ${key} in ${memberId}.mdx`
+        `Source code error: missing frontmatter key ${key} in ${memberId}.mdx`,
       );
     }
   }
@@ -49,20 +51,22 @@ export async function getMemberMdxSrc(memberId: string) {
     youtube: fm.youtube as string | undefined,
   };
 
-  const name = [member.firstname, member.middlename, member.lastname]
-    .filter((i) => i)
-    .join(" ");
-
   // XXX
   // below is a temporary workaround because MDXRemote from "next-mdx-remote" is
   // not working properly for post-serialize MDX source. we have to remove the
   // frontmatter manually and let MDXRemote from "next-mdx-remote/rsc" use the
   // raw MDX source instead
 
-  console.log(mdxSrc)
-  const mdxSrcWithoutFrontMatter = mdxSrc.replace(/---\n(.*\n)*---/, "")
-  console.log(mdxSrcWithoutFrontMatter)
+  const mdxSrcWithoutFrontMatter = mdxSrc.replace(/---\n(.*\n)*---/, "");
 
-  // return { mdxSrc, member, name };
-  return { mdxSrc: mdxSrcWithoutFrontMatter, member, name };
+  // return { mdxSrc, member };
+  return { mdxSrc: mdxSrcWithoutFrontMatter, member };
+}
+
+export function composeMemberName(
+  firstname?: string,
+  middlename?: string,
+  lastname?: string,
+) {
+  return [firstname, middlename, lastname].filter((i) => i).join(" ");
 }

@@ -6,7 +6,7 @@ export default function ThemeToggle() {
   const context = useContext(DataContext);
   if (!context) {
     throw new Error(
-      "Source code error: ThemeToggle must be used inside ContextProvider"
+      "Source code error: ThemeToggle must be used inside ContextProvider",
     );
   }
 

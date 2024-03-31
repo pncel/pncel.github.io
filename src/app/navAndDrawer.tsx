@@ -48,7 +48,7 @@ export default function NavAndDrawer({
         type="checkbox"
         className="drawer-toggle"
         checked={isSideBarOpen}
-        onChange={()=>{}}
+        onChange={() => {}}
       />
       <div className="drawer-content bg-base-100 text-base-content flex flex-col min-h-screen">
         <div className="bg-base-300 w-full">

@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { metadataTmpl } from "@/data/metadata";
 
-import NavAndDrawer from "@/components/navAndDrawer";
-import Footer from "@/components/footer";
-import { ContextProvider } from "@/components/context";
+import NavAndDrawer from "./navAndDrawer";
+import Footer from "./footer";
+import { ContextProvider } from "./context";
 
 export const metadata: Metadata = {
   ...metadataTmpl,
@@ -21,7 +21,7 @@ export default function RootLayout({
     <React.StrictMode>
       <ContextProvider>
         <NavAndDrawer>
-          <main className="grow-1 flex-auto container mx-auto p-4">
+          <main className="grow-1 flex-auto container mx-auto max-w-screen-xl p-4">
             {children}
           </main>
           <Footer></Footer>

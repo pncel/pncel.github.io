@@ -7,9 +7,11 @@ export const metadata = {
 };
 
 export default async function Blogs() {
-  return <div>
-    <DefaultMDX>
-      <p>Under construction...</p>
-    </DefaultMDX>
-  </div>
+  return (
+    <div>
+      <DefaultMDX>
+        <p>Under construction...</p>
+      </DefaultMDX>
+    </div>
+  );
 }

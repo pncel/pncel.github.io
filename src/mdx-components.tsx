@@ -9,10 +9,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         Children.only(children) &&
         Children.map(
           children,
-          (child) => React.isValidElement(child) && child.type === "code"
+          (child) => React.isValidElement(child) && child.type === "code",
         )
       ) {
-        return <CopyableCode>{children}</CopyableCode>
+        return <CopyableCode>{children}</CopyableCode>;
       } else {
         return <pre>{children}</pre>;
       }

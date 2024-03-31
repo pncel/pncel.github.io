@@ -2,7 +2,11 @@ import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { useMDXComponents } from "@/mdx-components";
 import { metadataTmpl } from "@/data/metadata";
-import { getAllMemberIds, getMemberMdxSrc } from "@/data/team";
+import {
+  getAllMemberIds,
+  getMemberMdxSrc,
+  composeMemberName,
+} from "@/data/team";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -30,22 +34,26 @@ interface Params {
 }
 
 export async function generateStaticParams() {
-  const memberIds = await getAllMemberIds()
-  return memberIds.map(id => ({memberId: id}));
+  const memberIds = await getAllMemberIds();
+  return memberIds.map((id) => ({ memberId: id }));
 }
 
 export async function generateMetadata({ params: { memberId } }: Params) {
-  const { name } = await getMemberMdxSrc(memberId);
+  const {
+    member: { firstname, middlename, lastname },
+  } = await getMemberMdxSrc(memberId);
+  const name = composeMemberName(firstname, middlename, lastname);
   return {
     ...metadataTmpl,
-    title: metadataTmpl.title + " | Team" + (name && ` | ${name}`),
+    title: metadataTmpl.title + " | Team | " + (name || memberId),
   };
 }
 
 export default async function MemberPage({ params: { memberId } }: Params) {
-  const { mdxSrc, member, name } = await getMemberMdxSrc(memberId);
+  const { mdxSrc, member } = await getMemberMdxSrc(memberId);
   const {
     firstname,
+    middlename,
     lastname,
     position,
     email,
@@ -62,6 +70,7 @@ export default async function MemberPage({ params: { memberId } }: Params) {
     instagram,
     youtube,
   } = member;
+  const name = composeMemberName(firstname, middlename, lastname);
 
   return (
     <div className="flex flex-col md:flex-row gap-4 justify-center">

@@ -26,7 +26,7 @@ const nodeToString = (node?: React.ReactNode): string => {
 };
 
 const childrenToString = (
-  children: React.ReactNode | React.ReactNode[]
+  children: React.ReactNode | React.ReactNode[],
 ): string => {
   if (!(children instanceof Array) && !React.isValidElement(children)) {
     return nodeToString(children);
@@ -93,7 +93,7 @@ export default function CopyableCode({
           </>
         )}
       </button>
-      <pre style={{overflowX: "auto"}}>{children}</pre>
+      <pre style={{ overflowX: "auto" }}>{children}</pre>
     </div>
   );
 }

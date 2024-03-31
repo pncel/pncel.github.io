@@ -1,5 +1,5 @@
 import DefaultMDX from "@/layouts/defaultMdx";
-import MemberCard from "@/components/memberCard";
+import MemberCard from "./memberCard";
 import { metadataTmpl } from "@/data/metadata";
 import { getAllMemberIds, getMemberMdxSrc } from "@/data/team";
 
@@ -47,8 +47,8 @@ export default async function Team() {
   const allMemberIds = await getAllMemberIds();
   const allMembers: Member[] = await Promise.all(
     allMemberIds.map(async (id) =>
-      getMemberMdxSrc(id).then(({ member }) => member)
-    )
+      getMemberMdxSrc(id).then(({ member }) => member),
+    ),
   );
 
   for (const m of allMembers) {
