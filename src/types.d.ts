@@ -1,9 +1,10 @@
 type Member = {
   id: string;
   firstname: string;
+  middlename?: string;
   lastname: string;
   position: string;
-  email: string;
+  email?: string;
   website?: string;
   avatar?: string;
   shortbio?: string;
@@ -16,4 +17,4 @@ type Member = {
   facebook?: string;
   instagram?: string;
   youtube?: string;
-}
+};

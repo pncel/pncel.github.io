@@ -1,7 +1,7 @@
 import DefaultMDX from "@/layouts/defaultMdx";
 import MemberCard from "@/components/memberCard";
-import { members } from "@/data/team";
 import { metadataTmpl } from "@/data/metadata";
+import { getAllMemberIds, getMemberMdxSrc } from "@/data/team";
 
 export const metadata = {
   ...metadataTmpl,
@@ -14,6 +14,13 @@ export default async function Team() {
     ms = [],
     ug = [],
     other = [];
+
+  const memberIds = await getAllMemberIds();
+  const members: Member[] = await Promise.all(
+    memberIds.map(async (id) =>
+      getMemberMdxSrc(id).then(({ member }) => member)
+    )
+  );
 
   for (const m of members) {
     if (m.position.toLowerCase().includes("professor")) {
