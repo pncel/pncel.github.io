@@ -1,6 +1,8 @@
+"use client";
 import Link from "next/link";
 import ThemeToggle from "./themeToggle";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 export default function NavAndDrawer({
   children,
@@ -8,15 +10,15 @@ export default function NavAndDrawer({
   children: React.ReactNode;
 }>) {
   interface NavDataSubType {
-    title: string,
-    target: string,
-  };
+    title: string;
+    target: string;
+  }
 
   interface NavDataType {
-    title: string,
-    target: string | null,
-    sub: NavDataSubType[],
-  };
+    title: string;
+    target: string | null;
+    sub: NavDataSubType[];
+  }
 
   const navData: NavDataType[] = [
     { title: "News", target: "/news", sub: [] },
@@ -30,12 +32,27 @@ export default function NavAndDrawer({
     { title: "Team", target: "/team", sub: [] },
   ];
 
+  const pathname = usePathname();
+  const [isSideBarOpen, setIsSetBarOpen] = useState(false);
+  const [activeNavSub, setActiveNavSub] = useState<string | null>(null);
+
+  useEffect(() => {
+    setIsSetBarOpen(false);
+    setActiveNavSub(null);
+  }, [pathname]);
+
   return (
     <body className="drawer">
-      <input id="navDrawer" type="checkbox" className="drawer-toggle" />
+      <input
+        id="navDrawer"
+        type="checkbox"
+        className="drawer-toggle"
+        checked={isSideBarOpen}
+        onChange={()=>{}}
+      />
       <div className="drawer-content bg-base-100 text-base-content flex flex-col min-h-screen">
-        <div className="bg-neutral w-full">
-          <nav className="navbar text-neutral-content justify-between container mx-auto">
+        <div className="bg-base-300 w-full">
+          <nav className="navbar justify-between container mx-auto">
             <div className="flex grow flex-row justify-start gap-1">
               <div className="flex-none">
                 <Link className="btn btn-ghost text-xl" href="/">
@@ -43,27 +60,25 @@ export default function NavAndDrawer({
                 </Link>
               </div>
               {navData.length > 0 && (
-                <div className="flex-none lg:hidden tooltip tooltip-bottom" data-tip="Open sidebar">
-                  <label
-                    htmlFor="navDrawer"
-                    aria-label="open navigation sidebar"
-                    className="btn btn-square btn-ghost"
+                <button
+                  className="flex-none lg:hidden tooltip tooltip-bottom btn btn-square btn-ghost"
+                  data-tip="Open sidebar"
+                  onClick={() => setIsSetBarOpen(true)}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    className="inline-block w-6 h-6 stroke-current"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      className="inline-block w-6 h-6 stroke-current"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M4 6h16M4 12h16M4 18h16"
-                      ></path>
-                    </svg>
-                  </label>
-                </div>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M4 6h16M4 12h16M4 18h16"
+                    ></path>
+                  </svg>
+                </button>
               )}
               {navData.length > 0 && (
                 <div className="flex-auto hidden lg:flex">
@@ -72,9 +87,19 @@ export default function NavAndDrawer({
                       return (
                         <li key={item.title}>
                           {item.sub.length > 0 ? (
-                            <details className="z-20">
-                              <summary>{item.title}</summary>
-                              <ul className="bg-neutral text-neutral-content rounded-t-none">
+                            <details
+                              className="z-20"
+                              open={activeNavSub === item.title}
+                            >
+                              <summary
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  setActiveNavSub(item.title);
+                                }}
+                              >
+                                {item.title}
+                              </summary>
+                              <ul className="bg-base-300 text-base-content rounded-t-none">
                                 {item.sub.map((i) => (
                                   <li key={i.title}>
                                     <Link
@@ -99,7 +124,7 @@ export default function NavAndDrawer({
                 </div>
               )}
             </div>
-            <div className="flex navbar-end pr-2 gap-1">
+            <div className="flex pr-2 gap-1">
               <div className="form-control hidden lg:flex">
                 <input
                   disabled
@@ -131,11 +156,10 @@ export default function NavAndDrawer({
         {children}
       </div>
       <div className="drawer-side">
-        <label
-          htmlFor="navDrawer"
-          aria-label="close navigation sidebar"
+        <div
           className="drawer-overlay"
-        ></label>
+          onClick={() => setIsSetBarOpen(false)}
+        ></div>
         <ul className="menu p-4 w-64 min-h-full bg-base-200">
           {navData.map((item) => (
             <li key={item.title}>

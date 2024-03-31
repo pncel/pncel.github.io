@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="bg-neutral">
-    <footer className="footer items-center p-2 text-neutral-content container mx-auto">
+    <div className="bg-base-300">
+    <footer className="footer items-center p-2 text-base-content container mx-auto">
       <aside className="items-center grid-flow-col">
         <Link className="btn btn-ghost text-xl" href="/">
           PᴺCEL

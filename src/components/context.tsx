@@ -2,8 +2,8 @@
 import React, { createContext, useState, useEffect } from "react";
 
 export interface DataContextType {
-  useDarkTheme: boolean,
-  setAndSaveUseDarkTheme: (newUseDarkTheme:boolean) => void,
+  useDarkTheme: boolean;
+  setAndSaveUseDarkTheme: (newUseDarkTheme: boolean) => void;
 }
 
 const DataContext = createContext<DataContextType | null>(null);
@@ -16,7 +16,7 @@ export function ContextProvider({
   // useDarkTheme
   const [useDarkTheme, setUseDarkTheme] = useState(true);
 
-  const setAndSaveUseDarkTheme = (newUseDarkTheme: boolean):void => {
+  const setAndSaveUseDarkTheme = (newUseDarkTheme: boolean): void => {
     setUseDarkTheme(newUseDarkTheme);
     localStorage.setItem("theme", newUseDarkTheme ? "dark" : "light");
   };
@@ -40,8 +40,13 @@ export function ContextProvider({
   }, []);
 
   return (
-    <DataContext.Provider value={{ useDarkTheme, setAndSaveUseDarkTheme }}>
-      <html lang="en" data-theme={useDarkTheme ? "dim" : "cupcake"}>
+    <DataContext.Provider
+      value={{
+        useDarkTheme,
+        setAndSaveUseDarkTheme,
+      }}
+    >
+      <html lang="en" data-theme={useDarkTheme ? "dim" : "emerald"}>
         {children}
       </html>
     </DataContext.Provider>

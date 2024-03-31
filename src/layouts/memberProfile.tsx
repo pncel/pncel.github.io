@@ -58,7 +58,7 @@ export default function MemberProfile({
         <div className="flex-none self-start md:self-center">
           {avatar ? (
             <div className="avatar">
-              <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl ring ring-neutral">
+              <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl ring ring-base-300">
                 <Image
                   className="m-0"
                   width={512}
@@ -70,7 +70,7 @@ export default function MemberProfile({
             </div>
           ) : (
             <div className="avatar placeholder">
-              <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl ring ring-neutral">
+              <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl ring ring-base-300">
                 <span className="text-3xl">
                   {[firstname[0], lastname[0]].join("").toUpperCase()}
                 </span>

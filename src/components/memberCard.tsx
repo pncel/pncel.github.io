@@ -9,11 +9,11 @@ export default function MemberCard({
 }>) {
   return (
     <Link href={`/team/${id}`}>
-      <div className="card card-compact w-44 md:w-56 bg-neutral shadow-xl">
-        <figure className="px-4 pt-4">
+      <div className="card card-compact bg-neutral shadow-xl w-36 md:w-56">
+        <figure className="px-2 pt-2 md:px-4 md:pt-4">
           {avatar ? (
             <div className="avatar">
-              <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl">
+              <div className="w-32 h-32 md:w-48 md:h-48 rounded-2xl">
                 <Image
                   className="m-0"
                   width={512}
@@ -25,7 +25,7 @@ export default function MemberCard({
             </div>
           ) : (
             <div className="avatar placeholder">
-              <div className="w-36 h-36 md:w-48 md:h-48 rounded-2xl bg-base-100">
+              <div className="w-32 h-32 md:w-48 md:h-48 rounded-2xl bg-base-100">
                 <span className="text-3xl text-base-content">
                   {[firstname[0], lastname[0]].join("").toUpperCase()}
                 </span>
@@ -34,8 +34,10 @@ export default function MemberCard({
           )}
         </figure>
         <div className="card-body items-center text-center text-neutral-content">
-          <h2 className="card-title">{firstname + " " + lastname}</h2>
-          <p>{position}</p>
+          <h2 className="card-title text-base md:text-lg">
+            {firstname + " " + lastname}
+          </h2>
+          <p className="text-sm md:text-base">{position}</p>
         </div>
       </div>
     </Link>
