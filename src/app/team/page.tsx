@@ -78,7 +78,7 @@ export default async function Team() {
           members.length > 0 && (
             <>
               <div className="divider">{cls}</div>
-              <div className="flex flex-row justify-center flex-wrap content-start gap-4">
+              <div className="flex flex-row justify-center flex-wrap content-start gap-0 p-0">
                 {members.map((m) => (
                   <MemberCard member={m} key={m.id}></MemberCard>
                 ))}

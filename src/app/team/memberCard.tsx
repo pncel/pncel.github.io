@@ -11,21 +11,18 @@ export default function MemberCard({
   const name = composeMemberName(firstname, middlename, lastname);
 
   return (
-    <Link href={`/team/${id}`}>
-      <div className="bg-neutral shadow-xl h-36 w-72 lg:h-40 lg:w-80 rounded-2xl flex flex-row justify-start items-center gap-0">
-        <div className="p-1.5 h-36 w-36 lg:p-2 lg:w-40 lg:h-40">
+    <Link
+      href={`/team/${id}`}
+      className="w-full tiny:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4"
+    >
+      <div className="card card-compact bg-neutral shadow-xl rounded-2xl">
+        <figure>
           {avatar ? (
-            <div className="avatar rounded-xl overflow-hidden">
-              <Image
-                className="m-0"
-                width={512}
-                height={512}
-                src={avatar}
-                alt={name}
-              ></Image>
+            <div className="avatar">
+              <Image width={512} height={512} src={avatar} alt={name}></Image>
             </div>
           ) : (
-            <div className="avatar placeholder bg-base-100 w-full h-full rounded-xl">
+            <div className="avatar placeholder bg-base-100 w-full aspect-square">
               <span className="text-3xl text-base-content mx-auto my-auto">
                 {[firstname, lastname]
                   .filter((s) => s !== undefined)
@@ -36,8 +33,8 @@ export default function MemberCard({
               </span>
             </div>
           )}
-        </div>
-        <div className="flex-grow flex flex-col justify-center items-center text-center text-neutral-content">
+        </figure>
+        <div className="card-body text-neutral-content text-center mx-auto">
           <h2 className="text-base lg:text-lg">{name}</h2>
           <p className="text-sm lg:text-base">{position}</p>
         </div>
