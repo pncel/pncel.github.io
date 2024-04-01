@@ -22,7 +22,7 @@ export default function MemberCard({
               <Image width={512} height={512} src={avatar} alt={name}></Image>
             </div>
           ) : (
-            <div className="avatar placeholder bg-base-100 w-full aspect-square">
+            <div className="avatar placeholder bg-base-200 w-full aspect-square">
               <span className="text-3xl text-base-content mx-auto my-auto">
                 {[firstname, lastname]
                   .filter((s) => s !== undefined)
