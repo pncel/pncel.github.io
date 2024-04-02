@@ -2,6 +2,7 @@ import DefaultMDX from "@/layouts/defaultMdx";
 import MemberCard from "./memberCard";
 import { metadataTmpl } from "@/data/metadata";
 import { getAllMemberIds, getMemberMdxSrc } from "@/data/team";
+import DefaultMain from "@/layouts/defaultMain";
 
 export const metadata = {
   ...metadataTmpl,
@@ -17,12 +18,12 @@ export default async function Team() {
 
   const groups: Group[] = [
     {
-      cls: "PI",
+      cls: "Principle Investigator",
       members: [] as Member[],
       classify: (m: Member) => m.position.toLowerCase().includes("professor"),
     },
     {
-      cls: "PhD",
+      cls: "Ph.D.",
       members: [] as Member[],
       classify: (m: Member) => m.position.toLowerCase().includes("phd"),
     },
@@ -72,21 +73,23 @@ export default async function Team() {
       <DefaultMDX>
         <h1>Team</h1>
       </DefaultMDX>
-      {groups.map((value) => {
-        const { cls, members } = value;
-        return (
-          members.length > 0 && (
-            <>
-              <div className="divider">{cls}</div>
-              <div className="flex flex-row justify-center flex-wrap content-start gap-0 p-0">
-                {members.map((m) => (
-                  <MemberCard member={m} key={m.id}></MemberCard>
-                ))}
-              </div>
-            </>
-          )
-        );
-      })}
+      <DefaultMain>
+        {groups.map((value) => {
+          const { cls, members } = value;
+          return (
+            members.length > 0 && (
+              <>
+                <div className="divider">{cls}</div>
+                <div className="columns-1 lg:columns-2 2xl:columns-3 gap-x-4 py-4">
+                  {members.map((m) => (
+                    <MemberCard member={m} key={m.id}></MemberCard>
+                  ))}
+                </div>
+              </>
+            )
+          );
+        })}
+      </DefaultMain>
     </div>
   );
 }

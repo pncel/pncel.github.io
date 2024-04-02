@@ -26,7 +26,7 @@ export default function FancySlogan() {
             strings: keywords.map((s: string) =>
               s.replaceAll(
                 "P",
-                '<span class="text-4xl lg:text-5xl text-primary align-middle">P</span>',
+                '<span class="text-4xl lg:text-5xl text-secondary align-middle">P</span>',
               ),
             ),
             autoStart: true,

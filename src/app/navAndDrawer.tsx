@@ -94,12 +94,16 @@ export default function NavAndDrawer({
                               <summary
                                 onClick={(e) => {
                                   e.preventDefault();
-                                  setActiveNavSub(item.title);
+                                  if (activeNavSub === item.title) {
+                                    setActiveNavSub(null);
+                                  } else {
+                                    setActiveNavSub(item.title);
+                                  }
                                 }}
                               >
                                 {item.title}
                               </summary>
-                              <ul className="bg-base-300 text-base-content rounded-t-none">
+                              <ul className="bg-base-300 rounded-t-none">
                                 {item.sub.map((i) => (
                                   <li key={i.title}>
                                     <Link
@@ -160,7 +164,7 @@ export default function NavAndDrawer({
           className="drawer-overlay"
           onClick={() => setIsSetBarOpen(false)}
         ></div>
-        <ul className="menu p-4 w-64 min-h-full bg-base-200">
+        <ul className="menu p-4 w-64 min-h-full bg-base-300">
           {navData.map((item) => (
             <li key={item.title}>
               {item.target ? (
