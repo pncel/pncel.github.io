@@ -52,7 +52,7 @@ export default function NavAndDrawer({
       />
       <div className="drawer-content bg-base-100 text-base-content flex flex-col min-h-screen">
         <div className="bg-base-300 w-full">
-          <nav className="navbar justify-between container mx-auto">
+          <nav className="navbar justify-between mx-auto max-w-screen-2xl">
             <div className="flex grow flex-row justify-start gap-1">
               <div className="flex-none">
                 <Link className="btn btn-ghost text-xl" href="/">
