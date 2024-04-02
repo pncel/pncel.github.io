@@ -87,13 +87,14 @@ export default async function MemberPage({ params: { memberId } }: Params) {
         >
           <div className="flex-none self-start md:self-center w-36 h-36 md:w-48 md:h-48 rounded-2xl ring ring-neutral overflow-clip">
             {avatar ? (
-              <div className="avatar">
+              <div className="avatar w-full h-full">
                 <Image
                   className="m-0"
                   width={512}
                   height={512}
                   src={avatar}
                   alt={name}
+                  objectFit="cover"
                 ></Image>
               </div>
             ) : (
