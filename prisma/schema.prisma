@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./data.db"
+}
+
+// additional information for group members
+model Member {
+  id            Int       @id @default(autoincrement())
+  memberId      String    // for team/[memberId] and locating mdx
+  role          String    // actually an enum but SQLite3 doesn't support enum
+                          // accepted values are:
+                          //    "Principle Investigator"
+                          //    "PhD"
+                          //    "Master"
+                          //    "Undergrad"
+                          //    "Postdoc"
+                          //    "Staff"
+                          //    "Visitor"
+                          //    "Other" 
+  position      String
+  email         String
+  person        Person    @relation(fields: [personId], references: [id])
+  personId      Int       @unique
+  whenLeft      DateTime? // if set, this member is an alumnus
+  avatar        String?
+  shortbio      String?
+  office        String?
+  gscholar      String?
+  orcid         String?
+  github        String?
+  linkedin      String?
+  twitter       String?
+  facebook      String?
+  instagram     String?
+  youtube       String?
+}
+
+model Person {
+  id            Int       @id @default(autoincrement())  
+  firstname     String 
+  lastname      String
+  goby          String?
+  middlename    String?
+  externalLink  String?
+  member        Member?
+}
