@@ -4,11 +4,18 @@ import Link from "next/link";
 import { composeMemberName } from "@/data/team";
 
 export default function MemberCard({
-  member: { id, firstname, middlename, lastname, position, avatar, shortbio },
+  member,
 }: Readonly<{
   member: Member;
 }>) {
-  const name = composeMemberName(firstname, middlename, lastname);
+  const { id, firstname, goby, lastname, position, avatar, shortbio } = member;
+  const fullname = composeMemberName(member);
+  const placeholder = [goby || firstname, lastname]
+    .filter((s) => s !== undefined)
+    .filter((s) => s) // make sure it's not an empty string
+    .map((s) => s[0])
+    .join("")
+    .toUpperCase();
 
   return (
     <div className="shadow-xl rounded-xl overflow-clip w-full break-inside-avoid-column mb-4">
@@ -17,23 +24,23 @@ export default function MemberCard({
           <div className="flex-none rounded-full w-24 h-24 overflow-clip">
             {avatar ? (
               <div className="avatar">
-                <Image width={512} height={512} src={avatar} alt={name}></Image>
+                <Image
+                  width={512}
+                  height={512}
+                  src={avatar}
+                  alt={fullname}
+                ></Image>
               </div>
             ) : (
               <div className="avatar placeholder bg-base-300 w-full h-full">
                 <span className="text-3xl text-base-content m-auto">
-                  {[firstname, lastname]
-                    .filter((s) => s !== undefined)
-                    .filter((s) => s) // make sure it's not an empty string
-                    .map((s) => s[0])
-                    .join("")
-                    .toUpperCase()}
+                  {placeholder}{" "}
                 </span>
               </div>
             )}
           </div>
           <div className="flex flex-col justify-center items-start text-neutral-content">
-            <h2 className="text-lg lg:text-xl font-bold">{name}</h2>
+            <h2 className="text-lg lg:text-xl font-bold">{fullname}</h2>
             <p className="text-sm lg:text-base">{position}</p>
           </div>
         </div>

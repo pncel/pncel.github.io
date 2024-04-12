@@ -12,17 +12,17 @@ export async function getAllMemberIds() {
 export async function getMemberMdxSrc(memberId: string) {
   const mdxSrc = await readFile(
     process.cwd() + `/src/app/team/[memberId]/${memberId}.mdx`,
-    "utf-8",
+    "utf-8"
   );
 
   const { frontmatter: fm } = await serialize(mdxSrc, {
     parseFrontmatter: true,
   });
 
-  for (let key of ["firstname", "lastname", "position"]) {
+  for (let key of ["firstname", "lastname", "role", "position"]) {
     if (!(key in fm)) {
       throw new Error(
-        `Source code error: missing frontmatter key ${key} in ${memberId}.mdx`,
+        `Source code error: missing frontmatter key ${key} in ${memberId}.mdx`
       );
     }
   }
@@ -32,12 +32,14 @@ export async function getMemberMdxSrc(memberId: string) {
     id: memberId,
     firstname: fm.firstname as string,
     lastname: fm.lastname as string,
+    role: fm.role as RoleType,
     position: fm.position as string,
 
     // optional
+    goby: fm.goby as string | undefined,
     middlename: fm.middlename as string | undefined,
     email: fm.email as string | undefined,
-    website: fm.website as string | undefined,
+    externalLink: fm.website as string | undefined,
     avatar: fm.avatar as string | undefined,
     shortbio: fm.shortbio as string | undefined,
     office: fm.office as string | undefined,
@@ -63,10 +65,12 @@ export async function getMemberMdxSrc(memberId: string) {
   return { mdxSrc: mdxSrcWithoutFrontMatter, member };
 }
 
-export function composeMemberName(
-  firstname?: string,
-  middlename?: string,
-  lastname?: string,
-) {
-  return [firstname, middlename, lastname].filter((i) => i).join(" ");
+export function composeMemberName(member: Member) {
+  const { firstname, goby, middlename, lastname } = member;
+  const name = middlename ? `${firstname} ${middlename}` : firstname;
+  if (goby) {
+    return `${goby} (${name}) ${lastname}`;
+  } else {
+    return `${name} ${lastname}`;
+  }
 }
