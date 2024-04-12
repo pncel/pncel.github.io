@@ -1,15 +1,15 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { composeMemberName } from "@/data/team";
+import { composeFullName } from "@/data/person";
+import { Member, Person } from "@prisma/client";
 
 export default function MemberCard({
   member,
-}: Readonly<{
-  member: Member;
-}>) {
-  const { id, firstname, goby, lastname, position, avatar, shortbio } = member;
-  const fullname = composeMemberName(member);
+}: Readonly<{ member: { person: Person } & Member }>) {
+  const { memberId, position, avatar, shortbio, person } = member;
+  const { firstname, goby, lastname } = person;
+  const fullname = composeFullName(person);
   const placeholder = [goby || firstname, lastname]
     .filter((s) => s !== undefined)
     .filter((s) => s) // make sure it's not an empty string
@@ -19,7 +19,7 @@ export default function MemberCard({
 
   return (
     <div className="shadow-xl rounded-xl overflow-clip w-full break-inside-avoid-column mb-4">
-      <Link href={`/team/${id}`}>
+      <Link href={`/team/${memberId}`}>
         <div className="w-full p-4 gap-8 m-0 flex flex-row items-center bg-neutral">
           <div className="flex-none rounded-full w-24 h-24 overflow-clip">
             {avatar ? (

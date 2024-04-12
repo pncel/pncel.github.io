@@ -2,11 +2,8 @@ import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { useMDXComponents } from "@/mdx-components";
 import { metadataTmpl } from "@/data/metadata";
-import {
-  getAllMemberIds,
-  getMemberMdxSrc,
-  composeMemberName,
-} from "@/data/team";
+import { getAllMemberIds, getMemberAndMdxSrc } from "@/data/member";
+import { composeFullName } from "@/data/person";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -37,12 +34,12 @@ interface Params {
 
 export async function generateStaticParams() {
   const memberIds = await getAllMemberIds();
-  return memberIds.map((id) => ({ memberId: id }));
+  return memberIds;
 }
 
 export async function generateMetadata({ params: { memberId } }: Params) {
-  const { member } = await getMemberMdxSrc(memberId);
-  const fullname = composeMemberName(member);
+  const { member } = await getMemberAndMdxSrc(memberId);
+  const fullname = composeFullName(member.person);
   return {
     ...metadataTmpl,
     title: metadataTmpl.title + " | Team | " + (fullname || memberId),
@@ -50,16 +47,13 @@ export async function generateMetadata({ params: { memberId } }: Params) {
 }
 
 export default async function MemberPage({ params: { memberId } }: Params) {
-  const { mdxSrc, member } = await getMemberMdxSrc(memberId);
+  const { member, mdxSrc } = await getMemberAndMdxSrc(memberId);
   const {
-    firstname,
-    lastname,
     position,
     email,
     avatar,
     shortbio,
     office,
-    externalLink,
     gscholar,
     orcid,
     github,
@@ -69,7 +63,8 @@ export default async function MemberPage({ params: { memberId } }: Params) {
     instagram,
     youtube,
   } = member;
-  const fullname = composeMemberName(member);
+  const { firstname, lastname, externalLink } = member.person;
+  const fullname = composeFullName(member.person);
 
   return (
     <DefaultMain>
@@ -236,9 +231,7 @@ export default async function MemberPage({ params: { memberId } }: Params) {
         </div>
         <div className="flex-auto prose lg:max-w-[640px] 2xl:max-w-[1024px] 2xl:prose-lg md:py-4">
           <MDXRemote
-            source={
-              mdxSrc.trim() || "This person is too busy changing the world..."
-            }
+            source={mdxSrc || "This person is too busy changing the world..."}
             components={useMDXComponents({ PubList })}
           />
         </div>

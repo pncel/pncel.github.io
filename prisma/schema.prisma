@@ -15,42 +15,45 @@ datasource db {
 
 // additional information for group members
 model Member {
-  id            Int       @id @default(autoincrement())
-  memberId      String    // for team/[memberId] and locating mdx
-  role          String    // actually an enum but SQLite3 doesn't support enum
-                          // accepted values are:
-                          //    "Principle Investigator"
-                          //    "PhD"
-                          //    "Master"
-                          //    "Undergrad"
-                          //    "Postdoc"
-                          //    "Staff"
-                          //    "Visitor"
-                          //    "Other" 
-  position      String
-  email         String
-  person        Person    @relation(fields: [personId], references: [id])
-  personId      Int       @unique
-  whenLeft      DateTime? // if set, this member is an alumnus
-  avatar        String?
-  shortbio      String?
-  office        String?
-  gscholar      String?
-  orcid         String?
-  github        String?
-  linkedin      String?
-  twitter       String?
-  facebook      String?
-  instagram     String?
-  youtube       String?
+  // @memberId: for team/[memberId] and locating mdx
+  memberId String @id
+
+  // @role: actually an enum but SQLite 3 doesn't support enum
+  //  accepted values are:
+  //    "Principle Investigator"
+  //    "PhD"
+  //    "Master"
+  //    "Undergrad"
+  //    "Postdoc"
+  //    "Staff"
+  //    "Visitor"
+  //    "Other" 
+  role String
+
+  position  String
+  email     String
+  person    Person    @relation(fields: [personId], references: [id])
+  personId  Int       @unique
+  whenLeft  DateTime? // if set, this member is an alumnus
+  avatar    String?
+  shortbio  String?
+  office    String?
+  gscholar  String?
+  orcid     String?
+  github    String?
+  linkedin  String?
+  twitter   String?
+  facebook  String?
+  instagram String?
+  youtube   String?
 }
 
 model Person {
-  id            Int       @id @default(autoincrement())  
-  firstname     String 
-  lastname      String
-  goby          String?
-  middlename    String?
-  externalLink  String?
-  member        Member?
+  id           Int     @id @default(autoincrement())
+  firstname    String
+  lastname     String
+  goby         String?
+  middlename   String?
+  externalLink String?
+  member       Member?
 }

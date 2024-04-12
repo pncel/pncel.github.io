@@ -1,8 +1,8 @@
 import DefaultMDX from "@/layouts/defaultMdx";
+import DefaultMain from "@/layouts/defaultMain";
 import MemberCard from "./memberCard";
 import { metadataTmpl } from "@/data/metadata";
-import { getAllMemberIds, getMemberMdxSrc } from "@/data/team";
-import DefaultMain from "@/layouts/defaultMain";
+import { getAllMembers } from "@/data/member";
 
 export const metadata = {
   ...metadataTmpl,
@@ -10,18 +10,14 @@ export const metadata = {
 };
 
 export default async function Team() {
-  const allMemberIds = await getAllMemberIds();
-  const allMembers: Member[] = await Promise.all(
-    allMemberIds.map(async (id) =>
-      getMemberMdxSrc(id).then(({ member }) => member)
-    )
-  );
-  const groups = allMembers.reduce((g: Map<string, Member[]>, m: Member) => {
+  const allMembers = await getAllMembers();
+
+  const groups = allMembers.reduce((g: Map<string, typeof allMembers>, m) => {
     const members = g.get(m.role) || [];
     members.push(m);
     g.set(m.role, members);
     return g;
-  }, new Map<string, Member[]>());
+  }, new Map<string, typeof allMembers>());
 
   return (
     <div>
@@ -35,8 +31,8 @@ export default async function Team() {
               <div key={role}>
                 <div className="divider">{role}</div>
                 <div className="columns-1 lg:columns-2 2xl:columns-3 gap-x-4 py-4">
-                  {members.map((m: Member) => (
-                    <MemberCard member={m} key={m.id}></MemberCard>
+                  {members.map((m) => (
+                    <MemberCard member={m} key={m.memberId}></MemberCard>
                   ))}
                 </div>
               </div>
