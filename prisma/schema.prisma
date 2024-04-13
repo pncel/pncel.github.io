@@ -10,7 +10,37 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./data.db"
+  url      = "file:data.db"
+}
+
+model Tag {
+  id Int @id @default(autoincrement())
+
+  // @role: actually an enum but SQLite doesn't support enum
+  //  type Type =
+  //    | "Award"
+  //    | "Artifact"
+  //    | "Discipline"
+  //    | undefine
+  type String?
+
+  label String
+  pubs  Publication[]
+}
+
+model Person {
+  id           Int     @id @default(autoincrement())
+  firstname    String
+  lastname     String
+  goby         String?
+  middlename   String?
+  externalLink String?
+
+  // @member: if none, this is a person outside of our group
+  //  persons outside of our group are used for collaborators and such
+  member Member?
+
+  pubs Publication[]
 }
 
 // additional information for group members
@@ -18,17 +48,17 @@ model Member {
   // @memberId: for team/[memberId] and locating mdx
   memberId String @id
 
-  // @role: actually an enum but SQLite 3 doesn't support enum
-  //  accepted values are:
-  //    "Principle Investigator"
-  //    "PhD"
-  //    "Master"
-  //    "Undergrad"
-  //    "Postdoc"
-  //    "Staff"
-  //    "Visitor"
-  //    "Other" 
-  role String
+  // @role: actually an enum but SQLite doesn't support enum
+  //  type Role =
+  //    | "Principle Investigator"
+  //    | "PhD"
+  //    | "Master"
+  //    | "Undergrad"
+  //    | "Postdoc"
+  //    | "Staff"
+  //    | "Visitor"
+  //    | undefined 
+  role String?
 
   position  String
   email     String
@@ -48,12 +78,58 @@ model Member {
   youtube   String?
 }
 
-model Person {
-  id           Int     @id @default(autoincrement())
-  firstname    String
-  lastname     String
-  goby         String?
-  middlename   String?
-  externalLink String?
-  member       Member?
+model VenueSeries {
+  id   String @id
+  name String
+  abbr String
+
+  // @type: actually an enum but SQLite doesn't support enum
+  //  type Type =
+  //    | "Conference"
+  //    | "Journal"
+  //    | "Workshop"
+  //    | undefine 
+  type String?
+  link String?
+
+  venues Venue[]
+}
+
+model Venue {
+  id       Int           @id @default(autoincrement())
+  seriesId String
+  series   VenueSeries   @relation(fields: [seriesId], references: [id])
+  time     DateTime
+  ordinal  Int? // used as volume for journals
+  issue    Int? // only for journals
+  location String?
+  link     String?
+  pubs     Publication[]
+}
+
+model PubResource {
+  id    Int         @id @default(autoincrement())
+  label String
+  link  String
+  pub   Publication @relation(fields: [pubId], references: [id])
+  pubId Int
+
+  // @icon: actually an enum but SQLite doesn't support enum
+  //  type Icon =
+  //    | "pdf"
+  //    | "video"
+  //    | undefined   // infer from label
+  icon String?
+}
+
+model Publication {
+  id           Int           @id @default(autoincrement())
+  title        String
+  venue        Venue         @relation(fields: [venueId], references: [id])
+  venueId      Int
+  authors      Person[]
+  equalContrib Int?
+  tags         Tag[]
+  notPncel     Boolean?
+  resources    PubResource[]
 }
