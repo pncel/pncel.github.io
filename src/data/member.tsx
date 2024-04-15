@@ -21,7 +21,7 @@ export async function getAllMembers() {
   return members;
 }
 
-export async function getMemberAndMdxSrc(memberId: string) {
+export async function getMember(memberId: string) {
   const member = await prisma.member.findUnique({
     where: {
       memberId: memberId,
@@ -33,12 +33,20 @@ export async function getMemberAndMdxSrc(memberId: string) {
 
   if (!member) {
     throw new Error(
-      `Database data or source code error: no member found for memberId`
+      `Database data or source code error: no member found for memberId ${memberId}`
+    );
+  } else if (!member.person) {
+    throw new Error(
+      `Database data or source code error: no person found for id ${member.personId}`
     );
   }
 
   validateMember(member);
 
+  return member;
+}
+
+export async function getMemberMdxSrc(memberId: string) {
   // get mdx if there is one
   const mdxSrc = await readFile(
     process.cwd() + `/src/app/team/[memberId]/${memberId}.mdx`,
@@ -51,5 +59,5 @@ export async function getMemberAndMdxSrc(memberId: string) {
     }
   });
 
-  return { member, mdxSrc };
+  return mdxSrc;
 }

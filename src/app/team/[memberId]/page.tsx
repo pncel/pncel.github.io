@@ -2,7 +2,8 @@ import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { useMDXComponents } from "@/mdx-components";
 import { metadataTmpl } from "@/data/metadata";
-import { getAllMemberIds, getMemberAndMdxSrc } from "@/data/member";
+import { getAllMemberIds, getMember, getMemberMdxSrc } from "@/data/member";
+import { getPubsByPerson } from "@/data/pub";
 import { composeFullName } from "@/data/person";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -38,7 +39,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params: { memberId } }: Params) {
-  const { member } = await getMemberAndMdxSrc(memberId);
+  const member = await getMember(memberId);
   const fullname = composeFullName(member.person);
   return {
     ...metadataTmpl,
@@ -47,7 +48,10 @@ export async function generateMetadata({ params: { memberId } }: Params) {
 }
 
 export default async function MemberPage({ params: { memberId } }: Params) {
-  const { member, mdxSrc } = await getMemberAndMdxSrc(memberId);
+  const member = await getMember(memberId);
+  const mdxSrc = await getMemberMdxSrc(memberId);
+  const pubs = await getPubsByPerson(member.person.id);
+
   const {
     position,
     email,
@@ -229,11 +233,13 @@ export default async function MemberPage({ params: { memberId } }: Params) {
             )}
           </div>
         </div>
-        <div className="flex-auto prose lg:max-w-[640px] 2xl:max-w-[1024px] 2xl:prose-lg md:py-4">
-          <MDXRemote
-            source={mdxSrc || "This person is too busy changing the world..."}
-            components={useMDXComponents({ PubList })}
-          />
+        <div className="flex-auto lg:max-w-[640px] 2xl:max-w-[1024px] md:py-4">
+          {mdxSrc && (
+            <div className="prose 2xl:prose-lg">
+              <MDXRemote source={mdxSrc} components={useMDXComponents({})} />
+            </div>
+          )}
+          <PubList pubs={pubs} />
         </div>
       </div>
     </DefaultMain>

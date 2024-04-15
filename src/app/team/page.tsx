@@ -13,9 +13,10 @@ export default async function Team() {
   const allMembers = await getAllMembers();
 
   const groups = allMembers.reduce((g: Map<string, typeof allMembers>, m) => {
-    const members = g.get(m.role) || [];
+    const role = m.role || "Other";
+    const members = g.get(role) || [];
     members.push(m);
-    g.set(m.role, members);
+    g.set(role, members);
     return g;
   }, new Map<string, typeof allMembers>());
 

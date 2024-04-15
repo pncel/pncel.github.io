@@ -20,9 +20,13 @@ model Tag {
   //  type Type =
   //    | "Award"
   //    | "Artifact"
-  //    | "Discipline"
-  //    | undefine
+  //    | undefined
   type String?
+
+  // @level: importance gauge. default to 0
+  //    0: only available for search. never explicitly displayed
+  //  255: always display
+  level Int?
 
   label String
   pubs  Publication[]

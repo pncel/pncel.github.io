@@ -1,42 +1,63 @@
 import React from "react";
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { useMDXComponents } from "@/mdx-components";
-
-function PubTitleBlock({ pub }: Readonly<{ pub: Publication }>) {
-  return (
-    <>
-      <div className="px-2">{pub.title}</div>
-      <div className="flex flex-row p-2">
-        <div className="btn btn-xs 2xl:btn-sm btn-primary">{pub.venue}</div>
-        {pub.tags?.map((tag) => (
-          <div className="badge badge-secondary">{tag}</div>
-        ))}
-      </div>
-    </>
-  );
-}
+import { PublicationExtended } from "@/data/prisma";
+import { composeFullName } from "@/data/person";
+import Link from "next/link";
 
 export default function PubEntry({
   pub,
-  evenLine,
-}: Readonly<{ pub: Publication; evenLine: boolean }>) {
-  return pub.abstract ? (
+  altStyle,
+}: Readonly<{
+  pub: PublicationExtended;
+  altStyle: boolean;
+}>) {
+  const tags = pub.tags.filter((tag) => tag.level && tag.level > 100);
+
+  return (
     <div
-      tabIndex={0}
-      className={`collapse collapse-arrow ${evenLine ? "bg-base-200" : "bg-base-300"} text-base-content`}
+      className={`bg-base-${altStyle ? "200" : "300"} flex flex-col items-start gap-2 px-2`}
     >
-      <div className="collapse-title p-2">
-        <PubTitleBlock pub={pub} />
-      </div>
-      <div className="collapse-content bg-neutral text-neutral-content">
-        <MDXRemote source={pub.abstract} components={useMDXComponents({})} />
-      </div>
-    </div>
-  ) : (
-    <div className={`${evenLine ? "bg-base-200" : "bg-base-300"}`}>
-      <div className="collapse-title">
-        <PubTitleBlock pub={pub} />
-      </div>
+      <div>{pub.title}</div>
+      {tags.length > 0 && (
+        <div className="flex flex-row">
+          {tags.map((tag, i) => (
+            <div
+              className="badge badge-secondary tooltip-bottom"
+              data-tip={`${tag.type}:${tag.label}`}
+              key={i}
+            >
+              {tag.label}
+            </div>
+          ))}
+        </div>
+      )}
+      <p>
+        {pub.authors.map((author, i) => {
+          const fullName = composeFullName(author);
+          return (
+            <div key={i}>
+              {i !== 0 ? <span>, </span> : <></>}
+              {author.member ? (
+                <Link
+                  className="link link-hover text-primary font-bold"
+                  href={`/team/${author.member.memberId}`}
+                >
+                  {fullName}
+                </Link>
+              ) : author.externalLink ? (
+                <a
+                  className="link link-hover"
+                  target="_blank"
+                  href={author.externalLink}
+                >
+                  {fullName}
+                </a>
+              ) : (
+                <span className="text-neutral-content">{fullName}</span>
+              )}
+            </div>
+          );
+        })}
+      </p>
     </div>
   );
 }
