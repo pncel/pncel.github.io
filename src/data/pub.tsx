@@ -13,18 +13,33 @@ export async function getAllPubs() {
   return pubs;
 }
 
-export async function getPubsByPerson(personId: number) {
-  const pubs = await prisma.publication.findMany({
-    where: {
-      authors: {
-        some: {
-          id: personId,
-        },
+export async function getPubsByPerson(personId: number, selectedOnly = false) {
+  const where = {
+    authors: {
+      some: {
+        id: personId,
       },
     },
-    ...queryPubExt,
-  });
+  };
 
+  const pubs = await (selectedOnly
+    ? prisma.publication.findMany({
+        where: {
+          AND: {
+            ...where,
+            selectedBy: {
+              some: {
+                id: personId,
+              },
+            },
+          },
+        },
+        ...queryPubExt,
+      })
+    : prisma.publication.findMany({
+        where: where,
+        ...queryPubExt,
+      }));
   pubs.forEach(validatePubExt);
 
   return pubs;

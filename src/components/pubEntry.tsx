@@ -6,9 +6,11 @@ import Link from "next/link";
 export default function PubEntry({
   pub,
   altStyle,
+  highlightedPersonId,
 }: Readonly<{
   pub: PublicationExtended;
   altStyle: boolean;
+  highlightedPersonId: number | undefined;
 }>) {
   const tags = pub.tags.filter((tag) => tag.level && tag.level > 100);
 
@@ -21,7 +23,7 @@ export default function PubEntry({
         <div className="flex flex-row">
           {tags.map((tag, i) => (
             <div
-              className="badge badge-secondary tooltip-bottom"
+              className="badge badge-success tooltip-bottom"
               data-tip={`${tag.type}:${tag.label}`}
               key={i}
             >
@@ -34,11 +36,14 @@ export default function PubEntry({
         {pub.authors.map((author, i) => {
           const fullName = composeFullName(author);
           return (
-            <div key={i}>
+            <>
               {i !== 0 ? <span>, </span> : <></>}
               {author.member ? (
                 <Link
-                  className="link link-hover text-primary font-bold"
+                  className={
+                    "link link-hover text-primary " +
+                    `${author.id === highlightedPersonId && "font-bold"}`
+                  }
                   href={`/team/${author.member.memberId}`}
                 >
                   {fullName}
@@ -54,7 +59,7 @@ export default function PubEntry({
               ) : (
                 <span className="text-neutral-content">{fullName}</span>
               )}
-            </div>
+            </>
           );
         })}
       </p>

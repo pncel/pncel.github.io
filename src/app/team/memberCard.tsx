@@ -18,9 +18,9 @@ export default function MemberCard({
     .toUpperCase();
 
   return (
-    <div className="shadow-xl rounded-xl overflow-clip w-full break-inside-avoid-column mb-4">
+    <div className="shadow-xl rounded-xl overflow-clip w-full max-w-[512px] break-inside-avoid-column mb-4 mx-auto">
       <Link href={`/team/${memberId}`}>
-        <div className="w-full p-4 gap-8 m-0 flex flex-row items-center bg-neutral">
+        <div className="w-full p-4 gap-8 m-auto flex flex-row items-center bg-neutral">
           <div className="flex-none rounded-full w-24 h-24 overflow-clip">
             {avatar ? (
               <div className="avatar">

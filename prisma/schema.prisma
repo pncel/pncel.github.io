@@ -44,7 +44,8 @@ model Person {
   //  persons outside of our group are used for collaborators and such
   member Member?
 
-  pubs Publication[]
+  pubs         Publication[]
+  selectedPubs Publication[] @relation("selectedPubs")
 }
 
 // additional information for group members
@@ -136,4 +137,5 @@ model Publication {
   tags         Tag[]
   notPncel     Boolean?
   resources    PubResource[]
+  selectedBy   Person[]      @relation("selectedPubs")
 }

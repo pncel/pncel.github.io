@@ -50,7 +50,7 @@ export async function generateMetadata({ params: { memberId } }: Params) {
 export default async function MemberPage({ params: { memberId } }: Params) {
   const member = await getMember(memberId);
   const mdxSrc = await getMemberMdxSrc(memberId);
-  const pubs = await getPubsByPerson(member.person.id);
+  const pubs = await getPubsByPerson(member.person.id, true);
 
   const {
     position,
@@ -239,7 +239,12 @@ export default async function MemberPage({ params: { memberId } }: Params) {
               <MDXRemote source={mdxSrc} components={useMDXComponents({})} />
             </div>
           )}
-          <PubList pubs={pubs} />
+          {pubs.length > 0 && (
+            <>
+              <p className="divider">Selected Publications</p>
+              <PubList pubs={pubs} highlightedPersonId={member.person.id} />
+            </>
+          )}
         </div>
       </div>
     </DefaultMain>

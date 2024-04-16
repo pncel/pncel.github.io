@@ -4,11 +4,20 @@ import { PublicationExtended } from "@/data/prisma";
 
 export default function PubList({
   pubs,
-}: Readonly<{ pubs: PublicationExtended[] }>) {
+  highlightedPersonId,
+}: Readonly<{
+  pubs: PublicationExtended[];
+  highlightedPersonId: number | undefined;
+}>) {
   return (
     <div className="flex flex-col">
       {pubs.map((pub, idx) => (
-        <PubEntry pub={pub} altStyle={idx % 2 === 1} key={pub.id}></PubEntry>
+        <PubEntry
+          pub={pub}
+          highlightedPersonId={highlightedPersonId}
+          altStyle={idx % 2 === 1}
+          key={pub.id}
+        ></PubEntry>
       ))}
     </div>
   );
