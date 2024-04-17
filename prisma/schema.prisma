@@ -1,0 +1,153 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:data.db"
+}
+
+model Tag {
+  id Int @id @default(autoincrement())
+
+  // @role: actually an enum but SQLite doesn't support enum
+  //  type Type =
+  //    | "Award"
+  //    | "Artifact"
+  //    | undefined
+  type String?
+
+  // @level: importance gauge. default to 0
+  //    0: only available for search. never explicitly displayed
+  //  255: always display
+  level Int?
+
+  label String
+  pubs  Publication[]
+}
+
+model Person {
+  id           Int     @id @default(autoincrement())
+  firstname    String
+  lastname     String
+  goby         String?
+  middlename   String?
+  externalLink String?
+
+  // @member: if none, this is a person outside of our group
+  //  persons outside of our group are used for collaborators and such
+  member Member?
+
+  pubs Publication[]
+}
+
+// additional information for group members
+model Member {
+  // @memberId: for team/[memberId] and locating mdx
+  memberId String @id
+
+  // @role: actually an enum but SQLite doesn't support enum
+  //  type Role =
+  //    | "Principle Investigator"
+  //    | "PhD"
+  //    | "Master"
+  //    | "Undergrad"
+  //    | "Postdoc"
+  //    | "Staff"
+  //    | "Visitor"
+  //    | undefined 
+  role String?
+
+  position  String
+  email     String
+  person    Person    @relation(fields: [personId], references: [id])
+  personId  Int       @unique
+  whenLeft  DateTime? // if set, this member is an alumnus
+  avatar    String?
+  shortbio  String?
+  office    String?
+  gscholar  String?
+  orcid     String?
+  github    String?
+  linkedin  String?
+  twitter   String?
+  facebook  String?
+  instagram String?
+  youtube   String?
+
+  useSelectedPubs Boolean?
+  selectedPubs    Publication[]
+}
+
+model Venue {
+  id   String @id
+  name String
+  abbr String
+
+  // @type: actually an enum but SQLite doesn't support enum
+  //  type Type =
+  //    | "Conference"
+  //    | "Journal"
+  //    | "Workshop"
+  //    | undefine 
+  type String?
+
+  pubs Publication[]
+}
+
+model PubResource {
+  id    Int         @id @default(autoincrement())
+  label String
+  link  String
+  pub   Publication @relation(fields: [pubId], references: [id])
+  pubId Int
+
+  // @icon: actually an enum but SQLite doesn't support enum
+  //  type Icon =
+  //    | "pdf"
+  //    | "video"
+  //    | undefined   // infer from label
+  icon String?
+}
+
+model Publication {
+  id   Int   @id @default(autoincrement())
+  tags Tag[]
+
+  // standard fields that map to Bibtex well
+  // @type: actually an enum but SQLite doesn't support enum
+  //  maps to Bibtex entry types
+  //  type PublicationType = 
+  //    | "inproceedings"
+  //    | "masterthesis"
+  //    | "phdthesis"
+  //    | "misc"
+  //    | undefined   // = "unpublished"
+  //    ... more to support in the future
+  type        String?
+  authors     Person[]
+  title       String
+  venue       Venue     @relation(fields: [venueId], references: [id])
+  venueId     String
+  time        DateTime?
+  location    String?
+  booktitle   String? // or `journal` for journal papers
+  volume      Int?
+  number      Int?
+  doi         String?
+  fromPage    Int?
+  toPage      Int?
+  authorsCopy String?
+  venueLink   String?
+
+  equalContrib Int?
+  notPncel     Boolean?
+  resources    PubResource[]
+  selectedBy   Member[]
+}

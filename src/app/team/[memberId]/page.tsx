@@ -2,11 +2,9 @@ import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { useMDXComponents } from "@/mdx-components";
 import { metadataTmpl } from "@/data/metadata";
-import {
-  getAllMemberIds,
-  getMemberMdxSrc,
-  composeMemberName,
-} from "@/data/team";
+import { getAllMemberIds, getMember, getMemberMdxSrc } from "@/data/member";
+import { getPubsByPerson } from "@/data/pub";
+import { composeFullName } from "@/data/person";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -26,6 +24,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import DefaultMain from "@/layouts/defaultMain";
+import PubList from "@/components/pubList";
 config.autoAddCss = false;
 
 interface Params {
@@ -36,32 +35,29 @@ interface Params {
 
 export async function generateStaticParams() {
   const memberIds = await getAllMemberIds();
-  return memberIds.map((id) => ({ memberId: id }));
+  return memberIds;
 }
 
 export async function generateMetadata({ params: { memberId } }: Params) {
-  const {
-    member: { firstname, middlename, lastname },
-  } = await getMemberMdxSrc(memberId);
-  const name = composeMemberName(firstname, middlename, lastname);
+  const member = await getMember(memberId);
+  const fullname = composeFullName(member.person);
   return {
     ...metadataTmpl,
-    title: metadataTmpl.title + " | Team | " + (name || memberId),
+    title: metadataTmpl.title + " | Team | " + (fullname || memberId),
   };
 }
 
 export default async function MemberPage({ params: { memberId } }: Params) {
-  const { mdxSrc, member } = await getMemberMdxSrc(memberId);
+  const member = await getMember(memberId);
+  const mdxSrc = await getMemberMdxSrc(memberId);
+  const pubs = await getPubsByPerson(member.person.id, memberId);
+
   const {
-    firstname,
-    middlename,
-    lastname,
     position,
     email,
     avatar,
     shortbio,
     office,
-    website,
     gscholar,
     orcid,
     github,
@@ -71,7 +67,8 @@ export default async function MemberPage({ params: { memberId } }: Params) {
     instagram,
     youtube,
   } = member;
-  const name = composeMemberName(firstname, middlename, lastname);
+  const { firstname, lastname, externalLink } = member.person;
+  const fullname = composeFullName(member.person);
 
   return (
     <DefaultMain>
@@ -93,7 +90,7 @@ export default async function MemberPage({ params: { memberId } }: Params) {
                   width={512}
                   height={512}
                   src={avatar}
-                  alt={name}
+                  alt={fullname}
                   objectFit="cover"
                 ></Image>
               </div>
@@ -106,7 +103,9 @@ export default async function MemberPage({ params: { memberId } }: Params) {
             )}
           </div>
           <div className="flex-grow">
-            <p className="text-lg font-bold md:text-center text-left">{name}</p>
+            <p className="text-lg font-bold md:text-center text-left">
+              {fullname}
+            </p>
             <p className="md:text-center text-left">{position}</p>
             {office && (
               <p className="md:text-center text-left">
@@ -124,7 +123,7 @@ export default async function MemberPage({ params: { memberId } }: Params) {
                 </a>
               </p>
             )}
-            {(website ||
+            {(externalLink ||
               gscholar ||
               orcid ||
               github ||
@@ -134,9 +133,9 @@ export default async function MemberPage({ params: { memberId } }: Params) {
               instagram ||
               youtube) && (
               <div className="flex flex-row w-full flex-wrap gap-x-2 gap-y-0 justify-start md:justify-center items-center content-center text-lg">
-                {website && (
+                {externalLink && (
                   <a
-                    href={website}
+                    href={externalLink}
                     target="_blank"
                     className="tooltip"
                     data-tip="Personal Website"
@@ -234,13 +233,19 @@ export default async function MemberPage({ params: { memberId } }: Params) {
             )}
           </div>
         </div>
-        <div className="flex-auto prose lg:max-w-[640px] 2xl:max-w-[1024px] 2xl:prose-lg md:py-4">
-          <MDXRemote
-            source={
-              mdxSrc.trim() || "This person is too busy changing the world..."
-            }
-            components={useMDXComponents({})}
-          />
+        <div className="flex-auto min-w-0 lg:max-w-[640px] 2xl:max-w-[1024px] md:py-4">
+          <div className="prose 2xl:prose-lg max-w-full">
+            <MDXRemote
+              source={mdxSrc || "This person is busy changing the world..."}
+              components={useMDXComponents({})}
+            />
+          </div>
+          {pubs.length > 0 && (
+            <>
+              <p className="divider">Selected Publications</p>
+              <PubList pubs={pubs} highlightedPersonId={member.person.id} />
+            </>
+          )}
         </div>
       </div>
     </DefaultMain>

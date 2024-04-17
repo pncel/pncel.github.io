@@ -1,8 +1,8 @@
 import DefaultMDX from "@/layouts/defaultMdx";
+import DefaultMain from "@/layouts/defaultMain";
 import MemberCard from "./memberCard";
 import { metadataTmpl } from "@/data/metadata";
-import { getAllMemberIds, getMemberMdxSrc } from "@/data/team";
-import DefaultMain from "@/layouts/defaultMain";
+import { getAllMembers } from "@/data/member";
 
 export const metadata = {
   ...metadataTmpl,
@@ -10,63 +10,15 @@ export const metadata = {
 };
 
 export default async function Team() {
-  type Group = {
-    cls: string;
-    members: Member[];
-    classify: (m: Member) => boolean;
-  };
+  const allMembers = await getAllMembers();
 
-  const groups: Group[] = [
-    {
-      cls: "Principle Investigator",
-      members: [] as Member[],
-      classify: (m: Member) => m.position.toLowerCase().includes("professor"),
-    },
-    {
-      cls: "Ph.D.",
-      members: [] as Member[],
-      classify: (m: Member) => m.position.toLowerCase().includes("phd"),
-    },
-    {
-      cls: "Master",
-      members: [] as Member[],
-      classify: (m: Member) => m.position.toLowerCase().includes("master"),
-    },
-    {
-      cls: "Undergraduate",
-      members: [] as Member[],
-      classify: (m: Member) =>
-        m.position.toLowerCase().includes("undergraduate"),
-    },
-  ];
-  const others: Group = {
-    cls: "Other",
-    members: [] as Member[],
-    classify: () => true,
-  };
-
-  const allMemberIds = await getAllMemberIds();
-  const allMembers: Member[] = await Promise.all(
-    allMemberIds.map(async (id) =>
-      getMemberMdxSrc(id).then(({ member }) => member),
-    ),
-  );
-
-  for (const m of allMembers) {
-    var classified = false;
-    for (const { members, classify } of groups) {
-      if (classify(m)) {
-        members.push(m);
-        classified = true;
-      }
-    }
-
-    if (!classified) {
-      others.members.push(m);
-    }
-  }
-
-  groups.push(others);
+  const groups = allMembers.reduce((g: Map<string, typeof allMembers>, m) => {
+    const role = m.role || "Other";
+    const members = g.get(role) || [];
+    members.push(m);
+    g.set(role, members);
+    return g;
+  }, new Map<string, typeof allMembers>());
 
   return (
     <div>
@@ -74,21 +26,19 @@ export default async function Team() {
         <h1>Team</h1>
       </DefaultMDX>
       <DefaultMain>
-        {groups.map((value) => {
-          const { cls, members } = value;
-          return (
+        {Array.from(groups.entries()).map(
+          ([role, members]) =>
             members.length > 0 && (
-              <>
-                <div className="divider">{cls}</div>
+              <div key={role}>
+                <div className="divider">{role}</div>
                 <div className="columns-1 lg:columns-2 2xl:columns-3 gap-x-4 py-4">
                   {members.map((m) => (
-                    <MemberCard member={m} key={m.id}></MemberCard>
+                    <MemberCard member={m} key={m.memberId}></MemberCard>
                   ))}
                 </div>
-              </>
+              </div>
             )
-          );
-        })}
+        )}
       </DefaultMain>
     </div>
   );
