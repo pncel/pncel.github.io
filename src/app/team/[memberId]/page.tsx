@@ -50,7 +50,7 @@ export async function generateMetadata({ params: { memberId } }: Params) {
 export default async function MemberPage({ params: { memberId } }: Params) {
   const member = await getMember(memberId);
   const mdxSrc = await getMemberMdxSrc(memberId);
-  const pubs = await getPubsByPerson(member.person.id, true);
+  const pubs = await getPubsByPerson(member.person.id, memberId);
 
   const {
     position,
@@ -233,12 +233,13 @@ export default async function MemberPage({ params: { memberId } }: Params) {
             )}
           </div>
         </div>
-        <div className="flex-auto lg:max-w-[640px] 2xl:max-w-[1024px] md:py-4">
-          {mdxSrc && (
-            <div className="prose 2xl:prose-lg">
-              <MDXRemote source={mdxSrc} components={useMDXComponents({})} />
-            </div>
-          )}
+        <div className="flex-auto min-w-0 lg:max-w-[640px] 2xl:max-w-[1024px] md:py-4">
+          <div className="prose 2xl:prose-lg max-w-full">
+            <MDXRemote
+              source={mdxSrc || "This person is busy changing the world..."}
+              components={useMDXComponents({})}
+            />
+          </div>
           {pubs.length > 0 && (
             <>
               <p className="divider">Selected Publications</p>

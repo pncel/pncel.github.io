@@ -44,8 +44,7 @@ model Person {
   //  persons outside of our group are used for collaborators and such
   member Member?
 
-  pubs         Publication[]
-  selectedPubs Publication[] @relation("selectedPubs")
+  pubs Publication[]
 }
 
 // additional information for group members
@@ -81,9 +80,12 @@ model Member {
   facebook  String?
   instagram String?
   youtube   String?
+
+  useSelectedPubs Boolean?
+  selectedPubs    Publication[]
 }
 
-model VenueSeries {
+model Venue {
   id   String @id
   name String
   abbr String
@@ -95,21 +97,8 @@ model VenueSeries {
   //    | "Workshop"
   //    | undefine 
   type String?
-  link String?
 
-  venues Venue[]
-}
-
-model Venue {
-  id       Int           @id @default(autoincrement())
-  seriesId String
-  series   VenueSeries   @relation(fields: [seriesId], references: [id])
-  time     DateTime
-  ordinal  Int? // used as volume for journals
-  issue    Int? // only for journals
-  location String?
-  link     String?
-  pubs     Publication[]
+  pubs Publication[]
 }
 
 model PubResource {
@@ -128,14 +117,37 @@ model PubResource {
 }
 
 model Publication {
-  id           Int           @id @default(autoincrement())
-  title        String
-  venue        Venue         @relation(fields: [venueId], references: [id])
-  venueId      Int
-  authors      Person[]
+  id   Int   @id @default(autoincrement())
+  tags Tag[]
+
+  // standard fields that map to Bibtex well
+  // @type: actually an enum but SQLite doesn't support enum
+  //  maps to Bibtex entry types
+  //  type PublicationType = 
+  //    | "inproceedings"
+  //    | "masterthesis"
+  //    | "phdthesis"
+  //    | "misc"
+  //    | undefined   // = "unpublished"
+  //    ... more to support in the future
+  type        String?
+  authors     Person[]
+  title       String
+  venue       Venue     @relation(fields: [venueId], references: [id])
+  venueId     String
+  time        DateTime?
+  location    String?
+  booktitle   String? // or `journal` for journal papers
+  volume      Int?
+  number      Int?
+  doi         String?
+  fromPage    Int?
+  toPage      Int?
+  authorsCopy String?
+  venueLink   String?
+
   equalContrib Int?
-  tags         Tag[]
   notPncel     Boolean?
   resources    PubResource[]
-  selectedBy   Person[]      @relation("selectedPubs")
+  selectedBy   Member[]
 }

@@ -26,7 +26,7 @@ const nodeToString = (node?: React.ReactNode): string => {
 };
 
 const childrenToString = (
-  children: React.ReactNode | React.ReactNode[],
+  children: React.ReactNode | React.ReactNode[]
 ): string => {
   if (!(children instanceof Array) && !React.isValidElement(children)) {
     return nodeToString(children);
@@ -46,7 +46,8 @@ const childrenToString = (
 
 export default function CopyableCode({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  className,
+}: Readonly<{ children: React.ReactNode; className?: string }>) {
   const [showCopyBtn, setShowCopyBtn] = useState(false);
   const [copied, setCopied] = useState(false);
   const text = "";
@@ -58,6 +59,7 @@ export default function CopyableCode({
 
   return (
     <div
+      className={className}
       style={{ position: "relative" }}
       onMouseEnter={() => setShowCopyBtn(true)}
       onMouseLeave={() => setShowCopyBtn(false)}
@@ -93,7 +95,7 @@ export default function CopyableCode({
           </>
         )}
       </button>
-      <pre style={{ overflowX: "auto" }}>{children}</pre>
+      <pre style={{ overflowX: "auto", height: "100%" }}>{children}</pre>
     </div>
   );
 }

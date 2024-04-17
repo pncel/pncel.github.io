@@ -3,10 +3,10 @@ import {
   Member,
   Person,
   Tag,
-  VenueSeries,
   Venue,
   PubResource,
   Publication,
+  Prisma,
 } from "@prisma/client";
 
 const prisma = new PrismaClient();
@@ -41,18 +41,18 @@ export function validateMember(member: Member) {
   }
 }
 
-export function validateVenueSeries(series: VenueSeries) {
+export function validateVenue(venue: Venue) {
   // check "type" value
   if (
-    series.type &&
+    venue.type &&
     !(
-      series.type === "Conference" ||
-      series.type === "Journal" ||
-      series.type === "Workshop"
+      venue.type === "Conference" ||
+      venue.type === "Journal" ||
+      venue.type === "Workshop"
     )
   ) {
     throw new Error(
-      `Database data error: invalid type (${series.type}) for venue series ${series.abbr}`
+      `Database data error: invalid type (${venue.type}) for venue venue ${venue.abbr}`
     );
   }
 }
@@ -67,27 +67,40 @@ export function validatePubResource(rsc: PubResource) {
 }
 
 export type PublicationExtended = Publication & {
-  venue: Venue & { series: VenueSeries };
+  venue: Venue;
   authors: (Person & { member: Member | null })[];
   tags: Tag[];
   resources: PubResource[];
 };
 
 export function validatePubExt(pub: PublicationExtended) {
+  if (
+    pub.type &&
+    !(
+      // pub.type === "masterthesis" ||
+      // pub.type === "phdthesis" ||
+      // pub.type === "misc" ||
+      (pub.type === "inproceedings")
+    )
+  ) {
+    throw new Error(
+      `Database data error: invalid type (${pub.type}) for publication "${pub.title}"`
+    );
+  }
   pub.tags.forEach(validateTag);
   pub.resources.forEach(validatePubResource);
-  validateVenueSeries(pub.venue.series);
+  validateVenue(pub.venue);
   pub.authors.forEach((p) => p.member && validateMember(p.member));
 }
 
-export const queryPubExt = {
+export const queryPubExt = Prisma.validator(
+  prisma,
+  "publication",
+  "findMany"
+)({
   include: {
     tags: true,
-    venue: {
-      include: {
-        series: true,
-      },
-    },
+    venue: true,
     authors: {
       include: {
         member: true,
@@ -95,4 +108,7 @@ export const queryPubExt = {
     },
     resources: true,
   },
-};
+  orderBy: {
+    time: "desc",
+  },
+});
