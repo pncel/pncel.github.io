@@ -1,5 +1,4 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import PubEntry from "./pubEntry";
 import { PublicationExtended } from "@/data/prisma";
 
@@ -10,10 +9,6 @@ export default function PubList({
   pubs: PublicationExtended[];
   highlightedPersonId: number | undefined;
 }>) {
-  const [showBibtexByPubId, setShowBibtexByPubId] = useState<number | null>(
-    null
-  );
-
   return (
     <>
       <div className="flex flex-col gap-2">
@@ -23,8 +18,6 @@ export default function PubList({
             highlightedPersonId={highlightedPersonId}
             altStyle={idx % 2 === 1}
             key={pub.id}
-            showBibtexByPubId={showBibtexByPubId}
-            setShowBibtexByPubId={setShowBibtexByPubId}
           ></PubEntry>
         ))}
       </div>

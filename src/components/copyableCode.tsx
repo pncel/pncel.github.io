@@ -1,5 +1,5 @@
 "use client";
-import React, { Children, useState } from "react";
+import React, { Children, Ref, useState } from "react";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -47,24 +47,32 @@ const childrenToString = (
 export default function CopyableCode({
   children,
   className,
-}: Readonly<{ children: React.ReactNode; className?: string }>) {
+  forwardRef,
+  addlOnBlur,
+}: Readonly<{
+  children: React.ReactNode;
+  className?: string;
+  forwardRef?: Ref<HTMLDivElement>;
+  addlOnBlur?: (evt: React.FocusEvent<HTMLDivElement, Element>) => void;
+}>) {
   const [showCopyBtn, setShowCopyBtn] = useState(false);
   const [copied, setCopied] = useState(false);
-  const text = "";
-  if (React.isValidElement(children)) {
-    Children.toArray(children).reduce((text, child): string => {
-      return "";
-    });
-  }
 
   return (
     <div
+      tabIndex={-1}
       className={className}
+      ref={forwardRef}
       style={{ position: "relative" }}
       onMouseEnter={() => setShowCopyBtn(true)}
       onMouseLeave={() => setShowCopyBtn(false)}
       onFocus={() => setShowCopyBtn(true)}
-      onBlur={() => setShowCopyBtn(false)}
+      onBlur={(evt) => {
+        if (!evt.currentTarget.contains(evt.relatedTarget)) {
+          setShowCopyBtn(false);
+          addlOnBlur && addlOnBlur(evt);
+        }
+      }}
     >
       <button
         className="btn btn-sm absolute"

@@ -1,4 +1,5 @@
-import React, { Dispatch, SetStateAction } from "react";
+"use client";
+import React, { useRef, useState } from "react";
 import { PublicationExtended } from "@/data/prisma";
 import { composeFullName } from "@/data/person";
 import Link from "next/link";
@@ -21,17 +22,15 @@ export default function PubEntry({
   pub,
   altStyle,
   highlightedPersonId,
-  showBibtexByPubId,
-  setShowBibtexByPubId,
 }: Readonly<{
   pub: PublicationExtended;
   altStyle: boolean;
   highlightedPersonId: number | undefined;
-  showBibtexByPubId: number | null;
-  setShowBibtexByPubId: Dispatch<SetStateAction<number | null>>;
 }>) {
+  const [showBibtex, setShowBibtex] = useState(false);
   const tags = pub.tags.filter((tag) => tag.level && tag.level > 100);
   const bibtex = generateBibtexForPub(pub);
+  const bibtexRef = useRef<HTMLDivElement>(null);
 
   return (
     <div
@@ -117,21 +116,6 @@ export default function PubEntry({
       </p>
       {(bibtex || pub.doi || pub.authorsCopy || pub.resources.length > 0) && (
         <div className={`flex flex-row items-start gap-2 flex-wrap`}>
-          {bibtex && (
-            <button
-              className="flex-none btn btn-xs lg:btn-sm btn-accent"
-              onClick={() => {
-                if (showBibtexByPubId === pub.id) {
-                  setShowBibtexByPubId(null);
-                } else {
-                  setShowBibtexByPubId(pub.id);
-                }
-              }}
-            >
-              <FontAwesomeIcon icon={faPaperclip} />
-              Bibtex
-            </button>
-          )}
           {pub.doi && (
             <a
               className="flex-none btn btn-xs lg:btn-sm btn-accent"
@@ -173,12 +157,28 @@ export default function PubEntry({
               {res.label}
             </a>
           ))}
+          {bibtex && (
+            <button
+              className="flex-none btn btn-xs lg:btn-sm btn-accent"
+              onFocus={() => {
+                setShowBibtex(true);
+                bibtexRef.current?.focus();
+              }}
+            >
+              <FontAwesomeIcon icon={faPaperclip} />
+              Bibtex
+            </button>
+          )}
         </div>
       )}
       <div
-        className={`transition-all duration-200 ease-out w-full ${showBibtexByPubId === pub.id ? "opacity-100 h-fit" : "opacity-0 h-0"}`}
+        className={`transition-all duration-200 ease-out w-full ${showBibtex ? "opacity-100 h-fit" : "opacity-0 h-0"}`}
       >
-        <CopyableCode className="bg-neutral my-2 p-2 rounded-lg text-xs lg:text-sm h-full">
+        <CopyableCode
+          className="bg-neutral my-2 p-2 rounded-lg text-xs lg:text-sm h-full"
+          forwardRef={bibtexRef}
+          addlOnBlur={() => setShowBibtex(false)}
+        >
           <code>{bibtex}</code>
         </CopyableCode>
       </div>
