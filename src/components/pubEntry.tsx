@@ -57,12 +57,15 @@ export default function PubEntry({
       </div>
       <p className="text-sm lg:text-md">
         {pub.authors.map((author, i) => {
-          const fullName = composeFullName(author);
+          const fullName =
+            composeFullName(author) +
+            (pub.equalContrib !== null && i < pub.equalContrib ? "*" : "");
+
           return (
             <span className="pr-1.5" key={i}>
               {author.member ? (
                 <Link
-                  className={`link link-hover text-primary ${author.id === highlightedPersonId ? "font-bold" : "font-semibold"}`}
+                  className={`link link-hover ${author.id === highlightedPersonId ? "font-bold text-primary" : "font-semibold"}`}
                   href={`/team/${author.member.memberId}`}
                 >
                   {fullName}

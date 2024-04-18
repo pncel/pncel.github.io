@@ -6,8 +6,8 @@ import prisma, {
 
 export async function getAllPubs() {
   const pubs = await prisma.publication.findMany(queryPubExt);
-  pubs.forEach(validatePubExt);
-  return pubs;
+  const correctedPubs = pubs.map(validatePubExt);
+  return correctedPubs;
 }
 
 export async function getPubsByPerson(
@@ -40,9 +40,9 @@ export async function getPubsByPerson(
         where: where,
         ...queryPubExt,
       }));
-  pubs.forEach(validatePubExt);
 
-  return pubs;
+  const correctedPubs = pubs.map(validatePubExt);
+  return correctedPubs;
 }
 
 export function generateBibtexForPub(pub: PublicationExtended) {

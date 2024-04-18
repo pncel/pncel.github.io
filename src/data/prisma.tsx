@@ -91,6 +91,33 @@ export function validatePubExt(pub: PublicationExtended) {
   pub.resources.forEach(validatePubResource);
   validateVenue(pub.venue);
   pub.authors.forEach((p) => p.member && validateMember(p.member));
+
+  // correct author order
+  try {
+    const order: number[] = JSON.parse(pub.authorOrder);
+    if (order.length != pub.authors.length) {
+      throw new Error(
+        `Database data error: len(authorOrder) != len(authors) for publication "${pub.title}"`
+      );
+    } else if (new Set(order).size != order.length) {
+      throw new Error(
+        `Database data error: duplicate entry in authorOrder for publication "${pub.title}"`
+      );
+    }
+
+    const correctedAuthors = order.map(
+      (id) => pub.authors.filter((author) => author.id === id)[0]
+    );
+    const correctedPub = {
+      ...pub,
+      authors: correctedAuthors,
+    };
+    return correctedPub;
+  } catch (e) {
+    throw new Error(
+      `Database data error: failed to parse authorOrder for publication "${pub.title}"`
+    );
+  }
 }
 
 export const queryPubExt = Prisma.validator(

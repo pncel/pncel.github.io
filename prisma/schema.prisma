@@ -146,7 +146,8 @@ model Publication {
   authorsCopy String?
   venueLink   String?
 
-  equalContrib Int?
+  authorOrder  String // JSON array of person ids to order the authors correctly
+  equalContrib Int? // the first N authors have equal contributions
   notPncel     Boolean?
   resources    PubResource[]
   selectedBy   Member[]

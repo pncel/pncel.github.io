@@ -15,17 +15,23 @@ export default function PubList({
   );
 
   return (
-    <div className="flex flex-col gap-2">
-      {pubs.map((pub, idx) => (
-        <PubEntry
-          pub={pub}
-          highlightedPersonId={highlightedPersonId}
-          altStyle={idx % 2 === 1}
-          key={pub.id}
-          showBibtexByPubId={showBibtexByPubId}
-          setShowBibtexByPubId={setShowBibtexByPubId}
-        ></PubEntry>
-      ))}
-    </div>
+    <>
+      <div className="flex flex-col gap-2">
+        {pubs.map((pub, idx) => (
+          <PubEntry
+            pub={pub}
+            highlightedPersonId={highlightedPersonId}
+            altStyle={idx % 2 === 1}
+            key={pub.id}
+            showBibtexByPubId={showBibtexByPubId}
+            setShowBibtexByPubId={setShowBibtexByPubId}
+          ></PubEntry>
+        ))}
+      </div>
+      <p className="divider" />
+      <div id="footnote" className="text-sm text-base-content/50">
+        <p>* Equal contribution</p>
+      </div>
+    </>
   );
 }
