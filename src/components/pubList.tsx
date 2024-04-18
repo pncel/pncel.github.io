@@ -22,7 +22,7 @@ export default function PubList({
         ))}
       </div>
       <p className="divider" />
-      <div id="footnote" className="text-sm text-base-content/50">
+      <div id="footnote" className="text-sm text-base-content/60">
         <p>* Equal contribution</p>
       </div>
     </>

@@ -242,7 +242,9 @@ export default async function MemberPage({ params: { memberId } }: Params) {
           </div>
           {pubs.length > 0 && (
             <>
-              <p className="divider">Selected Publications</p>
+              <p className="divider text-xl 2xl:text-2xl">
+                Selected Publications
+              </p>
               <PubList pubs={pubs} highlightedPersonId={member.person.id} />
             </>
           )}

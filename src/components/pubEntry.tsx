@@ -64,7 +64,7 @@ export default function PubEntry({
             <span className="pr-1.5" key={i}>
               {author.member ? (
                 <Link
-                  className={`link link-hover ${author.id === highlightedPersonId ? "font-bold text-primary" : "font-semibold"}`}
+                  className={`link link-hover ${author.id === highlightedPersonId ? "font-bold text-secondary" : "font-semibold"}`}
                   href={`/team/${author.member.memberId}`}
                 >
                   {fullName}
@@ -118,7 +118,7 @@ export default function PubEntry({
         <div className={`flex flex-row items-start gap-2 flex-wrap`}>
           {pub.doi && (
             <a
-              className="flex-none btn btn-xs lg:btn-sm btn-accent"
+              className="flex-none btn btn-xs lg:btn-sm btn-secondary"
               href={`https://doi.org/${pub.doi}`}
               target="_blank"
             >
@@ -128,7 +128,7 @@ export default function PubEntry({
           )}
           {pub.authorsCopy && (
             <a
-              className="flex-none btn btn-xs lg:btn-sm btn-accent"
+              className="flex-none btn btn-xs lg:btn-sm btn-secondary"
               href={pub.authorsCopy}
               target="_blank"
             >
@@ -138,7 +138,7 @@ export default function PubEntry({
           )}
           {pub.resources.map((res) => (
             <a
-              className="flex-none btn btn-xs lg:btn-sm btn-accent"
+              className="flex-none btn btn-xs lg:btn-sm btn-secondary"
               href={res.link}
               target="_blank"
               key={res.id}
@@ -158,8 +158,9 @@ export default function PubEntry({
             </a>
           ))}
           {bibtex && (
-            <button
-              className="flex-none btn btn-xs lg:btn-sm btn-accent"
+            <div
+              tabIndex={0}
+              className="flex-none btn btn-xs lg:btn-sm btn-secondary"
               onFocus={() => {
                 setShowBibtex(true);
                 bibtexRef.current?.focus();
@@ -167,7 +168,7 @@ export default function PubEntry({
             >
               <FontAwesomeIcon icon={faPaperclip} />
               Bibtex
-            </button>
+            </div>
           )}
         </div>
       )}
@@ -179,7 +180,7 @@ export default function PubEntry({
           forwardRef={bibtexRef}
           addlOnBlur={() => setShowBibtex(false)}
         >
-          <code>{bibtex}</code>
+          <code className="text-neutral-content">{bibtex}</code>
         </CopyableCode>
       </div>
     </div>
