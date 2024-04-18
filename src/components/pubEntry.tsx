@@ -2,6 +2,8 @@
 import React, { useRef, useState } from "react";
 import { PublicationExtended } from "@/data/prisma";
 import { composeFullName } from "@/data/person";
+import CopyableCode from "./copyableCode";
+import TagBadge from "./tagBadge";
 import Link from "next/link";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +16,6 @@ import {
   faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 import { generateBibtexForPub } from "@/data/pub";
-import CopyableCode from "./copyableCode";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 config.autoAddCss = false;
 
@@ -28,7 +29,7 @@ export default function PubEntry({
   highlightedPersonId: number | undefined;
 }>) {
   const [showBibtex, setShowBibtex] = useState(false);
-  const tags = pub.tags.filter((tag) => tag.level && tag.level > 100);
+  const tags = pub.tags.filter((tag) => tag.level && tag.level >= 100);
   const bibtex = generateBibtexForPub(pub);
   const bibtexRef = useRef<HTMLDivElement>(null);
 
@@ -38,20 +39,11 @@ export default function PubEntry({
     >
       <p className="font-semibold text-md lg:text-lg">{pub.title}</p>
       <div className="flex flex-row items-start gap-1 flex-wrap">
-        <div
-          className={`badge tooltip-top bg-base-content ${altStyle ? "text-base-200" : "text-base-300"}`}
-          data-tip={`${pub.venue.type}:${pub.venue.abbr}`}
-        >
+        <div className="badge bg-base-content text-base-100">
           {pub.venue.abbr}
         </div>
         {tags.map((tag, i) => (
-          <div
-            className="badge badge-primary tooltip-top"
-            data-tip={`${tag.type}:${tag.label}`}
-            key={i}
-          >
-            {tag.label}
-          </div>
+          <TagBadge tag={tag} key={i} />
         ))}
       </div>
       <p className="text-sm lg:text-md">

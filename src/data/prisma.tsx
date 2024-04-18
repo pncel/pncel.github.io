@@ -14,7 +14,14 @@ export default prisma;
 
 export function validateTag(tag: Tag) {
   // check "type" value
-  if (tag.type && !(tag.type === "Award" || tag.type === "Artifact")) {
+  if (
+    tag.type &&
+    !(
+      tag.type === "Award" ||
+      tag.type === "Open-Source" ||
+      tag.type === "Tapeout"
+    )
+  ) {
     throw new Error(
       `Database data error: invalid type (${tag.type}) for tag ${tag.label}`
     );

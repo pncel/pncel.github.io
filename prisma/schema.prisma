@@ -19,7 +19,8 @@ model Tag {
   // @role: actually an enum but SQLite doesn't support enum
   //  type Type =
   //    | "Award"
-  //    | "Artifact"
+  //    | "Open-Source"
+  //    | "Tapeout"
   //    | undefined
   type String?
 
