@@ -61,8 +61,7 @@ export default function NavAndDrawer({
               </div>
               {navData.length > 0 && (
                 <button
-                  className="flex-none lg:hidden tooltip tooltip-bottom btn btn-square btn-ghost"
-                  data-tip="Open sidebar"
+                  className="flex-none lg:hidden btn btn-square btn-ghost"
                   onClick={() => setIsSetBarOpen(true)}
                 >
                   <svg

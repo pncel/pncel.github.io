@@ -39,9 +39,9 @@ export default function PubEntry({
     >
       <p className="font-semibold text-md lg:text-lg">{pub.title}</p>
       <div className="flex flex-row items-start gap-1 flex-wrap">
-        <div className="badge bg-base-content text-base-100">
-          {pub.venue.abbr}
-        </div>
+        <TagBadge
+          tag={{ id: -1, type: "Venue", label: pub.venue.abbr, level: null }}
+        />
         {tags.map((tag, i) => (
           <TagBadge tag={tag} key={i} />
         ))}
@@ -107,10 +107,10 @@ export default function PubEntry({
         {pub.location && `, ${pub.location}`}
       </p>
       {(bibtex || pub.doi || pub.authorsCopy || pub.resources.length > 0) && (
-        <div className={`flex flex-row items-start gap-2 flex-wrap`}>
+        <div className={`flex flex-row items-start gap-2 flex-wrap pt-1`}>
           {pub.doi && (
             <a
-              className="flex-none btn btn-xs lg:btn-sm btn-secondary"
+              className="flex-none btn btn-sm btn-secondary"
               href={`https://doi.org/${pub.doi}`}
               target="_blank"
             >
@@ -120,7 +120,7 @@ export default function PubEntry({
           )}
           {pub.authorsCopy && (
             <a
-              className="flex-none btn btn-xs lg:btn-sm btn-secondary"
+              className="flex-none btn btn-sm btn-secondary"
               href={pub.authorsCopy}
               target="_blank"
             >
@@ -130,7 +130,7 @@ export default function PubEntry({
           )}
           {pub.resources.map((res) => (
             <a
-              className="flex-none btn btn-xs lg:btn-sm btn-secondary"
+              className="flex-none btn btn-sm btn-secondary"
               href={res.link}
               target="_blank"
               key={res.id}
@@ -152,7 +152,7 @@ export default function PubEntry({
           {bibtex && (
             <div
               tabIndex={0}
-              className="flex-none btn btn-xs lg:btn-sm btn-secondary"
+              className="flex-none btn btn-sm btn-secondary"
               onFocus={() => {
                 setShowBibtex(true);
                 bibtexRef.current?.focus();

@@ -103,7 +103,9 @@ export default function CopyableCode({
           </>
         )}
       </button>
-      <pre style={{ overflowX: "auto", height: "100%" }}>{children}</pre>
+      <pre className="h-full" style={{ overflowX: "auto" }}>
+        {children}
+      </pre>
     </div>
   );
 }
