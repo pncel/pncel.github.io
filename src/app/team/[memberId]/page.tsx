@@ -72,17 +72,22 @@ export default async function MemberPage({ params: { memberId } }: Params) {
 
   return (
     <DefaultMain>
-      <div className="flex flex-col md:flex-row gap-4 justify-center">
+      <div className="flex flex-col lg:flex-row gap-4 justify-center">
         {/* let's have a sticky sidebar for avatar and contact info */}
         {/* sidebar becomes a normal section on top of page on small screens */}
         <div
           className={
-            "flex flex-row justify-start gap-4 items-center content-center w-full py-2 " +
-            "md:flex-none md:flex-col md:gap-2 md:w-[194pt] " +
-            "md:sticky md:self-start md:top-0 md:max-h-screen md:overflow-y-auto"
+            "flex flex-row justify-start gap-4 items-start content-center w-full py-2 " +
+            "lg:flex-none lg:flex-col lg:gap-2 lg:w-[194pt] lg:items-center " +
+            "lg:sticky lg:self-start lg:top-0 lg:max-h-screen lg:overflow-y-auto"
           }
         >
-          <div className="flex-none self-start md:self-center w-36 h-36 md:w-48 md:h-48 rounded-2xl ring ring-neutral overflow-clip">
+          <div
+            className={
+              "flex-none self-start lg:self-center w-36 h-36 lg:w-48 lg:h-48 " +
+              "rounded-2xl ring ring-neutral overflow-clip"
+            }
+          >
             {avatar ? (
               <div className="avatar w-full h-full">
                 <Image
@@ -102,20 +107,20 @@ export default async function MemberPage({ params: { memberId } }: Params) {
               </div>
             )}
           </div>
-          <div className="flex-grow">
-            <p className="text-lg font-bold md:text-center text-left">
+          <div className="flex-none">
+            <p className="text-lg font-bold lg:text-center text-left">
               {fullname}
             </p>
-            <p className="md:text-center text-left">{position}</p>
+            <p className="lg:text-center text-left">{position}</p>
             {office && (
-              <p className="md:text-center text-left">
+              <p className="lg:text-center text-left">
                 <FontAwesomeIcon icon={faLocationDot} />
                 &nbsp;
                 {office}
               </p>
             )}
             {email && (
-              <p className="md:text-center text-left">
+              <p className="lg:text-center text-left">
                 <a href={"mailto:" + email}>
                   <FontAwesomeIcon icon={faEnvelope} />
                   &nbsp;
@@ -132,7 +137,12 @@ export default async function MemberPage({ params: { memberId } }: Params) {
               facebook ||
               instagram ||
               youtube) && (
-              <div className="flex flex-row w-full flex-wrap gap-x-2 gap-y-0 justify-start md:justify-center items-center content-center text-lg">
+              <div
+                className={
+                  "flex flex-row w-full flex-wrap gap-x-2 gap-y-0 " +
+                  "justify-start lg:justify-center items-center content-center text-lg"
+                }
+              >
                 {externalLink && (
                   <a
                     href={externalLink}
@@ -225,15 +235,14 @@ export default async function MemberPage({ params: { memberId } }: Params) {
                 )}
               </div>
             )}
-            {shortbio && (
-              <>
-                <div className="divider"></div>
-                <p>{shortbio}</p>
-              </>
-            )}
           </div>
+          {shortbio && (
+            <>
+              <p>{shortbio}</p>
+            </>
+          )}
         </div>
-        <div className="flex-auto min-w-0 lg:max-w-[640px] 2xl:max-w-[1024px] md:py-4">
+        <div className="flex-auto min-w-0 lg:max-w-screen-sm xl:max-w-screen-md 2xl:max-w-screen-lg lg:py-4">
           <div className="prose 2xl:prose-lg max-w-full">
             <MDXRemote
               source={mdxSrc || "This person is busy changing the world..."}
