@@ -29,13 +29,15 @@ export default function PubEntry({
   highlightedPersonId: number | undefined;
 }>) {
   const [showBibtex, setShowBibtex] = useState(false);
-  const tags = pub.tags.filter((tag) => tag.level && tag.level >= 100);
+  const tags = pub.tags
+    .filter((tag) => tag.level && tag.level >= 100)
+    .sort((a, b) => (b.level || 0) - (a.level || 0));
   const bibtex = generateBibtexForPub(pub);
   const bibtexRef = useRef<HTMLDivElement>(null);
 
   return (
     <div
-      className={`${altStyle || "bg-base-200"} text-base-content flex flex-col items-start gap-1 p-2 rounded-lg`}
+      className={`${altStyle || "bg-base-300"} text-base-content flex flex-col items-start gap-1 p-2 rounded-lg`}
     >
       <p className="font-semibold text-md lg:text-lg">{pub.title}</p>
       <div className="flex flex-row items-start gap-1 flex-wrap">
@@ -110,7 +112,7 @@ export default function PubEntry({
         <div className={`flex flex-row items-start gap-2 flex-wrap pt-1`}>
           {pub.doi && (
             <a
-              className="flex-none btn btn-sm btn-secondary"
+              className="flex-none btn btn-sm btn-secondary px-2 py-1"
               href={`https://doi.org/${pub.doi}`}
               target="_blank"
             >
@@ -120,7 +122,7 @@ export default function PubEntry({
           )}
           {pub.authorsCopy && (
             <a
-              className="flex-none btn btn-sm btn-secondary"
+              className="flex-none btn btn-sm btn-secondary px-2 py-1"
               href={pub.authorsCopy}
               target="_blank"
             >
@@ -130,7 +132,7 @@ export default function PubEntry({
           )}
           {pub.resources.map((res) => (
             <a
-              className="flex-none btn btn-sm btn-secondary"
+              className="flex-none btn btn-sm btn-secondary px-2 py-1"
               href={res.link}
               target="_blank"
               key={res.id}
@@ -152,7 +154,7 @@ export default function PubEntry({
           {bibtex && (
             <div
               tabIndex={0}
-              className="flex-none btn btn-sm btn-secondary"
+              className="flex-none btn btn-sm btn-secondary px-2 py-1"
               onFocus={() => {
                 setShowBibtex(true);
                 bibtexRef.current?.focus();
@@ -168,7 +170,7 @@ export default function PubEntry({
         className={`transition-all duration-200 ease-out w-full ${showBibtex ? "opacity-100 h-fit" : "opacity-0 h-0"}`}
       >
         <CopyableCode
-          className="bg-neutral my-2 p-2 rounded-lg text-xs lg:text-sm h-full"
+          className="bg-neutral mt-1 p-2 rounded-lg text-xs lg:text-sm h-full"
           forwardRef={bibtexRef}
           addlOnBlur={() => setShowBibtex(false)}
         >
