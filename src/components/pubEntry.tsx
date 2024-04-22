@@ -120,6 +120,19 @@ export default function PubEntry({
               DOI
             </a>
           )}
+          {bibtex && (
+            <button
+              tabIndex={0}
+              className="flex-none btn btn-sm btn-secondary px-2 py-1"
+              onClick={() => {
+                setShowBibtex(true);
+                bibtexRef.current?.focus();
+              }}
+            >
+              <FontAwesomeIcon icon={faPaperclip} />
+              Bibtex
+            </button>
+          )}
           {pub.authorsCopy && (
             <a
               className="flex-none btn btn-sm btn-secondary px-2 py-1"
@@ -151,19 +164,6 @@ export default function PubEntry({
               {res.label}
             </a>
           ))}
-          {bibtex && (
-            <div
-              tabIndex={0}
-              className="flex-none btn btn-sm btn-secondary px-2 py-1"
-              onFocus={() => {
-                setShowBibtex(true);
-                bibtexRef.current?.focus();
-              }}
-            >
-              <FontAwesomeIcon icon={faPaperclip} />
-              Bibtex
-            </div>
-          )}
         </div>
       )}
       <div

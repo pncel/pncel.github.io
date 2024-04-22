@@ -56,7 +56,6 @@ export default async function MemberPage({ params: { memberId } }: Params) {
     position,
     email,
     avatar,
-    shortbio,
     office,
     gscholar,
     orcid,
@@ -77,8 +76,8 @@ export default async function MemberPage({ params: { memberId } }: Params) {
         {/* sidebar becomes a normal section on top of page on small screens */}
         <div
           className={
-            "flex flex-row justify-start gap-4 items-start content-center w-full py-2 " +
-            "lg:flex-none lg:flex-col lg:gap-2 lg:w-[194pt] lg:items-center " +
+            "flex flex-row justify-start gap-4 items-center content-center w-full py-2 " +
+            "lg:flex-none lg:flex-col lg:gap-2 lg:w-[194pt] " +
             "lg:sticky lg:self-start lg:top-0 lg:max-h-screen lg:overflow-y-auto"
           }
         >
@@ -107,7 +106,7 @@ export default async function MemberPage({ params: { memberId } }: Params) {
               </div>
             )}
           </div>
-          <div className="flex-none">
+          <div className="flex-grow">
             <p className="text-lg font-bold lg:text-center text-left">
               {fullname}
             </p>
@@ -236,11 +235,6 @@ export default async function MemberPage({ params: { memberId } }: Params) {
               </div>
             )}
           </div>
-          {shortbio && (
-            <>
-              <p>{shortbio}</p>
-            </>
-          )}
         </div>
         <div className="flex-auto min-w-0 lg:max-w-screen-sm xl:max-w-screen-md 2xl:max-w-screen-lg lg:py-4">
           <div className="prose 2xl:prose-lg max-w-full">
