@@ -55,7 +55,6 @@ export default async function MemberPage({ params: { memberId } }: Params) {
   const {
     position,
     email,
-    avatar,
     office,
     gscholar,
     orcid,
@@ -66,7 +65,7 @@ export default async function MemberPage({ params: { memberId } }: Params) {
     instagram,
     youtube,
   } = member;
-  const { firstname, lastname, externalLink } = member.person!;
+  const { firstname, lastname, externalLink, avatar } = member.person!;
   const fullname = composeFullName(member.person!);
 
   return (
@@ -110,7 +109,7 @@ export default async function MemberPage({ params: { memberId } }: Params) {
             <p className="text-lg font-bold lg:text-center text-left">
               {fullname}
             </p>
-            <p className="lg:text-center text-left">{position}</p>
+            {position && <p className="lg:text-center text-left">{position}</p>}
             {office && (
               <p className="lg:text-center text-left">
                 <FontAwesomeIcon icon={faLocationDot} />

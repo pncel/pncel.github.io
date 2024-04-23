@@ -5,8 +5,8 @@ import { composeFullName } from "@/data/person";
 import type { Member } from "@/data/types";
 
 export default function MemberCard({ member }: Readonly<{ member: Member }>) {
-  const { memberId, position, avatar, shortbio } = member;
-  const { firstname, goby, lastname } = member.person!;
+  const { memberId, position, shortbio } = member;
+  const { firstname, goby, lastname, avatar } = member.person!;
   const fullname = composeFullName(member.person!);
   const placeholder = [goby || firstname, lastname]
     .filter((s) => s !== undefined)
@@ -19,7 +19,12 @@ export default function MemberCard({ member }: Readonly<{ member: Member }>) {
     <div className="shadow-xl rounded-xl overflow-clip w-full max-w-[512px] break-inside-avoid-column mb-4 mx-auto">
       <Link href={`/team/${memberId}`}>
         <div className="w-full p-4 gap-8 m-auto flex flex-row items-center bg-neutral">
-          <div className="flex-none rounded-full w-24 h-24 overflow-clip">
+          <div
+            className={
+              "flex-none rounded-full w-24 h-24 overflow-clip" +
+              (avatar ? "" : " ring-2 ring-secondary")
+            }
+          >
             {avatar ? (
               <div className="avatar">
                 <Image

@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import { composeFullName } from "@/data/person";
 import CopyableCode from "./copyableCode";
 import TagBadge from "./tagBadge";
@@ -18,6 +18,7 @@ import { generateBibtexForPub } from "@/data/pub";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import type { Publication } from "@/data/types";
 import { TagType } from "@/data/enums";
+import DataContext from "@/app/context";
 config.autoAddCss = false;
 
 export default function PubEntry({
@@ -36,9 +37,21 @@ export default function PubEntry({
   const bibtex = generateBibtexForPub(pub);
   const bibtexRef = useRef<HTMLDivElement>(null);
 
+  const context = useContext(DataContext);
+  if (!context) {
+    throw new Error(
+      "Source code error: PubEntry must be used inside ContextProvider"
+    );
+  }
+
+  const { useDarkTheme } = context;
+
   return (
     <div
-      className={`${altStyle || "bg-base-300"} text-base-content flex flex-col items-start gap-1 p-2 rounded-lg`}
+      className={
+        `${altStyle || (useDarkTheme ? "bg-base-300" : "bg-base-200")} text-base-content ` +
+        "flex flex-col items-start gap-1 p-2 rounded-lg"
+      }
     >
       <p className="font-semibold text-md lg:text-lg">{pub.title}</p>
       <div className="flex flex-row items-start gap-1 flex-wrap">

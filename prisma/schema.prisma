@@ -45,13 +45,14 @@ model Person {
   lastname     String
   goby         String?
   middlename   String?
+  avatar       String?
   externalLink String?
 
   // @member: if none, this is a person outside of our group
   //  persons outside of our group are used for collaborators and such
   member Member?
-
-  pubs Publication[]
+  pubs   Publication[]
+  teams  Team[]
 }
 
 // additional information for group members
@@ -62,22 +63,22 @@ model Member {
   // @role: enum MemberRole (src/data/enums.ts)
   role String?
 
-  position  String
-  email     String
-  person    Person    @relation(fields: [personId], references: [id])
-  personId  Int       @unique
-  whenLeft  DateTime? // if set, this member is an alumnus
-  avatar    String?
-  shortbio  String?
-  office    String?
-  gscholar  String?
-  orcid     String?
-  github    String?
-  linkedin  String?
-  twitter   String?
-  facebook  String?
-  instagram String?
-  youtube   String?
+  person     Person    @relation(fields: [personId], references: [id])
+  personId   Int       @unique
+  whenJoined DateTime
+  whenLeft   DateTime? // if set, this member is an alumnus
+  position   String?
+  email      String?
+  shortbio   String?
+  office     String?
+  gscholar   String?
+  orcid      String?
+  github     String?
+  linkedin   String?
+  twitter    String?
+  facebook   String?
+  instagram  String?
+  youtube    String?
 
   useSelectedPubs Boolean?
   selectedPubs    Publication[]
@@ -134,11 +135,26 @@ model Publication {
   selectedBy   Member[]
 }
 
+model Team {
+  id   Int     @id @default(autoincrement())
+  name String
+  logo String?
+  link String?
+
+  memberOrder String // JSON array of person ids to order the members correctly
+  members     Person[]
+  projects    Project[]
+}
+
 model Project {
   // @projectId: for project/[projectId] and locating mdx
   projectId String @id
 
-  thumbnail String // used in project cards
-  title     String
-  abstract  String
+  title        String
+  thumbnail    String? // used in project cards
+  abstract     String?
+  externalLink String?
+  teamOrder    String // JSON array of team ids to order the teams correctly
+
+  teams Team[]
 }
