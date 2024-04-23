@@ -173,7 +173,7 @@ export default function PubEntry({
         </div>
       )}
       <div
-        className={`transition-all duration-200 ease-out w-full ${showBibtex ? "opacity-100 h-fit" : "opacity-0 h-0"}`}
+        className={`transition-all duration-200 ease-in-out w-full h-fit overflow-y-clip ${showBibtex ? "max-h-screen" : "max-h-0"}`}
       >
         <CopyableCode
           className="bg-neutral mt-1 p-2 rounded-lg text-xs lg:text-sm h-full"
