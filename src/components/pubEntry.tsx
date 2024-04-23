@@ -1,6 +1,5 @@
 "use client";
 import React, { useRef, useState } from "react";
-import { PublicationExtended } from "@/data/prisma";
 import { composeFullName } from "@/data/person";
 import CopyableCode from "./copyableCode";
 import TagBadge from "./tagBadge";
@@ -17,6 +16,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { generateBibtexForPub } from "@/data/pub";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import type { Publication } from "@/data/types";
+import { TagType } from "@/data/enums";
 config.autoAddCss = false;
 
 export default function PubEntry({
@@ -24,13 +25,13 @@ export default function PubEntry({
   altStyle,
   highlightedPersonId,
 }: Readonly<{
-  pub: PublicationExtended;
+  pub: Publication;
   altStyle: boolean;
   highlightedPersonId: number | undefined;
 }>) {
   const [showBibtex, setShowBibtex] = useState(false);
-  const tags = pub.tags
-    .filter((tag) => tag.level && tag.level >= 100)
+  const tags = pub
+    .tags!.filter((tag) => tag.level && tag.level >= 100)
     .sort((a, b) => (b.level || 0) - (a.level || 0));
   const bibtex = generateBibtexForPub(pub);
   const bibtexRef = useRef<HTMLDivElement>(null);
@@ -42,14 +43,19 @@ export default function PubEntry({
       <p className="font-semibold text-md lg:text-lg">{pub.title}</p>
       <div className="flex flex-row items-start gap-1 flex-wrap">
         <TagBadge
-          tag={{ id: -1, type: "Venue", label: pub.venue.abbr, level: null }}
+          tag={{
+            id: -1,
+            type: TagType.venue,
+            label: pub.venue!.abbr,
+            level: null,
+          }}
         />
         {tags.map((tag, i) => (
           <TagBadge tag={tag} key={i} />
         ))}
       </div>
       <p className="text-sm lg:text-md">
-        {pub.authors.map((author, i) => {
+        {pub.authors!.map((author, i) => {
           const fullName =
             composeFullName(author) +
             (pub.equalContrib !== null && i < pub.equalContrib ? "*" : "");
@@ -78,7 +84,7 @@ export default function PubEntry({
               ) : (
                 <span>{fullName}</span>
               )}
-              {i < pub.authors.length - 1 && <span>, </span>}
+              {i < pub.authors!.length - 1 && <span>, </span>}
             </span>
           );
         })}
@@ -91,14 +97,14 @@ export default function PubEntry({
             className="link link-hover whitespace-nowrap"
             target="_blank"
           >
-            {pub.venue.abbr}
+            {pub.venue!.abbr}
             <FontAwesomeIcon
               className="text-xs mx-1"
               icon={faUpRightFromSquare}
             />
           </a>
         ) : (
-          pub.venue.abbr
+          pub.venue!.abbr
         )}
         )
         {pub.time &&
@@ -108,7 +114,7 @@ export default function PubEntry({
           })}`}
         {pub.location && `, ${pub.location}`}
       </p>
-      {(bibtex || pub.doi || pub.authorsCopy || pub.resources.length > 0) && (
+      {(bibtex || pub.doi || pub.authorsCopy || pub.resources!.length > 0) && (
         <div className={`flex flex-row items-start gap-2 flex-wrap pt-1`}>
           {pub.doi && (
             <a
@@ -143,7 +149,7 @@ export default function PubEntry({
               Author&apos;s Copy
             </a>
           )}
-          {pub.resources.map((res) => (
+          {pub.resources!.map((res) => (
             <a
               className="flex-none btn btn-sm btn-secondary px-2 py-1"
               href={res.link}

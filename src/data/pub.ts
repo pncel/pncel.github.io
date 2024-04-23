@@ -1,13 +1,10 @@
-import prisma, {
-  queryPubExt,
-  validatePubExt,
-  PublicationExtended,
-} from "./prisma";
+import prisma, { queryPubExt, validatePublication } from "./prisma";
+import { PubType } from "./enums";
+import type { Publication } from "./types";
 
 export async function getAllPubs() {
   const pubs = await prisma.publication.findMany(queryPubExt);
-  const correctedPubs = pubs.map(validatePubExt);
-  return correctedPubs;
+  return pubs.map(validatePublication);
 }
 
 export async function getPubsByPerson(
@@ -41,17 +38,14 @@ export async function getPubsByPerson(
         ...queryPubExt,
       }));
 
-  const correctedPubs = pubs.map(validatePubExt);
-  return correctedPubs;
+  return pubs.map(validatePublication);
 }
 
-export function generateBibtexForPub(pub: PublicationExtended) {
-  if (!pub.type) {
-    return null;
-  } else if (pub.type === "inproceedings") {
+export function generateBibtexForPub(pub: Publication) {
+  if (pub.type === PubType.inproceedings) {
     var bibtex = `@inproceedings{pncel${pub.id},
   title={{${pub.title}}},
-  author={${pub.authors.map((author) => author.lastname + ", " + author.firstname).join(" and ")}},`;
+  author={${pub.authors!.map((author) => author.lastname + ", " + author.firstname).join(" and ")}},`;
 
     if (pub.time) {
       bibtex += `

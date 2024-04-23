@@ -1,12 +1,12 @@
 import React from "react";
 import PubEntry from "./pubEntry";
-import { PublicationExtended } from "@/data/prisma";
+import type { Publication } from "@/data/types";
 
 export default function PubList({
   pubs,
   highlightedPersonId,
 }: Readonly<{
-  pubs: PublicationExtended[];
+  pubs: Publication[];
   highlightedPersonId: number | undefined;
 }>) {
   return (

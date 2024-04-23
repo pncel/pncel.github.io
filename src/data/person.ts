@@ -1,4 +1,4 @@
-import { Person } from "@prisma/client";
+import type { Person } from "./types";
 
 export function composeFullName(person: Person) {
   const { firstname, goby, middlename, lastname } = person;

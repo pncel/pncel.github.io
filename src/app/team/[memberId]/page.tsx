@@ -40,7 +40,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params: { memberId } }: Params) {
   const member = await getMember(memberId);
-  const fullname = composeFullName(member.person);
+  const fullname = composeFullName(member.person!);
   return {
     ...metadataTmpl,
     title: metadataTmpl.title + " | Team | " + (fullname || memberId),
@@ -50,7 +50,7 @@ export async function generateMetadata({ params: { memberId } }: Params) {
 export default async function MemberPage({ params: { memberId } }: Params) {
   const member = await getMember(memberId);
   const mdxSrc = await getMemberMdxSrc(memberId);
-  const pubs = await getPubsByPerson(member.person.id, memberId);
+  const pubs = await getPubsByPerson(member.person!.id, memberId);
 
   const {
     position,
@@ -66,8 +66,8 @@ export default async function MemberPage({ params: { memberId } }: Params) {
     instagram,
     youtube,
   } = member;
-  const { firstname, lastname, externalLink } = member.person;
-  const fullname = composeFullName(member.person);
+  const { firstname, lastname, externalLink } = member.person!;
+  const fullname = composeFullName(member.person!);
 
   return (
     <DefaultMain>
@@ -248,7 +248,7 @@ export default async function MemberPage({ params: { memberId } }: Params) {
               <p className="divider text-xl 2xl:text-2xl">
                 Selected Publications
               </p>
-              <PubList pubs={pubs} highlightedPersonId={member.person.id} />
+              <PubList pubs={pubs} highlightedPersonId={member.person!.id} />
             </>
           )}
         </div>

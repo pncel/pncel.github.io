@@ -2,14 +2,12 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { composeFullName } from "@/data/person";
-import { Member, Person } from "@prisma/client";
+import type { Member } from "@/data/types";
 
-export default function MemberCard({
-  member,
-}: Readonly<{ member: { person: Person } & Member }>) {
-  const { memberId, position, avatar, shortbio, person } = member;
-  const { firstname, goby, lastname } = person;
-  const fullname = composeFullName(person);
+export default function MemberCard({ member }: Readonly<{ member: Member }>) {
+  const { memberId, position, avatar, shortbio } = member;
+  const { firstname, goby, lastname } = member.person!;
+  const fullname = composeFullName(member.person!);
   const placeholder = [goby || firstname, lastname]
     .filter((s) => s !== undefined)
     .filter((s) => s) // make sure it's not an empty string

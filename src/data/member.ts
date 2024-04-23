@@ -17,8 +17,7 @@ export async function getAllMembers() {
     },
   });
 
-  members.forEach(validateMember);
-  return members;
+  return members.map(validateMember);
 }
 
 export async function getMember(memberId: string) {
@@ -41,9 +40,7 @@ export async function getMember(memberId: string) {
     );
   }
 
-  validateMember(member);
-
-  return member;
+  return validateMember(member);
 }
 
 export async function getMemberMdxSrc(memberId: string) {

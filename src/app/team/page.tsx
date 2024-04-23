@@ -3,6 +3,8 @@ import DefaultMain from "@/layouts/defaultMain";
 import MemberCard from "./memberCard";
 import { metadataTmpl } from "@/data/metadata";
 import { getAllMembers } from "@/data/member";
+import type { Member } from "@/data/types";
+import { MemberRole } from "@/data/enums";
 
 export const metadata = {
   ...metadataTmpl,
@@ -12,13 +14,12 @@ export const metadata = {
 export default async function Team() {
   const allMembers = await getAllMembers();
 
-  const groups = allMembers.reduce((g: Map<string, typeof allMembers>, m) => {
-    const role = m.role || "Other";
-    const members = g.get(role) || [];
+  const groups = allMembers.reduce((g: Map<MemberRole, Member[]>, m) => {
+    const members = g.get(m.role) || [];
     members.push(m);
-    g.set(role, members);
+    g.set(m.role, members);
     return g;
-  }, new Map<string, typeof allMembers>());
+  }, new Map<MemberRole, Member[]>());
 
   return (
     <div>
