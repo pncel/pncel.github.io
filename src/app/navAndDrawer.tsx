@@ -50,7 +50,7 @@ export default function NavAndDrawer({
         checked={isSideBarOpen}
         onChange={() => {}}
       />
-      <div className="drawer-content bg-base-100 text-base-content flex flex-col min-h-screen">
+      <div className="drawer-content bg-base-100 text-base-content flex flex-col min-h-screen overflow-x-hidden">
         <div className="bg-base-300 w-full">
           <nav className="navbar justify-between mx-auto max-w-screen-2xl">
             <div className="flex grow flex-row justify-start gap-1">

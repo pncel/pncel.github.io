@@ -53,7 +53,7 @@ export default function PubEntry({
         "flex flex-col items-start px-2 pt-1 pb-2 rounded-lg gap-1"
       }
     >
-      <p className="font-semibold text-sm lg:text-md">{pub.title}</p>
+      <p className="font-semibold text-md 2xl:text-lg">{pub.title}</p>
       <div className="flex flex-row items-start gap-1 flex-wrap">
         <TagBadge
           tag={{
@@ -67,7 +67,7 @@ export default function PubEntry({
           <TagBadge tag={tag} key={i} />
         ))}
       </div>
-      <p className="text-xs lg:text-sm">
+      <p className="text-sm 2xl:text-md">
         {pub.authors!.map((author, i) => {
           const fullName =
             composeFullName(author) +
@@ -102,7 +102,7 @@ export default function PubEntry({
           );
         })}
       </p>
-      <p className="text-xs lg:text-sm font-light text-base-content/60">
+      <p className="text-sm 2xl:text-md font-light text-base-content/60">
         {pub.booktitle} (
         {pub.venueLink ? (
           <a
@@ -131,7 +131,7 @@ export default function PubEntry({
         <div className={`flex flex-row items-start gap-2 flex-wrap pt-1`}>
           {pub.doi && (
             <a
-              className="flex-none btn btn-sm btn-secondary px-2 py-1"
+              className="flex-none btn btn-xs btn-secondary px-2 py-1"
               href={`https://doi.org/${pub.doi}`}
               target="_blank"
             >
@@ -142,7 +142,7 @@ export default function PubEntry({
           {bibtex && (
             <button
               tabIndex={0}
-              className="flex-none btn btn-sm btn-secondary px-2 py-1"
+              className="flex-none btn btn-xs btn-secondary px-2 py-1"
               onClick={() => {
                 setShowBibtex(true);
                 bibtexRef.current?.focus();
@@ -154,7 +154,7 @@ export default function PubEntry({
           )}
           {pub.authorsCopy && (
             <a
-              className="flex-none btn btn-sm btn-secondary px-2 py-1"
+              className="flex-none btn btn-xs btn-secondary px-2 py-1"
               href={pub.authorsCopy}
               target="_blank"
             >
@@ -164,7 +164,7 @@ export default function PubEntry({
           )}
           {pub.resources!.map((res) => (
             <a
-              className="flex-none btn btn-sm btn-secondary px-2 py-1"
+              className="flex-none btn btn-xs btn-secondary px-2 py-1"
               href={res.link}
               target="_blank"
               key={res.id}
@@ -189,7 +189,7 @@ export default function PubEntry({
         className={`transition-all duration-200 ease-in-out w-full h-fit overflow-y-clip ${showBibtex ? "max-h-screen" : "max-h-0"}`}
       >
         <CopyableCode
-          className="bg-neutral mt-1 p-2 rounded-lg text-xs lg:text-sm h-full"
+          className="bg-neutral mt-1 p-2 rounded-lg text-xs 2xl:text-sm h-full"
           forwardRef={bibtexRef}
           addlOnBlur={() => setShowBibtex(false)}
         >
