@@ -50,10 +50,10 @@ export default function PubEntry({
     <div
       className={
         `${altStyle || (useDarkTheme ? "bg-base-300" : "bg-base-200")} text-base-content ` +
-        "flex flex-col items-start px-2 pt-1 pb-2 rounded-lg"
+        "flex flex-col items-start px-2 pt-1 pb-2 rounded-lg gap-1"
       }
     >
-      <p className="font-semibold text-md lg:text-lg">{pub.title}</p>
+      <p className="font-semibold text-sm lg:text-md">{pub.title}</p>
       <div className="flex flex-row items-start gap-1 flex-wrap">
         <TagBadge
           tag={{
@@ -63,21 +63,11 @@ export default function PubEntry({
             level: null,
           }}
         />
-        {pub.venue!.type === VenueType.workshop && (
-          <TagBadge
-            tag={{
-              id: -1,
-              type: TagType.venue,
-              label: "Workshop",
-              level: null,
-            }}
-          />
-        )}
         {tags.map((tag, i) => (
           <TagBadge tag={tag} key={i} />
         ))}
       </div>
-      <p className="text-sm lg:text-md">
+      <p className="text-xs lg:text-sm">
         {pub.authors!.map((author, i) => {
           const fullName =
             composeFullName(author) +

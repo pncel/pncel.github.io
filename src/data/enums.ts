@@ -23,9 +23,9 @@ export enum MemberRole {
 
 export enum VenueType {
   other,
-  conference,
-  journal,
-  workshop,
+  conference = "Conference",
+  journal = "Journal",
+  workshop = "Workshop",
 }
 
 export enum LinkIcon {

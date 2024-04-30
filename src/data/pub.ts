@@ -1,9 +1,15 @@
+import { VenueType } from "./enums";
 import prisma, { queryPubExt, validatePublication } from "./prisma";
 import type { Publication } from "./types";
 
-export async function getAllPubs() {
+export async function getAllPubs(
+  venueTypes: VenueType[] = [VenueType.conference, VenueType.journal]
+) {
   const pubs = await prisma.publication.findMany(queryPubExt);
-  return pubs.map(validatePublication);
+  const validated = pubs
+    .map(validatePublication)
+    .filter((pub) => venueTypes.includes(pub.venue!.type));
+  return validated;
 }
 
 export async function getPubsByPerson(

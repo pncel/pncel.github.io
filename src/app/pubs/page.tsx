@@ -27,7 +27,7 @@ export default async function Pubs() {
       <DefaultMain>
         {Array.from(byyear.entries()).map(([year, pubs]) => (
           <>
-            <h2 className="divider">{`${year}`}</h2>
+            <h2 className="divider text-2xl">{`${year}`}</h2>
             <PubList pubs={pubs} />
           </>
         ))}

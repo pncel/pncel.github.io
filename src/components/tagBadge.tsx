@@ -9,7 +9,10 @@ config.autoAddCss = false;
 export default function TagBadge({ tag }: Readonly<{ tag: Tag }>) {
   return (
     <div
-      className={`badge ${tag.level && tag.level >= 200 ? "badge-success" : "bg-base-content text-base-100"}`}
+      className={
+        `badge ${tag.level && tag.level >= 200 ? "badge-success" : "bg-base-content text-base-100"} ` +
+        `${tag.id == -1 ? "rounded-md" : ""}`
+      }
     >
       <a className="whitespace-nowrap">
         {tag.type === TagType.award && (

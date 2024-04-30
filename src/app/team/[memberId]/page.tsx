@@ -242,17 +242,15 @@ export default async function MemberPage({ params: { memberId } }: Params) {
               components={useMDXComponents({})}
             />
           </div>
-          {pubs.length > 0 && (
-            <>
-              <p className="divider text-xl 2xl:text-2xl">
-                Selected Publications
-              </p>
-              <PubList pubs={pubs} highlightedPersonId={member.person!.id} />
-              <PubListFootnote />
-            </>
-          )}
         </div>
       </div>
+      {pubs.length > 0 && (
+        <>
+          <p className="divider text-xl 2xl:text-2xl">Selected Publications</p>
+          <PubList pubs={pubs} highlightedPersonId={member.person!.id} />
+          <PubListFootnote />
+        </>
+      )}
     </DefaultMain>
   );
 }
