@@ -1,5 +1,4 @@
 import prisma, { queryPubExt, validatePublication } from "./prisma";
-import { PubType } from "./enums";
 import type { Publication } from "./types";
 
 export async function getAllPubs() {
@@ -42,44 +41,38 @@ export async function getPubsByPerson(
 }
 
 export function generateBibtexForPub(pub: Publication) {
-  if (pub.type === PubType.inproceedings) {
-    var bibtex = `@inproceedings{pncel${pub.id},
+  var bibtex = `@${pub.type}{pncel${pub.id},
   title={{${pub.title}}},
   author={${pub.authors!.map((author) => author.lastname + ", " + author.firstname).join(" and ")}},`;
 
-    if (pub.time) {
-      bibtex += `
-  year={${pub.time.getFullYear()}},`;
-    }
-
-    if (pub.volume !== null) {
-      bibtex += `
-  volume={${pub.volume}},`;
-    }
-
-    if (pub.number !== null) {
-      bibtex += `
-  number={${pub.number}},`;
-    }
-
-    if (pub.doi) {
-      bibtex += `
-  doi={${pub.doi}},`;
-    }
-
-    if (pub.fromPage !== null) {
-      bibtex += `
-  pages={${pub.fromPage}-${pub.toPage || pub.fromPage}},`;
-    }
-
+  if (pub.time) {
     bibtex += `
+  year={${pub.time.getFullYear()}},`;
+  }
+
+  if (pub.volume !== null) {
+    bibtex += `
+  volume={${pub.volume}},`;
+  }
+
+  if (pub.number !== null) {
+    bibtex += `
+  number={${pub.number}},`;
+  }
+
+  if (pub.doi) {
+    bibtex += `
+  doi={${pub.doi}},`;
+  }
+
+  if (pub.fromPage !== null) {
+    bibtex += `
+  pages={${pub.fromPage}-${pub.toPage || pub.fromPage}},`;
+  }
+
+  bibtex += `
   booktitle={${pub.booktitle}}
 }`;
 
-    return bibtex;
-  } else {
-    throw new Error(
-      `Database data error: invalid type (${pub.type}) for publication "${pub.title}"`
-    );
-  }
+  return bibtex;
 }

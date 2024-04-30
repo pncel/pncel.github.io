@@ -17,7 +17,7 @@ import {
 import { generateBibtexForPub } from "@/data/pub";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import type { Publication } from "@/data/types";
-import { TagType } from "@/data/enums";
+import { TagType, VenueType } from "@/data/enums";
 import DataContext from "@/app/context";
 config.autoAddCss = false;
 
@@ -28,7 +28,7 @@ export default function PubEntry({
 }: Readonly<{
   pub: Publication;
   altStyle: boolean;
-  highlightedPersonId: number | undefined;
+  highlightedPersonId?: number;
 }>) {
   const [showBibtex, setShowBibtex] = useState(false);
   const tags = pub
@@ -50,7 +50,7 @@ export default function PubEntry({
     <div
       className={
         `${altStyle || (useDarkTheme ? "bg-base-300" : "bg-base-200")} text-base-content ` +
-        "flex flex-col items-start gap-1 p-2 rounded-lg"
+        "flex flex-col items-start px-2 pt-1 pb-2 rounded-lg"
       }
     >
       <p className="font-semibold text-md lg:text-lg">{pub.title}</p>
@@ -63,6 +63,16 @@ export default function PubEntry({
             level: null,
           }}
         />
+        {pub.venue!.type === VenueType.workshop && (
+          <TagBadge
+            tag={{
+              id: -1,
+              type: TagType.venue,
+              label: "Workshop",
+              level: null,
+            }}
+          />
+        )}
         {tags.map((tag, i) => (
           <TagBadge tag={tag} key={i} />
         ))}
@@ -77,14 +87,14 @@ export default function PubEntry({
             <span className="pr-1.5" key={i}>
               {author.member ? (
                 <Link
-                  className={`link link-hover ${author.id === highlightedPersonId ? "font-bold text-secondary" : "font-semibold"}`}
+                  className={`link link-hover ${author.id === highlightedPersonId ? "font-bold text-secondary" : "font-bold"}`}
                   href={`/team/${author.member.memberId}`}
                 >
                   {fullName}
                 </Link>
               ) : author.externalLink ? (
                 <a
-                  className="link link-hover font-semibold align-baseline whitespace-nowrap"
+                  className="link link-hover align-baseline whitespace-nowrap"
                   target="_blank"
                   href={author.externalLink}
                 >
@@ -95,14 +105,14 @@ export default function PubEntry({
                   />
                 </a>
               ) : (
-                <span>{fullName}</span>
+                <span className=" font-light">{fullName}</span>
               )}
               {i < pub.authors!.length - 1 && <span>, </span>}
             </span>
           );
         })}
       </p>
-      <p className="text-xs lg:text-sm text-base-content/60">
+      <p className="text-xs lg:text-sm font-light text-base-content/60">
         {pub.booktitle} (
         {pub.venueLink ? (
           <a

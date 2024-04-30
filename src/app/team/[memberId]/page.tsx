@@ -24,7 +24,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import DefaultMain from "@/layouts/defaultMain";
-import PubList from "@/components/pubList";
+import PubList, { PubListFootnote } from "@/components/pubList";
 config.autoAddCss = false;
 
 interface Params {
@@ -248,6 +248,7 @@ export default async function MemberPage({ params: { memberId } }: Params) {
                 Selected Publications
               </p>
               <PubList pubs={pubs} highlightedPersonId={member.person!.id} />
+              <PubListFootnote />
             </>
           )}
         </div>

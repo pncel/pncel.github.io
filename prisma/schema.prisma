@@ -115,9 +115,9 @@ model Publication {
   type        String?
   authors     Person[]
   title       String
-  venue       Venue     @relation(fields: [venueId], references: [id])
+  venue       Venue    @relation(fields: [venueId], references: [id])
   venueId     String
-  time        DateTime?
+  time        DateTime
   location    String?
   booktitle   String? // or `journal` for journal papers
   volume      Int?

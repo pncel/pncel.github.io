@@ -7,7 +7,7 @@ export default function PubList({
   highlightedPersonId,
 }: Readonly<{
   pubs: Publication[];
-  highlightedPersonId: number | undefined;
+  highlightedPersonId?: number;
 }>) {
   return (
     <>
@@ -16,11 +16,18 @@ export default function PubList({
           <PubEntry
             pub={pub}
             highlightedPersonId={highlightedPersonId}
-            altStyle={idx % 2 === 1}
+            altStyle={idx % 2 === 0}
             key={pub.id}
           ></PubEntry>
         ))}
       </div>
+    </>
+  );
+}
+
+export function PubListFootnote() {
+  return (
+    <>
       <p className="divider" />
       <div id="footnote" className="text-sm text-base-content/60">
         <p>* Equal contribution</p>

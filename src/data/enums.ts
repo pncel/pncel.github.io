@@ -35,9 +35,9 @@ export enum LinkIcon {
 }
 
 export enum PubType {
-  unpublished,
-  inproceedings,
-  masterthesis,
-  phdthesis,
-  misc,
+  unpublished = "unpublished",
+  inproceedings = "inproceedings",
+  masterthesis = "masterthesis",
+  phdthesis = "phdthesis",
+  misc = "misc",
 }
