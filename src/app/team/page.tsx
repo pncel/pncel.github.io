@@ -5,6 +5,7 @@ import { metadataTmpl } from "@/data/metadata";
 import { getAllMembers } from "@/data/member";
 import type { Member } from "@/data/types";
 import { MemberRole } from "@/data/enums";
+import { group } from "console";
 
 export const metadata = {
   ...metadataTmpl,
@@ -14,6 +15,17 @@ export const metadata = {
 export default async function Team() {
   const allMembers = await getAllMembers();
 
+  const group_order = [
+    MemberRole.pi,
+    MemberRole.postdoc,
+    MemberRole.staff,
+    MemberRole.phd,
+    MemberRole.visitor,
+    MemberRole.ms,
+    MemberRole.ug,
+    MemberRole.other,
+  ]
+
   const groups = allMembers.reduce((g: Map<MemberRole, Member[]>, m) => {
     const members = g.get(m.role) || [];
     members.push(m);
@@ -21,13 +33,17 @@ export default async function Team() {
     return g;
   }, new Map<MemberRole, Member[]>());
 
+  const groups_ordered = Array.from(groups.entries()).sort(([r0], [r1]) => {
+    return group_order.indexOf(r0) - group_order.indexOf(r1)
+  })
+  
   return (
     <div>
       <DefaultMDX>
         <h1>Team</h1>
       </DefaultMDX>
       <DefaultMain>
-        {Array.from(groups.entries()).map(
+        {groups_ordered.map(
           ([role, members]) =>
             members.length > 0 && (
               <div key={role}>
