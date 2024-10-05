@@ -13,6 +13,8 @@ import {
   faFilePdf,
   faVideo,
   faGlobe,
+  faP,
+  fa1
 } from "@fortawesome/free-solid-svg-icons";
 import { generateBibtexForPub } from "@/data/pub";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -69,19 +71,48 @@ export default function PubEntry({
       </div>
       <p className="text-sm 2xl:text-md">
         {pub.authors!.map((author, i) => {
-          const fullName =
-            composeFullName(author) +
-            (pub.equalContrib !== null && i < pub.equalContrib ? "*" : "");
+          const fullName = composeFullName(author);
+          const equalContrib =
+            pub.equalContrib !== null && i < pub.equalContrib ? (
+              <span
+                className="tooltip tooltip-secondary"
+                data-tip="Equal contribution"
+              >
+                <FontAwesomeIcon
+                  className={
+                    `text-xs ml-1 rounded-sm aspect-square p-px ` +
+                    `${author.id === highlightedPersonId ? "bg-secondary text-secondary-content" : "bg-base-content text-base-100"}`
+                  }
+                  icon={fa1}
+                />
+              </span>
+            ) : (
+              ""
+            );
 
           return (
             <span className="pr-1.5" key={i}>
               {author.member ? (
-                <Link
-                  className={`link link-hover ${author.id === highlightedPersonId ? "font-bold text-secondary" : "font-bold"}`}
-                  href={`/team/${author.member.memberId}`}
-                >
-                  {fullName}
-                </Link>
+                <span>
+                  <Link
+                    className={`link link-hover ${author.id === highlightedPersonId ? "font-bold text-secondary" : "font-bold"}`}
+                    href={`/team/${author.member.memberId}`}
+                  >
+                    {fullName}
+                  </Link>
+                  <span
+                    className="tooltip tooltip-secondary"
+                    data-tip="PᴺCEL member"
+                  >
+                    <FontAwesomeIcon
+                      className={
+                        `text-xs ml-1 rounded-sm aspect-square p-px ` +
+                        `${author.id === highlightedPersonId ? "bg-secondary text-secondary-content" : "bg-base-content text-base-100"}`
+                      }
+                      icon={faP}
+                    />
+                  </span>
+                </span>
               ) : author.externalLink ? (
                 <a
                   className="link link-hover align-baseline whitespace-nowrap"
@@ -90,13 +121,14 @@ export default function PubEntry({
                 >
                   {fullName}
                   <FontAwesomeIcon
-                    className="text-xs mx-1"
+                    className="text-xs ml-1 mr-0.5"
                     icon={faUpRightFromSquare}
                   />
                 </a>
               ) : (
                 <span className=" font-light">{fullName}</span>
               )}
+              {equalContrib}
               {i < pub.authors!.length - 1 && <span>, </span>}
             </span>
           );
@@ -112,7 +144,7 @@ export default function PubEntry({
           >
             {pub.venue!.abbr}
             <FontAwesomeIcon
-              className="text-xs mx-1"
+              className="text-xs ml-1 mr-0.5"
               icon={faUpRightFromSquare}
             />
           </a>

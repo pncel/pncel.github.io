@@ -26,5 +26,5 @@ npx prisma studio
 # then visit http://localhost:5555 (or another port according to the command line output)
 
 # interactive debug
-npx run dev
+npx next dev
 ```

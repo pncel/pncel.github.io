@@ -1,6 +1,8 @@
 import React from "react";
 import PubEntry from "./pubEntry";
 import type { Publication } from "@/data/types";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faP, fa1 } from "@fortawesome/free-solid-svg-icons";
 
 export default function PubList({
   pubs,
@@ -30,7 +32,20 @@ export function PubListFootnote() {
     <>
       <p className="divider" />
       <div id="footnote" className="text-sm text-base-content/60">
-        <p>* Equal contribution</p>
+        <p>
+          <FontAwesomeIcon
+            className="text-xs mx-1 rounded-sm aspect-square p-px bg-base-content text-base-100"
+            icon={faP}
+          />
+          PᴺCEL Member
+        </p>
+        <p>
+          <FontAwesomeIcon
+            className="text-xs mx-1 rounded-sm aspect-square p-px bg-base-content text-base-100"
+            icon={fa1}
+          />
+          Equal contribution
+        </p>
       </div>
     </>
   );
