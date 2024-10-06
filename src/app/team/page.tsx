@@ -5,7 +5,6 @@ import { metadataTmpl } from "@/data/metadata";
 import { getAllMembers } from "@/data/member";
 import type { Member } from "@/data/types";
 import { MemberRole } from "@/data/enums";
-import { group } from "console";
 
 export const metadata = {
   ...metadataTmpl,

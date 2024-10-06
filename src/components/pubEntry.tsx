@@ -74,24 +74,24 @@ export default function PubEntry({
           const fullName = composeFullName(author);
           const equalContrib =
             pub.equalContrib !== null && i < pub.equalContrib ? (
-              <span
+              <sup
                 className="tooltip tooltip-secondary"
                 data-tip="Equal contribution"
               >
                 <FontAwesomeIcon
                   className={
-                    `text-xs ml-1 rounded-sm aspect-square p-px ` +
+                    `text-[0.5rem] ml-0.5 rounded-sm aspect-square p-px ` +
                     `${author.id === highlightedPersonId ? "bg-secondary text-secondary-content" : "bg-base-content text-base-100"}`
                   }
                   icon={fa1}
                 />
-              </span>
+              </sup>
             ) : (
               ""
             );
 
           return (
-            <span className="pr-1.5" key={i}>
+            <span className="pr-0.5" key={i}>
               {author.member ? (
                 <span>
                   <Link
@@ -100,18 +100,18 @@ export default function PubEntry({
                   >
                     {fullName}
                   </Link>
-                  <span
+                  <sup
                     className="tooltip tooltip-secondary"
                     data-tip="PᴺCEL member"
                   >
                     <FontAwesomeIcon
                       className={
-                        `text-xs ml-1 rounded-sm aspect-square p-px ` +
+                        `text-[0.5rem] ml-0.5 rounded-sm aspect-square p-px ` +
                         `${author.id === highlightedPersonId ? "bg-secondary text-secondary-content" : "bg-base-content text-base-100"}`
                       }
                       icon={faP}
                     />
-                  </span>
+                  </sup>
                 </span>
               ) : author.externalLink ? (
                 <a
@@ -121,7 +121,7 @@ export default function PubEntry({
                 >
                   {fullName}
                   <FontAwesomeIcon
-                    className="text-xs ml-1 mr-0.5"
+                    className="text-xs ml-0.5"
                     icon={faUpRightFromSquare}
                   />
                 </a>
@@ -144,7 +144,7 @@ export default function PubEntry({
           >
             {pub.venue!.abbr}
             <FontAwesomeIcon
-              className="text-xs ml-1 mr-0.5"
+              className="text-xs ml-0.5"
               icon={faUpRightFromSquare}
             />
           </a>
@@ -221,7 +221,7 @@ export default function PubEntry({
         className={`transition-all duration-200 ease-in-out w-full h-fit overflow-y-clip ${showBibtex ? "max-h-screen" : "max-h-0"}`}
       >
         <CopyableCode
-          className="bg-neutral mt-1 p-2 rounded-lg text-xs 2xl:text-sm h-full"
+          className="bg-neutral mt-1 p-2 rounded-sm text-xs 2xl:text-sm h-full"
           forwardRef={bibtexRef}
           addlOnBlur={() => setShowBibtex(false)}
         >

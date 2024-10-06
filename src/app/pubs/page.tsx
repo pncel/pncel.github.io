@@ -12,12 +12,26 @@ export const metadata = {
 
 export default async function Pubs() {
   const pubs = await getAllPubs();
-  const byyear = pubs.reduce((g, pub) => {
+  const mByYear = pubs.reduce((g, pub) => {
     const pubs = g.get(pub.time.getFullYear()) || [];
     pubs.push(pub);
     g.set(pub.time.getFullYear(), pubs);
     return g;
-  }, new Map<Number, Publication[]>());
+  }, new Map<number, Publication[]>());
+  const sortedByYear = Array.from(mByYear.entries())
+    .toSorted(([year1], [year2]) => year2 - year1)
+    .reduce((a, [year, pubs]) => {
+      if (a.length === 0) {
+        a.push({ year, pubs, idx: 0 });
+      } else {
+        a.push({
+          year,
+          pubs,
+          idx: a[a.length - 1].idx + a[a.length - 1].pubs.length,
+        });
+      }
+      return a;
+    }, new Array<{ year: number; pubs: Publication[]; idx: number }>());
 
   return (
     <div>
@@ -25,11 +39,11 @@ export default async function Pubs() {
         <h1>Publications</h1>
       </DefaultMDX>
       <DefaultMain>
-        {Array.from(byyear.entries()).map(([year, pubs]) => (
-          <>
+        {sortedByYear.map(({ year, pubs, idx }) => (
+          <div key={year}>
             <h2 className="divider text-2xl">{`${year}`}</h2>
-            <PubList pubs={pubs} />
-          </>
+            <PubList pubs={pubs} altStyle={idx % 2 !== 0} />
+          </div>
         ))}
         <PubListFootnote />
       </DefaultMain>

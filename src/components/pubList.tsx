@@ -7,23 +7,25 @@ import { faP, fa1 } from "@fortawesome/free-solid-svg-icons";
 export default function PubList({
   pubs,
   highlightedPersonId,
+  altStyle
 }: Readonly<{
   pubs: Publication[];
   highlightedPersonId?: number;
+  altStyle?: boolean;
 }>) {
   return (
-    <>
-      <div className="flex flex-col gap-4">
-        {pubs.map((pub, idx) => (
+    <div className="flex flex-col gap-4">
+      {pubs.map((pub, idx) => {
+        return (
           <PubEntry
             pub={pub}
             highlightedPersonId={highlightedPersonId}
-            altStyle={idx % 2 === 0}
+            altStyle={(idx % 2 === 0) === (altStyle || false)}
             key={pub.id}
           ></PubEntry>
-        ))}
-      </div>
-    </>
+        );
+      })}
+    </div>
   );
 }
 
