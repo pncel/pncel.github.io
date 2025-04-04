@@ -2,7 +2,7 @@ import Link from "next/link";
 import PubList, { PubListFootnote } from "@/components/pubList";
 import { metadataTmpl } from "@/data/metadata";
 import { getPubsByPerson } from "@/data/pub";
-import { Publication } from "@/data/types";
+import { Publication } from "@/data/newtypes";
 import DefaultMDX from "@/layouts/defaultMdx";
 import DefaultMain from "@/layouts/defaultMain";
 import { getAllMemberIds, getMember } from "@/data/member";

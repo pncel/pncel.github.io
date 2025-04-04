@@ -1,10 +1,11 @@
 import React from "react";
 import PubEntry from "./pubEntry";
-import type { Publication } from "@/data/types";
+import type { Publication } from "@/data/newtypes";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faP, fa1 } from "@fortawesome/free-solid-svg-icons";
+import Database from "@/data/database";
 
-export default function PubList({
+export default async function PubList({
   pubs,
   highlightedPersonId,
   altStyle,
@@ -13,6 +14,7 @@ export default function PubList({
   highlightedPersonId?: number;
   altStyle?: boolean;
 }>) {
+  const db = await Database.get();
   return (
     <div className="flex flex-col gap-4 min-w-0 w-full">
       {pubs.map((pub, idx) => {
@@ -50,6 +52,7 @@ export default function PubList({
             </dialog>
             <PubEntry
               pub={pub}
+              authors={db.getManyPersons(pub.authorIds)}
               highlightedPersonId={highlightedPersonId}
               altStyle={(idx % 2 === 0) === (altStyle || false)}
               key={pub.id}

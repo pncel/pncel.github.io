@@ -1,9 +1,9 @@
 import PubList, { PubListFootnote } from "@/components/pubList";
 import { metadataTmpl } from "@/data/metadata";
-import { getAllPubs } from "@/data/pub";
-import { Publication } from "@/data/types";
+import { Publication } from "@/data/newtypes";
 import DefaultMDX from "@/layouts/defaultMdx";
 import DefaultMain from "@/layouts/defaultMain";
+import Database from "@/data/database";
 
 export const metadata = {
   ...metadataTmpl,
@@ -11,7 +11,8 @@ export const metadata = {
 };
 
 export default async function Pubs() {
-  const pubs = await getAllPubs();
+  const db = await Database.get();
+  const pubs = db.getManyPublications();
   const mByYear = pubs.reduce((g, pub) => {
     const pubs = g.get(pub.time.getFullYear()) || [];
     pubs.push(pub);

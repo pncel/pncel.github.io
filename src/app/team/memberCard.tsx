@@ -1,14 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { composeFullName, composeHeadshotPlaceholder } from "@/data/person";
-import type { Member } from "@/data/types";
+import { composeFullName, composeHeadshotPlaceholder } from "@/data/utils";
+import { Member, Person } from "@/data/newtypes";
 
-export default function MemberCard({ member }: Readonly<{ member: Member }>) {
-  const { memberId, position } = member;
-  const { avatar } = member.person!;
-  const fullname = composeFullName(member.person!);
-  const placeholder = composeHeadshotPlaceholder(member.person!);
+export default async function MemberCard({
+  member,
+  person,
+}: Readonly<{ member: Member; person: Person }>) {
+  const { id, position } = member;
+  const fullname = composeFullName(person);
+  const placeholder = composeHeadshotPlaceholder(person);
+  const { headshot } = person;
 
   return (
     <div
@@ -17,25 +20,25 @@ export default function MemberCard({ member }: Readonly<{ member: Member }>) {
         "shadow-xl rounded-xl overflow-clip break-inside-avoid-column"
       }
     >
-      <Link href={`/team/${memberId}`}>
+      <Link href={`/team/${id}`}>
         <div className="w-full p-4 gap-8 m-auto flex flex-row items-center bg-neutral">
           <div
             className={
               "flex-none rounded-full w-24 h-24 overflow-clip" +
-              (avatar ? "" : " ring-2 ring-secondary")
+              (headshot ? "" : " ring-2 ring-secondary")
             }
           >
-            {avatar ? (
-              <div className="avatar">
+            {headshot ? (
+              <div className="headshot">
                 <Image
                   width={512}
                   height={512}
-                  src={avatar}
+                  src={headshot}
                   alt={fullname}
                 ></Image>
               </div>
             ) : (
-              <div className="avatar placeholder bg-base-300 w-full h-full">
+              <div className="headshot placeholder bg-base-300 w-full h-full">
                 <span className="text-3xl text-base-content m-auto">
                   {placeholder}{" "}
                 </span>
