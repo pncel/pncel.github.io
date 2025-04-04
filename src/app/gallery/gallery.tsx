@@ -2,17 +2,15 @@
 import { useState } from "react";
 import Image from "next/image";
 
-import { GalleryItemSpec } from "@/data/types";
+import { Photo } from "@/data/types";
 import GalleryItem from "@/app/gallery/item";
 
 export default function Gallery({
   specs,
 }: Readonly<{
-  specs: GalleryItemSpec[];
+  specs: Photo[];
 }>) {
-  const [highlight, setHighlight] = useState<GalleryItemSpec | undefined>(
-    undefined,
-  );
+  const [highlight, setHighlight] = useState<Photo | undefined>(undefined);
 
   return (
     <>

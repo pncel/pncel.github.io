@@ -1,6 +1,6 @@
 import React from "react";
 import PubEntry from "./pubEntry";
-import type { Publication } from "@/data/newtypes";
+import type { Publication } from "@/data/types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faP, fa1 } from "@fortawesome/free-solid-svg-icons";
 import Database from "@/data/database";

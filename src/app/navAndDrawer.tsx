@@ -29,6 +29,7 @@ export default function NavAndDrawer({
   const navData: NavDataType[] = [
     { title: "News", target: "/news", sub: [] },
     { title: "Blogs", target: "/blogs", sub: [] },
+    /*
     {
       title: "Projects",
       target: null,
@@ -50,6 +51,7 @@ export default function NavAndDrawer({
         },
       ],
     },
+    */
     { title: "Publications", target: "/pubs", sub: [] },
     { title: "Team", target: "/team", sub: [] },
     { title: "Gallery", target: "/gallery", sub: [] },

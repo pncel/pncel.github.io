@@ -8,18 +8,22 @@ import {
   Publication,
   Database as DatabaseType,
   PubAttachment,
-  LinkIcon,
-} from "@/data/newtypes";
+  Icon,
+} from "@/data/types";
 import { readFile } from "fs/promises";
 import { DefinedError } from "ajv";
 import { parse } from "yaml";
+import { resolve } from "path";
 
 const ajv = new Ajv();
 
 type MemberJsonType = Omit<Member, "role"> & { role: keyof typeof MemberRole };
-type TagJsonType = Omit<Tag, "type"> & { type: keyof typeof TagType };
+type TagJsonType = Omit<Tag, "type" | "icon"> & {
+  type: keyof typeof TagType;
+  icon?: keyof typeof Icon;
+};
 type PubAttachmentJsonType = Omit<PubAttachment, "icon"> & {
-  icon?: keyof typeof LinkIcon;
+  icon?: keyof typeof Icon;
 };
 type PublicationJsonType = Omit<Publication, "tags" | "attachments"> & {
   tags?: TagJsonType[];
@@ -91,8 +95,11 @@ const publicationSchema: JTDSchemaType<PublicationJsonType[]> = {
       tags: {
         elements: {
           properties: {
-            type: { enum: Object.keys(MemberRole) as (keyof typeof TagType)[] },
+            type: { enum: Object.keys(TagType) as (keyof typeof TagType)[] },
             label: { type: "string" },
+          },
+          optionalProperties: {
+            icon: { enum: Object.keys(Icon) as (keyof typeof Icon)[] },
           },
         },
       },
@@ -100,7 +107,7 @@ const publicationSchema: JTDSchemaType<PublicationJsonType[]> = {
         elements: {
           properties: { label: { type: "string" }, link: { type: "string" } },
           optionalProperties: {
-            icon: { enum: Object.keys(LinkIcon) as (keyof typeof LinkIcon)[] },
+            icon: { enum: Object.keys(Icon) as (keyof typeof Icon)[] },
           },
         },
       },
@@ -114,13 +121,12 @@ const validateMember = ajv.compile(memberSchema);
 const validatePublication = ajv.compile(publicationSchema);
 
 export default class Database extends Object {
-  private static instance: Database;
+  private static instance: Promise<Database>;
   private data: DatabaseType = {
     persons: [],
     members: new Map<string, Member>(),
     publications: [],
   };
-  private isClient: boolean = false;
 
   private static async loadJson<T, JT = T>(
     path: string,
@@ -147,147 +153,147 @@ export default class Database extends Object {
     super();
   }
 
-  public static async get(isClient: boolean = false): Promise<Database> {
+  public static async get(): Promise<Database> {
     if (!Database.instance) {
-      const instance = (Database.instance = new Database());
-      instance.isClient = isClient;
-      const databasePath = isClient
-        ? "/database"
-        : `${process.cwd()}/public/database`;
+      Database.instance = new Promise(async (resolve) => {
+        const instance = new Database();
+        // const databasePath = isClient ? "/database" : `${process.cwd()}/public/database`;
+        const databasePath = `${process.cwd()}/public/database`;
 
-      // load databases in parallel
-      const [personArray, memberArray, publicationArray] = await Promise.all([
-        Database.loadJson<Person>(
-          `${databasePath}/persons.yaml`,
-          validatePerson,
-          (person) => person,
-        ),
-        Database.loadJson<Member, MemberJsonType>(
-          `${databasePath}/members.yaml`,
-          validateMember,
-          (member) => ({
-            ...member,
-            role: MemberRole[member.role],
-            whenJoined: new Date(member.whenJoined),
-            whenLeft: member.whenLeft && new Date(member.whenLeft),
-          }),
-        ),
-        Database.loadJson<Publication, PublicationJsonType>(
-          `${databasePath}/publications.yaml`,
-          validatePublication,
-          (publication) => ({
-            ...publication,
-            time: new Date(publication.time),
-            tags: publication.tags?.map((tag) => ({
-              ...tag,
-              type: TagType[tag.type],
-            })),
-            attachments: publication.attachments?.map((attachment) => ({
-              ...attachment,
-              icon: LinkIcon[attachment.icon || "default"],
-            })),
-          }),
-        ),
-      ]);
+        // load databases in parallel
+        const [personArray, memberArray, publicationArray] = await Promise.all([
+          Database.loadJson<Person>(
+            `${databasePath}/persons.yaml`,
+            validatePerson,
+            (person) => person,
+          ),
+          Database.loadJson<Member, MemberJsonType>(
+            `${databasePath}/members.yaml`,
+            validateMember,
+            (member) => ({
+              ...member,
+              role: MemberRole[member.role],
+              whenJoined: new Date(member.whenJoined),
+              whenLeft: member.whenLeft && new Date(member.whenLeft),
+            }),
+          ),
+          Database.loadJson<Publication, PublicationJsonType>(
+            `${databasePath}/publications.yaml`,
+            validatePublication,
+            (publication) => ({
+              ...publication,
+              time: new Date(publication.time),
+              tags: publication.tags?.map((tag) => ({
+                ...tag,
+                type: TagType[tag.type],
+                icon: Icon[tag.icon || "default"],
+              })),
+              attachments: publication.attachments?.map((attachment) => ({
+                ...attachment,
+                icon: Icon[attachment.icon || "default"],
+              })),
+            }),
+          ),
+        ]);
 
-      // construct id -> object map
-      const persons = personArray.reduce((persons, person) => {
-        if (persons[person.id] !== undefined) {
-          throw new Error(`Duplicate person id: ${person.id}`);
-        } else {
-          persons[person.id] = person;
-          return persons;
-        }
-      }, new Array<Person | undefined>(personArray.length));
-      const members = new Map<string, Member>(
-        memberArray.map((member) => [member.id, member]),
-      );
-      const publications = publicationArray.reduce(
-        (publications, publication) => {
-          if (publications[publication.id] !== undefined) {
-            throw new Error(`Duplicate publication id: ${publication.id}`);
+        // construct id -> object map
+        const persons = personArray.reduce((persons, person) => {
+          if (persons[person.id] !== undefined) {
+            throw new Error(`Duplicate person id: ${person.id}`);
           } else {
-            publications[publication.id] = publication;
-            return publications;
+            persons[person.id] = person;
+            return persons;
           }
-        },
-        new Array<Publication | undefined>(publicationArray.length),
-      );
+        }, new Array<Person | undefined>(personArray.length));
+        const members = new Map<string, Member>(
+          memberArray.map((member) => [member.id, member]),
+        );
+        const publications = publicationArray.reduce(
+          (publications, publication) => {
+            if (publications[publication.id] !== undefined) {
+              throw new Error(`Duplicate publication id: ${publication.id}`);
+            } else {
+              publications[publication.id] = publication;
+              return publications;
+            }
+          },
+          new Array<Publication | undefined>(publicationArray.length),
+        );
 
-      // cross-reference and duplicate ID check
-      persons.forEach((person) => {
-        if (person?.memberId !== undefined) {
-          const member = members.get(person.memberId);
-          if (!member) {
-            throw new Error(
-              `Member id: ${person.memberId} not found for person ${person.id}`,
-            );
-          } else if (member.personId !== person.id) {
-            throw new Error(
-              `Person ${person.id} has member id ${person.memberId} but member ${member.id} has person id ${member.personId}`,
-            );
-          }
-        }
-      });
-      members.values().forEach((member) => {
-        const person = persons[member.personId];
-        if (!person) {
-          throw new Error(
-            `Person id: ${member.personId} not found for member ${member.id}`,
-          );
-        } else if (person.memberId !== member.id) {
-          throw new Error(
-            `Member ${member.id} has person id ${member.personId} but person ${person.id} has member id ${person.memberId}`,
-          );
-        }
-
-        if (member.selectedPubIds) {
-          if (
-            new Set(member.selectedPubIds).size !== member.selectedPubIds.length
-          ) {
-            throw new Error(
-              `Member ${member.id} has duplicate publication ids`,
-            );
-          }
-          for (const pubId of member.selectedPubIds) {
-            const publication = publications[pubId];
-            if (!publication) {
+        // cross-reference and duplicate ID check
+        persons.forEach((person) => {
+          if (person?.memberId !== undefined) {
+            const member = members.get(person.memberId);
+            if (!member) {
               throw new Error(
-                `Publication id: ${pubId} not found for member ${member.id}`,
+                `Member id: ${person.memberId} not found for person ${person.id}`,
               );
-            } else if (!publication.authorIds.includes(member.personId)) {
+            } else if (member.personId !== person.id) {
               throw new Error(
-                `Member ${member.id} has person id ${member.personId} but publication ${publication.id} does not include this person as author`,
+                `Person ${person.id} has member id ${person.memberId} but member ${member.id} has person id ${member.personId}`,
               );
             }
           }
-        }
-      });
-      publications.forEach((publication) => {
-        if (publication?.authorIds) {
-          if (
-            new Set(publication.authorIds).size !== publication.authorIds.length
-          ) {
+        });
+        Array.from(members.values()).forEach((member) => {
+          const person = persons[member.personId];
+          if (!person) {
             throw new Error(
-              `Publication ${publication.id} has duplicate author ids`,
+              `Person id: ${member.personId} not found for member ${member.id}`,
+            );
+          } else if (person.memberId !== member.id) {
+            throw new Error(
+              `Member ${member.id} has person id ${member.personId} but person ${person.id} has member id ${person.memberId}`,
             );
           }
-          for (const authorId of publication.authorIds) {
-            const person = persons[authorId];
-            if (!person) {
+
+          if (member.selectedPubIds) {
+            if (
+              new Set(member.selectedPubIds).size !==
+              member.selectedPubIds.length
+            ) {
               throw new Error(
-                `Author id: ${authorId} not found for publication ${publication.id}`,
+                `Member ${member.id} has duplicate publication ids`,
               );
             }
+            for (const pubId of member.selectedPubIds) {
+              const publication = publications[pubId];
+              if (!publication) {
+                throw new Error(
+                  `Publication id: ${pubId} not found for member ${member.id}`,
+                );
+              } else if (!publication.authorIds.includes(member.personId)) {
+                throw new Error(
+                  `Member ${member.id} has person id ${member.personId} but publication ${publication.id} does not include this person as author`,
+                );
+              }
+            }
           }
-        }
-      });
+        });
+        publications.forEach((publication) => {
+          if (publication?.authorIds) {
+            if (
+              new Set(publication.authorIds).size !==
+              publication.authorIds.length
+            ) {
+              throw new Error(
+                `Publication ${publication.id} has duplicate author ids`,
+              );
+            }
+            for (const authorId of publication.authorIds) {
+              const person = persons[authorId];
+              if (!person) {
+                throw new Error(
+                  `Author id: ${authorId} not found for publication ${publication.id}`,
+                );
+              }
+            }
+          }
+        });
 
-      instance.data = { persons, members, publications };
-    } else if (Database.instance.isClient !== isClient) {
-      throw new Error(
-        `Database instance already created with isClient = ${Database.instance.isClient}. Cannot create another instance with isClient = ${isClient}`,
-      );
+        instance.data = { persons, members, publications };
+        resolve(instance);
+      });
     }
     return Database.instance;
   }
@@ -363,5 +369,11 @@ export default class Database extends Object {
       throw new Error(`Publication ${publicationId} not found`);
     }
     return publication;
+  }
+
+  public getAllPublicationsByPerson(personId: number): Publication[] {
+    return this.data.publications.filter(
+      (p) => p && p?.authorIds.includes(personId),
+    ) as Publication[];
   }
 }

@@ -18,7 +18,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import sanitizeHtml from "sanitize-html";
-import { Publication, LinkIcon, Person } from "@/data/newtypes";
+import { Publication, Icon, Person } from "@/data/types";
 import DataContext from "@/app/context";
 config.autoAddCss = false;
 
@@ -234,13 +234,13 @@ export default function PubEntry({
               target="_blank"
               key={i}
             >
-              {res.icon === LinkIcon.pdf ? (
+              {res.icon === Icon.pdf ? (
                 <FontAwesomeIcon icon={faFilePdf} />
-              ) : res.icon === LinkIcon.video ? (
+              ) : res.icon === Icon.video ? (
                 <FontAwesomeIcon icon={faVideo} />
-              ) : res.icon === LinkIcon.github ? (
+              ) : res.icon === Icon.github ? (
                 <FontAwesomeIcon icon={faGithub} />
-              ) : res.icon === LinkIcon.website ? (
+              ) : res.icon === Icon.website ? (
                 <FontAwesomeIcon icon={faGlobe} />
               ) : (
                 <FontAwesomeIcon icon={faPaperPlane} />

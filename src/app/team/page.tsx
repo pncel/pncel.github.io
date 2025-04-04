@@ -3,7 +3,7 @@ import DefaultMDX from "@/layouts/defaultMdx";
 import MemberCard from "./memberCard";
 import { metadataTmpl } from "@/data/metadata";
 import Database from "@/data/database";
-import { Member, MemberRole } from "@/data/newtypes";
+import { Member, MemberRole } from "@/data/types";
 import { composeFullName } from "@/data/utils";
 
 export const metadata = {
@@ -66,7 +66,7 @@ export default async function Team() {
                 {members.map((m) => (
                   <MemberCard
                     member={m}
-                    person={db.getPerson(m)}
+                    person={db.getPerson(m.personId)}
                     key={m.id}
                   ></MemberCard>
                 ))}

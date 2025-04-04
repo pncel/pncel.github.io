@@ -1,4 +1,134 @@
-- id: angliz
+- id: ang
   role: pi
-  personId: 0
-  whenJoined: 2024-09-16T00:00:00.000Z
+  personId: 1
+  whenJoined: 2023-09-01T07:00:00.000Z
+  position: Assistant Professor
+  email: angliz@uw.edu
+  office: ECE 414
+  gscholar: https://scholar.google.com/citations?user=gOD_k4wAAAAJ&hl=en
+  orcid: https://orcid.org/0000-0002-7458-063X
+  github: https://github.com/angl-dev
+  linkedin: https://www.linkedin.com/in/ang-li-836ab242/
+  twitter: https://twitter.com/ang_pncel
+  selectedPubIds:
+    - 8
+    - 9
+    - 10
+    - 11
+    - 12
+    - 16
+- id: jiayi
+  role: phd
+  personId: 2
+  whenJoined: 2023-11-01T00:00:00.000Z
+  position: Ph.D. Candidate
+  email: jwang710@uw.edu
+  office: ECE 409
+  github: https://github.com/jiayi-wang98
+  linkedin: https://www.linkedin.com/in/jiayi-wang-3b60a7209/
+- id: jingqun
+  role: phd
+  personId: 3
+  whenJoined: 2024-09-01T00:00:00.000Z
+  position: Ph.D. Student
+  email: jq86@uw.edu
+  office: ECE 409
+- id: zhichen
+  role: phd
+  personId: 4
+  whenJoined: 2024-09-01T00:00:00.000Z
+  position: Ph.D. Student
+  email: zczeng@uw.edu
+  office: ECE 409
+  gscholar: https://scholar.google.com/citations?user=Q5W2LrcAAAAJ&hl=en
+  orcid: https://orcid.org/0009-0005-0023-2367
+  github: https://github.com/Zhichenzzz
+  linkedin: https://www.linkedin.com/in/zhichen-zeng/
+  selectedPubIds:
+    - 17
+    - 18
+    - 19
+    - 20
+    - 23
+    - 24
+    - 26
+- id: darren
+  role: phd
+  personId: 53
+  whenJoined: 2024-09-01T00:00:00.000Z
+  position: Ph.D. Student
+  email: angl7@uw.edu
+  office: ECE 409
+- id: ohlbur
+  role: ms
+  personId: 58
+  whenJoined: 2024-05-01T07:00:00.000Z
+  position: M.S. Student
+  email: ohlbur@uw.edu
+  office: ECE 409
+- id: duyv
+  role: ms
+  personId: 59
+  whenJoined: 2024-05-01T07:00:00.000Z
+  position: M.S. Student
+  email: duyv@uw.edu
+- id: cyungjen
+  role: ms
+  personId: 60
+  whenJoined: 2024-09-27T00:00:00.000Z
+  position: M.S. Student
+  email: cyungjen@uw.edu
+- id: s2chitni
+  role: ms
+  personId: 63
+  whenJoined: 2024-09-27T00:00:00.000Z
+  position: M.S. Student
+  email: s2chitni@uw.edu
+- id: krishpri
+  role: ug
+  personId: 62
+  whenJoined: 2024-09-27T00:00:00.000Z
+  position: Undergrad
+  email: krishpri@uw.edu
+- id: akumar08
+  role: ms
+  personId: 61
+  whenJoined: 2024-09-27T00:00:00.000Z
+  position: M.S. Student
+  email: akumar08@uw.edu
+- id: rubylee
+  role: ug
+  personId: 65
+  whenJoined: 2024-11-01T00:00:00.000Z
+  position: Undergrad
+  email: rubywtl@uw.edu
+- id: andrep24
+  role: ug
+  personId: 66
+  whenJoined: 2024-11-01T00:00:00.000Z
+  position: Undergrad
+  email: andrep24@uw.edu
+- id: jovank
+  role: ms
+  personId: 120
+  whenJoined: 2025-04-01T00:00:00.000Z
+  position: M.S. Student
+  email: jovank@uw.edu
+- id: adwaith
+  role: ms
+  personId: 121
+  whenJoined: 2025-04-01T00:00:00.000Z
+  position: M.S. Student
+  email: adr29@uw.edu
+- id: juwon
+  role: ug
+  personId: 122
+  whenJoined: 2025-04-01T00:00:00.000Z
+  position: Undergrad
+  email: jami3jun@uw.edu
+- id: ayush
+  role: ug
+  personId: 123
+  whenJoined: 2025-04-01T00:00:00.000Z
+  position: Undergrad
+  email: ayushk22@uw.edu

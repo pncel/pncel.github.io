@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { composeFullName, composeHeadshotPlaceholder } from "@/data/utils";
-import { Member, Person } from "@/data/newtypes";
+import { Member, Person } from "@/data/types";
 
 export default async function MemberCard({
   member,

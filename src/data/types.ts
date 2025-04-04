@@ -23,7 +23,7 @@ export enum MemberRole {
   //   PhD>PostDoc>MS>UG>visitor
 }
 
-export enum LinkIcon {
+export enum Icon {
   default,
   pdf,
   video,
@@ -65,12 +65,13 @@ export type Member = {
 export type Tag = {
   type: TagType;
   label: string;
+  icon?: Icon;
 };
 
 export type PubAttachment = {
   label: string;
   link: string;
-  icon?: LinkIcon;
+  icon?: Icon;
 };
 
 export type Publication = {
@@ -94,4 +95,14 @@ export type Database = {
   persons: (Person | undefined)[]; // by ID. Cannot guarantee continuity of IDs
   members: Map<string, Member>; // by ID
   publications: (Publication | undefined)[]; // by ID. Cannot guarantee continuity of IDs
+};
+
+export type Photo = {
+  title: string;
+  subtitle?: string;
+  width: number;
+  height: number;
+  image: string;
+  thumbnail?: string;
+  time: Date;
 };

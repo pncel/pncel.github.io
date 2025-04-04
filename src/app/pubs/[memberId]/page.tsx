@@ -1,12 +1,11 @@
 import Link from "next/link";
 import PubList, { PubListFootnote } from "@/components/pubList";
 import { metadataTmpl } from "@/data/metadata";
-import { getPubsByPerson } from "@/data/pub";
-import { Publication } from "@/data/newtypes";
+import { Publication } from "@/data/types";
 import DefaultMDX from "@/layouts/defaultMdx";
 import DefaultMain from "@/layouts/defaultMain";
-import { getAllMemberIds, getMember } from "@/data/member";
-import { composeFullName } from "@/data/person";
+import { composeFullName } from "@/data/utils";
+import Database from "@/data/database";
 
 interface Params {
   params: {
@@ -15,13 +14,16 @@ interface Params {
 }
 
 export async function generateStaticParams() {
-  const memberIds = await getAllMemberIds();
+  const db = await Database.get();
+  const memberIds = db.getManyMembers().map((m) => ({ memberId: m.id }));
   return memberIds;
 }
 
 export async function generateMetadata({ params: { memberId } }: Params) {
-  const member = await getMember(memberId);
-  const fullname = composeFullName(member.person!);
+  const db = await Database.get();
+  const member = db.getMember(memberId);
+  const person = db.getPerson(member.personId);
+  const fullname = composeFullName(person);
   return {
     ...metadataTmpl,
     title: metadataTmpl.title + " | Publications | " + (fullname || memberId),
@@ -29,8 +31,10 @@ export async function generateMetadata({ params: { memberId } }: Params) {
 }
 
 export default async function PubsByMember({ params: { memberId } }: Params) {
-  const member = await getMember(memberId);
-  const pubs = await getPubsByPerson(member.person!.id);
+  const db = await Database.get();
+  const member = db.getMember(memberId);
+  const person = db.getPerson(member.personId);
+  const pubs = db.getAllPublicationsByPerson(member.personId);
   const mByYear = pubs.reduce((g, pub) => {
     const pubs = g.get(pub.time.getFullYear()) || [];
     pubs.push(pub);
@@ -58,7 +62,7 @@ export default async function PubsByMember({ params: { memberId } }: Params) {
         <h1 className="lg:pb-4">
           Full Publication List:{" "}
           <Link className="link link-hover" href={`/team/${memberId}`}>
-            {composeFullName(member.person!)}
+            {composeFullName(person)}
           </Link>{" "}
         </h1>
       </DefaultMDX>

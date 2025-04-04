@@ -2,7 +2,7 @@ import { readFile } from "fs/promises";
 import { parse } from "yaml";
 
 import Gallery from "@/app/gallery/gallery";
-import { GalleryItemSpec } from "@/data/types";
+import { Photo } from "@/data/types";
 import { metadataTmpl } from "@/data/metadata";
 import DefaultMain from "@/layouts/defaultMain";
 import DefaultMDX from "@/layouts/defaultMdx";
@@ -16,7 +16,7 @@ export default async function GalleryPage() {
   const photo_specs = parse(
     await readFile(`${process.cwd()}/src/app/gallery/photos.yaml`, "utf-8"),
   ) as any[];
-  const photos: GalleryItemSpec[] = photo_specs
+  const photos: Photo[] = photo_specs
     .map((photo: any) => ({
       ...photo,
       time: new Date(photo.time),

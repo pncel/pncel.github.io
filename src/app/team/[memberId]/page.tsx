@@ -1,10 +1,9 @@
 import Image from "next/image";
+import { readFile } from "fs/promises";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { useMDXComponents } from "@/mdx-components";
 import { metadataTmpl } from "@/data/metadata";
-import { getAllMemberIds, getMember, getMemberMdxSrc } from "@/data/member";
-import { getPubsByPerson } from "@/data/pub";
-import { composeFullName, composeHeadshotPlaceholder } from "@/data/person";
+import { composeFullName, composeHeadshotPlaceholder } from "@/data/utils";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -29,6 +28,7 @@ import PubList, { PubListFootnote } from "@/components/pubList";
 import DefaultMDX from "@/layouts/defaultMdx";
 import DefaultMain from "@/layouts/defaultMain";
 import Link from "next/link";
+import Database from "@/data/database";
 config.autoAddCss = false;
 
 interface Params {
@@ -38,26 +38,48 @@ interface Params {
 }
 
 export async function generateStaticParams() {
-  const memberIds = await getAllMemberIds();
+  const db = await Database.get();
+  const memberIds = db.getManyMembers().map((m) => ({ memberId: m.id }));
   return memberIds;
 }
 
 export async function generateMetadata({ params: { memberId } }: Params) {
-  const member = await getMember(memberId);
-  const fullname = composeFullName(member.person!);
+  const db = await Database.get();
+  const member = db.getMember(memberId);
+  const person = db.getPerson(member.personId);
+  const fullname = composeFullName(person);
   return {
     ...metadataTmpl,
     title: metadataTmpl.title + " | Team | " + (fullname || memberId),
   };
 }
 
+async function getMemberMdxSrc(memberId: string) {
+  // get mdx if there is one
+  const mdxSrc = await readFile(
+    process.cwd() + `/src/app/team/[memberId]/${memberId}.mdx`,
+    "utf-8",
+  ).catch((e) => {
+    if (e.code == "ENOENT") {
+      return null; // if no file, just return null
+    } else {
+      throw e;
+    }
+  });
+
+  return mdxSrc;
+}
+
 export default async function MemberPage({ params: { memberId } }: Params) {
-  const member = await getMember(memberId);
+  const db = await Database.get();
+  const member = db.getMember(memberId);
+  const person = db.getPerson(member.personId);
+  const fullname = composeFullName(person);
+  const placeholder = composeHeadshotPlaceholder(person);
+  const pubs = member.selectedPubIds
+    ? db.getManyPublications(member.selectedPubIds)
+    : db.getAllPublicationsByPerson(person.id);
   const mdxSrc = await getMemberMdxSrc(memberId);
-  const pubs = await getPubsByPerson(
-    member.person!.id,
-    member.useSelectedPubs ? memberId : undefined,
-  );
 
   const {
     position,
@@ -72,9 +94,8 @@ export default async function MemberPage({ params: { memberId } }: Params) {
     instagram,
     youtube,
   } = member;
-  const { firstname, lastname, externalLink, avatar } = member.person!;
-  const fullname = composeFullName(member.person!);
-  const placeholder = composeHeadshotPlaceholder(member.person!);
+
+  const { headshot: avatar, externalLink } = person;
 
   return (
     <DefaultMain className="flex flex-col lg:flex-row gap-2 lg:gap-6">
@@ -256,10 +277,10 @@ export default async function MemberPage({ params: { memberId } }: Params) {
           {pubs.length > 0 && (
             <li>
               <Link
-                href={`#${member.useSelectedPubs ? "selected-" : ""}publications`}
+                href={`#${member.selectedPubIds ? "selected-" : ""}publications`}
               >
                 <FontAwesomeIcon icon={faBook} />{" "}
-                {member.useSelectedPubs ? "Selected" : ""} Publications
+                {member.selectedPubIds ? "Selected" : ""} Publications
               </Link>
             </li>
           )}
@@ -284,12 +305,12 @@ export default async function MemberPage({ params: { memberId } }: Params) {
               <div className="flex justify-between items-baseline">
                 <h2
                   className="mt-0"
-                  id={`#${member.useSelectedPubs ? "selected-" : ""}publications`}
+                  id={`#${member.selectedPubIds ? "selected-" : ""}publications`}
                 >
                   <FontAwesomeIcon icon={faBook} />{" "}
-                  {member.useSelectedPubs ? "Selected" : ""} Publications
+                  {member.selectedPubIds ? "Selected" : ""} Publications
                 </h2>
-                {member.useSelectedPubs && (
+                {member.selectedPubIds && (
                   <Link
                     className="btn btn-sm btn-ghost sm:text-xl text-lg"
                     href={`/pubs/${memberId}`}
@@ -300,7 +321,7 @@ export default async function MemberPage({ params: { memberId } }: Params) {
               </div>
             </DefaultMDX>
             <div className="pl-4">
-              <PubList pubs={pubs} highlightedPersonId={member.person!.id} />
+              <PubList pubs={pubs} highlightedPersonId={person.id} />
               <PubListFootnote />
             </div>
           </>

@@ -4,14 +4,14 @@ import { useState } from "react";
 import { useContext } from "react";
 
 import DataContext from "@/app/context";
-import { GalleryItemSpec } from "@/data/types";
+import { Photo } from "@/data/types";
 
 export default function GalleryItem({
   spec,
   setHighlight,
 }: Readonly<{
-  spec: GalleryItemSpec;
-  setHighlight: (highlight: GalleryItemSpec) => void;
+  spec: Photo;
+  setHighlight: (highlight: Photo) => void;
 }>) {
   const [isHovered, setIsHovered] = useState(false);
 

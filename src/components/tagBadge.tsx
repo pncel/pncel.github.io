@@ -1,7 +1,7 @@
 import { faMedal, faMicrochip } from "@fortawesome/free-solid-svg-icons";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { TagType, Tag } from "@/data/newtypes";
+import { TagType, Tag } from "@/data/types";
 import React from "react";
 config.autoAddCss = false;
 
