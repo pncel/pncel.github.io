@@ -9,11 +9,12 @@ import {
   Database as DatabaseType,
   PubAttachment,
   Icon,
+  Photo,
 } from "@/data/types";
-import { readFile } from "fs/promises";
+import { readFile, writeFile } from "fs/promises";
 import { DefinedError } from "ajv";
-import { parse } from "yaml";
-import { resolve } from "path";
+import { parse, stringify } from "yaml";
+import { createHash, Hash } from "crypto";
 
 const ajv = new Ajv();
 
@@ -28,6 +29,9 @@ type PubAttachmentJsonType = Omit<PubAttachment, "icon"> & {
 type PublicationJsonType = Omit<Publication, "tags" | "attachments"> & {
   tags?: TagJsonType[];
   attachments?: PubAttachmentJsonType[];
+};
+type MD5JsonType = {
+  [K in keyof DatabaseType]: string;
 };
 
 const personSchema: JTDSchemaType<Person[]> = {
@@ -116,41 +120,102 @@ const publicationSchema: JTDSchemaType<PublicationJsonType[]> = {
   },
 };
 
+const photoSchema: JTDSchemaType<Photo[]> = {
+  elements: {
+    properties: {
+      title: { type: "string" },
+      width: { type: "int32" },
+      height: { type: "int32" },
+      image: { type: "string" },
+      time: { type: "timestamp" },
+    },
+    optionalProperties: {
+      subtitle: { type: "string" },
+      thumbnail: { type: "string" },
+    },
+  },
+};
+
+const md5Schema: JTDSchemaType<MD5JsonType> = {
+  properties: {
+    persons: { type: "string" },
+    members: { type: "string" },
+    publications: { type: "string" },
+    photos: { type: "string" },
+  },
+};
+
 const validatePerson = ajv.compile(personSchema);
 const validateMember = ajv.compile(memberSchema);
 const validatePublication = ajv.compile(publicationSchema);
+const validatePhoto = ajv.compile(photoSchema);
+const validateMD5 = ajv.compile(md5Schema);
+
+async function validate<T>(
+  path: string,
+  jsonValidator: ValidateFunction<T>,
+  data: any,
+): Promise<boolean> {
+  if (!jsonValidator(data)) {
+    for (const err of jsonValidator.errors as DefinedError[]) {
+      console.error(
+        `${path}: ${err.keyword} | ${err.schemaPath} | ${err.instancePath} | ${err.message || ""}`,
+      );
+    }
+    await new Promise<void>((resolve) => {
+      process.stderr.write("", () => resolve());
+    });
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function hash(value: string): string {
+  const hash: Hash = createHash("md5");
+  hash.update(value);
+  return hash.digest("hex");
+}
 
 export default class Database extends Object {
+  public static warn_on_md5_mismatch: boolean = false;
+
   private static instance: Promise<Database>;
   private data: DatabaseType = {
     persons: [],
     members: new Map<string, Member>(),
     publications: [],
+    photos: [],
   };
+
+  private constructor() {
+    super();
+  }
 
   private static async loadJson<T, JT = T>(
     path: string,
     jsonValidator: ValidateFunction<JT[]>,
     postProcess: (data: JT) => T,
+    md5: string,
   ): Promise<T[]> {
-    const jsonData = parse(await readFile(path, "utf-8"));
-    if (!jsonValidator(jsonData)) {
-      for (const err of jsonValidator.errors as DefinedError[]) {
+    const raw = await readFile(path, "utf-8");
+    const raw_md5 = hash(raw);
+    if (raw_md5 !== md5) {
+      if (Database.warn_on_md5_mismatch) {
         console.error(
-          `${path}: ${err.keyword} | ${err.schemaPath} | ${err.instancePath} | ${err.message || ""}`,
+          `md5 checksum mismatch for ${path}: computed = ${raw_md5}; in-database = ${md5}`,
+        );
+      } else {
+        throw new Error(
+          `md5 checksum mismatch for ${path}: computed = ${raw_md5}; in-database = ${md5}`,
         );
       }
-      // TODO: more helpful error message
-      await new Promise<void>((resolve) => {
-        process.stderr.write("", () => resolve());
-      });
+    }
+    const jsonData = parse(await readFile(path, "utf-8"));
+    if (!(await validate<JT[]>(path, jsonValidator, jsonData))) {
       throw new Error(`Invalid JSON: ${path}`);
     }
     return jsonData.map(postProcess);
-  }
-
-  private constructor() {
-    super();
   }
 
   public static async get(): Promise<Database> {
@@ -160,41 +225,59 @@ export default class Database extends Object {
         // const databasePath = isClient ? "/database" : `${process.cwd()}/public/database`;
         const databasePath = `${process.cwd()}/public/database`;
 
+        // load checksum
+        const md5_path = `${databasePath}/md5.yaml`;
+        const md5_raw = parse(await readFile(md5_path, "utf-8"));
+        if (!(await validate(md5_path, validateMD5, md5_raw))) {
+          throw new Error(`Invalid md5.yaml`);
+        }
+        const md5 = md5_raw as MD5JsonType;
+
         // load databases in parallel
-        const [personArray, memberArray, publicationArray] = await Promise.all([
-          Database.loadJson<Person>(
-            `${databasePath}/persons.yaml`,
-            validatePerson,
-            (person) => person,
-          ),
-          Database.loadJson<Member, MemberJsonType>(
-            `${databasePath}/members.yaml`,
-            validateMember,
-            (member) => ({
-              ...member,
-              role: MemberRole[member.role],
-              whenJoined: new Date(member.whenJoined),
-              whenLeft: member.whenLeft && new Date(member.whenLeft),
-            }),
-          ),
-          Database.loadJson<Publication, PublicationJsonType>(
-            `${databasePath}/publications.yaml`,
-            validatePublication,
-            (publication) => ({
-              ...publication,
-              time: new Date(publication.time),
-              tags: publication.tags?.map((tag) => ({
-                ...tag,
-                type: TagType[tag.type],
-                icon: Icon[tag.icon || "default"],
-              })),
-              attachments: publication.attachments?.map((attachment) => ({
-                ...attachment,
-                icon: Icon[attachment.icon || "default"],
-              })),
-            }),
-          ),
-        ]);
+        const [personArray, memberArray, publicationArray, photos] =
+          await Promise.all([
+            Database.loadJson<Person>(
+              `${databasePath}/persons.yaml`,
+              validatePerson,
+              (person) => person,
+              md5.persons,
+            ),
+            Database.loadJson<Member, MemberJsonType>(
+              `${databasePath}/members.yaml`,
+              validateMember,
+              (member) => ({
+                ...member,
+                role: MemberRole[member.role],
+                whenJoined: new Date(member.whenJoined),
+                whenLeft: member.whenLeft && new Date(member.whenLeft),
+              }),
+              md5.members,
+            ),
+            Database.loadJson<Publication, PublicationJsonType>(
+              `${databasePath}/publications.yaml`,
+              validatePublication,
+              (publication) => ({
+                ...publication,
+                time: new Date(publication.time),
+                tags: publication.tags?.map((tag) => ({
+                  ...tag,
+                  type: TagType[tag.type],
+                  icon: Icon[tag.icon || "default"],
+                })),
+                attachments: publication.attachments?.map((attachment) => ({
+                  ...attachment,
+                  icon: Icon[attachment.icon || "default"],
+                })),
+              }),
+              md5.publications,
+            ),
+            Database.loadJson<Photo>(
+              `${databasePath}/photos.yaml`,
+              validatePhoto,
+              (photo) => ({ ...photo, time: new Date(photo.time) }),
+              md5.photos,
+            ),
+          ]);
 
         // construct id -> object map
         const persons = personArray.reduce((persons, person) => {
@@ -291,7 +374,7 @@ export default class Database extends Object {
           }
         });
 
-        instance.data = { persons, members, publications };
+        instance.data = { persons, members, publications, photos };
         resolve(instance);
       });
     }
@@ -375,5 +458,47 @@ export default class Database extends Object {
     return this.data.publications.filter(
       (p) => p && p?.authorIds.includes(personId),
     ) as Publication[];
+  }
+
+  public getAllPhotos(): Photo[] {
+    return this.data.photos;
+  }
+
+  public async updateDatabase() {
+    const databasePath = `${process.cwd()}/public/database`;
+
+    const [persons, members, publications, photos] = await Promise.all([
+      new Promise<string>((resolve) => {
+        const persons = stringify(
+          this.data.persons.filter((p) => p !== undefined),
+        );
+        writeFile(`${databasePath}/persons.yaml`, persons).then(() =>
+          resolve(hash(persons)),
+        );
+      }),
+      new Promise<string>((resolve) => {
+        const members = stringify(Array.from(this.data.members.values()));
+        writeFile(`${databasePath}/members.yaml`, members).then(() =>
+          resolve(hash(members)),
+        );
+      }),
+      new Promise<string>((resolve) => {
+        const publications = stringify(
+          this.data.publications.filter((p) => p !== undefined),
+        );
+        writeFile(`${databasePath}/publications.yaml`, publications).then(() =>
+          resolve(hash(publications)),
+        );
+      }),
+      new Promise<string>((resolve) => {
+        const photos = stringify(this.data.photos);
+        writeFile(`${databasePath}/photos.yaml`, publications).then(() =>
+          resolve(hash(photos)),
+        );
+      }),
+    ]);
+
+    let md5: MD5JsonType = { persons, members, publications, photos };
+    await writeFile(`${databasePath}/md5.yaml`, stringify(md5));
   }
 }

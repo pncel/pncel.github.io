@@ -2,14 +2,13 @@ import sharp from "sharp";
 import { readdir, readFile, writeFile } from "fs/promises";
 import { parse, stringify } from "yaml";
 
+const dbpath = `${process.cwd()}/public/database/photos.yaml`;
 const filenames = (
   await readdir(`${process.cwd()}/public/photos`, { withFileTypes: true })
 )
   .filter((file) => file.isFile())
   .map((file) => file.name);
-const old_specs = parse(
-  await readFile(`${process.cwd()}/src/app/gallery/photos.yaml`, "utf-8"),
-);
+const old_specs = parse(await readFile(dbpath, "utf-8"));
 let specs_by_relpath = new Map(old_specs.map((spec) => [spec.image, spec]));
 
 for (const filename of filenames) {
@@ -44,7 +43,4 @@ for (const filename of filenames) {
 }
 
 const specs = Array.from(specs_by_relpath.values());
-await writeFile(
-  `${process.cwd()}/src/app/gallery/photos.yaml`,
-  stringify(specs, { lineWidth: -1 }),
-);
+await writeFile(dbpath, stringify(specs, { lineWidth: -1 }));

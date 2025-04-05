@@ -91,12 +91,6 @@ export type Publication = {
   attachments?: PubAttachment[];
 };
 
-export type Database = {
-  persons: (Person | undefined)[]; // by ID. Cannot guarantee continuity of IDs
-  members: Map<string, Member>; // by ID
-  publications: (Publication | undefined)[]; // by ID. Cannot guarantee continuity of IDs
-};
-
 export type Photo = {
   title: string;
   subtitle?: string;
@@ -105,4 +99,11 @@ export type Photo = {
   image: string;
   thumbnail?: string;
   time: Date;
+};
+
+export type Database = {
+  persons: (Person | undefined)[]; // by ID. Cannot guarantee continuity of IDs
+  members: Map<string, Member>; // by ID
+  publications: (Publication | undefined)[]; // by ID. Cannot guarantee continuity of IDs
+  photos: Photo[];
 };
