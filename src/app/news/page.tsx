@@ -1,4 +1,4 @@
-import { metadataTmpl } from "@/data/metadata";
+import { metadataTmpl } from "@/data/utils";
 import DefaultMain from "@/layouts/defaultMain";
 import DefaultMDX from "@/layouts/defaultMdx";
 

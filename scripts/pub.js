@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import Database from "./.database/database.js";
 import commandLineUsage from "command-line-usage";
 import commandLineArgs from "command-line-args";
 import { Cite } from "@citation-js/core";
@@ -34,9 +34,8 @@ async function askQuestion(question) {
 
 /* ==============================================================================
 == Utilities: db access =========================================================
-============================================================================== */
-const prisma = new PrismaClient();
-var allPersons = null; // lazy loading and updated when needed
+============================================================================= */
+const db = await Database.default.get();
 
 function sanitizeDOI(doi) {
   if (doi === null || doi === undefined) {
@@ -51,15 +50,8 @@ function sanitizeDOI(doi) {
 }
 
 async function fuzzySearchByName(cite_author) {
-  if (allPersons === null) {
-    allPersons = prisma.person.findMany({
-      include: {
-        member: true,
-      },
-    });
-  }
-
-  const fuse_bylastname = new Fuse(await allPersons, {
+  const db = await Database.get();
+  const fuse_bylastname = new Fuse(db.getManyPersons(), {
     keys: ["lastname"],
     distance: 1,
     threshold: 0.05, // stricter than default

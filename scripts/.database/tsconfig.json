@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": ".",
+    "module": "CommonJS",
+    "allowJs": true,
+    "checkJs": false,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "skipLibCheck": true
+  },
+  "include": ["../../src/data/types.ts", "../../src/data/database.ts"],
+  "exclude": ["node_modules"]
+}

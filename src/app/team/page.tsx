@@ -1,7 +1,7 @@
 import DefaultMain from "@/layouts/defaultMain";
 import DefaultMDX from "@/layouts/defaultMdx";
 import MemberCard from "./memberCard";
-import { metadataTmpl } from "@/data/metadata";
+import { metadataTmpl } from "@/data/utils";
 import Database from "@/data/database";
 import { Member, MemberRole } from "@/data/types";
 import { composeFullName } from "@/data/utils";

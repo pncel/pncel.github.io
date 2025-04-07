@@ -1,6 +1,6 @@
 import Link from "next/link";
 import PubList, { PubListFootnote } from "@/components/pubList";
-import { metadataTmpl } from "@/data/metadata";
+import { metadataTmpl } from "@/data/utils";
 import { Publication } from "@/data/types";
 import DefaultMDX from "@/layouts/defaultMdx";
 import DefaultMain from "@/layouts/defaultMain";

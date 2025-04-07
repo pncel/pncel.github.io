@@ -1,7 +1,7 @@
 import { readdir, readFile } from "fs/promises";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { useMDXComponents } from "@/mdx-components";
-import { metadataTmpl } from "@/data/metadata";
+import { metadataTmpl } from "@/data/utils";
 import DefaultMain from "@/layouts/defaultMain";
 import DefaultMDX from "@/layouts/defaultMdx";
 

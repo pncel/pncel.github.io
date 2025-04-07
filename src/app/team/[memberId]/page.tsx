@@ -2,7 +2,7 @@ import Image from "next/image";
 import { readFile } from "fs/promises";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { useMDXComponents } from "@/mdx-components";
-import { metadataTmpl } from "@/data/metadata";
+import { metadataTmpl } from "@/data/utils";
 import { composeFullName, composeHeadshotPlaceholder } from "@/data/utils";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

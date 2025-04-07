@@ -1,5 +1,5 @@
-import { readdir, readFile } from "fs/promises";
-import { metadataTmpl } from "@/data/metadata";
+import { readdir } from "fs/promises";
+import { metadataTmpl } from "@/data/utils";
 import DefaultMDX from "@/layouts/defaultMdx";
 import DefaultMain from "@/layouts/defaultMain";
 
