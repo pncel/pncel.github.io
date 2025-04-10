@@ -1,0 +1,1982 @@
+name: db
+instanceToken: kyvjwslufo
+collections:
+  - name: persons
+    schemaHash: d95d8f064c3a3fc8b0e5e1f790a29a16a80ebd3d0c2607b1746697d8e163608e
+    docs:
+      - id: "61"
+        firstname: Abhishek
+        lastname: Kumar
+        headshot: /avatar/abhishek.jpg
+        member:
+          role: ms
+          whenJoined: 2024-09-26
+          position: M.S. Student
+          email: akumar08@uw.edu
+          links: []
+        _meta:
+          lwt: 1744269749861.06
+        _deleted: false
+      - id: "23"
+        firstname: Adi
+        lastname: Fuchs
+        _meta:
+          lwt: 1744269749859.11
+        _deleted: false
+      - id: "121"
+        firstname: Adwaith
+        lastname: R
+        middlename: D
+        headshot: /avatar/adwaith.jpg
+        member:
+          role: ms
+          whenJoined: 2025-03-31
+          position: M.S. Student
+          email: adr29@uw.edu
+          links: []
+        _meta:
+          lwt: 1744269749863.14
+        _deleted: false
+      - id: "14"
+        firstname: Alexey
+        lastname: Lavrov
+        _meta:
+          lwt: 1744269749859.02
+        _deleted: false
+      - id: "66"
+        firstname: Andrew
+        lastname: Pan
+        headshot: /avatar/andrewpan.png
+        member:
+          role: ug
+          whenJoined: 2024-10-31
+          position: Undergrad
+          email: andrep24@uw.edu
+          links: []
+        _meta:
+          lwt: 1744269749861.1
+        _deleted: false
+      - id: "1"
+        firstname: Ang
+        lastname: Li
+        headshot: /avatar/ang.jpg
+        member:
+          role: pi
+          whenJoined: 2023-09-01
+          position: Assistant Professor
+          email: angliz@uw.edu
+          office: ECE 414
+          links:
+            - icon: gscholar
+              link: https://scholar.google.com/citations?user=gOD_k4wAAAAJ&hl=en
+            - icon: orcid
+              link: https://orcid.org/0000-0002-7458-063X
+            - icon: github
+              link: https://github.com/angl-dev
+            - icon: linkedin
+              link: https://www.linkedin.com/in/ang-li-836ab242/
+            - icon: twitter
+              link: https://twitter.com/ang_pncel
+          selectedPubIds:
+            - 8
+            - 9
+            - 10
+            - 11
+            - 12
+            - 16
+        _meta:
+          lwt: 1744269749855.03
+        _deleted: false
+      - id: "91"
+        firstname: Arvind
+        lastname: Krishnamurthy
+        externalLink: https://sites.google.com/cs.washington.edu/arvind
+        _meta:
+          lwt: 1744269749862.14
+        _deleted: false
+      - id: "36"
+        firstname: August
+        lastname: Ning
+        externalLink: https://augustning.com/
+        _meta:
+          lwt: 1744269749860.03
+        _deleted: false
+      - id: "123"
+        firstname: Ayush
+        lastname: Kulkarni
+        headshot: /avatar/ayush.jpg
+        member:
+          role: ug
+          whenJoined: 2025-03-31
+          position: Undergrad
+          email: ayushk22@uw.edu
+          links: []
+        _meta:
+          lwt: 1744269749863.16
+        _deleted: false
+      - id: "92"
+        firstname: Baris
+        lastname: Kasikci
+        externalLink: https://homes.cs.washington.edu/~baris/
+        _meta:
+          lwt: 1744269749862.15
+        _deleted: false
+      - id: "96"
+        firstname: Bowei
+        lastname: Guo
+        _meta:
+          lwt: 1744269749862.19
+        _deleted: false
+      - id: "95"
+        firstname: Chaojian
+        lastname: Li
+        _meta:
+          lwt: 1744269749862.18
+        _deleted: false
+      - id: "99"
+        firstname: Cheng
+        lastname: Wan
+        _meta:
+          lwt: 1744269749862.22
+        _deleted: false
+      - id: "50"
+        firstname: Christopher
+        lastname: Batten
+        externalLink: https://www.csl.cornell.edu/~cbatten/
+        _meta:
+          lwt: 1744269749860.17
+        _deleted: false
+      - id: "109"
+        firstname: Chunhui
+        lastname: Ye
+        _meta:
+          lwt: 1744269749863.02
+        _deleted: false
+      - id: "53"
+        firstname: Darren
+        lastname: Lu
+        headshot: /avatar/darren.jpg
+        member:
+          role: phd
+          whenJoined: 2024-08-31
+          position: Ph.D. Student
+          email: angl7@uw.edu
+          office: ECE 409
+          links: []
+        _meta:
+          lwt: 1744269749860.2
+        _deleted: false
+      - id: "27"
+        firstname: David
+        lastname: Wentzlaff
+        externalLink: https://www.princeton.edu/~wentzlaf/
+        _meta:
+          lwt: 1744269749859.15
+        _deleted: false
+      - id: "38"
+        firstname: Davide
+        lastname: Giri
+        _meta:
+          lwt: 1744269749860.05
+        _deleted: false
+      - id: "80"
+        firstname: Dayou
+        lastname: Du
+        _meta:
+          lwt: 1744269749862.03
+        _deleted: false
+      - id: "59"
+        firstname: Duy
+        lastname: Vuong
+        headshot: /avatar/duy.jpg
+        member:
+          role: ms
+          whenJoined: 2024-05-01
+          position: M.S. Student
+          email: duyv@uw.edu
+          links: []
+        _meta:
+          lwt: 1744269749861.04
+        _deleted: false
+      - id: "49"
+        firstname: Eric
+        lastname: Tang
+        externalLink: https://erictang25.github.io/
+        _meta:
+          lwt: 1744269749860.16
+        _deleted: false
+      - id: "77"
+        firstname: Fan
+        lastname: Yang
+        _meta:
+          lwt: 1744269749861.21
+        _deleted: false
+      - id: "29"
+        firstname: Fei
+        lastname: Gao
+        externalLink: https://fei-g.github.io/
+        _meta:
+          lwt: 1744269749859.17
+        _deleted: false
+      - id: "31"
+        firstname: Florian
+        lastname: Zaruba
+        _meta:
+          lwt: 1744269749859.19
+        _deleted: false
+      - id: "41"
+        firstname: Gabriele
+        lastname: Tombesi
+        externalLink: https://www.cs.columbia.edu/~gtombesi/
+        _meta:
+          lwt: 1744269749860.08
+        _deleted: false
+      - id: "34"
+        firstname: Georgios
+        lastname: Tziantzioulis
+        _meta:
+          lwt: 1744269749860.01
+        _deleted: false
+      - id: "30"
+        firstname: Grigory
+        lastname: Chirkov
+        _meta:
+          lwt: 1744269749859.18
+        _deleted: false
+      - id: "9"
+        firstname: Guangyu
+        lastname: Sun
+        _meta:
+          lwt: 1744269749858.05
+        _deleted: false
+      - id: "84"
+        firstname: Hayden Kwok-Hay
+        lastname: So
+        _meta:
+          lwt: 1744269749862.07
+        _deleted: false
+      - id: "55"
+        firstname: Hongzheng
+        lastname: Chen
+        _meta:
+          lwt: 1744269749860.22
+        _deleted: false
+      - id: "106"
+        firstname: Huawen
+        lastname: Liang
+        _meta:
+          lwt: 1744269749862.29
+        _deleted: false
+      - id: "11"
+        firstname: Huazhong
+        lastname: Yang
+        _meta:
+          lwt: 1744269749858.07
+        _deleted: false
+      - id: "54"
+        firstname: Jaebyeok
+        lastname: Yoon
+        _meta:
+          lwt: 1744269749860.21
+        _deleted: false
+      - id: "71"
+        firstname: Jianyu
+        lastname: Wei
+        _meta:
+          lwt: 1744269749861.15
+        _deleted: false
+      - id: "82"
+        firstname: Jiaxing
+        lastname: Qi
+        _meta:
+          lwt: 1744269749862.05
+        _deleted: false
+      - id: "2"
+        firstname: Jiayi
+        lastname: Wang
+        headshot: /avatar/Jiayi.jpg
+        member:
+          role: phd
+          whenJoined: 2023-10-31
+          position: Ph.D. Candidate
+          email: jwang710@uw.edu
+          office: ECE 409
+          links:
+            - icon: github
+              link: https://github.com/jiayi-wang98
+            - icon: linkedin
+              link: https://www.linkedin.com/in/jiayi-wang-3b60a7209/
+        _meta:
+          lwt: 1744269749857.01
+        _deleted: false
+      - id: "76"
+        firstname: Jilong
+        lastname: Xue
+        _meta:
+          lwt: 1744269749861.2
+        _deleted: false
+      - id: "3"
+        firstname: Jingqun
+        lastname: Zhang
+        headshot: /avatar/jingqun.jpg
+        member:
+          role: phd
+          whenJoined: 2024-08-31
+          position: Ph.D. Student
+          email: jq86@uw.edu
+          office: ECE 409
+          links: []
+        _meta:
+          lwt: 1744269749857.02
+        _deleted: false
+      - id: "35"
+        firstname: Jinzheng
+        lastname: Tu
+        _meta:
+          lwt: 1744269749860.02
+        _deleted: false
+      - id: "13"
+        firstname: Jonathan
+        lastname: Balkind
+        externalLink: https://jbalkind.github.io/
+        _meta:
+          lwt: 1744269749859.01
+        _deleted: false
+      - id: "39"
+        firstname: Joseph
+        lastname: Zuckerman
+        externalLink: http://www.cs.columbia.edu/~jzuck/
+        _meta:
+          lwt: 1744269749860.06
+        _deleted: false
+      - id: "120"
+        firstname: Jovan
+        lastname: Koledin
+        headshot: /avatar/jovan.jpg
+        member:
+          role: ms
+          whenJoined: 2025-03-31
+          position: M.S. Student
+          email: jovank@uw.edu
+          links: []
+        _meta:
+          lwt: 1744269749863.13
+        _deleted: false
+      - id: "83"
+        firstname: Junjie
+        lastname: Lai
+        _meta:
+          lwt: 1744269749862.06
+        _deleted: false
+      - id: "122"
+        firstname: Juwon
+        lastname: Jun
+        headshot: /avatar/juwon.jpg
+        member:
+          role: ug
+          whenJoined: 2025-03-31
+          position: Undergrad
+          email: jami3jun@uw.edu
+          links: []
+        _meta:
+          lwt: 1744269749863.15
+        _deleted: false
+      - id: "40"
+        firstname: Kaifeng
+        lastname: Xu
+        _meta:
+          lwt: 1744269749860.07
+        _deleted: false
+      - id: "85"
+        firstname: Kan
+        lastname: Zhu
+        _meta:
+          lwt: 1744269749862.08
+        _deleted: false
+      - id: "19"
+        firstname: Katie
+        lastname: Lim
+        externalLink: https://homes.cs.washington.edu/~katielim/
+        _meta:
+          lwt: 1744269749859.07
+        _deleted: false
+      - id: "32"
+        firstname: Kunal
+        lastname: Gulati
+        _meta:
+          lwt: 1744269749859.2
+        _deleted: false
+      - id: "70"
+        firstname: Lei
+        lastname: Wang
+        _meta:
+          lwt: 1744269749861.14
+        _deleted: false
+      - id: "116"
+        firstname: Letian
+        lastname: Zhao
+        _meta:
+          lwt: 1744269749863.09
+        _deleted: false
+      - id: "90"
+        firstname: Liangyu
+        lastname: Zhao
+        _meta:
+          lwt: 1744269749862.13
+        _deleted: false
+      - id: "115"
+        firstname: Linfeng
+        lastname: Tao
+        _meta:
+          lwt: 1744269749863.08
+        _deleted: false
+      - id: "73"
+        firstname: Lingxiao
+        lastname: Ma
+        _meta:
+          lwt: 1744269749861.17
+        _deleted: false
+      - id: "33"
+        firstname: Luca
+        lastname: Benini
+        _meta:
+          lwt: 1744269749859.21
+        _deleted: false
+      - id: "43"
+        firstname: Luca
+        lastname: Carloni
+        externalLink: https://www.cs.columbia.edu/~luca/
+        _meta:
+          lwt: 1744269749860.1
+        _deleted: false
+      - id: "78"
+        firstname: Mao
+        lastname: Yang
+        _meta:
+          lwt: 1744269749862.01
+        _deleted: false
+      - id: "37"
+        firstname: Marcelo
+        lastname: Orenes-Vera
+        externalLink: https://www.cs.princeton.edu/~movera/
+        _meta:
+          lwt: 1744269749860.04
+        _deleted: false
+      - id: "42"
+        firstname: Margaret
+        lastname: Martonosi
+        externalLink: https://www.princeton.edu/~mrm/
+        _meta:
+          lwt: 1744269749860.09
+        _deleted: false
+      - id: "26"
+        firstname: Matthew
+        lastname: Matl
+        _meta:
+          lwt: 1744269749859.14
+        _deleted: false
+      - id: "67"
+        firstname: Mengjia
+        lastname: Dai
+        _meta:
+          lwt: 1744269749861.11
+        _deleted: false
+      - id: "15"
+        firstname: Michael
+        lastname: McKeown
+        _meta:
+          lwt: 1744269749859.03
+        _deleted: false
+      - id: "28"
+        firstname: Michael
+        lastname: Schaffner
+        _meta:
+          lwt: 1744269749859.16
+        _deleted: false
+      - id: "18"
+        firstname: Mohammad
+        lastname: Shahrad
+        externalLink: https://mshahrad.github.io/
+        _meta:
+          lwt: 1744269749859.06
+        _deleted: false
+      - id: "46"
+        firstname: Moyang
+        lastname: Wang
+        _meta:
+          lwt: 1744269749860.13
+        _deleted: false
+      - id: "74"
+        firstname: Naifeng
+        lastname: Jing
+        _meta:
+          lwt: 1744269749861.18
+        _deleted: false
+      - id: "56"
+        firstname: Niansong
+        lastname: Zhang
+        _meta:
+          lwt: 1744269749861.01
+        _deleted: false
+      - id: "58"
+        firstname: Oliver
+        lastname: Huang
+        headshot: /avatar/oliver.jpg
+        member:
+          role: ms
+          whenJoined: 2024-05-01
+          position: M.S. Student
+          email: ohlbur@uw.edu
+          office: ECE 409
+          links: []
+        _meta:
+          lwt: 1744269749861.03
+        _deleted: false
+      - id: "22"
+        firstname: Paul
+        lastname: Jackson
+        externalLink: https://www.princeton.edu/~pjj/
+        _meta:
+          lwt: 1744269749859.1
+        _deleted: false
+      - id: "81"
+        firstname: Peiyuan
+        lastname: Zhou
+        _meta:
+          lwt: 1744269749862.04
+        _deleted: false
+      - id: "8"
+        firstname: Peng
+        lastname: Li
+        _meta:
+          lwt: 1744269749858.04
+        _deleted: false
+      - id: "62"
+        firstname: Prithvi
+        lastname: Krishnaswamy
+        headshot: /avatar/prithvi.jpg
+        member:
+          role: ug
+          whenJoined: 2024-09-26
+          position: Undergrad
+          email: krishpri@uw.edu
+          links: []
+        _meta:
+          lwt: 1744269749861.07
+        _deleted: false
+      - id: "87"
+        firstname: Qinyu
+        lastname: Xu
+        _meta:
+          lwt: 1744269749862.1
+        _deleted: false
+      - id: "103"
+        firstname: Qizhe
+        lastname: Wu
+        _meta:
+          lwt: 1744269749862.26
+        _deleted: false
+      - id: "89"
+        firstname: Rohan
+        lastname: Kadekodi
+        _meta:
+          lwt: 1744269749862.12
+        _deleted: false
+      - id: "65"
+        firstname: Ruby
+        lastname: Lee
+        headshot: /avatar/rubylee.jpg
+        member:
+          role: ug
+          whenJoined: 2024-10-31
+          position: Undergrad
+          email: rubywtl@uw.edu
+          links: []
+        _meta:
+          lwt: 1744269749861.09
+        _deleted: false
+      - id: "110"
+        firstname: Rucheng
+        lastname: Dai
+        _meta:
+          lwt: 1744269749863.03
+        _deleted: false
+      - id: "24"
+        firstname: Samuel
+        lastname: Payne
+        _meta:
+          lwt: 1744269749859.12
+        _deleted: false
+      - id: "47"
+        firstname: Shady
+        lastname: Agwa
+        _meta:
+          lwt: 1744269749860.14
+        _deleted: false
+      - id: "102"
+        firstname: Shang
+        lastname: Wu
+        _meta:
+          lwt: 1744269749862.25
+        _deleted: false
+      - id: "57"
+        firstname: Shaojie
+        lastname: Xiang
+        _meta:
+          lwt: 1744269749861.02
+        _deleted: false
+      - id: "72"
+        firstname: Shijie
+        lastname: Cao
+        _meta:
+          lwt: 1744269749861.16
+        _deleted: false
+      - id: "5"
+        firstname: Shuangchen
+        lastname: Li
+        _meta:
+          lwt: 1744269749858.01
+        _deleted: false
+      - id: "63"
+        firstname: Shwet
+        lastname: Chitnis
+        headshot: /avatar/shwet.jpg
+        member:
+          role: ms
+          whenJoined: 2024-09-26
+          position: M.S. Student
+          email: s2chitni@uw.edu
+          links: []
+        _meta:
+          lwt: 1744269749861.08
+        _deleted: false
+      - id: "93"
+        firstname: Sixu
+        lastname: Li
+        _meta:
+          lwt: 1744269749862.16
+        _deleted: false
+      - id: "86"
+        firstname: Tian
+        lastname: Tang
+        _meta:
+          lwt: 1744269749862.09
+        _deleted: false
+      - id: "75"
+        firstname: Ting
+        lastname: Cao
+        _meta:
+          lwt: 1744269749861.19
+        _deleted: false
+      - id: "21"
+        firstname: Ting-Jung
+        lastname: Chang
+        externalLink: https://tingjung.github.io/
+        _meta:
+          lwt: 1744269749859.09
+        _deleted: false
+      - id: "17"
+        firstname: Tri
+        lastname: Nguyen
+        _meta:
+          lwt: 1744269749859.05
+        _deleted: false
+      - id: "44"
+        firstname: Tuan
+        lastname: Ta
+        externalLink: https://tuanqta.net/
+        _meta:
+          lwt: 1744269749860.11
+        _deleted: false
+      - id: "52"
+        firstname: Tyler
+        lastname: Sorensen
+        externalLink: https://users.soe.ucsc.edu/~tsorensen/
+        _meta:
+          lwt: 1744269749860.19
+        _deleted: false
+      - id: "118"
+        firstname: Wei
+        lastname: Yuan
+        _meta:
+          lwt: 1744269749863.11
+        _deleted: false
+      - id: "119"
+        firstname: Wei
+        lastname: Wu
+        _meta:
+          lwt: 1744269749863.12
+        _deleted: false
+      - id: "97"
+        firstname: Wenbo
+        lastname: Zhu
+        _meta:
+          lwt: 1744269749862.2
+        _deleted: false
+      - id: "107"
+        firstname: Xi
+        lastname: Jin
+        _meta:
+          lwt: 1744269749862.3
+        _deleted: false
+      - id: "25"
+        firstname: Xiaohua
+        lastname: Liang
+        _meta:
+          lwt: 1744269749859.13
+        _deleted: false
+      - id: "105"
+        firstname: Xiaotian
+        lastname: Wang
+        _meta:
+          lwt: 1744269749862.28
+        _deleted: false
+      - id: "112"
+        firstname: Xiaoyu
+        lastname: Sun
+        _meta:
+          lwt: 1744269749863.05
+        _deleted: false
+      - id: "48"
+        firstname: Xiaoyu
+        lastname: Yan
+        _meta:
+          lwt: 1744269749860.15
+        _deleted: false
+      - id: "94"
+        firstname: Yang
+        lastname: Zhao
+        _meta:
+          lwt: 1744269749862.17
+        _deleted: false
+      - id: "101"
+        firstname: Yang Katie
+        lastname: Zhao
+        _meta:
+          lwt: 1744269749862.24
+        _deleted: false
+      - id: "45"
+        firstname: Yanghui
+        lastname: Ou
+        _meta:
+          lwt: 1744269749860.12
+        _deleted: false
+      - id: "20"
+        firstname: Yanqi
+        lastname: Zhou
+        externalLink: https://zhouyanqi.github.io/
+        _meta:
+          lwt: 1744269749859.08
+        _deleted: false
+      - id: "51"
+        firstname: Yanwen
+        lastname: Xu
+        externalLink: https://xuyanwen2012.github.io/
+        _meta:
+          lwt: 1744269749860.18
+        _deleted: false
+      - id: "16"
+        firstname: Yaosheng
+        lastname: Fu
+        _meta:
+          lwt: 1744269749859.04
+        _deleted: false
+      - id: "88"
+        firstname: Yile
+        lastname: Gu
+        _meta:
+          lwt: 1744269749862.11
+        _deleted: false
+      - id: "100"
+        firstname: Yingyan
+        lastname: Lin
+        goby: Celine
+        externalLink: https://eiclab.scs.gatech.edu/pages/team.html#PI
+        _meta:
+          lwt: 1744269749862.23
+        _deleted: false
+      - id: "79"
+        firstname: Yizhao
+        lastname: Gao
+        _meta:
+          lwt: 1744269749862.02
+        _deleted: false
+      - id: "7"
+        firstname: Yongpan
+        lastname: Liu
+        _meta:
+          lwt: 1744269749858.03
+        _deleted: false
+      - id: "10"
+        firstname: Yu
+        lastname: Wang
+        _meta:
+          lwt: 1744269749858.06
+        _deleted: false
+      - id: "12"
+        firstname: Yuan
+        lastname: Xie
+        _meta:
+          lwt: 1744269749858.08
+        _deleted: false
+      - id: "6"
+        firstname: Yuan
+        lastname: Zhe
+        _meta:
+          lwt: 1744269749858.02
+        _deleted: false
+      - id: "104"
+        firstname: Yuchen
+        lastname: Gui
+        _meta:
+          lwt: 1744269749862.27
+        _deleted: false
+      - id: "60"
+        firstname: Yung-Jen
+        lastname: Cheng
+        headshot: /avatar/yungjen.jpg
+        member:
+          role: ms
+          whenJoined: 2024-09-26
+          position: M.S. Student
+          email: cyungjen@uw.edu
+          links: []
+        _meta:
+          lwt: 1744269749861.05
+        _deleted: false
+      - id: "113"
+        firstname: Zengming
+        lastname: Zhang
+        _meta:
+          lwt: 1744269749863.06
+        _deleted: false
+      - id: "114"
+        firstname: Zerong
+        lastname: He
+        _meta:
+          lwt: 1744269749863.07
+        _deleted: false
+      - id: "117"
+        firstname: Zhaoxi
+        lastname: Zeng
+        _meta:
+          lwt: 1744269749863.1
+        _deleted: false
+      - id: "108"
+        firstname: Zhengyu
+        lastname: Han
+        _meta:
+          lwt: 1744269749863.01
+        _deleted: false
+      - id: "4"
+        firstname: Zhichen
+        lastname: Zeng
+        headshot: /avatar/zhichen.jpg
+        externalLink: https://zhichenzzz.github.io/
+        member:
+          role: phd
+          whenJoined: 2024-08-31
+          position: Ph.D. Student
+          email: zczeng@uw.edu
+          office: ECE 409
+          links:
+            - icon: gscholar
+              link: https://scholar.google.com/citations?user=Q5W2LrcAAAAJ&hl=en
+            - icon: orcid
+              link: https://orcid.org/0009-0005-0023-2367
+            - icon: github
+              link: https://github.com/Zhichenzzz
+            - icon: linkedin
+              link: https://www.linkedin.com/in/zhichen-zeng/
+          selectedPubIds:
+            - 17
+            - 18
+            - 19
+            - 20
+            - 23
+            - 24
+            - 26
+        _meta:
+          lwt: 1744269749857.03
+        _deleted: false
+      - id: "98"
+        firstname: Zhifan
+        lastname: Ye
+        _meta:
+          lwt: 1744269749862.21
+        _deleted: false
+      - id: "68"
+        firstname: Zhiru
+        lastname: Zhang
+        externalLink: https://www.csl.cornell.edu/~zhiruz/
+        _meta:
+          lwt: 1744269749861.12
+        _deleted: false
+      - id: "69"
+        firstname: Zhiwen
+        lastname: Mo
+        _meta:
+          lwt: 1744269749861.13
+        _deleted: false
+      - id: "111"
+        firstname: Zhongping
+        lastname: Wang
+        _meta:
+          lwt: 1744269749863.04
+        _deleted: false
+  - name: publications
+    schemaHash: 80384bbee358b3d696bee3daba5db8a2b30f59662c39e8fdc302464af7c538b2
+    docs:
+      - id: "1"
+        title: Nonvolatile Memory Allocation and Hierarchy Optimization for High-Level
+          Synthesis
+        authorIds:
+          - 5
+          - 1
+          - 7
+          - 12
+          - 11
+        time: 2015-01-01
+        booktitle: The 20th Asia and South Pacific Design Automation Conference
+        doi: 10.1109/ASPDAC.2015.7058999
+        bibtex: >+
+          @inproceedings{Li2015Nonvolatile,
+          	author = {Li, Shuangchen and {Ang Li} and Liu, Yongpan and Xie, Yuan and {Huazhong Yang}},
+          	booktitle = {The 20th {Asia} and {South} {Pacific} {Design} {Automation} {Conference}},
+          	doi = {10.1109/aspdac.2015.7058999},
+          	year = {2015},
+          	month = {1},
+          	pages = {166--171},
+          	organization = {IEEE},
+          	title = {Nonvolatile memory allocation and hierarchy optimization for high-level synthesis},
+          	url = {http://dx.doi.org/10.1109/ASPDAC.2015.7058999},
+          }
+
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: ASP-DAC
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749863.17
+        _deleted: false
+      - id: "10"
+        title: "Duet: Creating Harmony between Processors and Embedded FPGAs"
+        authorIds:
+          - 1
+          - 36
+          - 27
+        time: 2023-01-31
+        booktitle: 2023 IEEE International Symposium on High-Performance Computer
+          Architecture
+        doi: 10.1109/HPCA56546.2023.10070989
+        bibtex: >+
+          @inproceedings{Li2023Duet,
+          	author = {Li, Ang and Ning, August and Wentzlaff, David},
+          	booktitle = {2023 {IEEE} {International} {Symposium} on {High}-{Performance} {Computer} {Architecture} ({HPCA})},
+          	doi = {10.1109/hpca56546.2023.10070989},
+          	year = {2023},
+          	month = {2},
+          	pages = {745--758},
+          	organization = {IEEE},
+          	title = {Duet: Creating {Harmony} between {Processors} and {Embedded} {FPGAs}},
+          	url = {http://dx.doi.org/10.1109/HPCA56546.2023.10070989},
+          }
+
+        arxivDoi: 10.48550/arXiv.2301.02785
+        arxivBibtex: >+
+          @article{Li2023Duet,
+          	author = {Li, Ang and Ning, August and Wentzlaff, David},
+          	doi = {10.48550/ARXIV.2301.02785},
+          	year = {2023},
+          	publisher = {arXiv},
+          	title = {Duet: Creating {Harmony} between {Processors} and {Embedded} {FPGAs}},
+          	url = {https://arxiv.org/abs/2301.02785},
+          }
+
+        authorsCopy: /pdfs/hpca23.pdf
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: HPCA
+            icon: link
+          - type: award
+            label: Open-Source
+            icon: link
+        attachments:
+          - label: GitHub
+            link: https://github.com/PrincetonUniversity/Duet
+            icon: github
+        _meta:
+          lwt: 1744269749865.06
+        _deleted: false
+      - id: "11"
+        title: "DECADES: A 67mm<sup>2</sup>, 1.46TOPS, 55 Giga Cache-Coherent 64-bit
+          RISC-V Instructions per second, Heterogeneous Manycore SoC with 109
+          Tiles including Accelerators, Intelligent Storage, and eFPGA in 12nm
+          FinFET"
+        authorIds:
+          - 29
+          - 21
+          - 1
+          - 37
+          - 38
+          - 22
+          - 36
+          - 34
+          - 39
+          - 35
+          - 40
+          - 30
+          - 41
+          - 13
+          - 42
+          - 43
+          - 27
+        time: 2023-04-01
+        booktitle: 2023 IEEE Custom Integrated Circuits Conference
+        doi: 10.1109/CICC57935.2023.10121257
+        bibtex: >+
+          @inproceedings{Gao2023DECADES,
+          	author = {Gao, Fei and Chang, Ting-Jung and Li, Ang and Orenes-Vera, Marcelo and Giri, Davide and Jackson, Paul J. and Ning, August and Tziantzioulis, Georgios and Zuckerman, Joseph and Tu, Jinzheng and Xu, Kaifeng and Chirkov, Grigory and Tombesi, Gabriele and Balkind, Jonathan and Martonosi, Margaret and Carloni, Luca and Wentzlaff, David},
+          	booktitle = {2023 {IEEE} {Custom} {Integrated} {Circuits} {Conference} ({CICC})},
+          	doi = {10.1109/cicc57935.2023.10121257},
+          	year = {2023},
+          	month = {4},
+          	pages = {1--2},
+          	organization = {IEEE},
+          	title = {DECADES: A 67mm\textsuperscript{2}, 1.46TOPS, 55 {Giga} {Cache}-{Coherent} 64-bit {RISC}-{V} {Instructions} per second, {Heterogeneous} {Manycore} {SoC} with 109 {Tiles} including {Accelerators}, {Intelligent} {Storage}, and {eFPGA} in 12nm {FinFET}},
+          	url = {http://dx.doi.org/10.1109/CICC57935.2023.10121257},
+          }
+
+        authorsCopy: https://parallel.princeton.edu/papers/CICC-2023-DECADES-final.pdf
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: CICC
+            icon: link
+          - type: venue
+            label: Best Student Paper Nominee
+            icon: link
+          - type: award
+            label: Prototype Chip
+            icon: link
+        attachments:
+          - label: Website
+            link: https://decades.cs.princeton.edu/
+            icon: website
+        _meta:
+          lwt: 1744269749865.07
+        _deleted: false
+      - id: "12"
+        title: "CIFER: A 12nm, 16mm<sup>2</sup>, 22-Core SoC with a 1541
+          LUT6/mm<sup>2</sup>, 1.92 MOPS/LUT, Fully Synthesizable,
+          Cache-Coherent, Embedded FPGA"
+        authorIds:
+          - 21
+          - 1
+          - 29
+          - 44
+          - 34
+          - 45
+          - 46
+          - 35
+          - 40
+          - 22
+          - 36
+          - 30
+          - 37
+          - 47
+          - 48
+          - 49
+          - 13
+          - 50
+          - 27
+        time: 2023-03-31
+        booktitle: 2023 IEEE Custom Integrated Circuits Conference
+        doi: 10.1109/CICC57935.2023.10121294
+        bibtex: >+
+          @inproceedings{Chang2023CIFER,
+          	author = {Chang, Ting-Jung and Li, Ang and Gao, Fei and Ta, Tuan and Tziantzioulis, Georgios and Ou, Yanghui and Wang, Moyang and Tu, Jinzheng and Xu, Kaifeng and Jackson, Paul J. and Ning, August and Chirkov, Grigory and Orenes-Vera, Marcelo and Agwa, Shady and Yan, Xiaoyu and Tang, Eric and Balkind, Jonathan and Batten, Christopher and Wentzlaff, David},
+          	booktitle = {2023 {IEEE} {Custom} {Integrated} {Circuits} {Conference} ({CICC})},
+          	doi = {10.1109/cicc57935.2023.10121294},
+          	year = {2023},
+          	month = {4},
+          	pages = {1--2},
+          	organization = {IEEE},
+          	title = {CIFER: A 12nm, 16mm\textsuperscript{2}, 22-{Core} {SoC} with a 1541 {LUT6}/mm\textsuperscript{2} 1.92 {MOPS}/{LUT}, {Fully} {Synthesizable}, {CacheCoherent}, {Embedded} {FPGA}},
+          	url = {http://dx.doi.org/10.1109/CICC57935.2023.10121294},
+          }
+
+        authorsCopy: /pdfs/cicc23_cifer.pdf
+        equalContrib: 2
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: CICC
+            icon: link
+          - type: award
+            label: Prototype Chip
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749865.08
+        _deleted: false
+      - id: "13"
+        title: "Redwood: Flexible and Portable Heterogeneous Tree Traversal Workloads"
+        authorIds:
+          - 51
+          - 1
+          - 52
+        time: 2023-04-01
+        booktitle: 2023 IEEE International Symposium on Performance Analysis of Systems
+          and Software
+        doi: 10.1109/ISPASS57527.2023.00028
+        bibtex: >+
+          @inproceedings{Xu2023Redwood,
+          	author = {Xu, Yanwen and Li, Ang and Sorensen, Tyler},
+          	booktitle = {2023 {IEEE} {International} {Symposium} on {Performance} {Analysis} of {Systems} and {Software} ({ISPASS})},
+          	doi = {10.1109/ispass57527.2023.00028},
+          	year = {2023},
+          	month = {4},
+          	pages = {201--213},
+          	organization = {IEEE},
+          	title = {Redwood: Flexible and {Portable} {Heterogeneous} {Tree} {Traversal} {Workloads}},
+          	url = {http://dx.doi.org/10.1109/ISPASS57527.2023.00028},
+          }
+
+        authorsCopy: https://users.soe.ucsc.edu/~tsorensen/files/ispass2023.pdf
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: ISPASS
+            icon: link
+          - type: award
+            label: Open-Source
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749865.09
+        _deleted: false
+      - id: "14"
+        title: "Open-Source FPGA on Silicon: Case Studies on PRGA, an Open-Source
+          Framework for Building & Programming Custom FPGAs"
+        authorIds:
+          - 1
+          - 21
+          - 29
+          - 27
+        time: 2023-05-31
+        booktitle: 2023 Open-Source Computer Architecture Research
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: OSCAR
+            icon: link
+          - type: award
+            label: Workshop
+            icon: link
+        attachments:
+          - label: Slides
+            link: /pdfs/oscar23_prga.pdf
+            icon: pdf
+        _meta:
+          lwt: 1744269749865.1
+        _deleted: false
+      - id: "15"
+        title: Evaluating Shared Memory Heterogeneous Systems Using Traverse-Compute
+          Workloads
+        authorIds:
+          - 51
+          - 1
+          - 52
+        time: 2023-05-31
+        booktitle: 2023 Open-Source Computer Architecture Research
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: OSCAR
+            icon: link
+          - type: award
+            label: Workshop
+            icon: link
+        attachments:
+          - label: Slides
+            link: https://oscar-workshop.github.io/files/03_OSCAR2023-yanwenxu.pdf
+            icon: pdf
+          - label: Recorded Talk
+            link: https://www.youtube.com/watch?v=Ebvd9IFk1g8
+            icon: video
+        _meta:
+          lwt: 1744269749865.11
+        _deleted: false
+      - id: "16"
+        title: "CIFER: A Cache-Coherent 12nm 16mm<sup>2</sup> SoC with Four 64-Bit
+          RISC-V Application Cores, 18 32-Bit RISC-V Compute Cores, and a 1541
+          LUT6/mm<sup>2</sup> Synthesizable eFPGA"
+        authorIds:
+          - 1
+          - 21
+          - 29
+          - 44
+          - 34
+          - 45
+          - 46
+          - 35
+          - 40
+          - 22
+          - 36
+          - 30
+          - 37
+          - 47
+          - 48
+          - 49
+          - 13
+          - 50
+          - 27
+        time: 2023-05-31
+        booktitle: IEEE Solid-State Circuits Letters
+        doi: 10.1109/LSSC.2023.3303111
+        bibtex: >+
+          @article{Li2023CIFER,
+          	author = {Li, Ang and Chang, Ting-Jung and Gao, Fei and Ta, Tuan and Tziantzioulis, Georgios and Ou, Yanghui and Wang, Moyang and Tu, Jinzheng and Xu, Kaifeng and Jackson, Paul and Ning, August and Chirkov, Grigory and Orenes-Vera, Marcelo and Agwa, Shady and Yan, Xiaoyu and Tang, Eric and Balkind, Jonathan and Batten, Christopher and Wentzlaff, David},
+          	journal = {IEEE Solid-State Circuits Letters},
+          	doi = {10.1109/lssc.2023.3303111},
+          	issn = {2573-9603},
+          	year = {2023},
+          	pages = {229--232},
+          	publisher = {{Institute of Electrical and Electronics Engineers (IEEE)}},
+          	title = {CIFER: A {Cache}-{Coherent} 12-nm 16-mm\textsuperscript{2} {SoC} {With} {Four} 64-{Bit} {RISC}-{V} {Application} {Cores}, 18 32-{Bit} {RISC}-{V} {Compute} {Cores}, and a 1541 {LUT6}/mm\textsuperscript{2} {Synthesizable} {eFPGA}},
+          	url = {http://dx.doi.org/10.1109/LSSC.2023.3303111},
+          	volume = {6},
+          }
+
+        authorsCopy: /pdfs/sscl23.pdf
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: SSC-L
+            icon: link
+          - type: award
+            label: Prototype Chip
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749865.12
+        _deleted: false
+      - id: "17"
+        title: "Allo: A Programming Model for Composable Accelerator Design"
+        authorIds:
+          - 55
+          - 56
+          - 57
+          - 4
+          - 67
+          - 68
+        time: 2024-06-20
+        booktitle: Proceedings of the ACM on Programming Languages
+        doi: 10.1145/3656401
+        bibtex: >+
+          @article{Chen2024Allo,
+          	author = {Chen, Hongzheng and Zhang, Niansong and Xiang, Shaojie and Zeng, Zhichen and Dai, Mengjia and Zhang, Zhiru},
+          	journal = {Proceedings of the ACM on Programming Languages},
+          	doi = {10.1145/3656401},
+          	issn = {2475-1421},
+          	year = {2024},
+          	month = {jun 20},
+          	pages = {593--620},
+          	publisher = {Association for Computing Machinery (ACM)},
+          	title = {Allo: A {Programming} {Model} for {Composable} {Accelerator} {Design}},
+          	url = {http://dx.doi.org/10.1145/3656401},
+          	volume = {8},
+          }
+
+        equalContrib: 2
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: PLDI
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749866.01
+        _deleted: false
+      - id: "18"
+        title: "LUT Tensor Core: Lookup Table Enables Efficient Low-Bit LLM Inference
+          Acceleration"
+        authorIds:
+          - 69
+          - 70
+          - 71
+          - 4
+          - 72
+          - 73
+          - 74
+          - 75
+          - 76
+          - 77
+          - 78
+        time: 2025-06-21
+        booktitle: 2025 52rd IEEE/ACM Annual International Symposium on Computer
+          Architecture
+        arxivDoi: 10.48550/ARXIV.2408.06003
+        arxivBibtex: "@article{Mo2024LUT,\tauthor = {Mo, Zhiwen and Wang, Lei and Wei,
+          Jianyu and Zeng, Zhichen and Cao, Shijie and Ma, Lingxiao and Jing,
+          Naifeng and Cao, Ting and Xue, Jilong and Yang, Fan and Yang,
+          Mao},\tdoi = {10.48550/ARXIV.2408.06003},\tyear = {2024},\tpublisher =
+          {arXiv},\ttitle = {LUT {Tensor} {Core}: Lookup {Table} {Enables}
+          {Efficient} {Low}-{Bit} {LLM} {Inference} {Acceleration}},\turl =
+          {https://arxiv.org/abs/2408.06003},}"
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: ISCA
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749866.02
+        _deleted: false
+      - id: "19"
+        title: "SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs"
+        authorIds:
+          - 79
+          - 4
+          - 80
+          - 72
+          - 81
+          - 82
+          - 83
+          - 84
+          - 75
+          - 77
+          - 78
+        time: 2024-10-01
+        arxivDoi: 10.48550/arXiv.2410.13276
+        arxivBibtex: "@article{Gao2024SeerAttention,\tauthor = {Gao, Yizhao and Zeng,
+          Zhichen and Du, Dayou and Cao, Shijie and Zhou, Peiyuan and Qi,
+          Jiaxing and Lai, Junjie and So, Hayden Kwok-Hay and Cao, Ting and
+          Yang, Fan and Yang, Mao},\tdoi = {10.48550/ARXIV.2410.13276},\tyear =
+          {2024},\tpublisher = {arXiv},\ttitle = {SeerAttention: Learning
+          {Intrinsic} {Sparse} {Attention} in {Your} {LLMs}},\turl =
+          {https://arxiv.org/abs/2410.13276},}"
+        equalContrib: 2
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: Under Review
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749866.03
+        _deleted: false
+      - id: "2"
+        title: Leveraging Emerging Nonvolatile Memory in High-Level Synthesis with Loop
+          Transformations
+        authorIds:
+          - 5
+          - 1
+          - 6
+          - 7
+          - 8
+          - 9
+          - 10
+          - 11
+          - 12
+        time: 2015-06-30
+        booktitle: 2015 IEEE/ACM International Symposium on Low Power Electronics and
+          Design
+        doi: 10.1109/ISLPED.2015.7273491
+        bibtex: >+
+          @inproceedings{Li2015Leveraging,
+          	author = {Li, Shuangchen and Li, Ang and Zhe, Yuan and Liu, Yongpan and Li, Peng and Sun, Guangyu and Wang, Yu and Yang, Huazhong and {Yuan Xie}},
+          	booktitle = {2015 {IEEE}/{ACM} {International} {Symposium} on {Low} {Power} {Electronics} and {Design} ({ISLPED})},
+          	doi = {10.1109/islped.2015.7273491},
+          	year = {2015},
+          	month = {7},
+          	pages = {61--66},
+          	organization = {IEEE},
+          	title = {Leveraging emerging nonvolatile memory in high-level synthesis with loop transformations},
+          	url = {http://dx.doi.org/10.1109/ISLPED.2015.7273491},
+          }
+
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: ISLPED
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749864.01
+        _deleted: false
+      - id: "20"
+        title: "Tactic: Adaptive Sparse Attention with Clustering and Distribution
+          Fitting for Long-Context LLMs"
+        authorIds:
+          - 85
+          - 86
+          - 87
+          - 88
+          - 4
+          - 89
+          - 90
+          - 1
+          - 91
+          - 92
+        time: 2025-02-01
+        arxivDoi: 10.48550/arXiv.2502.12216
+        arxivBibtex: "@article{Zhu2025Tactic,\tauthor = {Zhu, Kan and Tang, Tian and Xu,
+          Qinyu and Gu, Yile and Zeng, Zhichen and Kadekodi, Rohan and Zhao,
+          Liangyu and Li, Ang and Krishnamurthy, Arvind and Kasikci,
+          Baris},\tdoi = {10.48550/ARXIV.2502.12216},\tyear = {2025},\tpublisher
+          = {arXiv},\ttitle = {Tactic: Adaptive {Sparse} {Attention} with
+          {Clustering} and {Distribution} {Fitting} for {Long}-{Context}
+          {LLMs}},\turl = {https://arxiv.org/abs/2502.12216},}"
+        equalContrib: 3
+        tags:
+          - type: tapeout
+            label: Under Review
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749866.04
+        _deleted: false
+      - id: "21"
+        title: "Fusion-3D: Integrated Acceleration for Instant 3D Reconstruction and
+          Real-Time Rendering"
+        authorIds:
+          - 93
+          - 94
+          - 95
+          - 96
+          - 3
+          - 97
+          - 98
+          - 99
+          - 100
+        time: 2024-11-02
+        booktitle: 2024 57th IEEE/ACM International Symposium on Microarchitecture
+        doi: 10.1109/MICRO61859.2024.00016
+        bibtex: >+
+          @inproceedings{Li2024Fusion,
+          	author = {Li, Sixu and Zhao, Yang and Li, Chaojian and Guo, Bowei and Zhang, Jingqun and Zhu, Wenbo and Ye, Zhifan and Wan, Cheng and Lin, Yingyan Celine},
+          	booktitle = {2024 57th {IEEE}/{ACM} {International} {Symposium} on {Microarchitecture} ({MICRO})},
+          	doi = {10.1109/micro61859.2024.00016},
+          	year = {2024},
+          	month = {nov 2},
+          	pages = {78--91},
+          	organization = {IEEE},
+          	title = {Fusion-3D: Integrated {Acceleration} for {Instant} 3D {Reconstruction} and {Real}-{Time} {Rendering}},
+          	url = {http://dx.doi.org/10.1109/MICRO61859.2024.00016},
+          }
+
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: MICRO
+            icon: link
+          - type: venue
+            label: Best Paper Award
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749866.05
+        _deleted: false
+      - id: "22"
+        title: "Instant-NeRF: Instant On-Device Neural Radiance Field Training via
+          Algorithm-Accelerator Co-Designed Near-Memory Processing"
+        authorIds:
+          - 101
+          - 102
+          - 3
+          - 93
+          - 95
+          - 100
+        time: 2023-07-09
+        booktitle: 2023 60th ACM/IEEE Design Automation Conference (DAC)
+        doi: 10.1109/DAC56929.2023.10247710
+        bibtex: >+
+          @inproceedings{Zhao2023Instant,
+          	author = {Zhao, Yang Katie and Wu, Shang and Zhang, Jingqun and Li, Sixu and Li, Chaojian and Lin, Yingyan Celine},
+          	booktitle = {2023 60th {ACM}/{IEEE} {Design} {Automation} {Conference} ({DAC})},
+          	doi = {10.1109/dac56929.2023.10247710},
+          	year = {2023},
+          	month = {jul 9},
+          	pages = {1--6},
+          	organization = {IEEE},
+          	title = {Instant-{NeRF}: Instant {On}-{Device} {Neural} {Radiance} {Field} {Training} via {Algorithm}-{Accelerator} {Co}-{Designed} {Near}-{Memory} {Processing}},
+          	url = {http://dx.doi.org/10.1109/DAC56929.2023.10247710},
+          }
+
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: DAC
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749866.06
+        _deleted: false
+      - id: "23"
+        title: "EN-T: Optimizing Tensor Computing Engines Performance via Encoder-Based
+          Methodology"
+        authorIds:
+          - 103
+          - 104
+          - 4
+          - 105
+          - 106
+          - 107
+        time: 2024-11-18
+        booktitle: 2024 IEEE 42nd International Conference on Computer Design (ICCD)
+        doi: 10.1109/ICCD63220.2024.00097
+        bibtex: >+
+          @inproceedings{Wu2024EN,
+          	author = {Wu, Qizhe and Gui, Yuchen and Zeng, Zhichen and Wang, Xiaotian and Liang, Huawen and Jin, Xi},
+          	booktitle = {2024 {IEEE} 42nd {International} {Conference} on {Computer} {Design} ({ICCD})},
+          	doi = {10.1109/iccd63220.2024.00097},
+          	year = {2024},
+          	month = {nov 18},
+          	pages = {608--615},
+          	organization = {IEEE},
+          	title = {EN-{T}: Optimizing {Tensor} {Computing} {Engines} {Performance} via {Encoder}-{Based} {Methodology}},
+          	url = {http://dx.doi.org/10.1109/ICCD63220.2024.00097},
+          }
+
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: ICCD
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749866.07
+        _deleted: false
+      - id: "24"
+        title: Highly stable and fast response photodetector based on double perovskite
+          Cs<sub>2</sub>AgBiCl<sub>6</sub> crystals
+        authorIds:
+          - 108
+          - 67
+          - 4
+          - 109
+          - 110
+          - 111
+          - 112
+          - 113
+        time: 2024-02-27
+        booktitle: "Journal of Physics D: Applied Physics"
+        doi: 10.1088/1361-6463/ad291a
+        bibtex: >+
+          @article{Han2024Highly,
+          	author = {Han, Zhengyu and Dai, Mengjia and Zeng, Zhichen and Ye, Chunhui and Dai, Rucheng and Wang, Zhongping and Sun, Xiaoyu and Zhang, Zengming},
+          	journal = {Journal of Physics D: Applied Physics},
+          	doi = {10.1088/1361-6463/ad291a},
+          	issn = {0022-3727},
+          	number = {21},
+          	year = {2024},
+          	month = {feb 27},
+          	pages = {215102},
+          	publisher = {IOP Publishing},
+          	title = {Highly stable and fast response photodetector based on double perovskite {Cs}\textsubscript{2}{AgBiCl}\textsubscript{6} crystals},
+          	url = {http://dx.doi.org/10.1088/1361-6463/ad291a},
+          	volume = {57},
+          }
+
+        equalContrib: 3
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: Journal of Physics D
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749866.08
+        _deleted: false
+      - id: "26"
+        title: Exploring the Performance Improvement of Tensor Processing Engines
+          through Transformation in the Bit-weight Dimension of MACs
+        authorIds:
+          - 103
+          - 106
+          - 104
+          - 4
+          - 114
+          - 115
+          - 105
+          - 116
+          - 117
+          - 118
+          - 119
+          - 107
+        time: 2025-03-01
+        booktitle: 2025 IEEE International Symposium on High-Performance Computer
+          Architecture
+        arxivDoi: 10.48550/ARXIV.2503.06342
+        arxivBibtex: >+
+          @article{Wu2025Exploring,
+          	author = {Wu, Qizhe and Liang, Huawen and Gui, Yuchen and Zeng, Zhichen and He, Zerong and Tao, Linfeng and Wang, Xiaotian and Zhao, Letian and Zeng, Zhaoxi and Yuan, Wei and Wu, Wei and Jin, Xi},
+          	doi = {10.48550/ARXIV.2503.06342},
+          	year = {2025},
+          	publisher = {arXiv},
+          	title = {Exploring the {Performance} {Improvement} of {Tensor} {Processing} {Engines} through {Transformation} in the {Bit}-weight {Dimension} of {MACs}},
+          	url = {https://arxiv.org/abs/2503.06342},
+          }
+
+        tags:
+          - type: tapeout
+            label: HPCA
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749866.09
+        _deleted: false
+      - id: "3"
+        title: "OpenPiton: An Emerging Standard for Open-Source EDA Tool Development"
+        authorIds:
+          - 13
+          - 14
+          - 15
+          - 16
+          - 17
+          - 18
+          - 1
+          - 19
+          - 20
+          - 21
+          - 22
+          - 23
+          - 24
+          - 25
+          - 26
+          - 27
+        time: 2018-10-31
+        booktitle: The 1st Workshop on Open-Source EDA Technology
+        authorsCopy: http://parallel.princeton.edu/papers/woset18-openpiton.pdf
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: WOSET
+            icon: link
+          - type: award
+            label: Workshop
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749864.02
+        _deleted: false
+      - id: "4"
+        title: "PRGA: An Open-source Framework for Building and Using Custom FPGAs"
+        authorIds:
+          - 1
+          - 27
+        time: 2019-02-28
+        booktitle: The 1st Workshop on Open Source Design Automation
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: OSDA
+            icon: link
+          - type: award
+            label: Workshop
+            icon: link
+        attachments:
+          - label: Poster
+            link: /pdfs/osda19.pdf
+            icon: pdf
+        _meta:
+          lwt: 1744269749864.03
+        _deleted: false
+      - id: "5"
+        title: Cycle-Free FPGA Routing Graphs
+        authorIds:
+          - 1
+          - 27
+        time: 2020-01-31
+        booktitle: Proceedings of the 2020 ACM/SIGDA International Symposium on
+          Field-Programmable Gate Arrays
+        doi: 10.1145/3373087.3375354
+        bibtex: >+
+          @inproceedings{Li2020Cycle,
+          	author = {Li, Ang and Wentzlaff, David},
+          	booktitle = {Proceedings of the 2020 {ACM}/{SIGDA} {International} {Symposium} on {Field}-{Programmable} {Gate} {Arrays}},
+          	doi = {10.1145/3373087.3375354},
+          	year = {2020},
+          	month = {feb 23},
+          	pages = {322--322},
+          	organization = {ACM},
+          	title = {Cycle-{Free} {FPGA} {Routing} {Graphs}},
+          	url = {http://dx.doi.org/10.1145/3373087.3375354},
+          }
+
+        authorsCopy: /pdfs/fpga20.pdf
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: FPGA
+            icon: link
+          - type: award
+            label: Poster
+            icon: link
+        attachments:
+          - label: Poster
+            link: /pdfs/fpga20_poster.pdf
+            icon: pdf
+        _meta:
+          lwt: 1744269749865.01
+        _deleted: false
+      - id: "6"
+        title: "BYOC: A “Bring Your Own Core” Framework for Heterogeneous-ISA Research"
+        authorIds:
+          - 13
+          - 19
+          - 28
+          - 29
+          - 30
+          - 1
+          - 14
+          - 17
+          - 16
+          - 31
+          - 32
+          - 33
+          - 27
+        time: 2020-02-29
+        booktitle: Proceedings of the Twenty-Fifth International Conference on
+          Architectural Support for Programming Languages and Operating Systems
+        doi: 10.1145/3373376.3378479
+        bibtex: >+
+          @inproceedings{Balkind2020BYOC,
+          	author = {Balkind, Jonathan and Lim, Katie and Schaffner, Michael and Gao, Fei and Chirkov, Grigory and Li, Ang and Lavrov, Alexey and Nguyen, Tri M. and Fu, Yaosheng and Zaruba, Florian and Gulati, Kunal and Benini, Luca and Wentzlaff, David},
+          	booktitle = {Proceedings of the {Twenty}-{Fifth} {International} {Conference} on {Architectural} {Support} for {Programming} {Languages} and {Operating} {Systems}},
+          	doi = {10.1145/3373376.3378479},
+          	year = {2020},
+          	month = {mar 9},
+          	pages = {699--714},
+          	organization = {ACM},
+          	title = {BYOC},
+          	url = {http://dx.doi.org/10.1145/3373376.3378479},
+          }
+
+        authorsCopy: http://parallel.princeton.edu/papers/aspl20-balkind.pdf
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: ASPLOS
+            icon: link
+          - type: award
+            label: Open-Source
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749865.02
+        _deleted: false
+      - id: "7"
+        title: "OpenPiton at 5: A Nexus for Open and Agile Hardware Design"
+        authorIds:
+          - 13
+          - 21
+          - 22
+          - 34
+          - 1
+          - 29
+          - 14
+          - 30
+          - 35
+          - 18
+          - 27
+        time: 2020-06-30
+        booktitle: IEEE Micro
+        doi: 10.1109/MM.2020.2997706
+        bibtex: >+
+          @article{Balkind2020OpenPiton,
+          	author = {Balkind, Jonathan and Chang, Ting-Jung and Jackson, Paul J. and Tziantzioulis, Georgios and Li, Ang and Gao, Fei and Lavrov, Alexey and Chirkov, Grigory and Tu, Jinzheng and Shahrad, Mohammad and Wentzlaff, David},
+          	journal = {IEEE Micro},
+          	doi = {10.1109/mm.2020.2997706},
+          	issn = {0272-1732},
+          	number = {4},
+          	year = {2020},
+          	month = {jul 1},
+          	pages = {22--31},
+          	publisher = {{Institute of Electrical and Electronics Engineers (IEEE)}},
+          	title = {OpenPiton at 5: A {Nexus} for {Open} and {Agile} {Hardware} {Design}},
+          	url = {http://dx.doi.org/10.1109/MM.2020.2997706},
+          	volume = {40},
+          }
+
+        authorsCopy: http://parallel.princeton.edu/papers/ieee20-balkind.pdf
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: IEEE Micro
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749865.03
+        _deleted: false
+      - id: "8"
+        title: Automated Design of FPGAs Facilitated by Cycle-Free Routing
+        authorIds:
+          - 1
+          - 21
+          - 27
+        time: 2020-08-01
+        booktitle: 2020 30th International Conference on Field-Programmable Logic and
+          Applications
+        doi: 10.1109/FPL50879.2020.00042
+        bibtex: >+
+          @inproceedings{Li2020Automated,
+          	author = {Li, Ang and Chang, Ting-Jung and Wentzlaff, David},
+          	booktitle = {2020 30th {International} {Conference} on {Field}-{Programmable} {Logic} and {Applications} ({FPL})},
+          	doi = {10.1109/fpl50879.2020.00042},
+          	year = {2020},
+          	month = {8},
+          	pages = {208--213},
+          	organization = {IEEE},
+          	title = {Automated {Design} of {FPGAs} {Facilitated} by {Cycle}-{Free} {Routing}},
+          	url = {http://dx.doi.org/10.1109/FPL50879.2020.00042},
+          }
+
+        authorsCopy: /pdfs/fpl20.pdf
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: FPL
+            icon: link
+        attachments: []
+        _meta:
+          lwt: 1744269749865.04
+        _deleted: false
+      - id: "9"
+        title: "PRGA: An Open-Source FPGA Research and Prototyping Framework"
+        authorIds:
+          - 1
+          - 27
+        time: 2021-02-01
+        booktitle: The 2021 ACM/SIGDA International Symposium on Field-Programmable Gate
+          Arrays
+        doi: 10.1145/3431920.3439294
+        bibtex: >+
+          @inproceedings{Li2021PRGA,
+          	author = {Li, Ang and Wentzlaff, David},
+          	booktitle = {The 2021 {ACM}/{SIGDA} {International} {Symposium} on {Field}-{Programmable} {Gate} {Arrays}},
+          	doi = {10.1145/3431920.3439294},
+          	year = {2021},
+          	month = {feb 17},
+          	pages = {127--137},
+          	organization = {ACM},
+          	title = {PRGA: An {Open}-{Source} {FPGA} {Research} and {Prototyping} {Framework}},
+          	url = {http://dx.doi.org/10.1145/3431920.3439294},
+          }
+
+        authorsCopy: /pdfs/fpga21.pdf
+        notPncel: true
+        tags:
+          - type: tapeout
+            label: FPGA
+            icon: link
+          - type: award
+            label: Open-Source
+            icon: link
+        attachments:
+          - label: Recorded Talk
+            link: https://dl.acm.org/doi/10.1145/3431920.3439294#
+            icon: video
+          - label: GitHub
+            link: https://github.com/PrincetonUniversity/prga
+            icon: github
+          - label: Website
+            link: https://parallel.princeton.edu/prga
+            icon: website
+          - label: Documentation
+            link: https://prga.readthedocs.io/
+            icon: website
+        _meta:
+          lwt: 1744269749865.05
+        _deleted: false
+  - name: photos
+    schemaHash: 7a682714a01df2ba266ce6e049316f4d65889b45c0173cbe1c6cc84aae7834a2
+    docs:
+      - title: PNCEL Group, Spring 2025
+        subtitle: 🌸
+        image: /photos/PNCEL_2025.JPG
+        width: 6000
+        height: 4000
+        time: 2025-04-01
+        thumbnail: /photos/thumbnails/PNCEL_2025.JPG
+        id: "1"
+        _meta:
+          lwt: 1744269749866.1
+        _deleted: false
+      - title: PNCEL Group, Spring 2025
+        subtitle: "Zhichen: 👍"
+        image: /photos/IMG_2317.JPG
+        width: 6000
+        height: 4000
+        time: 2025-04-01
+        thumbnail: /photos/thumbnails/IMG_2317.JPG
+        id: "2"
+        _meta:
+          lwt: 1744269749867.01
+        _deleted: false
+      - title: First Batch of PNCEL PhDs
+        image: /photos/IMG_2632.jpg
+        width: 4284
+        height: 2825
+        time: 2025-04-01
+        thumbnail: /photos/thumbnails/IMG_2632.jpg
+        id: "3"
+        _meta:
+          lwt: 1744269749867.02
+        _deleted: false
+      - title: '"PNCEL"'
+        image: /photos/IMG_2382.jpg
+        width: 5165
+        height: 3190
+        time: 2025-04-01
+        thumbnail: /photos/thumbnails/IMG_2382.jpg
+        id: "4"
+        _meta:
+          lwt: 1744269749867.03
+        _deleted: false
+      - title: '"UW"'
+        image: /photos/IMG_2383.jpg
+        width: 5712
+        height: 3213
+        time: 2025-04-01
+        thumbnail: /photos/thumbnails/IMG_2383.jpg
+        id: "5"
+        _meta:
+          lwt: 1744269749867.04
+        _deleted: false
+      - title: PhDs Chilling out (MICRO 2024)
+        subtitle: "Ang: \"Y'all should be working!\""
+        image: /photos/IMG_7221.jpg
+        width: 4032
+        height: 3024
+        time: 2024-11-02
+        thumbnail: /photos/thumbnails/IMG_7221.jpg
+        id: "6"
+        _meta:
+          lwt: 1744269749867.05
+        _deleted: false
+      - title: MICRO 2024
+        image: /photos/IMG_0143.png
+        width: 3000
+        height: 2250
+        time: 2024-11-05
+        thumbnail: /photos/thumbnails/IMG_0143.png
+        id: "7"
+        _meta:
+          lwt: 1744269749867.06
+        _deleted: false
+      - title: UTexas Austin Book Store (MICRO 2024)
+        image: /photos/IMG_3213.jpg
+        width: 4032
+        height: 3024
+        time: 2024-11-02
+        thumbnail: /photos/thumbnails/IMG_3213.jpg
+        id: "8"
+        _meta:
+          lwt: 1744269749867.07
+        _deleted: false

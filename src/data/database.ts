@@ -1,4 +1,5 @@
-import Ajv, { ValidateFunction, JTDSchemaType } from "ajv/dist/jtd";
+import Ajv, { ValidateFunction, JTDSchemaType } from "ajv/dist/jtd.js";
+import addFormats from "ajv-formats";
 import {
   MemberRole,
   TagType,
@@ -6,17 +7,17 @@ import {
   Person,
   Member,
   Publication,
-  Database as DatabaseType,
   PubAttachment,
   Icon,
   Photo,
-} from "@/data/types";
+} from "./types.js";
 import { readFile, writeFile } from "fs/promises";
 import { DefinedError } from "ajv";
 import { parse, stringify } from "yaml";
 import { createHash, Hash } from "crypto";
 
 const ajv = new Ajv();
+addFormats(ajv);
 
 type MemberJsonType = Omit<Member, "role"> & { role: keyof typeof MemberRole };
 type TagJsonType = Omit<Tag, "type" | "icon"> & {
@@ -31,10 +32,26 @@ type PublicationJsonType = Omit<Publication, "tags" | "attachments"> & {
   attachments?: PubAttachmentJsonType[];
 };
 type MD5JsonType = {
-  [K in keyof DatabaseType]: string;
+  persons: string,
+  members: string,
+  publications: string,
+  photos: string,
 };
 
-const personSchema: JTDSchemaType<Person[]> = {
+export enum DatabaseState {
+  init,     // db not loaded
+  clean,    // consistent, and up to date with the files
+  error,    // db has errors besides md5 mismatch
+  dirty,    // in-memory db is consistent but out of sync with the files
+};
+
+export enum DatabaseMode {
+  normal,       // normal mode
+  diagnostic,   // diagnostic -- errors are reported, not throwned
+  editting,     // editting -- errors lead to abortion of edit
+};
+
+const personArrayJSONSchema: JTDSchemaType<Person[]> = {
   elements: {
     properties: {
       id: { type: "int32" },
@@ -50,9 +67,9 @@ const personSchema: JTDSchemaType<Person[]> = {
     },
     additionalProperties: false,
   },
-};
+} as JTDSchemaType<Person[]>;
 
-const memberSchema: JTDSchemaType<MemberJsonType[]> = {
+const memberArrayJSONSchema: JTDSchemaType<MemberJsonType[]> = {
   elements: {
     properties: {
       id: { type: "string" },
@@ -77,9 +94,9 @@ const memberSchema: JTDSchemaType<MemberJsonType[]> = {
     },
     additionalProperties: false,
   },
-};
+} as JTDSchemaType<MemberJsonType[]>;
 
-const publicationSchema: JTDSchemaType<PublicationJsonType[]> = {
+const publicationArrayJSONSchema: JTDSchemaType<PublicationJsonType[]> = {
   elements: {
     properties: {
       id: { type: "int32" },
@@ -118,9 +135,9 @@ const publicationSchema: JTDSchemaType<PublicationJsonType[]> = {
     },
     additionalProperties: false,
   },
-};
+} as JTDSchemaType<PublicationJsonType[]>;
 
-const photoSchema: JTDSchemaType<Photo[]> = {
+const photoArrayJSONSchema: JTDSchemaType<Photo[]> = {
   elements: {
     properties: {
       title: { type: "string" },
@@ -134,37 +151,99 @@ const photoSchema: JTDSchemaType<Photo[]> = {
       thumbnail: { type: "string" },
     },
   },
-};
+} as JTDSchemaType<Photo[]>;
 
-const md5Schema: JTDSchemaType<MD5JsonType> = {
+const md5JSONSchema: JTDSchemaType<MD5JsonType> = {
   properties: {
     persons: { type: "string" },
     members: { type: "string" },
     publications: { type: "string" },
     photos: { type: "string" },
   },
-};
+} as JTDSchemaType<MD5JsonType>;
 
-const validatePerson = ajv.compile(personSchema);
-const validateMember = ajv.compile(memberSchema);
-const validatePublication = ajv.compile(publicationSchema);
-const validatePhoto = ajv.compile(photoSchema);
-const validateMD5 = ajv.compile(md5Schema);
+const validateJSONPersonArray = ajv.compile(personArrayJSONSchema) as ValidateFunction<Person[]>;
+const validateJSONMemberArray = ajv.compile(memberArrayJSONSchema) as ValidateFunction<MemberJsonType[]>;
+const validateJSONPublicationArray = ajv.compile(publicationArrayJSONSchema) as ValidateFunction<PublicationJsonType[]>;
+const validateJSONPhotoArray = ajv.compile(photoArrayJSONSchema) as ValidateFunction<Photo[]>;
+const validateJSONMD5 = ajv.compile(md5JSONSchema) as ValidateFunction<MD5JsonType>;
+
+function identity<T>(t: T): T {
+    return t;
+}
+
+const personToJSON = identity<Person>;
+const JSONToPerson = identity<Person>;
+const photoToJSON = identity<Photo>;
+
+function memberToJSON(member: Member): MemberJsonType {
+    return {
+        ...member,
+        role: stringify(member.role) as keyof typeof MemberRole,
+    }
+}
+
+function JSONToMember(member: MemberJsonType): Member {
+    return {
+        ...member,
+        role: MemberRole[member.role],
+        whenJoined: new Date(member.whenJoined),
+        whenLeft: member.whenLeft && new Date(member.whenLeft),
+    }
+}
+
+function publicationToJSON(pub: Publication): PublicationJsonType {
+    return {
+        ...pub,
+        tags: pub.tags?.map(tag => ({
+            ...tag,
+            type: stringify(tag.type) as keyof typeof TagType,
+            icon: stringify(tag.icon || "default") as keyof typeof Icon,
+        })),
+        attachments: pub.attachments?.map(attachment => ({
+            ...attachment,
+            icon: stringify(attachment.icon || "default") as keyof typeof Icon,
+        }))
+    }
+}
+
+function JSONToPublication(pub: PublicationJsonType): Publication {
+    return {
+        ...pub,
+        time: new Date(pub.time),
+        tags: pub.tags?.map((tag) => ({
+            ...tag,
+            type: TagType[tag.type],
+            icon: Icon[tag.icon || "default"],
+        })),
+        attachments: pub.attachments?.map((attachment) => ({
+            ...attachment,
+            icon: Icon[attachment.icon || "default"],
+        })),
+    }
+}
+
+function JSONToPhoto(photo: Photo): Photo {
+    return {
+        ...photo,
+        time: new Date(photo.time)
+    };
+}
 
 async function validate<T>(
-  path: string,
   jsonValidator: ValidateFunction<T>,
   data: any,
+  prefix: string = "",
 ): Promise<boolean> {
   if (!jsonValidator(data)) {
     for (const err of jsonValidator.errors as DefinedError[]) {
       console.error(
-        `${path}: ${err.keyword} | ${err.schemaPath} | ${err.instancePath} | ${err.message || ""}`,
+        `[Error] ${prefix}${err.keyword} | ${err.schemaPath} | ${err.instancePath} | ${err.message || ""}`,
       );
     }
-    await new Promise<void>((resolve) => {
-      process.stderr.write("", () => resolve());
-    });
+    await new Promise<void>(resolve => {
+        process.stderr.write("", () => resolve());
+    })
     return false;
   } else {
     return true;
@@ -178,44 +257,148 @@ function hash(value: string): string {
 }
 
 export default class Database extends Object {
-  public static warn_on_md5_mismatch: boolean = false;
-
   private static instance: Promise<Database>;
-  private data: DatabaseType = {
-    persons: [],
-    members: new Map<string, Member>(),
-    publications: [],
-    photos: [],
-  };
+  private mode: DatabaseMode = DatabaseMode.normal;
+  private state: DatabaseState = DatabaseState.init;
+  private data: Readonly<{
+    persons?: (Person | undefined)[],
+    members?: Map<string, Member>,
+    publications?: (Publication | undefined)[],
+    photos?: Photo[],
+  }> = {};
 
   private constructor() {
     super();
   }
 
-  private static async loadJson<T, JT = T>(
+  private error(msg: string) {
+    switch (this.mode) {
+        case DatabaseMode.normal:
+        case DatabaseMode.editting:
+            throw new Error(msg);
+        case DatabaseMode.diagnostic:
+            console.error(`[Error] ${msg}`);
+            this.state = DatabaseState.error;
+            break;
+    }
+  }
+
+  private async loadJson<T, JT = T>(
     path: string,
     jsonValidator: ValidateFunction<JT[]>,
     postProcess: (data: JT) => T,
     md5: string,
   ): Promise<T[]> {
     const raw = await readFile(path, "utf-8");
-    const raw_md5 = hash(raw);
-    if (raw_md5 !== md5) {
-      if (Database.warn_on_md5_mismatch) {
-        console.error(
-          `md5 checksum mismatch for ${path}: computed = ${raw_md5}; in-database = ${md5}`,
+    if (this.mode === DatabaseMode.normal || md5 !== "") {
+      const raw_md5 = hash(raw);
+      if (raw_md5 !== md5) {
+        const prevState = this.state;
+          this.error(
+            `md5 checksum mismatch for ${path}: computed = ${raw_md5}; in-database = ${md5}`,
+          );
+          if (prevState != DatabaseState.error) {
+            this.state = DatabaseState.dirty;
+          }
+      }
+    }
+    const jsonData = parse(raw);
+    if (!(await validate<JT[]>(jsonValidator, jsonData, `${path}: `))) {
+        this.error(`Invalid JSON: ${path}`);
+        return [];
+    } else {
+      return jsonData.map(postProcess);
+    }
+  }
+
+  private validatePerson(person: Person, members: Map<string, Member> | undefined = undefined) {
+    const members_ = members || this.data.members;
+    // XXX: if this.data.members is 'undefined', members.yaml did not pass schema check
+    if (members_ && person.memberId !== undefined) {
+      const member = members_.get(person.memberId);
+      if (!member) {
+        this.error(
+          `Member id: ${person.memberId} not found for person ${person.id}`,
         );
-      } else {
-        throw new Error(
-          `md5 checksum mismatch for ${path}: computed = ${raw_md5}; in-database = ${md5}`,
+        return false;
+      } else if (member.personId !== person.id) {
+        this.error(
+          `Person ${person.id} has member id ${person.memberId} but member ${member.id} has person id ${member.personId}`,
         );
       }
     }
-    const jsonData = parse(await readFile(path, "utf-8"));
-    if (!(await validate<JT[]>(path, jsonValidator, jsonData))) {
-      throw new Error(`Invalid JSON: ${path}`);
+  }
+
+  private validateMember(member: Member, is_creating_member: boolean = false, persons: Person[] | undefined = undefined, publications: Publication[] | undefined = undefined) {
+    const persons_ = persons || this.data.persons;
+    const publications_ = publications || this.data.publications;
+    // XXX: if this.data.persons is 'undefined', persons.yaml did not pass schema check
+    // XXX: if this.data.publications is 'undefined', publications.yaml did not pass schema check
+    if (is_creating_member || persons_) {
+      const person = persons_ && persons_[member.personId];
+      if (!person) {
+        this.error(
+          `Person id: ${member.personId} not found for member ${member.id}`,
+        );
+      } else if (is_creating_member) {
+          if (person.memberId !== undefined) {
+            this.error(`Person with id=${member.personId} is already linked with member with id=${person?.memberId}`);
+          }
+      } else if (person.memberId !== member.id) {
+        this.error(
+          `Member ${member.id} has person id ${member.personId} but person ${person.id} has member id ${person.memberId}`,
+        );
+      }
     }
-    return jsonData.map(postProcess);
+
+    if (member.selectedPubIds) {
+      if (
+        new Set(member.selectedPubIds).size !==
+        member.selectedPubIds.length
+      ) {
+        this.error(
+          `Member ${member.id} has duplicate publication ids`,
+        );
+      }
+      if (publications_) {
+      for (const pubId of member.selectedPubIds) {
+        const publication = publications_[pubId];
+        if (!publication) {
+          this.error(
+            `Publication id: ${pubId} not found for member ${member.id}`,
+          );
+        } else if (!publication.authorIds.includes(member.personId)) {
+          this.error(
+            `Member ${member.id} has person id ${member.personId} but publication ${publication.id} does not include this person as author`,
+          );
+        }
+      }
+      }
+    }
+  }
+
+  private validatePublication(pub: Publication, persons: Person[] | undefined = undefined) {
+    const persons_ = persons || this.data.persons;
+    if (pub.authorIds) {
+      if (
+        new Set(pub.authorIds).size !==
+        pub.authorIds.length
+      ) {
+        this.error(
+          `Publication ${pub.id} has duplicate author ids`,
+        );
+      }
+      if (persons_) {
+        for (const authorId of pub.authorIds) {
+          const person = persons_[authorId];
+          if (!person) {
+            this.error(
+              `Author id: ${authorId} not found for publication ${pub.id}`,
+            );
+          }
+        }
+      }
+    }
   }
 
   public static async get(): Promise<Database> {
@@ -228,53 +411,38 @@ export default class Database extends Object {
         // load checksum
         const md5_path = `${databasePath}/md5.yaml`;
         const md5_raw = parse(await readFile(md5_path, "utf-8"));
-        if (!(await validate(md5_path, validateMD5, md5_raw))) {
-          throw new Error(`Invalid md5.yaml`);
+        let md5: MD5JsonType = { persons: "", members: "", publications: "", photos: "" };
+        if (!(await validate<MD5JsonType>(validateJSONMD5, md5_raw, `${md5_path}: `))) {
+            instance.error(`Invalid MD5 JSON: ${md5_path}`);
+        } else {
+            md5 = md5_raw as MD5JsonType;
         }
-        const md5 = md5_raw as MD5JsonType;
 
         // load databases in parallel
         const [personArray, memberArray, publicationArray, photos] =
           await Promise.all([
-            Database.loadJson<Person>(
+            instance.loadJson<Person>(
               `${databasePath}/persons.yaml`,
-              validatePerson,
-              (person) => person,
+              validateJSONPersonArray,
+              JSONToPerson,
               md5.persons,
             ),
-            Database.loadJson<Member, MemberJsonType>(
+            instance.loadJson<Member, MemberJsonType>(
               `${databasePath}/members.yaml`,
-              validateMember,
-              (member) => ({
-                ...member,
-                role: MemberRole[member.role],
-                whenJoined: new Date(member.whenJoined),
-                whenLeft: member.whenLeft && new Date(member.whenLeft),
-              }),
+              validateJSONMemberArray,
+              JSONToMember,
               md5.members,
             ),
-            Database.loadJson<Publication, PublicationJsonType>(
+            instance.loadJson<Publication, PublicationJsonType>(
               `${databasePath}/publications.yaml`,
-              validatePublication,
-              (publication) => ({
-                ...publication,
-                time: new Date(publication.time),
-                tags: publication.tags?.map((tag) => ({
-                  ...tag,
-                  type: TagType[tag.type],
-                  icon: Icon[tag.icon || "default"],
-                })),
-                attachments: publication.attachments?.map((attachment) => ({
-                  ...attachment,
-                  icon: Icon[attachment.icon || "default"],
-                })),
-              }),
+              validateJSONPublicationArray,
+              JSONToPublication,
               md5.publications,
             ),
-            Database.loadJson<Photo>(
+            instance.loadJson<Photo, Photo>(
               `${databasePath}/photos.yaml`,
-              validatePhoto,
-              (photo) => ({ ...photo, time: new Date(photo.time) }),
+              validateJSONPhotoArray,
+              JSONToPhoto,
               md5.photos,
             ),
           ]);
@@ -282,11 +450,11 @@ export default class Database extends Object {
         // construct id -> object map
         const persons = personArray.reduce((persons, person) => {
           if (persons[person.id] !== undefined) {
-            throw new Error(`Duplicate person id: ${person.id}`);
+            instance.error(`Duplicate person id: ${person.id}. Dropping ${person}`);
           } else {
             persons[person.id] = person;
-            return persons;
           }
+          return persons;
         }, new Array<Person | undefined>(personArray.length));
         const members = new Map<string, Member>(
           memberArray.map((member) => [member.id, member]),
@@ -294,38 +462,25 @@ export default class Database extends Object {
         const publications = publicationArray.reduce(
           (publications, publication) => {
             if (publications[publication.id] !== undefined) {
-              throw new Error(`Duplicate publication id: ${publication.id}`);
+              instance.error(`Duplicate publication id: ${publication.id}`);
             } else {
               publications[publication.id] = publication;
-              return publications;
             }
+            return publications;
           },
           new Array<Publication | undefined>(publicationArray.length),
         );
 
         // cross-reference and duplicate ID check
-        persons.forEach((person) => {
-          if (person?.memberId !== undefined) {
-            const member = members.get(person.memberId);
-            if (!member) {
-              throw new Error(
-                `Member id: ${person.memberId} not found for person ${person.id}`,
-              );
-            } else if (member.personId !== person.id) {
-              throw new Error(
-                `Person ${person.id} has member id ${person.memberId} but member ${member.id} has person id ${member.personId}`,
-              );
-            }
-          }
-        });
+        persons.forEach((person) => person && instance.validatePerson(person, members));
         Array.from(members.values()).forEach((member) => {
           const person = persons[member.personId];
           if (!person) {
-            throw new Error(
+            instance.error(
               `Person id: ${member.personId} not found for member ${member.id}`,
             );
           } else if (person.memberId !== member.id) {
-            throw new Error(
+            instance.error(
               `Member ${member.id} has person id ${member.personId} but person ${person.id} has member id ${person.memberId}`,
             );
           }
@@ -335,18 +490,18 @@ export default class Database extends Object {
               new Set(member.selectedPubIds).size !==
               member.selectedPubIds.length
             ) {
-              throw new Error(
+              instance.error(
                 `Member ${member.id} has duplicate publication ids`,
               );
             }
             for (const pubId of member.selectedPubIds) {
               const publication = publications[pubId];
               if (!publication) {
-                throw new Error(
+                instance.error(
                   `Publication id: ${pubId} not found for member ${member.id}`,
                 );
               } else if (!publication.authorIds.includes(member.personId)) {
-                throw new Error(
+                instance.error(
                   `Member ${member.id} has person id ${member.personId} but publication ${publication.id} does not include this person as author`,
                 );
               }
@@ -359,14 +514,14 @@ export default class Database extends Object {
               new Set(publication.authorIds).size !==
               publication.authorIds.length
             ) {
-              throw new Error(
+              instance.error(
                 `Publication ${publication.id} has duplicate author ids`,
               );
             }
             for (const authorId of publication.authorIds) {
               const person = persons[authorId];
               if (!person) {
-                throw new Error(
+                instance.error(
                   `Author id: ${authorId} not found for publication ${publication.id}`,
                 );
               }
@@ -381,23 +536,19 @@ export default class Database extends Object {
     return Database.instance;
   }
 
+  // ------------------------------------------------------------------------
+  // -- CRUD: Read Operations -----------------------------------------------
+  // ------------------------------------------------------------------------
   public getManyMembers(memberIds?: string[]): Member[] {
     if (!memberIds) {
-      return Array.from(this.data.members.values());
+      return Array.from(this.data.members?.values() || []);
     } else {
-      const members = memberIds.map((memberId) => {
-        const member = this.data.members.get(memberId);
-        if (!member) {
-          throw new Error(`Member ${memberId} not found`);
-        }
-        return member;
-      });
-      return members;
+      return memberIds.map(id => this.getMember(id));
     }
   }
 
   public getMember(memberId: string): Member {
-    const member = this.data.members.get(memberId);
+    const member = this.data.members?.get(memberId);
     if (!member) {
       throw new Error(`Member ${memberId} not found`);
     }
@@ -406,23 +557,16 @@ export default class Database extends Object {
 
   public getManyPersons(personIds?: number[]): Person[] {
     if (!personIds) {
-      return this.data.persons.filter(
+      return this.data.persons?.filter(
         (person) => person !== undefined,
       ) as Person[];
     } else {
-      const persons = personIds.map((personId) => {
-        const person = this.data.persons[personId];
-        if (!person) {
-          throw new Error(`Person ${personId} not found`);
-        }
-        return person;
-      });
-      return persons;
+      return personIds.map(id => this.getPerson(id));
     }
   }
 
   public getPerson(personId: number): Person {
-    const person = this.data.persons[personId];
+    const person = this.data.persons?.at(personId);
     if (!person) {
       throw new Error(`Person ${personId} not found`);
     }
@@ -431,23 +575,16 @@ export default class Database extends Object {
 
   public getManyPublications(publicationIds?: number[]): Publication[] {
     if (!publicationIds) {
-      return this.data.publications.filter(
+      return this.data.publications?.filter(
         (publication) => publication !== undefined,
       ) as Publication[];
     } else {
-      const publications = publicationIds.map((publicationId) => {
-        const publication = this.data.publications[publicationId];
-        if (!publication) {
-          throw new Error(`Publication ${publicationId} not found`);
-        }
-        return publication;
-      });
-      return publications;
+      return publicationIds.map(id => this.getPublication(id));
     }
   }
 
   public getPublication(publicationId: number): Publication {
-    const publication = this.data.publications[publicationId];
+    const publication = this.data.publications?.at(publicationId);
     if (!publication) {
       throw new Error(`Publication ${publicationId} not found`);
     }
@@ -455,13 +592,100 @@ export default class Database extends Object {
   }
 
   public getAllPublicationsByPerson(personId: number): Publication[] {
-    return this.data.publications.filter(
+    return this.data.publications?.filter(
       (p) => p && p?.authorIds.includes(personId),
     ) as Publication[];
   }
 
   public getAllPhotos(): Photo[] {
-    return this.data.photos;
+    return this.data.photos || [];
+  }
+
+  // ------------------------------------------------------------------------
+  // -- CRUD: Create Operations ---------------------------------------------
+  // ------------------------------------------------------------------------
+  /*
+  public async createPerson(person: Omit<Person, "id" | "memberId"> & {id?: number}): Promise<Person> {
+    // create new id if not specified
+    if (!person.id) {
+        const idx = this.data.persons?.findIndex((p, i) => p === undefined && i > 0);
+        if (idx === -1) {
+            person.id = this.data.persons?.length;
+        } else {
+            person.id = idx;
+        }
+    } else {
+        // check id conflict with specific ID
+        if (this.data.persons?[person.id] !== undefined) {
+            throw new Error(`ID conflict: ${person.id}. Abandoning creating a new person`);
+        }
+    }
+
+    // validate
+    const personWithID = person as Person;
+    if (!(await validate<Person[]>(validateJSONPersonArray, [personToJSON(personWithID)]))) {
+        throw new Error(`Invalid person data. Abandoning creating a new person`);
+    }
+
+    this.data.persons[person.id] = personWithID;
+    return personWithID;
+  }
+
+  public async createMember(member: Member): Promise<Member> {
+    // NOTE: this must be called after the corresponding person has been created
+    // validate
+    if (!(await validate<MemberJsonType[]>(validateJSONMemberArray, [memberToJSON(member)]))) {
+        throw new Error(`Invalid member data. Abandoning creating a new member`);
+    }
+
+    // check person
+    const person = this.data.persons[member.personId];
+    if (person === undefined) {
+        throw new Error(`Person with id=${member.personId} not found. Abandoning creating a new member`);
+    } else if (person.memberId != undefined) {
+        throw new Error(`Person with id=${member.personId} is already linked with member with id=${person?.memberId}. Abandoning creating a new member`);
+    }
+
+    // check selectedPubIds
+    if (member.selectedPubIds) {
+        for (const pubId of member.selectedPubIds) {
+            const pub = this.data.publications[pubId];
+            if (pub === undefined) {
+                throw new Error(`Selected pub ID=${pubId} not found. Abandoning creating a new member`);
+            } else if (!pub.authorIds.includes(member.personId)) {
+                throw new Error(`Selected pub ID=${pubId} does not have an author with person ID=${member.personId}. Abandoning creating a new member`)
+            }
+        }
+    }
+
+    person.memberId = member.id;
+    this.data.members.set(member.id, member);
+    return member;
+  }
+
+  public async createPublication(pub: Omit<Publication, "id"> & {id?: number}): Promise<Publication> {
+    // create new id if not specified
+    if (!pub.id) {
+        const idx = this.data.publications.findIndex((p, i) => p === undefined && i > 0);
+        if (idx === -1) {
+            pub.id = this.data.publications.length;
+        } else {
+            pub.id = idx;
+        }
+    } else {
+        // check id conflict with specific ID
+        if (this.data.publications[pub.id] !== undefined) {
+            throw new Error(`ID conflict: ${pub.id}. Abandoning creating a new publication`);
+        }
+    }
+
+    // validate
+    const pubWithID = pub as Publication;
+    if (!(await validate<PublicationJsonType[]>(validateJSONPublicationArray, [publicationToJSON(pubWithID)]))) {
+        throw new Error(`Invalid publication data. Abandoning creating a new person`);
+    }
+
+    // check authors
   }
 
   public async updateDatabase() {
@@ -501,4 +725,5 @@ export default class Database extends Object {
     let md5: MD5JsonType = { persons, members, publications, photos };
     await writeFile(`${databasePath}/md5.yaml`, stringify(md5));
   }
+    */
 }
