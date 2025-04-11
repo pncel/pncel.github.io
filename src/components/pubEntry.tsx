@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useState, useContext } from "react";
 import { composeFullName } from "@/data/utils";
+import SelectedFontAwesomeIcon from "./icon";
 import CopyableCode from "./copyableCode";
 import TagBadge from "./tagBadge";
 import Link from "next/link";
@@ -11,14 +12,11 @@ import {
   faPaperclip,
   faPaperPlane,
   faFilePdf,
-  faVideo,
-  faGlobe,
   faP,
   fa1,
 } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import sanitizeHtml from "sanitize-html";
-import { Publication, Icon, Person } from "@/data/types";
+import { Publication, Person } from "@/data/types";
 import DataContext from "@/app/context";
 config.autoAddCss = false;
 
@@ -31,7 +29,7 @@ export default function PubEntry({
   pub: Publication;
   authors: Person[];
   altStyle: boolean;
-  highlightedPersonId?: number;
+  highlightedPersonId?: string;
 }>) {
   // regular bibtex
   const [showBibtex, setShowBibtex] = useState(false);
@@ -69,7 +67,7 @@ export default function PubEntry({
         </div>
       )}
       <p className="text-sm 2xl:text-md">
-        {authors!.map((author, i) => {
+        {authors.map((author, i) => {
           const fullName = composeFullName(author);
           const equalContrib =
             pub.equalContrib && i < pub.equalContrib ? (
@@ -101,11 +99,11 @@ export default function PubEntry({
 
           return (
             <span className="pr-0.5" key={i}>
-              {author.memberId ? (
+              {author.memberInfo ? (
                 <span>
                   <Link
                     className={`link link-hover ${author.id === highlightedPersonId ? "font-bold text-secondary" : "font-bold"}`}
-                    href={`/team/${author.memberId}`}
+                    href={`/team/${author.id}`}
                   >
                     {fullName}
                   </Link>
@@ -166,7 +164,7 @@ export default function PubEntry({
       )}
       {(pub.doi ||
         pub.bibtex ||
-        pub.arxivDOI ||
+        pub.arxivDoi ||
         pub.arxivBibtex ||
         pub.authorsCopy ||
         (pub.attachments && pub.attachments.length > 0)) && (
@@ -204,10 +202,10 @@ export default function PubEntry({
               Authors&apos; Copy
             </a>
           )}
-          {pub.arxivDOI && (
+          {pub.arxivDoi && (
             <a
               className="flex-none btn btn-xs btn-secondary px-2 py-1"
-              href={`https://doi.org/${pub.arxivDOI}`}
+              href={`https://doi.org/${pub.arxivDoi}`}
               target="_blank"
             >
               <FontAwesomeIcon icon={faPaperPlane} />
@@ -227,25 +225,17 @@ export default function PubEntry({
               bibtex (arXiv)
             </button>
           )}
-          {pub.attachments?.map((res, i) => (
+          {pub.attachments?.map((attachment, i) => (
             <a
               className="flex-none btn btn-xs btn-secondary px-2 py-1"
-              href={res.link}
+              href={attachment.link}
               target="_blank"
               key={i}
             >
-              {res.icon === Icon.pdf ? (
-                <FontAwesomeIcon icon={faFilePdf} />
-              ) : res.icon === Icon.video ? (
-                <FontAwesomeIcon icon={faVideo} />
-              ) : res.icon === Icon.github ? (
-                <FontAwesomeIcon icon={faGithub} />
-              ) : res.icon === Icon.website ? (
-                <FontAwesomeIcon icon={faGlobe} />
-              ) : (
-                <FontAwesomeIcon icon={faPaperPlane} />
+              {attachment.icon === undefined ? undefined : (
+                <SelectedFontAwesomeIcon icon={attachment.icon} />
               )}
-              {res.label}
+              {attachment.label}
             </a>
           ))}
         </div>

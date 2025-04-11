@@ -5,7 +5,7 @@ import { Publication } from "@/data/types";
 import DefaultMDX from "@/layouts/defaultMdx";
 import DefaultMain from "@/layouts/defaultMain";
 import { composeFullName } from "@/data/utils";
-import Database from "@/data/database";
+import { Database } from "@/data/database";
 
 interface Params {
   params: {
@@ -15,15 +15,16 @@ interface Params {
 
 export async function generateStaticParams() {
   const db = await Database.get();
-  const memberIds = db.getManyMembers().map((m) => ({ memberId: m.id }));
+  const memberIds = (await db.getManyMembers()).map((m) => ({
+    memberId: m.id,
+  }));
   return memberIds;
 }
 
 export async function generateMetadata({ params: { memberId } }: Params) {
   const db = await Database.get();
-  const member = db.getMember(memberId);
-  const person = db.getPerson(member.personId);
-  const fullname = composeFullName(person);
+  const member = await db.getMember(memberId);
+  const fullname = composeFullName(member);
   return {
     ...metadataTmpl,
     title: metadataTmpl.title + " | Publications | " + (fullname || memberId),
@@ -32,9 +33,8 @@ export async function generateMetadata({ params: { memberId } }: Params) {
 
 export default async function PubsByMember({ params: { memberId } }: Params) {
   const db = await Database.get();
-  const member = db.getMember(memberId);
-  const person = db.getPerson(member.personId);
-  const pubs = db.getAllPublicationsByPerson(member.personId);
+  const member = await db.getMember(memberId);
+  const pubs = await db.getAllPublicationsByPerson(member.id);
   const mByYear = pubs.reduce((g, pub) => {
     const pubs = g.get(pub.time.getFullYear()) || [];
     pubs.push(pub);
@@ -62,7 +62,7 @@ export default async function PubsByMember({ params: { memberId } }: Params) {
         <h1 className="lg:pb-4">
           Full Publication List:{" "}
           <Link className="link link-hover" href={`/team/${memberId}`}>
-            {composeFullName(person)}
+            {composeFullName(member)}
           </Link>{" "}
         </h1>
       </DefaultMDX>

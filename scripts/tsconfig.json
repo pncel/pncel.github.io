@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
+    "module": "CommonJS",
     "target": "ESNext",
     "moduleResolution": "node",
     "outDir": "./dist",
@@ -12,7 +12,12 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
+    "allowJs": true,
+    "checkJs": true
   },
-  "include": ["../src/data/newtypes.ts", "../src/data/newdatabase.ts", "../src/data/types.ts", "../src/data/database.ts"],
+  "include": [
+    "../src/data/types.ts",
+    "../src/data/database.ts"
+  ],
   "exclude": ["node_modules"]
 }

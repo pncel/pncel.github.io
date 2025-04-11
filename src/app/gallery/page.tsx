@@ -1,4 +1,4 @@
-import Database from "@/data/database";
+import { Database } from "@/data/database";
 import Gallery from "@/app/gallery/gallery";
 import { metadataTmpl } from "@/data/utils";
 import DefaultMain from "@/layouts/defaultMain";
@@ -11,9 +11,9 @@ export const metadata = {
 
 export default async function GalleryPage() {
   const db = await Database.get();
-  const photos = db
-    .getAllPhotos()
-    .toSorted((a, b) => b.time.getTime() - a.time.getTime());
+  const photos = (await db.getManyPhotos()).toSorted(
+    (a, b) => b.time.getTime() - a.time.getTime(),
+  );
 
   return (
     <DefaultMain>

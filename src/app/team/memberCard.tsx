@@ -1,17 +1,19 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { composeFullName, composeHeadshotPlaceholder } from "@/data/utils";
-import { Member, Person } from "@/data/types";
+import { composeFullName, composeAvatarPlaceholder } from "@/data/utils";
+import { Member } from "@/data/types";
 
 export default async function MemberCard({
   member,
-  person,
-}: Readonly<{ member: Member; person: Person }>) {
-  const { id, position } = member;
-  const fullname = composeFullName(person);
-  const placeholder = composeHeadshotPlaceholder(person);
-  const { headshot } = person;
+}: Readonly<{ member: Member }>) {
+  const {
+    id,
+    avatar,
+    memberInfo: { position },
+  } = member;
+  const fullname = composeFullName(member);
+  const placeholder = composeAvatarPlaceholder(member);
 
   return (
     <div
@@ -25,20 +27,20 @@ export default async function MemberCard({
           <div
             className={
               "flex-none rounded-full w-24 h-24 overflow-clip" +
-              (headshot ? "" : " ring-2 ring-secondary")
+              (avatar ? "" : " ring-2 ring-secondary")
             }
           >
-            {headshot ? (
-              <div className="headshot">
+            {avatar ? (
+              <div className="avatar">
                 <Image
                   width={512}
                   height={512}
-                  src={headshot}
+                  src={avatar}
                   alt={fullname}
                 ></Image>
               </div>
             ) : (
-              <div className="headshot placeholder bg-base-300 w-full h-full">
+              <div className="avatar placeholder bg-base-300 w-full h-full">
                 <span className="text-3xl text-base-content m-auto">
                   {placeholder}{" "}
                 </span>

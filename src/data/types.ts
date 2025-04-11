@@ -1,7 +1,24 @@
+/*
+Describes all the JSON schemas for RXDB and all the types (both RXDB documentation
+types and native types). RXDB types are suffixed with 'Doc', e.g. 'Person' vs
+'PersonDoc'. Native types are richer than RXDB types because the latter is for
+JSON data, and can only represent date/time/enum as strings.
+*/
+
+import {
+  toTypedRxJsonSchema,
+  ExtractDocumentTypeFromTypedRxJsonSchema,
+  RxJsonSchema,
+} from "rxdb";
+
+// ==============================================================================
+// == Enums =====================================================================
+// ==============================================================================
 export enum TagType {
   other,
   award,
   venue,
+  tapeout,
 }
 
 export enum NewsType {
@@ -24,79 +41,222 @@ export enum MemberRole {
 }
 
 export enum Icon {
-  default,
-  pdf,
-  video,
-  github,
-  website,
+  link, // faPaperPlane
+  pdf, // faFilePdf
+  video, // faVideo
+  github, // faGithub
+  website, // faGlobe
+  gscholar, // faGoogleScholar
+  orcid, // faOrcid
+  linkedin, // faLinkedin
+  twitter, // faXTwitter
+  instagram, // faInstagram
+  facebook, // faFacebook
+  youtube, // faYoutube
+  chip, // faMicrochip
+  medal, // faMedal
 }
 
-export type Person = {
-  id: number;
-  firstname: string;
-  lastname: string;
-  goby?: string;
-  middlename?: string;
-  headshot?: string;
-  externalLink?: string;
-  memberId?: string;
+// ==============================================================================
+// == Tag =======================================================================
+// ==============================================================================
+const tagSchemaLiteral = {
+  type: "object",
+  properties: {
+    label: { type: "string" },
+    type: {
+      type: "string",
+      enum: Object.keys(TagType) as (keyof typeof TagType)[],
+    },
+    link: { type: "string" },
+    icon: { type: "string", enum: Object.keys(Icon) as (keyof typeof Icon)[] },
+  },
+  required: ["label", "type"],
+} as const;
+export type TagDoc = {
+  label: string;
+  type: keyof typeof TagType;
+  link?: string;
+  icon?: keyof typeof Icon;
+};
+export type Tag = {
+  label: string;
+  type: TagType;
+  link?: string;
+  icon?: Icon;
 };
 
-export type Member = {
-  id: string;
+// ==============================================================================
+// == Person ====================================================================
+// ==============================================================================
+const personSchemaLiteral = {
+  title: "person schema",
+  description: "describes a person (not necessarily a PNCEL member)",
+  version: 0,
+  primaryKey: "id",
+  type: "object",
+  properties: {
+    id: { type: "string", maxLength: 32 },
+    firstname: { type: "string", maxLength: 50 },
+    lastname: { type: "string", maxLength: 50 },
+    goby: { type: "string" },
+    middlename: { type: "string" },
+    avatar: { type: "string" },
+    externalLink: { type: "string" },
+    memberInfo: {
+      type: "object",
+      properties: {
+        role: {
+          type: "string",
+          enum: Object.keys(MemberRole) as (keyof typeof MemberRole)[],
+        },
+        whenJoined: { type: "string", format: "date" },
+        whenLeft: { type: "string", format: "date" },
+        position: { type: "string" },
+        email: { type: "string", format: "email" },
+        office: { type: "string" },
+        links: {
+          type: "array",
+          items: {
+            type: "object",
+            properties: {
+              icon: {
+                type: "string",
+                enum: Object.keys(Icon) as (keyof typeof Icon)[],
+              },
+              label: { type: "string" },
+              link: { type: "string" },
+            },
+            required: ["link"],
+          },
+        },
+        selectedPubIds: {
+          type: "array",
+          items: { type: "string" },
+        },
+      },
+      required: ["role", "whenJoined"],
+    },
+  },
+  required: ["id", "firstname", "lastname"],
+  indexes: ["firstname", "lastname"],
+} as const;
+const personSchemaTyped = toTypedRxJsonSchema(personSchemaLiteral);
+export type PersonDoc = ExtractDocumentTypeFromTypedRxJsonSchema<
+  typeof personSchemaTyped
+>;
+export const personSchema: RxJsonSchema<PersonDoc> = personSchemaLiteral;
+
+type MemberInfoDoc = NonNullable<PersonDoc["memberInfo"]>;
+type MemberInfo = Omit<
+  MemberInfoDoc,
+  "role" | "whenJoined" | "whenLeft" | "links"
+> & {
   role: MemberRole;
-  personId: number;
   whenJoined: Date;
   whenLeft?: Date;
-  position?: string;
-  email?: string;
-  office?: string;
-  gscholar?: string;
-  orcid?: string;
-  github?: string;
-  linkedin?: string;
-  twitter?: string;
-  facebook?: string;
-  instagram?: string;
-  youtube?: string;
-  selectedPubIds?: number[];
+  links?: {
+    link: string;
+    icon?: Icon;
+    label?: string;
+  }[];
 };
+export type Person = Omit<PersonDoc, "memberInfo"> & {
+  memberInfo?: MemberInfo;
+}; // optional member info
+export type Member = Omit<Person, "memberInfo"> & { memberInfo: MemberInfo }; // required member info
 
-export type Tag = {
-  type: TagType;
-  label: string;
-  icon?: Icon;
-};
-
-export type PubAttachment = {
-  label: string;
-  link: string;
-  icon?: Icon;
-};
-
-export type Publication = {
-  id: number;
-  title: string;
-  authorIds: number[];
+// ==============================================================================
+// == Publication ===============================================================
+// ==============================================================================
+const publicationSchemaLiteral = {
+  title: "publication schema",
+  description: "describes a publication",
+  version: 0,
+  primaryKey: "id",
+  type: "object",
+  properties: {
+    id: { type: "string", maxLength: 32 },
+    title: { type: "string" },
+    authorIds: {
+      type: "array",
+      items: { type: "string" },
+    },
+    time: { type: "string", format: "date" },
+    booktitle: { type: "string" },
+    doi: { type: "string" },
+    bibtex: { type: "string" },
+    arxivDoi: { type: "string" },
+    arxivBibtex: { type: "string" },
+    authorsCopy: { type: "string" },
+    equalContrib: { type: "integer" },
+    notPncel: { type: "boolean" },
+    tags: {
+      type: "array",
+      items: tagSchemaLiteral,
+    },
+    attachments: {
+      type: "array",
+      items: {
+        type: "object",
+        properties: {
+          label: { type: "string" },
+          link: { type: "string" },
+          icon: {
+            type: "string",
+            enum: Object.keys(Icon) as (keyof typeof Icon)[],
+          },
+        },
+        required: ["label", "link"],
+      },
+    },
+  },
+  required: ["id", "title", "authorIds", "time"],
+} as const;
+const publicationSchemaTyped = toTypedRxJsonSchema(publicationSchemaLiteral);
+export type PublicationDoc = ExtractDocumentTypeFromTypedRxJsonSchema<
+  typeof publicationSchemaTyped
+>;
+export type Publication = Omit<
+  PublicationDoc,
+  "time" | "tags" | "attachments"
+> & {
   time: Date;
-  doi?: string;
-  booktitle?: string;
-  bibtex?: string;
-  arxivDOI?: string;
-  arxivBibtex?: string;
-  authorsCopy?: string;
-  equalContrib?: number;
-  notPncel?: boolean;
   tags?: Tag[];
-  attachments?: PubAttachment[];
+  attachments?: {
+    label: string;
+    link: string;
+    icon?: Icon;
+  }[];
 };
+export const publicationSchema: RxJsonSchema<PublicationDoc> =
+  publicationSchemaLiteral;
 
-export type Photo = {
-  title: string;
-  subtitle?: string;
-  width: number;
-  height: number;
-  image: string;
-  thumbnail?: string;
-  time: Date;
-};
+// ==============================================================================
+// == Photo =====================================================================
+// ==============================================================================
+const photoSchemaLiteral = {
+  title: "photo schema",
+  description: "describes a photo",
+  version: 0,
+  primaryKey: "id",
+  type: "object",
+  properties: {
+    id: { type: "string", maxLength: 32 },
+    title: { type: "string" },
+    subtitle: { type: "string" },
+    description: { type: "string" },
+    width: { type: "integer" },
+    height: { type: "integer" },
+    image: { type: "string" },
+    thumbnail: { type: "string" },
+    time: { type: "string", format: "date" },
+  },
+  required: ["id", "title", "height", "width", "image", "time"],
+} as const;
+const photoSchemaTyped = toTypedRxJsonSchema(photoSchemaLiteral);
+export type PhotoDoc = ExtractDocumentTypeFromTypedRxJsonSchema<
+  typeof photoSchemaTyped
+>;
+export type Photo = Omit<PhotoDoc, "time"> & { time: Date };
+export const photoSchema: RxJsonSchema<PhotoDoc> = photoSchemaLiteral;
