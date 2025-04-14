@@ -1,4 +1,4 @@
-import Database from "./.database/database.js";
+import { Database, decodePerson, decodePublication, encodeDate } from "./dist/database.js";
 import commandLineUsage from "command-line-usage";
 import commandLineArgs from "command-line-args";
 import { Cite } from "@citation-js/core";
@@ -15,6 +15,35 @@ const mainOptions = commandLineArgs(mainDefinitions, {
   stopAtFirstUnknown: true,
 });
 const argv = mainOptions._unknown || [];
+
+/* ==============================================================================
+== Utilities: hash IDs ==========================================================
+============================================================================== */
+function autoId(i) {
+    if (i <= 0) {
+        throw new Error(`Cannot hash ID<=0`);
+    }
+
+    // LFSR
+    let x = i & 0xffffffff;
+    x ^= x << 13;
+    x ^= x >> 17;
+    x ^= x << 5;
+
+    // base64
+    const rixits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_-".split('');
+    let res = "";
+    for (let j = 0; j < 6; j++) {
+        if (x === 0) {
+            res += "=";
+        } else {
+            res = rixits[x & 0x3f] + res;
+            x = x >> 6;
+        }
+    }
+
+    return `${res}`;
+}
 
 /* ==============================================================================
 == Utilities: interactive console ===============================================
@@ -35,7 +64,7 @@ async function askQuestion(question) {
 /* ==============================================================================
 == Utilities: db access =========================================================
 ============================================================================= */
-const db = await Database.default.get();
+const db = await Database.get();
 
 function sanitizeDOI(doi) {
   if (doi === null || doi === undefined) {
@@ -50,8 +79,8 @@ function sanitizeDOI(doi) {
 }
 
 async function fuzzySearchByName(cite_author) {
-  const db = await Database.get();
-  const fuse_bylastname = new Fuse(db.getManyPersons(), {
+  const persons = await db.getManyPersons();
+  const fuse_bylastname = new Fuse(persons, {
     keys: ["lastname"],
     distance: 1,
     threshold: 0.05, // stricter than default
@@ -77,7 +106,7 @@ async function fuzzySearchByName(cite_author) {
     middlename: item.middlename,
     goby: item.goby,
     externalLink: item.externalLink,
-    isMember: item.member !== null,
+    isMember: item.memberInfo !== undefined,
   }));
 }
 
@@ -114,11 +143,14 @@ if (mainOptions.command === "add-doi") {
     }
 
     // check if the doi is already in the database
-    const pubs = await prisma.publication.findMany({
-      where: {
-        OR: [{ doi: doi }, { arxivDOI: doi }],
-      },
-    });
+    const pubs = (await db.db.publications.find({
+        selector: {
+            $or: [
+                { doi: { $eq: doi } },
+                { arxivDoi: { $eq: doi } },
+            ]
+        }
+    }).exec()).map(decodePublication);
     if (pubs.length > 0) {
       console.log(
         `Publication(s) with doi ${doi} already exists in the database`,
@@ -152,7 +184,7 @@ if (mainOptions.command === "add-doi") {
           });
         } else if (matches.length === 1) {
           console.log(
-            `Found author "${cite_author.given} ${cite_author.family}" (id: ${matches[0].id}, ${matches[0].isMember ? "" : "NOT"} PNCEL member) in the data base.`,
+            `Found author "${cite_author.given} ${cite_author.family}" in database: (id: ${matches[0].id}, member? ${matches[0].isMember ? "Y" : "N"})`,
           );
           const answer = await askQuestion(
             `Type yes to connect, no to skip this doi (yes/no): `,
@@ -164,11 +196,11 @@ if (mainOptions.command === "add-doi") {
           }
         } else {
           console.log(
-            `Found multiple auhors that match "${cite_author.given} ${cite_author.family}" in the database:`,
+            `Found multiple authors that match "${cite_author.given} ${cite_author.family}" in the database:`,
           );
           matches.forEach((match, i) => {
             console.log(
-              `[${i}] id: ${match.id}, ${match.isMember ? "" : "NOT"} PNCEL member`,
+              `[${i}] id: ${match.id}, member ? ${match.isMember ? "Y" : "N"}`,
             );
           });
           const answer = await askQuestion(
@@ -191,14 +223,15 @@ if (mainOptions.command === "add-doi") {
       continue;
     }
 
-    // invalidate allPersons cache
-    allPersons = null;
-
     // create all the persons
+    const current_person_count = await db.db.persons.count().exec();
     const { authors_to_create, author_indices } = authors.reduce(
       ({ authors_to_create, author_indices }, author, i) => {
         if (author.operation === "create") {
-          authors_to_create.push(author.data);
+          authors_to_create.push({
+            ...author.data,
+            id: `-${autoId(current_person_count + i + 1)}`,
+        });
           author_indices.push(i);
         }
         return { authors_to_create, author_indices };
@@ -206,13 +239,23 @@ if (mainOptions.command === "add-doi") {
       { authors_to_create: [], author_indices: [] },
     );
 
-    const authors_created = await prisma.$transaction(
-      authors_to_create.map((author) => prisma.person.create({ data: author })),
-    );
+    const { success, error } = await db.db.persons.bulkInsert(authors_to_create);
+    if (error.length > 0) {
+      console.log(`Catastrophic failure: cannot create all the authors for doi ${doi}`);
+      console.log(error);
+      process.exit(1);
+    }
+
+    const authors_created = success.map(decodePerson);
+
     if (authors_created.length !== authors_to_create.length) {
-      console.log(
-        `Catastrophic failure: cannot create all the authors for doi ${doi}`,
-      );
+      console.log(`Catastrophic failure: cannot create all the authors for doi ${doi}`);
+      console.log(" .. Failed to create:");
+      for (const {firstname, lastname, id} of authors_to_create) {
+        if (!authors_created.find(a => a.id === id)) {
+            console.log(`    - ${firstname} ${lastname}, id=${id}`);
+        }
+      }
       console.log(`Please roll back the database and try again`);
       process.exit(1);
     }
@@ -223,12 +266,12 @@ if (mainOptions.command === "add-doi") {
     });
 
     // create publication
+    const current_pub_count = await db.db.publications.count().exec();
+    console.log(current_pub_count);
     let pub = {
+      id: `+${autoId(current_pub_count + 1)}`,
       title: cite.data[0].title,
-      authors: {
-        connect: authors.map((author) => ({ id: author.id })),
-      },
-      authorOrder: JSON.stringify(authors.map((author) => author.id)),
+      authorIds: authors.map(author => author.id),
     };
 
     if (doi.startsWith("10.48550/")) {
@@ -240,9 +283,9 @@ if (mainOptions.command === "add-doi") {
         const year = yearDigits >= 90 ? 1900 + yearDigits : 2000 + yearDigits;
         const month = parseInt(match[2]) - 1; // JS months are 0-indexed
         const day = 1;
-        pub.time = new Date(year, month, day).toISOString();
+        pub.time = encodeDate(new Date(year, month, day));
       }
-      pub.arxivDOI = doi;
+      pub.arxivDoi = doi;
       pub.arxivBibtex = cite.format("bibtex");
     } else {
       // regular DOI
@@ -262,14 +305,14 @@ if (mainOptions.command === "add-doi") {
           const dateParts = dateField["date-parts"][0];
           if (dateParts.length >= 2) {
             // We have at least year and month
-            pub.time = new Date(
+            pub.time = encodeDate(new Date(
               dateParts[0],
               dateParts[1] - 1,
               dateParts[2] || 1,
-            ).toISOString();
+            ));
           } else if (dateParts.length === 1) {
             // We only have year
-            pub.time = new Date(dateParts[0], 0, 1).toISOString();
+            pub.time = encodeDate(new Date(dateParts[0], 0, 1));
           }
           break;
         }
@@ -278,19 +321,16 @@ if (mainOptions.command === "add-doi") {
       pub.bibtex = cite.format("bibtex");
     }
 
-    const res = await prisma.publication.create({
-      data: pub,
-    });
-
-    if (res) {
-      console.log(`Successfully added publication with doi ${doi}`);
-    } else {
+    try {
+        await db.db.publications.insert(pub);
+    } catch(e) {
       console.log(
         `Catastrophic failure: cannot add publication with doi ${doi}`,
       );
-      console.log(`Please roll back the database and try again`);
-      process.exit(1);
+      throw e;
     }
+
+    console.log(`Successfully added publication with doi ${doi}`);
   }
 
   process.exit(0);
@@ -323,9 +363,9 @@ if (mainOptions.command === "update-doi") {
       doUpdate = true;
     }
 
-    const arxivDOI = sanitizeDOI(pub.arxivDOI);
-    if (arxivDOI !== null) {
-      const cite = new Cite(arxivDOI);
+    const arxivDoi = sanitizeDOI(pub.arxivDoi);
+    if (arxivDoi !== null) {
+      const cite = new Cite(arxivDoi);
       update.data.arxivBibtex = cite.format("bibtex");
       doUpdate = true;
     }

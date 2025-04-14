@@ -28,14 +28,14 @@ import {
   Photo,
   photoSchema,
   TagDoc,
-} from "./types"; // .js suffix is required here for js transpilation for our scripts
+} from "./types";
 
-addRxPlugin(RxDBJsonDumpPlugin);
 disableWarnings();
+addRxPlugin(RxDBJsonDumpPlugin);
 addRxPlugin(RxDBDevModePlugin);
 addFormats(getAjv());
 
-type RxDatabase = _RxDatabase<
+export type RxDatabase = _RxDatabase<
   Readonly<{
     persons: RxCollection<PersonDoc>;
     publications: RxCollection<PublicationDoc>;
@@ -263,6 +263,10 @@ export class Database extends Object {
             pValidateAllPersons,
             pValidateAllPublications,
           ]);
+
+          if (errors.length > 0) {
+            throw new Error("[FATAL] Database corrupted. Cannot recover");
+          }
 
           resolve(instance);
         } catch (e) {

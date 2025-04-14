@@ -1,47 +1,19 @@
 import { Database as OldDatabase } from "./dist/database.js";
-import { Database, encodeDate } from "./dist/database.js";
-import { TagType, Icon, MemberRole } from "./dist/types.js";
+import { Database, encodeDate, marshalId } from "./dist/newdatabase.js";
+import { TagType, Icon, MemberRole } from "./dist/newtypes.js";
 
 const old = await OldDatabase.get();
 const new_ = await Database.get();
 
-/*
 function getEnumKeyByValue(enumObj, value) {
     return Object.keys(enumObj).find(key => enumObj[key] === value);
-}
-
-function autoId(i) {
-    if (i <= 0) {
-        throw new Error(`Cannot handle ID<=0`);
-    }
-
-    // LFSR
-    let x = i & 0xffffffff;
-    x ^= x << 13;
-    x ^= x >> 17;
-    x ^= x << 5;
-    const lfsr = x;
-
-    // base64
-    const rixits = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_-".split('');
-    let res = "";
-    for (let j = 0; j < 6; j++) {
-        if (x === 0) {
-            res += "=";
-        } else {
-            res = rixits[x & 0x3f] + res;
-            x = x >> 6;
-        }
-    }
-
-    return `${res}`;
 }
 
 // start with persons
 const id_old2new = new Map();
 for (const p of old.getManyPersons()) {
     const m = p.memberId === undefined || p.memberId === "" ? undefined : old.getMember(p.memberId);
-    const id = m ? m.id : `-${autoId(p.id)}`;
+    const id = m ? m.id : `${'$'}${marshalId(p.id)}`;
     id_old2new.set(p.id, id);
     await new_.db.persons.insert({
         id,
@@ -68,7 +40,7 @@ for (const p of old.getManyPersons()) {
                 ...(m.instagram ? [{icon: "instagram", link: m.instagram, label: "Instagram"}] : []),
                 ...(m.youtube ? [{icon: "youtube", link: m.youtube, label: "Youtube"}] : []),
             ],
-            selectedPubIds: m.selectedPubIds?.map(id => `+${autoId(id)}`),
+            selectedPubIds: m.selectedPubIds?.map(id => `+${marshalId(id)}`),
         }
     })
 }
@@ -76,7 +48,7 @@ for (const p of old.getManyPersons()) {
 // publications
 for (const p of old.getManyPublications()) {
     await new_.db.publications.insert({
-        id: `+${autoId(p.id)}`,
+        id: `+${marshalId(p.id)}`,
         title: p.title,
         authorIds: p.authorIds.map(id => id_old2new.get(id)),
         time: encodeDate(p.time),
@@ -104,10 +76,9 @@ for (const p of old.getManyPublications()) {
 for (const [i, p] of old.getAllPhotos().entries()) {
     await new_.db.photos.insert({
         ...p,
-        id: `.${autoId(i + 1)}`,
+        id: `!${marshalId(i + 1)}`,
         time: encodeDate(p.time),
     })
 }
-    */
 
-// new_.persist()
+new_.persist()

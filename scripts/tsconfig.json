@@ -13,11 +13,12 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "allowJs": true,
-    "checkJs": true
+    "checkJs": true,
   },
   "include": [
     "../src/data/types.ts",
-    "../src/data/database.ts"
+    "../src/data/database.ts",
+    "../src/data/databaseMutator.ts"
   ],
   "exclude": ["node_modules"]
 }

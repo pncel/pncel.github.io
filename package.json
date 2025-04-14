@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "db": "tsc --project scripts && node scripts/db.js",
+    "pub": "tsc --project scripts && node scripts/pub.js",
     "convert": "tsc --project scripts && node scripts/convert.js"
   },
   "dependencies": {
