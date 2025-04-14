@@ -1,5 +1,5 @@
 name: db
-instanceToken: xiuylcqrki
+instanceToken: blqjulsghx
 collections:
   - name: persons
     schemaHash: 3b18a10f2a9290b1d05b852e07dd8eff0b4780d3c0c88b359661059f84fd6e47
@@ -15,13 +15,13 @@ collections:
           email: akumar08@uw.edu
           links: []
         _meta:
-          lwt: 1744613077773.04
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Bt0N
         firstname: Adi
         lastname: Fuchs
         _meta:
-          lwt: 1744613077771.11
+          lwt: 1744668567863.24
         _deleted: false
       - id: adwaith
         firstname: Adwaith
@@ -35,13 +35,13 @@ collections:
           email: adr29@uw.edu
           links: []
         _meta:
-          lwt: 1744613077775.06
+          lwt: 1744668567863.24
         _deleted: false
       - id: $007E0E
         firstname: Alexey
         lastname: Lavrov
         _meta:
-          lwt: 1744613077771.02
+          lwt: 1744668567863.24
         _deleted: false
       - id: andrep24
         firstname: Andrew
@@ -54,7 +54,7 @@ collections:
           email: andrep24@uw.edu
           links: []
         _meta:
-          lwt: 1744613077773.08
+          lwt: 1744668567863.24
         _deleted: false
       - id: ang
         firstname: Ang
@@ -90,21 +90,21 @@ collections:
             - +006C0C
             - +008G0G
         _meta:
-          lwt: 1744613077762.01
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00ix1P
         firstname: Arvind
         lastname: Krishnamurthy
         externalLink: https://sites.google.com/cs.washington.edu/arvind
         _meta:
-          lwt: 1744613077774.05
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Ia0b
         firstname: August
         lastname: Ning
         externalLink: https://augustning.com/
         _meta:
-          lwt: 1744613077772.01
+          lwt: 1744668567863.24
         _deleted: false
       - id: ayush
         firstname: Ayush
@@ -117,45 +117,57 @@ collections:
           email: ayushk22@uw.edu
           links: []
         _meta:
-          lwt: 1744613077775.08
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00lS1U
         firstname: Baris
         lastname: Kasikci
         externalLink: https://homes.cs.washington.edu/~baris/
         _meta:
-          lwt: 1744613077774.06
+          lwt: 1744668567863.24
+        _deleted: false
+      - id: bernardo
+        firstname: Bernardo
+        lastname: Lin
+        avatar: /avatar/bernardo.jpg
+        memberInfo:
+          role: ug
+          whenJoined: 2025-03-29
+          position: Undergrad
+          email: blin24@uw.edu
+        _meta:
+          lwt: 1744668567884.01
         _deleted: false
       - id: $00nW1Z
         firstname: Bowei
         lastname: Guo
         _meta:
-          lwt: 1744613077774.1
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00k-1T
         firstname: Chaojian
         lastname: Li
         _meta:
-          lwt: 1744613077774.09
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00m31W
         firstname: Cheng
         lastname: Wan
         _meta:
-          lwt: 1744613077774.13
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Po0p
         firstname: Christopher
         lastname: Batten
         externalLink: https://www.csl.cornell.edu/~cbatten/
         _meta:
-          lwt: 1744613077772.15
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00tD1k
         firstname: Chunhui
         lastname: Ye
         _meta:
-          lwt: 1744613077774.23
+          lwt: 1744668567863.24
         _deleted: false
       - id: darren
         firstname: Darren
@@ -169,26 +181,26 @@ collections:
           office: ECE 409
           links: []
         _meta:
-          lwt: 1744613077772.18
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Dx0R
         firstname: David
         lastname: Wentzlaff
         externalLink: https://www.princeton.edu/~wentzlaf/
         _meta:
-          lwt: 1744613077771.15
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Jc0d
         firstname: Davide
         lastname: Giri
         _meta:
-          lwt: 1744613077772.03
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00fG1I
         firstname: Dayou
         lastname: Du
         _meta:
-          lwt: 1744613077773.22
+          lwt: 1744668567863.24
         _deleted: false
       - id: duyv
         firstname: Duy
@@ -201,100 +213,100 @@ collections:
           email: duyv@uw.edu
           links: []
         _meta:
-          lwt: 1744613077773.02
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00OH0m
         firstname: Eric
         lastname: Tang
         externalLink: https://erictang25.github.io/
         _meta:
-          lwt: 1744613077772.14
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00dj1F
         firstname: Fan
         lastname: Yang
         _meta:
-          lwt: 1744613077773.19
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Ez0T
         firstname: Fei
         lastname: Gao
         externalLink: https://fei-g.github.io/
         _meta:
-          lwt: 1744613077771.17
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00F-0V
         firstname: Florian
         lastname: Zaruba
         _meta:
-          lwt: 1744613077771.19
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00K90e
         firstname: Gabriele
         lastname: Tombesi
         externalLink: https://www.cs.columbia.edu/~gtombesi/
         _meta:
-          lwt: 1744613077772.06
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00HY0Z
         firstname: Georgios
         lastname: Tziantzioulis
         _meta:
-          lwt: 1744613077771.22
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00FU0U
         firstname: Grigory
         lastname: Chirkov
         _meta:
-          lwt: 1744613077771.18
+          lwt: 1744668567863.24
         _deleted: false
       - id: $004f09
         firstname: Guangyu
         lastname: Sun
         _meta:
-          lwt: 1744613077770.04
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00hK1M
         firstname: Hayden Kwok-Hay
         lastname: So
         _meta:
-          lwt: 1744613077773.26
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00RN0s
         firstname: Hongzheng
         lastname: Chen
         _meta:
-          lwt: 1744613077772.2
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00qg1f
         firstname: Huawen
         lastname: Liang
         _meta:
-          lwt: 1744613077774.2
+          lwt: 1744668567863.24
         _deleted: false
       - id: $005h0B
         firstname: Huazhong
         lastname: Yang
         _meta:
-          lwt: 1744613077770.06
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Rs0t
         firstname: Jaebyeok
         lastname: Yoon
         _meta:
-          lwt: 1744613077772.19
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Yd15
         firstname: Jianyu
         lastname: Wei
         _meta:
-          lwt: 1744613077773.13
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00eI1G
         firstname: Jiaxing
         lastname: Qi
         _meta:
-          lwt: 1744613077773.24
+          lwt: 1744668567863.24
         _deleted: false
       - id: jiayi
         firstname: Jiayi
@@ -314,13 +326,13 @@ collections:
               link: https://www.linkedin.com/in/jiayi-wang-3b60a7209/
               label: LinkedIn
         _meta:
-          lwt: 1744613077769.01
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00dC1E
         firstname: Jilong
         lastname: Xue
         _meta:
-          lwt: 1744613077773.18
+          lwt: 1744668567863.24
         _deleted: false
       - id: jingqun
         firstname: Jingqun
@@ -334,27 +346,27 @@ collections:
           office: ECE 409
           links: []
         _meta:
-          lwt: 1744613077769.02
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00H30Y
         firstname: Jinzheng
         lastname: Tu
         _meta:
-          lwt: 1744613077771.23
+          lwt: 1744668567863.24
         _deleted: false
       - id: $006j0D
         firstname: Jonathan
         lastname: Balkind
         externalLink: https://jbalkind.github.io/
         _meta:
-          lwt: 1744613077771.01
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00J70c
         firstname: Joseph
         lastname: Zuckerman
         externalLink: http://www.cs.columbia.edu/~jzuck/
         _meta:
-          lwt: 1744613077772.04
+          lwt: 1744668567863.24
         _deleted: false
       - id: jovank
         firstname: Jovan
@@ -367,13 +379,13 @@ collections:
           email: jovank@uw.edu
           links: []
         _meta:
-          lwt: 1744613077775.05
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00ep1H
         firstname: Junjie
         lastname: Lai
         _meta:
-          lwt: 1744613077773.25
+          lwt: 1744668567863.24
         _deleted: false
       - id: juwon
         firstname: Juwon
@@ -386,144 +398,144 @@ collections:
           email: jami3jun@uw.edu
           links: []
         _meta:
-          lwt: 1744613077775.07
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Ke0f
         firstname: Kaifeng
         lastname: Xu
         _meta:
-          lwt: 1744613077772.05
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00hr1N
         firstname: Kan
         lastname: Zhu
         _meta:
-          lwt: 1744613077773.27
+          lwt: 1744668567863.24
         _deleted: false
       - id: $009p0J
         firstname: Katie
         lastname: Lim
         externalLink: https://homes.cs.washington.edu/~katielim/
         _meta:
-          lwt: 1744613077771.07
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00GW0X
         firstname: Kunal
         lastname: Gulati
         _meta:
-          lwt: 1744613077771.2
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Y614
         firstname: Lei
         lastname: Wang
         _meta:
-          lwt: 1744613077773.12
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00xq1t
         firstname: Letian
         lastname: Zhao
         _meta:
-          lwt: 1744613077775.01
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00iQ1O
         firstname: Liangyu
         lastname: Zhao
         _meta:
-          lwt: 1744613077774.04
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00uJ1m
         firstname: Linfeng
         lastname: Tao
         _meta:
-          lwt: 1744613077774.29
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00bf1B
         firstname: Lingxiao
         lastname: Ma
         _meta:
-          lwt: 1744613077773.15
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00G10W
         firstname: Luca
         lastname: Benini
         _meta:
-          lwt: 1744613077771.21
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00LB0g
         firstname: Luca
         lastname: Carloni
         externalLink: https://www.cs.columbia.edu/~luca/
         _meta:
-          lwt: 1744613077772.08
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00cE1C
         firstname: Mao
         lastname: Yang
         _meta:
-          lwt: 1744613077773.2
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00I50a
         firstname: Marcelo
         lastname: Orenes-Vera
         externalLink: https://www.cs.princeton.edu/~movera/
         _meta:
-          lwt: 1744613077772.02
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Lg0h
         firstname: Margaret
         lastname: Martonosi
         externalLink: https://www.princeton.edu/~mrm/
         _meta:
-          lwt: 1744613077772.07
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00DQ0Q
         firstname: Matthew
         lastname: Matl
         _meta:
-          lwt: 1744613077771.14
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00WZ11
         firstname: Mengjia
         lastname: Dai
         _meta:
-          lwt: 1744613077773.09
+          lwt: 1744668567863.24
         _deleted: false
       - id: $007l0F
         firstname: Michael
         lastname: McKeown
         _meta:
-          lwt: 1744613077771.03
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00ES0S
         firstname: Michael
         lastname: Schaffner
         _meta:
-          lwt: 1744613077771.16
+          lwt: 1744668567863.24
         _deleted: false
       - id: $009I0I
         firstname: Mohammad
         lastname: Shahrad
         externalLink: https://mshahrad.github.io/
         _meta:
-          lwt: 1744613077771.06
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Nk0l
         firstname: Moyang
         lastname: Wang
         _meta:
-          lwt: 1744613077772.11
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00aA18
         firstname: Naifeng
         lastname: Jing
         _meta:
-          lwt: 1744613077773.16
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Su0v
         firstname: Niansong
         lastname: Zhang
         _meta:
-          lwt: 1744613077772.21
+          lwt: 1744668567863.24
         _deleted: false
       - id: ohlbur
         firstname: Oliver
@@ -537,26 +549,26 @@ collections:
           office: ECE 409
           links: []
         _meta:
-          lwt: 1744613077773.01
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00BM0M
         firstname: Paul
         lastname: Jackson
         externalLink: https://www.princeton.edu/~pjj/
         _meta:
-          lwt: 1744613077771.1
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00fn1J
         firstname: Peiyuan
         lastname: Zhou
         _meta:
-          lwt: 1744613077773.23
+          lwt: 1744668567863.24
         _deleted: false
       - id: $004808
         firstname: Peng
         lastname: Li
         _meta:
-          lwt: 1744613077770.03
+          lwt: 1744668567863.24
         _deleted: false
       - id: krishpri
         firstname: Prithvi
@@ -569,25 +581,25 @@ collections:
           email: krishpri@uw.edu
           links: []
         _meta:
-          lwt: 1744613077773.05
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00gt1L
         firstname: Qinyu
         lastname: Xu
         _meta:
-          lwt: 1744613077774.01
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00o71a
         firstname: Qizhe
         lastname: Wu
         _meta:
-          lwt: 1744613077774.17
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00jv1R
         firstname: Rohan
         lastname: Kadekodi
         _meta:
-          lwt: 1744613077774.03
+          lwt: 1744668567863.24
         _deleted: false
       - id: rubylee
         firstname: Ruby
@@ -600,49 +612,49 @@ collections:
           email: rubywtl@uw.edu
           links: []
         _meta:
-          lwt: 1744613077773.07
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00sk1j
         firstname: Rucheng
         lastname: Dai
         _meta:
-          lwt: 1744613077774.24
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00CO0O
         firstname: Samuel
         lastname: Payne
         _meta:
-          lwt: 1744613077771.12
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00NF0k
         firstname: Shady
         lastname: Agwa
         _meta:
-          lwt: 1744613077772.12
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00oc1b
         firstname: Shang
         lastname: Wu
         _meta:
-          lwt: 1744613077774.16
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00SP0u
         firstname: Shaojie
         lastname: Xiang
         _meta:
-          lwt: 1744613077772.22
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00b81A
         firstname: Shijie
         lastname: Cao
         _meta:
-          lwt: 1744613077773.14
+          lwt: 1744668567863.24
         _deleted: false
       - id: $002b05
         firstname: Shuangchen
         lastname: Li
         _meta:
-          lwt: 1744613077769.04
+          lwt: 1744668567863.24
         _deleted: false
       - id: s2chitni
         firstname: Shwet
@@ -655,144 +667,144 @@ collections:
           email: s2chitni@uw.edu
           links: []
         _meta:
-          lwt: 1744613077773.06
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00lz1V
         firstname: Sixu
         lastname: Li
         _meta:
-          lwt: 1744613077774.07
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00gM1K
         firstname: Tian
         lastname: Tang
         _meta:
-          lwt: 1744613077773.28
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00ah19
         firstname: Ting
         lastname: Cao
         _meta:
-          lwt: 1744613077773.17
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Ar0L
         firstname: Ting-Jung
         lastname: Chang
         externalLink: https://tingjung.github.io/
         _meta:
-          lwt: 1744613077771.09
+          lwt: 1744668567863.24
         _deleted: false
       - id: $008n0H
         firstname: Tri
         lastname: Nguyen
         _meta:
-          lwt: 1744613077771.05
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Mi0j
         firstname: Tuan
         lastname: Ta
         externalLink: https://tuanqta.net/
         _meta:
-          lwt: 1744613077772.09
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Qq0r
         firstname: Tyler
         lastname: Sorensen
         externalLink: https://users.soe.ucsc.edu/~tsorensen/
         _meta:
-          lwt: 1744613077772.17
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00wN1q
         firstname: Wei
         lastname: Wu
         _meta:
-          lwt: 1744613077775.04
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00ws1r
         firstname: Wei
         lastname: Yuan
         _meta:
-          lwt: 1744613077775.03
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00n11Y
         firstname: Wenbo
         lastname: Zhu
         _meta:
-          lwt: 1744613077774.11
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00qB1e
         firstname: Xi
         lastname: Jin
         _meta:
-          lwt: 1744613077774.21
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Cv0P
         firstname: Xiaohua
         lastname: Liang
         _meta:
-          lwt: 1744613077771.13
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00r91g
         firstname: Xiaotian
         lastname: Wang
         _meta:
-          lwt: 1744613077774.19
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Om0n
         firstname: Xiaoyu
         lastname: Yan
         _meta:
-          lwt: 1744613077772.13
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00vm1p
         firstname: Xiaoyu
         lastname: Sun
         _meta:
-          lwt: 1744613077774.26
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00kU1S
         firstname: Yang
         lastname: Zhao
         _meta:
-          lwt: 1744613077774.08
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00p51c
         firstname: Yang Katie
         lastname: Zhao
         _meta:
-          lwt: 1744613077774.15
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00MD0i
         firstname: Yanghui
         lastname: Ou
         _meta:
-          lwt: 1744613077772.1
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00AK0K
         firstname: Yanqi
         lastname: Zhou
         externalLink: https://zhouyanqi.github.io/
         _meta:
-          lwt: 1744613077771.08
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00PJ0o
         firstname: Yanwen
         lastname: Xu
         externalLink: https://xuyanwen2012.github.io/
         _meta:
-          lwt: 1744613077772.16
+          lwt: 1744668567863.24
         _deleted: false
       - id: $008G0G
         firstname: Yaosheng
         lastname: Fu
         _meta:
-          lwt: 1744613077771.04
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00jO1Q
         firstname: Yile
         lastname: Gu
         _meta:
-          lwt: 1744613077774.02
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00pa1d
         firstname: Yingyan
@@ -800,43 +812,43 @@ collections:
         goby: Celine
         externalLink: https://eiclab.scs.gatech.edu/pages/team.html#PI
         _meta:
-          lwt: 1744613077774.14
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00cl1D
         firstname: Yizhao
         lastname: Gao
         _meta:
-          lwt: 1744613077773.21
+          lwt: 1744668567863.24
         _deleted: false
       - id: $003d07
         firstname: Yongpan
         lastname: Liu
         _meta:
-          lwt: 1744613077770.02
+          lwt: 1744668567863.24
         _deleted: false
       - id: $005A0A
         firstname: Yu
         lastname: Wang
         _meta:
-          lwt: 1744613077770.05
+          lwt: 1744668567863.24
         _deleted: false
       - id: $003606
         firstname: Yuan
         lastname: Zhe
         _meta:
-          lwt: 1744613077770.01
+          lwt: 1744668567863.24
         _deleted: false
       - id: $006C0C
         firstname: Yuan
         lastname: Xie
         _meta:
-          lwt: 1744613077770.07
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00re1h
         firstname: Yuchen
         lastname: Gui
         _meta:
-          lwt: 1744613077774.18
+          lwt: 1744668567863.24
         _deleted: false
       - id: cyungjen
         firstname: Yung-Jen
@@ -849,31 +861,31 @@ collections:
           email: cyungjen@uw.edu
           links: []
         _meta:
-          lwt: 1744613077773.03
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00vH1o
         firstname: Zengming
         lastname: Zhang
         _meta:
-          lwt: 1744613077774.27
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00uo1n
         firstname: Zerong
         lastname: He
         _meta:
-          lwt: 1744613077774.28
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00xL1s
         firstname: Zhaoxi
         lastname: Zeng
         _meta:
-          lwt: 1744613077775.02
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00ti1l
         firstname: Zhengyu
         lastname: Han
         _meta:
-          lwt: 1744613077774.22
+          lwt: 1744668567863.24
         _deleted: false
       - id: zhichen
         firstname: Zhichen
@@ -908,38 +920,39 @@ collections:
             - +00CO0O
             - +00DQ0Q
         _meta:
-          lwt: 1744613077769.03
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00mY1X
         firstname: Zhifan
         lastname: Ye
         _meta:
-          lwt: 1744613077774.12
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Z416
         firstname: Zhiru
         lastname: Zhang
         externalLink: https://www.csl.cornell.edu/~zhiruz/
         _meta:
-          lwt: 1744613077773.1
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00Zb17
         firstname: Zhiwen
         lastname: Mo
         _meta:
-          lwt: 1744613077773.11
+          lwt: 1744668567863.24
         _deleted: false
       - id: $00sF1i
         firstname: Zhongping
         lastname: Wang
         _meta:
-          lwt: 1744613077774.25
+          lwt: 1744668567863.24
         _deleted: false
   - name: publications
     schemaHash: ed7016248d106f560db05e01d4c2f57f2ac80de0005c7e8be1a416f6ede41af2
     docs:
       - id: +000X01
-        title: Nonvolatile Memory Allocation and Hierarchy Optimization for High-Level
+        title:
+          Nonvolatile Memory Allocation and Hierarchy Optimization for High-Level
           Synthesis
         authorIds:
           - $002b05
@@ -967,13 +980,13 @@ collections:
         tags:
           - type: venue
             label: ASP-DAC
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077775.09
+          lwt: 1744668567869.26
         _deleted: false
       - id: "+001202"
-        title: Leveraging Emerging Nonvolatile Memory in High-Level Synthesis with Loop
+        title:
+          Leveraging Emerging Nonvolatile Memory in High-Level Synthesis with Loop
           Transformations
         authorIds:
           - $002b05
@@ -986,7 +999,8 @@ collections:
           - $005h0B
           - $006C0C
         time: 2015-06-30
-        booktitle: 2015 IEEE/ACM International Symposium on Low Power Electronics and
+        booktitle:
+          2015 IEEE/ACM International Symposium on Low Power Electronics and
           Design
         doi: 10.1109/ISLPED.2015.7273491
         bibtex: >+
@@ -1006,10 +1020,9 @@ collections:
         tags:
           - type: venue
             label: ISLPED
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077778.01
+          lwt: 1744668567869.26
         _deleted: false
       - id: +001Z03
         title: "OpenPiton: An Emerging Standard for Open-Source EDA Tool Development"
@@ -1037,13 +1050,11 @@ collections:
         tags:
           - type: venue
             label: WOSET
-            icon: link
           - type: other
             label: Workshop
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077778.02
+          lwt: 1744668567869.26
         _deleted: false
       - id: "+002404"
         title: "PRGA: An Open-source Framework for Building and Using Custom FPGAs"
@@ -1056,16 +1067,14 @@ collections:
         tags:
           - type: venue
             label: OSDA
-            icon: link
           - type: other
             label: Workshop
-            icon: link
         attachments:
           - label: Poster
             link: /pdfs/osda19.pdf
             icon: pdf
         _meta:
-          lwt: 1744613077778.03
+          lwt: 1744668567869.26
         _deleted: false
       - id: +002b05
         title: Cycle-Free FPGA Routing Graphs
@@ -1094,16 +1103,14 @@ collections:
         tags:
           - type: venue
             label: FPGA
-            icon: link
           - type: other
             label: Poster
-            icon: link
         attachments:
           - label: Poster
             link: /pdfs/fpga20_poster.pdf
             icon: pdf
         _meta:
-          lwt: 1744613077779.01
+          lwt: 1744668567869.26
         _deleted: false
       - id: "+003606"
         title: "BYOC: A “Bring Your Own Core” Framework for Heterogeneous-ISA Research"
@@ -1143,13 +1150,11 @@ collections:
         tags:
           - type: venue
             label: ASPLOS
-            icon: link
           - type: other
             label: Open-Source
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077779.02
+          lwt: 1744668567869.26
         _deleted: false
       - id: +003d07
         title: "OpenPiton at 5: A Nexus for Open and Agile Hardware Design"
@@ -1189,10 +1194,9 @@ collections:
         tags:
           - type: venue
             label: IEEE Micro
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077779.03
+          lwt: 1744668567869.26
         _deleted: false
       - id: "+004808"
         title: Automated Design of FPGAs Facilitated by Cycle-Free Routing
@@ -1201,7 +1205,8 @@ collections:
           - $00Ar0L
           - $00Dx0R
         time: 2020-08-01
-        booktitle: 2020 30th International Conference on Field-Programmable Logic and
+        booktitle:
+          2020 30th International Conference on Field-Programmable Logic and
           Applications
         doi: 10.1109/FPL50879.2020.00042
         bibtex: >+
@@ -1222,10 +1227,9 @@ collections:
         tags:
           - type: venue
             label: FPL
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077779.04
+          lwt: 1744668567869.26
         _deleted: false
       - id: +004f09
         title: "PRGA: An Open-Source FPGA Research and Prototyping Framework"
@@ -1233,7 +1237,8 @@ collections:
           - ang
           - $00Dx0R
         time: 2021-02-01
-        booktitle: The 2021 ACM/SIGDA International Symposium on Field-Programmable Gate
+        booktitle:
+          The 2021 ACM/SIGDA International Symposium on Field-Programmable Gate
           Arrays
         doi: 10.1145/3431920.3439294
         bibtex: >+
@@ -1254,10 +1259,8 @@ collections:
         tags:
           - type: venue
             label: FPGA
-            icon: link
           - type: other
             label: Open-Source
-            icon: link
         attachments:
           - label: Recorded Talk
             link: https://dl.acm.org/doi/10.1145/3431920.3439294#
@@ -1272,7 +1275,7 @@ collections:
             link: https://prga.readthedocs.io/
             icon: website
         _meta:
-          lwt: 1744613077779.05
+          lwt: 1744668567869.26
         _deleted: false
       - id: +005A0A
         title: "Duet: Creating Harmony between Processors and Embedded FPGAs"
@@ -1281,7 +1284,8 @@ collections:
           - $00Ia0b
           - $00Dx0R
         time: 2023-01-31
-        booktitle: 2023 IEEE International Symposium on High-Performance Computer
+        booktitle:
+          2023 IEEE International Symposium on High-Performance Computer
           Architecture
         doi: 10.1109/HPCA56546.2023.10070989
         bibtex: >+
@@ -1313,19 +1317,18 @@ collections:
         tags:
           - type: venue
             label: HPCA
-            icon: link
           - type: other
             label: Open-Source
-            icon: link
         attachments:
           - label: GitHub
             link: https://github.com/PrincetonUniversity/Duet
             icon: github
         _meta:
-          lwt: 1744613077779.06
+          lwt: 1744668567869.26
         _deleted: false
       - id: +005h0B
-        title: "DECADES: A 67mm<sup>2</sup>, 1.46TOPS, 55 Giga Cache-Coherent 64-bit
+        title:
+          "DECADES: A 67mm<sup>2</sup>, 1.46TOPS, 55 Giga Cache-Coherent 64-bit
           RISC-V Instructions per second, Heterogeneous Manycore SoC with 109
           Tiles including Accelerators, Intelligent Storage, and eFPGA in 12nm
           FinFET"
@@ -1368,19 +1371,18 @@ collections:
         tags:
           - type: venue
             label: CICC
-            icon: link
           - type: award
             label: Best Student Paper Nominee
-            icon: link
+            icon: medal
           - type: other
             label: Prototype Chip
-            icon: link
+            icon: chip
         attachments:
           - label: Website
             link: https://decades.cs.princeton.edu/
             icon: website
         _meta:
-          lwt: 1744613077779.07
+          lwt: 1744668567869.26
         _deleted: false
       - id: +006C0C
         title: "CIFER: A 12nm, 16mm<sup>2</sup>, 22-Core SoC with a 1541
@@ -1428,13 +1430,12 @@ collections:
         tags:
           - type: venue
             label: CICC
-            icon: link
           - type: other
             label: Prototype Chip
-            icon: link
+            icon: chip
         attachments: []
         _meta:
-          lwt: 1744613077779.08
+          lwt: 1744668567869.26
         _deleted: false
       - id: +006j0D
         title: "Redwood: Flexible and Portable Heterogeneous Tree Traversal Workloads"
@@ -1443,7 +1444,8 @@ collections:
           - ang
           - $00Qq0r
         time: 2023-04-01
-        booktitle: 2023 IEEE International Symposium on Performance Analysis of Systems
+        booktitle:
+          2023 IEEE International Symposium on Performance Analysis of Systems
           and Software
         doi: 10.1109/ISPASS57527.2023.00028
         bibtex: >+
@@ -1464,16 +1466,15 @@ collections:
         tags:
           - type: venue
             label: ISPASS
-            icon: link
           - type: other
             label: Open-Source
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077779.09
+          lwt: 1744668567869.26
         _deleted: false
       - id: +007E0E
-        title: "Open-Source FPGA on Silicon: Case Studies on PRGA, an Open-Source
+        title:
+          "Open-Source FPGA on Silicon: Case Studies on PRGA, an Open-Source
           Framework for Building & Programming Custom FPGAs"
         authorIds:
           - ang
@@ -1486,19 +1487,18 @@ collections:
         tags:
           - type: venue
             label: OSCAR
-            icon: link
           - type: other
             label: Workshop
-            icon: link
         attachments:
           - label: Slides
             link: /pdfs/oscar23_prga.pdf
             icon: pdf
         _meta:
-          lwt: 1744613077779.1
+          lwt: 1744668567869.26
         _deleted: false
       - id: +007l0F
-        title: Evaluating Shared Memory Heterogeneous Systems Using Traverse-Compute
+        title:
+          Evaluating Shared Memory Heterogeneous Systems Using Traverse-Compute
           Workloads
         authorIds:
           - $00PJ0o
@@ -1510,10 +1510,8 @@ collections:
         tags:
           - type: venue
             label: OSCAR
-            icon: link
           - type: other
             label: Workshop
-            icon: link
         attachments:
           - label: Slides
             link: https://oscar-workshop.github.io/files/03_OSCAR2023-yanwenxu.pdf
@@ -1522,10 +1520,11 @@ collections:
             link: https://www.youtube.com/watch?v=Ebvd9IFk1g8
             icon: video
         _meta:
-          lwt: 1744613077779.11
+          lwt: 1744668567869.26
         _deleted: false
       - id: +008G0G
-        title: "CIFER: A Cache-Coherent 12nm 16mm<sup>2</sup> SoC with Four 64-Bit
+        title:
+          "CIFER: A Cache-Coherent 12nm 16mm<sup>2</sup> SoC with Four 64-Bit
           RISC-V Application Cores, 18 32-Bit RISC-V Compute Cores, and a 1541
           LUT6/mm<sup>2</sup> Synthesizable eFPGA"
         authorIds:
@@ -1570,13 +1569,12 @@ collections:
         tags:
           - type: venue
             label: SSC-L
-            icon: link
           - type: other
             label: Prototype Chip
-            icon: link
+            icon: chip
         attachments: []
         _meta:
-          lwt: 1744613077779.12
+          lwt: 1744668567869.26
         _deleted: false
       - id: +008n0H
         title: "Allo: A Programming Model for Composable Accelerator Design"
@@ -1610,13 +1608,13 @@ collections:
         tags:
           - type: venue
             label: PLDI
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077780.01
+          lwt: 1744668567869.26
         _deleted: false
       - id: +009I0I
-        title: "LUT Tensor Core: Lookup Table Enables Efficient Low-Bit LLM Inference
+        title:
+          "LUT Tensor Core: Lookup Table Enables Efficient Low-Bit LLM Inference
           Acceleration"
         authorIds:
           - $00Zb17
@@ -1634,7 +1632,8 @@ collections:
         booktitle: 2025 52rd IEEE/ACM Annual International Symposium on Computer
           Architecture
         arxivDoi: 10.48550/ARXIV.2408.06003
-        arxivBibtex: "@article{Mo2024LUT,\tauthor = {Mo, Zhiwen and Wang, Lei and Wei,
+        arxivBibtex:
+          "@article{Mo2024LUT,\tauthor = {Mo, Zhiwen and Wang, Lei and Wei,
           Jianyu and Zeng, Zhichen and Cao, Shijie and Ma, Lingxiao and Jing,
           Naifeng and Cao, Ting and Xue, Jilong and Yang, Fan and Yang,
           Mao},\tdoi = {10.48550/ARXIV.2408.06003},\tyear = {2024},\tpublisher =
@@ -1645,10 +1644,9 @@ collections:
         tags:
           - type: venue
             label: ISCA
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077780.02
+          lwt: 1744668567869.26
         _deleted: false
       - id: +009p0J
         title: "SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs"
@@ -1666,7 +1664,8 @@ collections:
           - $00cE1C
         time: 2024-10-01
         arxivDoi: 10.48550/arXiv.2410.13276
-        arxivBibtex: "@article{Gao2024SeerAttention,\tauthor = {Gao, Yizhao and Zeng,
+        arxivBibtex:
+          "@article{Gao2024SeerAttention,\tauthor = {Gao, Yizhao and Zeng,
           Zhichen and Du, Dayou and Cao, Shijie and Zhou, Peiyuan and Qi,
           Jiaxing and Lai, Junjie and So, Hayden Kwok-Hay and Cao, Ting and
           Yang, Fan and Yang, Mao},\tdoi = {10.48550/ARXIV.2410.13276},\tyear =
@@ -1678,13 +1677,13 @@ collections:
         tags:
           - type: venue
             label: Under Review
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077780.03
+          lwt: 1744668567869.26
         _deleted: false
       - id: +00AK0K
-        title: "Tactic: Adaptive Sparse Attention with Clustering and Distribution
+        title:
+          "Tactic: Adaptive Sparse Attention with Clustering and Distribution
           Fitting for Long-Context LLMs"
         authorIds:
           - $00hr1N
@@ -1699,7 +1698,8 @@ collections:
           - $00lS1U
         time: 2025-02-01
         arxivDoi: 10.48550/arXiv.2502.12216
-        arxivBibtex: "@article{Zhu2025Tactic,\tauthor = {Zhu, Kan and Tang, Tian and Xu,
+        arxivBibtex:
+          "@article{Zhu2025Tactic,\tauthor = {Zhu, Kan and Tang, Tian and Xu,
           Qinyu and Gu, Yile and Zeng, Zhichen and Kadekodi, Rohan and Zhao,
           Liangyu and Li, Ang and Krishnamurthy, Arvind and Kasikci,
           Baris},\tdoi = {10.48550/ARXIV.2502.12216},\tyear = {2025},\tpublisher
@@ -1710,13 +1710,13 @@ collections:
         tags:
           - type: venue
             label: Under Review
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077780.04
+          lwt: 1744668567869.26
         _deleted: false
       - id: +00Ar0L
-        title: "Fusion-3D: Integrated Acceleration for Instant 3D Reconstruction and
+        title:
+          "Fusion-3D: Integrated Acceleration for Instant 3D Reconstruction and
           Real-Time Rendering"
         authorIds:
           - $00lz1V
@@ -1748,16 +1748,16 @@ collections:
         tags:
           - type: venue
             label: MICRO
-            icon: link
           - type: award
             label: Best Paper Award
-            icon: link
+            icon: medal
         attachments: []
         _meta:
-          lwt: 1744613077780.05
+          lwt: 1744668567869.26
         _deleted: false
       - id: +00BM0M
-        title: "Instant-NeRF: Instant On-Device Neural Radiance Field Training via
+        title:
+          "Instant-NeRF: Instant On-Device Neural Radiance Field Training via
           Algorithm-Accelerator Co-Designed Near-Memory Processing"
         authorIds:
           - $00p51c
@@ -1786,13 +1786,13 @@ collections:
         tags:
           - type: venue
             label: DAC
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077780.06
+          lwt: 1744668567869.26
         _deleted: false
       - id: +00Bt0N
-        title: "EN-T: Optimizing Tensor Computing Engines Performance via Encoder-Based
+        title:
+          "EN-T: Optimizing Tensor Computing Engines Performance via Encoder-Based
           Methodology"
         authorIds:
           - $00o71a
@@ -1821,13 +1821,13 @@ collections:
         tags:
           - type: venue
             label: ICCD
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077780.07
+          lwt: 1744668567869.26
         _deleted: false
       - id: +00CO0O
-        title: Highly stable and fast response photodetector based on double perovskite
+        title:
+          Highly stable and fast response photodetector based on double perovskite
           Cs<sub>2</sub>AgBiCl<sub>6</sub> crystals
         authorIds:
           - $00ti1l
@@ -1862,13 +1862,13 @@ collections:
         tags:
           - type: venue
             label: Journal of Physics D
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077780.08
+          lwt: 1744668567869.26
         _deleted: false
       - id: +00DQ0Q
-        title: Exploring the Performance Improvement of Tensor Processing Engines
+        title:
+          Exploring the Performance Improvement of Tensor Processing Engines
           through Transformation in the Bit-weight Dimension of MACs
         authorIds:
           - $00o71a
@@ -1884,7 +1884,8 @@ collections:
           - $00wN1q
           - $00qB1e
         time: 2025-03-01
-        booktitle: 2025 IEEE International Symposium on High-Performance Computer
+        booktitle:
+          2025 IEEE International Symposium on High-Performance Computer
           Architecture
         arxivDoi: 10.48550/ARXIV.2503.06342
         arxivBibtex: >+
@@ -1900,10 +1901,9 @@ collections:
         tags:
           - type: venue
             label: HPCA
-            icon: link
         attachments: []
         _meta:
-          lwt: 1744613077780.09
+          lwt: 1744668567869.26
         _deleted: false
   - name: photos
     schemaHash: 333ab32bd3e6cf280dc47916fbc1bb2941d6dcf02800989c2fba0f0a6ae774ba
@@ -1917,7 +1917,7 @@ collections:
         thumbnail: /photos/thumbnails/PNCEL_2025.JPG
         id: "!000X01"
         _meta:
-          lwt: 1744613077780.1
+          lwt: 1744668567873.09
         _deleted: false
       - title: PNCEL Group, Spring 2025
         subtitle: "Zhichen: 👍"
@@ -1928,7 +1928,7 @@ collections:
         thumbnail: /photos/thumbnails/IMG_2317.JPG
         id: "!001202"
         _meta:
-          lwt: 1744613077782.01
+          lwt: 1744668567873.09
         _deleted: false
       - title: First Batch of PNCEL PhDs
         image: /photos/IMG_2632.jpg
@@ -1938,7 +1938,7 @@ collections:
         thumbnail: /photos/thumbnails/IMG_2632.jpg
         id: "!001Z03"
         _meta:
-          lwt: 1744613077782.02
+          lwt: 1744668567873.09
         _deleted: false
       - title: '"PNCEL"'
         image: /photos/IMG_2382.jpg
@@ -1948,7 +1948,7 @@ collections:
         thumbnail: /photos/thumbnails/IMG_2382.jpg
         id: "!002404"
         _meta:
-          lwt: 1744613077782.03
+          lwt: 1744668567873.09
         _deleted: false
       - title: '"UW"'
         image: /photos/IMG_2383.jpg
@@ -1958,10 +1958,10 @@ collections:
         thumbnail: /photos/thumbnails/IMG_2383.jpg
         id: "!002b05"
         _meta:
-          lwt: 1744613077782.04
+          lwt: 1744668567873.09
         _deleted: false
       - title: PhDs Chilling out (MICRO 2024)
-        subtitle: "Ang: \"Y'all should be working!\""
+        subtitle: 'Ang: "Y''all should be working!"'
         image: /photos/IMG_7221.jpg
         width: 4032
         height: 3024
@@ -1969,7 +1969,7 @@ collections:
         thumbnail: /photos/thumbnails/IMG_7221.jpg
         id: "!003606"
         _meta:
-          lwt: 1744613077782.05
+          lwt: 1744668567873.09
         _deleted: false
       - title: MICRO 2024
         image: /photos/IMG_0143.png
@@ -1979,7 +1979,7 @@ collections:
         thumbnail: /photos/thumbnails/IMG_0143.png
         id: "!003d07"
         _meta:
-          lwt: 1744613077782.06
+          lwt: 1744668567873.09
         _deleted: false
       - title: UTexas Austin Book Store (MICRO 2024)
         image: /photos/IMG_3213.jpg
@@ -1989,5 +1989,5 @@ collections:
         thumbnail: /photos/thumbnails/IMG_3213.jpg
         id: "!004808"
         _meta:
-          lwt: 1744613077782.07
+          lwt: 1744668567873.09
         _deleted: false

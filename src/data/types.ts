@@ -1,7 +1,7 @@
 /*
-Describes all the JSON schemas for RXDB and all the types (both RXDB documentation
-types and native types). RXDB types are suffixed with 'Doc', e.g. 'Person' vs
-'PersonDoc'. Native types are richer than RXDB types because the latter is for
+Describes all the JSON schemas for RXDB and all the types (both JSON
+types and native types). JSON types are suffixed with 'Json', e.g. 'Person' vs
+'PersonJson'. Native types are richer than RXDB types because the latter is for
 JSON data, and can only represent date/time/enum as strings.
 */
 
@@ -73,7 +73,7 @@ const tagSchemaLiteral = {
   },
   required: ["label", "type"],
 } as const;
-export type TagDoc = {
+export type TagJson = {
   label: string;
   type: keyof typeof TagType;
   link?: string;
@@ -142,14 +142,14 @@ const personSchemaLiteral = {
   indexes: ["firstname", "lastname"],
 } as const;
 const personSchemaTyped = toTypedRxJsonSchema(personSchemaLiteral);
-export type PersonDoc = ExtractDocumentTypeFromTypedRxJsonSchema<
+export type PersonJson = ExtractDocumentTypeFromTypedRxJsonSchema<
   typeof personSchemaTyped
 >;
-export const personSchema: RxJsonSchema<PersonDoc> = personSchemaLiteral;
+export const personSchema: RxJsonSchema<PersonJson> = personSchemaLiteral;
 
-type MemberInfoDoc = NonNullable<PersonDoc["memberInfo"]>;
+type MemberInfoJson = NonNullable<PersonJson["memberInfo"]>;
 type MemberInfo = Omit<
-  MemberInfoDoc,
+  MemberInfoJson,
   "role" | "whenJoined" | "whenLeft" | "links"
 > & {
   role: MemberRole;
@@ -161,7 +161,7 @@ type MemberInfo = Omit<
     label?: string;
   }[];
 };
-export type Person = Omit<PersonDoc, "memberInfo"> & {
+export type Person = Omit<PersonJson, "memberInfo"> & {
   memberInfo?: MemberInfo;
 }; // optional member info
 export type Member = Omit<Person, "memberInfo"> & { memberInfo: MemberInfo }; // required member info
@@ -214,11 +214,11 @@ const publicationSchemaLiteral = {
   required: ["id", "title", "authorIds", "time"],
 } as const;
 const publicationSchemaTyped = toTypedRxJsonSchema(publicationSchemaLiteral);
-export type PublicationDoc = ExtractDocumentTypeFromTypedRxJsonSchema<
+export type PublicationJson = ExtractDocumentTypeFromTypedRxJsonSchema<
   typeof publicationSchemaTyped
 >;
 export type Publication = Omit<
-  PublicationDoc,
+  PublicationJson,
   "time" | "tags" | "attachments"
 > & {
   time: Date;
@@ -229,7 +229,7 @@ export type Publication = Omit<
     icon?: Icon;
   }[];
 };
-export const publicationSchema: RxJsonSchema<PublicationDoc> =
+export const publicationSchema: RxJsonSchema<PublicationJson> =
   publicationSchemaLiteral;
 
 // ==============================================================================
@@ -255,8 +255,8 @@ const photoSchemaLiteral = {
   required: ["id", "title", "height", "width", "image", "time"],
 } as const;
 const photoSchemaTyped = toTypedRxJsonSchema(photoSchemaLiteral);
-export type PhotoDoc = ExtractDocumentTypeFromTypedRxJsonSchema<
+export type PhotoJson = ExtractDocumentTypeFromTypedRxJsonSchema<
   typeof photoSchemaTyped
 >;
-export type Photo = Omit<PhotoDoc, "time"> & { time: Date };
-export const photoSchema: RxJsonSchema<PhotoDoc> = photoSchemaLiteral;
+export type Photo = Omit<PhotoJson, "time"> & { time: Date };
+export const photoSchema: RxJsonSchema<PhotoJson> = photoSchemaLiteral;

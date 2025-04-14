@@ -17,17 +17,17 @@ import {
   MemberRole,
   Icon,
   Tag,
-  PersonDoc,
+  PersonJson,
   Person,
   personSchema,
   Member,
-  PublicationDoc,
+  PublicationJson,
   Publication,
   publicationSchema,
-  PhotoDoc,
+  PhotoJson,
   Photo,
   photoSchema,
-  TagDoc,
+  TagJson,
 } from "./types";
 
 disableWarnings();
@@ -37,17 +37,24 @@ addFormats(getAjv());
 
 export type RxDatabase = _RxDatabase<
   Readonly<{
-    persons: RxCollection<PersonDoc>;
-    publications: RxCollection<PublicationDoc>;
-    photos: RxCollection<PhotoDoc>;
+    persons: RxCollection<PersonJson>;
+    publications: RxCollection<PublicationJson>;
+    photos: RxCollection<PhotoJson>;
   }>
 >;
 
 // ==============================================================================
 // == Encoder/Decoders ==========================================================
 // ==============================================================================
-export function encodeEnum<E, ET>(e: E | undefined): ET | undefined {
-  return e === undefined ? undefined : (stringify(e) as ET);
+export function encodeEnum<E extends Record<string, string | number>>(
+  ET: E,
+  v: E[keyof E] | undefined,
+): keyof E | undefined {
+  if (v === undefined) {
+    return undefined;
+  } else {
+    return Object.keys(ET).find((k) => ET[k] === v) as keyof E | undefined;
+  }
 }
 
 export function decodeEnum<E extends Record<string, string | number>>(
@@ -71,15 +78,15 @@ export function encodeDate(d: Date | undefined): string | undefined {
   }
 }
 
-export function encodeTag(t: Tag): TagDoc {
+export function encodeTag(t: Tag): TagJson {
   return {
     ...t,
-    type: encodeEnum(t.type)!,
-    icon: encodeEnum(t.icon),
+    type: encodeEnum(TagType, t.type)!,
+    icon: encodeEnum(Icon, t.icon),
   };
 }
 
-export function decodeTag(t: TagDoc): Tag {
+export function decodeTag(t: TagJson): Tag {
   return {
     ...t,
     type: decodeEnum(TagType, t.type)!,
@@ -87,7 +94,7 @@ export function decodeTag(t: TagDoc): Tag {
   };
 }
 
-export function encodePerson(p: Person): PersonDoc {
+export function encodePerson(p: Person): PersonJson {
   const m = p.memberInfo;
   return {
     ...p,
@@ -96,19 +103,19 @@ export function encodePerson(p: Person): PersonDoc {
         ? undefined
         : {
             ...m,
-            role: encodeEnum(m.role)!,
+            role: encodeEnum(MemberRole, m.role)!,
             whenJoined: encodeDate(m.whenJoined)!,
             whenLeft: encodeDate(m.whenLeft),
             links: m.links?.map((l) => ({
               ...l,
-              icon: encodeEnum(l.icon),
+              icon: encodeEnum(Icon, l.icon),
             })),
           },
   };
 }
 
-export function decodePerson(doc: RxDocument<PersonDoc>): Person {
-  const d = doc.toJSON() as PersonDoc;
+export function decodePerson(doc: RxDocument<PersonJson>): Person {
+  const d = doc.toJSON() as PersonJson;
   const m = d.memberInfo;
   return {
     ...d,
@@ -129,22 +136,22 @@ export function decodePerson(doc: RxDocument<PersonDoc>): Person {
   };
 }
 
-export function encodePublication(p: Publication): PublicationDoc {
+export function encodePublication(p: Publication): PublicationJson {
   return {
     ...p,
     time: encodeDate(p.time)!,
     tags: p.tags?.map(encodeTag),
     attachments: p.attachments?.map((a) => ({
       ...a,
-      icon: encodeEnum(a.icon),
+      icon: encodeEnum(Icon, a.icon),
     })),
   };
 }
 
 export function decodePublication(
-  doc: RxDocument<PublicationDoc>,
+  doc: RxDocument<PublicationJson>,
 ): Publication {
-  const p = doc.toJSON() as PublicationDoc;
+  const p = doc.toJSON() as PublicationJson;
   return {
     ...p,
     time: new Date(p.time),
@@ -156,15 +163,15 @@ export function decodePublication(
   };
 }
 
-export function encodePhoto(p: Photo): PhotoDoc {
+export function encodePhoto(p: Photo): PhotoJson {
   return {
     ...p,
     time: encodeDate(p.time)!,
   };
 }
 
-export function decodePhoto(doc: RxDocument<PhotoDoc>): Photo {
-  const p = doc.toJSON() as PhotoDoc;
+export function decodePhoto(doc: RxDocument<PhotoJson>): Photo {
+  const p = doc.toJSON() as PhotoJson;
   return {
     ...p,
     time: new Date(p.time),

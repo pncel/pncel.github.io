@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "pub": "tsc --project scripts && node scripts/pub.js",
-    "convert": "tsc --project scripts && node scripts/convert.js"
+    "db": "tsc --project scripts && node scripts/db.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.1",

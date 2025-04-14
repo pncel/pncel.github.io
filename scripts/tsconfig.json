@@ -13,7 +13,7 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "allowJs": true,
-    "checkJs": true,
+    "checkJs": true
   },
   "include": [
     "../src/data/types.ts",
