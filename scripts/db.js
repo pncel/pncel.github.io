@@ -375,3 +375,5 @@ const help_top = [
 
 console.log(commandLineUsage(help_top));
 rl.close();
+
+process.exit(0);
