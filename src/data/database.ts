@@ -178,8 +178,6 @@ export function decodePhoto(doc: RxDocument<PhotoJson>): Photo {
   };
 }
 
-const dbPath = `${process.cwd()}/public/database.yaml`;
-
 // ==============================================================================
 // == Database Class ============================================================
 // ==============================================================================
@@ -221,11 +219,38 @@ export class Database extends Object {
                 return db;
               })
               .then(async (db) => {
-                await readFile(dbPath, "utf-8")
+                const pReadPersons = readFile(
+                  `${process.cwd()}/public/database/persons.yaml`,
+                  "utf-8",
+                )
                   .then((raw) => parse(raw))
                   .then((data) => {
-                    db.importJSON(data);
+                    db.persons.importJSON(data);
                   });
+
+                const pReadPublications = readFile(
+                  `${process.cwd()}/public/database/pubs.yaml`,
+                  "utf-8",
+                )
+                  .then((raw) => parse(raw))
+                  .then((data) => {
+                    db.publications.importJSON(data);
+                  });
+
+                const pReadPhotos = readFile(
+                  `${process.cwd()}/public/database/photos.yaml`,
+                  "utf-8",
+                )
+                  .then((raw) => parse(raw))
+                  .then((data) => {
+                    db.photos.importJSON(data);
+                  });
+
+                await Promise.all([
+                  pReadPersons,
+                  pReadPublications,
+                  pReadPhotos,
+                ]);
                 return db;
               }),
           );
@@ -285,8 +310,23 @@ export class Database extends Object {
   }
 
   public async persist() {
-    const json = await this.db.exportJSON();
-    await writeFile(`${process.cwd()}/public/database.yaml`, stringify(json));
+    const personsJson = await this.db.persons.exportJSON();
+    await writeFile(
+      `${process.cwd()}/public/database/persons.yaml`,
+      stringify(personsJson),
+    );
+
+    const pubsJson = await this.db.publications.exportJSON();
+    await writeFile(
+      `${process.cwd()}/public/database/pubs.yaml`,
+      stringify(pubsJson),
+    );
+
+    const photosJson = await this.db.photos.exportJSON();
+    await writeFile(
+      `${process.cwd()}/public/database/photos.yaml`,
+      stringify(photosJson),
+    );
   }
 
   // --------------------------------------------------------------------------

@@ -1,0 +1,942 @@
+name: publications
+schemaHash: ed7016248d106f560db05e01d4c2f57f2ac80de0005c7e8be1a416f6ede41af2
+docs:
+  - id: +000X01
+    title:
+      Nonvolatile Memory Allocation and Hierarchy Optimization for High-Level
+      Synthesis
+    authorIds:
+      - $002b05
+      - ang
+      - $003d07
+      - $006C0C
+      - $005h0B
+    time: 2015-01-01
+    booktitle: The 20th Asia and South Pacific Design Automation Conference
+    doi: 10.1109/ASPDAC.2015.7058999
+    notPncel: true
+    tags:
+      - type: venue
+        label: ASP-DAC
+    attachments: []
+    _meta:
+      lwt: 1744674899307.01
+    _deleted: false
+    bibtex: >+
+      @inproceedings{Li2015Nonvolatile,
+      	author = {Li, Shuangchen and {Ang Li} and Liu, Yongpan and Xie, Yuan and {Huazhong Yang}},
+      	booktitle = {The 20th {Asia} and {South} {Pacific} {Design} {Automation} {Conference}},
+      	doi = {10.1109/aspdac.2015.7058999},
+      	year = {2015},
+      	month = {1},
+      	pages = {166--171},
+      	organization = {IEEE},
+      	title = {Nonvolatile memory allocation and hierarchy optimization for high-level synthesis},
+      	url = {http://dx.doi.org/10.1109/ASPDAC.2015.7058999},
+      }
+
+  - id: "+001202"
+    title:
+      Leveraging Emerging Nonvolatile Memory in High-Level Synthesis with Loop
+      Transformations
+    authorIds:
+      - $002b05
+      - ang
+      - $003606
+      - $003d07
+      - $004808
+      - $004f09
+      - $005A0A
+      - $005h0B
+      - $006C0C
+    time: 2015-06-30
+    booktitle: 2015 IEEE/ACM International Symposium on Low Power Electronics and Design
+    doi: 10.1109/ISLPED.2015.7273491
+    bibtex: >+
+      @inproceedings{Li2015Leveraging,
+      	author = {Li, Shuangchen and Li, Ang and Zhe, Yuan and Liu, Yongpan and Li, Peng and Sun, Guangyu and Wang, Yu and Yang, Huazhong and {Yuan Xie}},
+      	booktitle = {2015 {IEEE}/{ACM} {International} {Symposium} on {Low} {Power} {Electronics} and {Design} ({ISLPED})},
+      	doi = {10.1109/islped.2015.7273491},
+      	year = {2015},
+      	month = {7},
+      	pages = {61--66},
+      	organization = {IEEE},
+      	title = {Leveraging emerging nonvolatile memory in high-level synthesis with loop transformations},
+      	url = {http://dx.doi.org/10.1109/ISLPED.2015.7273491},
+      }
+
+    notPncel: true
+    tags:
+      - type: venue
+        label: ISLPED
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +001Z03
+    title: "OpenPiton: An Emerging Standard for Open-Source EDA Tool Development"
+    authorIds:
+      - $006j0D
+      - $007E0E
+      - $007l0F
+      - $008G0G
+      - $008n0H
+      - $009I0I
+      - ang
+      - $009p0J
+      - $00AK0K
+      - $00Ar0L
+      - $00BM0M
+      - $00Bt0N
+      - $00CO0O
+      - $00Cv0P
+      - $00DQ0Q
+      - $00Dx0R
+    time: 2018-10-31
+    booktitle: The 1st Workshop on Open-Source EDA Technology
+    authorsCopy: http://parallel.princeton.edu/papers/woset18-openpiton.pdf
+    notPncel: true
+    tags:
+      - type: venue
+        label: WOSET
+      - type: other
+        label: Workshop
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: "+002404"
+    title: "PRGA: An Open-source Framework for Building and Using Custom FPGAs"
+    authorIds:
+      - ang
+      - $00Dx0R
+    time: 2019-02-28
+    booktitle: The 1st Workshop on Open Source Design Automation
+    notPncel: true
+    tags:
+      - type: venue
+        label: OSDA
+      - type: other
+        label: Workshop
+    attachments:
+      - label: Poster
+        link: /pdfs/osda19.pdf
+        icon: pdf
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +002b05
+    title: Cycle-Free FPGA Routing Graphs
+    authorIds:
+      - ang
+      - $00Dx0R
+    time: 2020-01-31
+    booktitle: Proceedings of the 2020 ACM/SIGDA International Symposium on
+      Field-Programmable Gate Arrays
+    doi: 10.1145/3373087.3375354
+    bibtex: >+
+      @inproceedings{Li2020Cycle,
+      	author = {Li, Ang and Wentzlaff, David},
+      	booktitle = {Proceedings of the 2020 {ACM}/{SIGDA} {International} {Symposium} on {Field}-{Programmable} {Gate} {Arrays}},
+      	doi = {10.1145/3373087.3375354},
+      	year = {2020},
+      	month = {feb 23},
+      	pages = {322--322},
+      	organization = {ACM},
+      	title = {Cycle-{Free} {FPGA} {Routing} {Graphs}},
+      	url = {http://dx.doi.org/10.1145/3373087.3375354},
+      }
+
+    authorsCopy: /pdfs/fpga20.pdf
+    notPncel: true
+    tags:
+      - type: venue
+        label: FPGA
+      - type: other
+        label: Poster
+    attachments:
+      - label: Poster
+        link: /pdfs/fpga20_poster.pdf
+        icon: pdf
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: "+003606"
+    title: "BYOC: A “Bring Your Own Core” Framework for Heterogeneous-ISA Research"
+    authorIds:
+      - $006j0D
+      - $009p0J
+      - $00ES0S
+      - $00Ez0T
+      - $00FU0U
+      - ang
+      - $007E0E
+      - $008n0H
+      - $008G0G
+      - $00F-0V
+      - $00GW0X
+      - $00G10W
+      - $00Dx0R
+    time: 2020-02-29
+    booktitle: Proceedings of the Twenty-Fifth International Conference on
+      Architectural Support for Programming Languages and Operating Systems
+    doi: 10.1145/3373376.3378479
+    bibtex: >+
+      @inproceedings{Balkind2020BYOC,
+      	author = {Balkind, Jonathan and Lim, Katie and Schaffner, Michael and Gao, Fei and Chirkov, Grigory and Li, Ang and Lavrov, Alexey and Nguyen, Tri M. and Fu, Yaosheng and Zaruba, Florian and Gulati, Kunal and Benini, Luca and Wentzlaff, David},
+      	booktitle = {Proceedings of the {Twenty}-{Fifth} {International} {Conference} on {Architectural} {Support} for {Programming} {Languages} and {Operating} {Systems}},
+      	doi = {10.1145/3373376.3378479},
+      	year = {2020},
+      	month = {mar 9},
+      	pages = {699--714},
+      	organization = {ACM},
+      	title = {BYOC},
+      	url = {http://dx.doi.org/10.1145/3373376.3378479},
+      }
+
+    authorsCopy: http://parallel.princeton.edu/papers/aspl20-balkind.pdf
+    notPncel: true
+    tags:
+      - type: venue
+        label: ASPLOS
+      - type: other
+        label: Open-Source
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +003d07
+    title: "OpenPiton at 5: A Nexus for Open and Agile Hardware Design"
+    authorIds:
+      - $006j0D
+      - $00Ar0L
+      - $00BM0M
+      - $00HY0Z
+      - ang
+      - $00Ez0T
+      - $007E0E
+      - $00FU0U
+      - $00H30Y
+      - $009I0I
+      - $00Dx0R
+    time: 2020-06-30
+    booktitle: IEEE Micro
+    doi: 10.1109/MM.2020.2997706
+    bibtex: >+
+      @article{Balkind2020OpenPiton,
+      	author = {Balkind, Jonathan and Chang, Ting-Jung and Jackson, Paul J. and Tziantzioulis, Georgios and Li, Ang and Gao, Fei and Lavrov, Alexey and Chirkov, Grigory and Tu, Jinzheng and Shahrad, Mohammad and Wentzlaff, David},
+      	journal = {IEEE Micro},
+      	doi = {10.1109/mm.2020.2997706},
+      	issn = {0272-1732},
+      	number = {4},
+      	year = {2020},
+      	month = {jul 1},
+      	pages = {22--31},
+      	publisher = {{Institute of Electrical and Electronics Engineers (IEEE)}},
+      	title = {OpenPiton at 5: A {Nexus} for {Open} and {Agile} {Hardware} {Design}},
+      	url = {http://dx.doi.org/10.1109/MM.2020.2997706},
+      	volume = {40},
+      }
+
+    authorsCopy: http://parallel.princeton.edu/papers/ieee20-balkind.pdf
+    notPncel: true
+    tags:
+      - type: venue
+        label: IEEE Micro
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: "+004808"
+    title: Automated Design of FPGAs Facilitated by Cycle-Free Routing
+    authorIds:
+      - ang
+      - $00Ar0L
+      - $00Dx0R
+    time: 2020-08-01
+    booktitle:
+      2020 30th International Conference on Field-Programmable Logic and
+      Applications
+    doi: 10.1109/FPL50879.2020.00042
+    bibtex: >+
+      @inproceedings{Li2020Automated,
+      	author = {Li, Ang and Chang, Ting-Jung and Wentzlaff, David},
+      	booktitle = {2020 30th {International} {Conference} on {Field}-{Programmable} {Logic} and {Applications} ({FPL})},
+      	doi = {10.1109/fpl50879.2020.00042},
+      	year = {2020},
+      	month = {8},
+      	pages = {208--213},
+      	organization = {IEEE},
+      	title = {Automated {Design} of {FPGAs} {Facilitated} by {Cycle}-{Free} {Routing}},
+      	url = {http://dx.doi.org/10.1109/FPL50879.2020.00042},
+      }
+
+    authorsCopy: /pdfs/fpl20.pdf
+    notPncel: true
+    tags:
+      - type: venue
+        label: FPL
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +004f09
+    title: "PRGA: An Open-Source FPGA Research and Prototyping Framework"
+    authorIds:
+      - ang
+      - $00Dx0R
+    time: 2021-02-01
+    booktitle:
+      The 2021 ACM/SIGDA International Symposium on Field-Programmable Gate
+      Arrays
+    doi: 10.1145/3431920.3439294
+    bibtex: >+
+      @inproceedings{Li2021PRGA,
+      	author = {Li, Ang and Wentzlaff, David},
+      	booktitle = {The 2021 {ACM}/{SIGDA} {International} {Symposium} on {Field}-{Programmable} {Gate} {Arrays}},
+      	doi = {10.1145/3431920.3439294},
+      	year = {2021},
+      	month = {feb 17},
+      	pages = {127--137},
+      	organization = {ACM},
+      	title = {PRGA: An {Open}-{Source} {FPGA} {Research} and {Prototyping} {Framework}},
+      	url = {http://dx.doi.org/10.1145/3431920.3439294},
+      }
+
+    authorsCopy: /pdfs/fpga21.pdf
+    notPncel: true
+    tags:
+      - type: venue
+        label: FPGA
+      - type: other
+        label: Open-Source
+    attachments:
+      - label: Recorded Talk
+        link: https://dl.acm.org/doi/10.1145/3431920.3439294#
+        icon: video
+      - label: GitHub
+        link: https://github.com/PrincetonUniversity/prga
+        icon: github
+      - label: Website
+        link: https://parallel.princeton.edu/prga
+        icon: website
+      - label: Documentation
+        link: https://prga.readthedocs.io/
+        icon: website
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +005A0A
+    title: "Duet: Creating Harmony between Processors and Embedded FPGAs"
+    authorIds:
+      - ang
+      - $00Ia0b
+      - $00Dx0R
+    time: 2023-01-31
+    booktitle: 2023 IEEE International Symposium on High-Performance Computer Architecture
+    doi: 10.1109/HPCA56546.2023.10070989
+    bibtex: >+
+      @inproceedings{Li2023Duet,
+      	author = {Li, Ang and Ning, August and Wentzlaff, David},
+      	booktitle = {2023 {IEEE} {International} {Symposium} on {High}-{Performance} {Computer} {Architecture} ({HPCA})},
+      	doi = {10.1109/hpca56546.2023.10070989},
+      	year = {2023},
+      	month = {2},
+      	pages = {745--758},
+      	organization = {IEEE},
+      	title = {Duet: Creating {Harmony} between {Processors} and {Embedded} {FPGAs}},
+      	url = {http://dx.doi.org/10.1109/HPCA56546.2023.10070989},
+      }
+
+    arxivDoi: 10.48550/arXiv.2301.02785
+    arxivBibtex: >+
+      @article{Li2023Duet,
+      	author = {Li, Ang and Ning, August and Wentzlaff, David},
+      	doi = {10.48550/ARXIV.2301.02785},
+      	year = {2023},
+      	publisher = {arXiv},
+      	title = {Duet: Creating {Harmony} between {Processors} and {Embedded} {FPGAs}},
+      	url = {https://arxiv.org/abs/2301.02785},
+      }
+
+    authorsCopy: /pdfs/hpca23.pdf
+    notPncel: true
+    tags:
+      - type: venue
+        label: HPCA
+      - type: other
+        label: Open-Source
+    attachments:
+      - label: GitHub
+        link: https://github.com/PrincetonUniversity/Duet
+        icon: github
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +005h0B
+    title: "DECADES: A 67mm<sup>2</sup>, 1.46TOPS, 55 Giga Cache-Coherent 64-bit
+      RISC-V Instructions per second, Heterogeneous Manycore SoC with 109 Tiles
+      including Accelerators, Intelligent Storage, and eFPGA in 12nm FinFET"
+    authorIds:
+      - $00Ez0T
+      - $00Ar0L
+      - ang
+      - $00I50a
+      - $00Jc0d
+      - $00BM0M
+      - $00Ia0b
+      - $00HY0Z
+      - $00J70c
+      - $00H30Y
+      - $00Ke0f
+      - $00FU0U
+      - $00K90e
+      - $006j0D
+      - $00Lg0h
+      - $00LB0g
+      - $00Dx0R
+    time: 2023-04-01
+    booktitle: 2023 IEEE Custom Integrated Circuits Conference
+    doi: 10.1109/CICC57935.2023.10121257
+    bibtex: >+
+      @inproceedings{Gao2023DECADES,
+      	author = {Gao, Fei and Chang, Ting-Jung and Li, Ang and Orenes-Vera, Marcelo and Giri, Davide and Jackson, Paul J. and Ning, August and Tziantzioulis, Georgios and Zuckerman, Joseph and Tu, Jinzheng and Xu, Kaifeng and Chirkov, Grigory and Tombesi, Gabriele and Balkind, Jonathan and Martonosi, Margaret and Carloni, Luca and Wentzlaff, David},
+      	booktitle = {2023 {IEEE} {Custom} {Integrated} {Circuits} {Conference} ({CICC})},
+      	doi = {10.1109/cicc57935.2023.10121257},
+      	year = {2023},
+      	month = {4},
+      	pages = {1--2},
+      	organization = {IEEE},
+      	title = {DECADES: A 67mm\textsuperscript{2}, 1.46TOPS, 55 {Giga} {Cache}-{Coherent} 64-bit {RISC}-{V} {Instructions} per second, {Heterogeneous} {Manycore} {SoC} with 109 {Tiles} including {Accelerators}, {Intelligent} {Storage}, and {eFPGA} in 12nm {FinFET}},
+      	url = {http://dx.doi.org/10.1109/CICC57935.2023.10121257},
+      }
+
+    authorsCopy: https://parallel.princeton.edu/papers/CICC-2023-DECADES-final.pdf
+    notPncel: true
+    tags:
+      - type: venue
+        label: CICC
+      - type: award
+        label: Best Student Paper Nominee
+        icon: medal
+      - type: other
+        label: Prototype Chip
+        icon: chip
+    attachments:
+      - label: Website
+        link: https://decades.cs.princeton.edu/
+        icon: website
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +006C0C
+    title: "CIFER: A 12nm, 16mm<sup>2</sup>, 22-Core SoC with a 1541
+      LUT6/mm<sup>2</sup>, 1.92 MOPS/LUT, Fully Synthesizable, Cache-Coherent,
+      Embedded FPGA"
+    authorIds:
+      - $00Ar0L
+      - ang
+      - $00Ez0T
+      - $00Mi0j
+      - $00HY0Z
+      - $00MD0i
+      - $00Nk0l
+      - $00H30Y
+      - $00Ke0f
+      - $00BM0M
+      - $00Ia0b
+      - $00FU0U
+      - $00I50a
+      - $00NF0k
+      - $00Om0n
+      - $00OH0m
+      - $006j0D
+      - $00Po0p
+      - $00Dx0R
+    time: 2023-03-31
+    booktitle: 2023 IEEE Custom Integrated Circuits Conference
+    doi: 10.1109/CICC57935.2023.10121294
+    bibtex: >+
+      @inproceedings{Chang2023CIFER,
+      	author = {Chang, Ting-Jung and Li, Ang and Gao, Fei and Ta, Tuan and Tziantzioulis, Georgios and Ou, Yanghui and Wang, Moyang and Tu, Jinzheng and Xu, Kaifeng and Jackson, Paul J. and Ning, August and Chirkov, Grigory and Orenes-Vera, Marcelo and Agwa, Shady and Yan, Xiaoyu and Tang, Eric and Balkind, Jonathan and Batten, Christopher and Wentzlaff, David},
+      	booktitle = {2023 {IEEE} {Custom} {Integrated} {Circuits} {Conference} ({CICC})},
+      	doi = {10.1109/cicc57935.2023.10121294},
+      	year = {2023},
+      	month = {4},
+      	pages = {1--2},
+      	organization = {IEEE},
+      	title = {CIFER: A 12nm, 16mm\textsuperscript{2}, 22-{Core} {SoC} with a 1541 {LUT6}/mm\textsuperscript{2} 1.92 {MOPS}/{LUT}, {Fully} {Synthesizable}, {CacheCoherent}, {Embedded} {FPGA}},
+      	url = {http://dx.doi.org/10.1109/CICC57935.2023.10121294},
+      }
+
+    authorsCopy: /pdfs/cicc23_cifer.pdf
+    equalContrib: 2
+    notPncel: true
+    tags:
+      - type: venue
+        label: CICC
+      - type: other
+        label: Prototype Chip
+        icon: chip
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +006j0D
+    title: "Redwood: Flexible and Portable Heterogeneous Tree Traversal Workloads"
+    authorIds:
+      - $00PJ0o
+      - ang
+      - $00Qq0r
+    time: 2023-04-01
+    booktitle:
+      2023 IEEE International Symposium on Performance Analysis of Systems
+      and Software
+    doi: 10.1109/ISPASS57527.2023.00028
+    bibtex: >+
+      @inproceedings{Xu2023Redwood,
+      	author = {Xu, Yanwen and Li, Ang and Sorensen, Tyler},
+      	booktitle = {2023 {IEEE} {International} {Symposium} on {Performance} {Analysis} of {Systems} and {Software} ({ISPASS})},
+      	doi = {10.1109/ispass57527.2023.00028},
+      	year = {2023},
+      	month = {4},
+      	pages = {201--213},
+      	organization = {IEEE},
+      	title = {Redwood: Flexible and {Portable} {Heterogeneous} {Tree} {Traversal} {Workloads}},
+      	url = {http://dx.doi.org/10.1109/ISPASS57527.2023.00028},
+      }
+
+    authorsCopy: https://users.soe.ucsc.edu/~tsorensen/files/ispass2023.pdf
+    notPncel: true
+    tags:
+      - type: venue
+        label: ISPASS
+      - type: other
+        label: Open-Source
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +007E0E
+    title: "Open-Source FPGA on Silicon: Case Studies on PRGA, an Open-Source
+      Framework for Building & Programming Custom FPGAs"
+    authorIds:
+      - ang
+      - $00Ar0L
+      - $00Ez0T
+      - $00Dx0R
+    time: 2023-05-31
+    booktitle: 2023 Open-Source Computer Architecture Research
+    notPncel: true
+    tags:
+      - type: venue
+        label: OSCAR
+      - type: other
+        label: Workshop
+    attachments:
+      - label: Slides
+        link: /pdfs/oscar23_prga.pdf
+        icon: pdf
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +007l0F
+    title: Evaluating Shared Memory Heterogeneous Systems Using Traverse-Compute
+      Workloads
+    authorIds:
+      - $00PJ0o
+      - ang
+      - $00Qq0r
+    time: 2023-05-31
+    booktitle: 2023 Open-Source Computer Architecture Research
+    notPncel: true
+    tags:
+      - type: venue
+        label: OSCAR
+      - type: other
+        label: Workshop
+    attachments:
+      - label: Slides
+        link: https://oscar-workshop.github.io/files/03_OSCAR2023-yanwenxu.pdf
+        icon: pdf
+      - label: Recorded Talk
+        link: https://www.youtube.com/watch?v=Ebvd9IFk1g8
+        icon: video
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +008G0G
+    title: "CIFER: A Cache-Coherent 12nm 16mm<sup>2</sup> SoC with Four 64-Bit
+      RISC-V Application Cores, 18 32-Bit RISC-V Compute Cores, and a 1541
+      LUT6/mm<sup>2</sup> Synthesizable eFPGA"
+    authorIds:
+      - ang
+      - $00Ar0L
+      - $00Ez0T
+      - $00Mi0j
+      - $00HY0Z
+      - $00MD0i
+      - $00Nk0l
+      - $00H30Y
+      - $00Ke0f
+      - $00BM0M
+      - $00Ia0b
+      - $00FU0U
+      - $00I50a
+      - $00NF0k
+      - $00Om0n
+      - $00OH0m
+      - $006j0D
+      - $00Po0p
+      - $00Dx0R
+    time: 2023-05-31
+    booktitle: IEEE Solid-State Circuits Letters
+    doi: 10.1109/LSSC.2023.3303111
+    bibtex: >+
+      @article{Li2023CIFER,
+      	author = {Li, Ang and Chang, Ting-Jung and Gao, Fei and Ta, Tuan and Tziantzioulis, Georgios and Ou, Yanghui and Wang, Moyang and Tu, Jinzheng and Xu, Kaifeng and Jackson, Paul and Ning, August and Chirkov, Grigory and Orenes-Vera, Marcelo and Agwa, Shady and Yan, Xiaoyu and Tang, Eric and Balkind, Jonathan and Batten, Christopher and Wentzlaff, David},
+      	journal = {IEEE Solid-State Circuits Letters},
+      	doi = {10.1109/lssc.2023.3303111},
+      	issn = {2573-9603},
+      	year = {2023},
+      	pages = {229--232},
+      	publisher = {{Institute of Electrical and Electronics Engineers (IEEE)}},
+      	title = {CIFER: A {Cache}-{Coherent} 12-nm 16-mm\textsuperscript{2} {SoC} {With} {Four} 64-{Bit} {RISC}-{V} {Application} {Cores}, 18 32-{Bit} {RISC}-{V} {Compute} {Cores}, and a 1541 {LUT6}/mm\textsuperscript{2} {Synthesizable} {eFPGA}},
+      	url = {http://dx.doi.org/10.1109/LSSC.2023.3303111},
+      	volume = {6},
+      }
+
+    authorsCopy: /pdfs/sscl23.pdf
+    notPncel: true
+    tags:
+      - type: venue
+        label: SSC-L
+      - type: other
+        label: Prototype Chip
+        icon: chip
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +008n0H
+    title: "Allo: A Programming Model for Composable Accelerator Design"
+    authorIds:
+      - $00RN0s
+      - $00Su0v
+      - $00SP0u
+      - zhichen
+      - $00WZ11
+      - $00Z416
+    time: 2024-06-20
+    booktitle: Proceedings of the ACM on Programming Languages
+    doi: 10.1145/3656401
+    bibtex: >+
+      @article{Chen2024Allo,
+      	author = {Chen, Hongzheng and Zhang, Niansong and Xiang, Shaojie and Zeng, Zhichen and Dai, Mengjia and Zhang, Zhiru},
+      	journal = {Proceedings of the ACM on Programming Languages},
+      	doi = {10.1145/3656401},
+      	issn = {2475-1421},
+      	year = {2024},
+      	month = {jun 20},
+      	pages = {593--620},
+      	publisher = {Association for Computing Machinery (ACM)},
+      	title = {Allo: A {Programming} {Model} for {Composable} {Accelerator} {Design}},
+      	url = {http://dx.doi.org/10.1145/3656401},
+      	volume = {8},
+      }
+
+    equalContrib: 2
+    notPncel: true
+    tags:
+      - type: venue
+        label: PLDI
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +009I0I
+    title:
+      "LUT Tensor Core: Lookup Table Enables Efficient Low-Bit LLM Inference
+      Acceleration"
+    authorIds:
+      - $00Zb17
+      - $00Y614
+      - $00Yd15
+      - zhichen
+      - $00b81A
+      - $00bf1B
+      - $00aA18
+      - $00ah19
+      - $00dC1E
+      - $00dj1F
+      - $00cE1C
+    time: 2025-06-21
+    booktitle: 2025 52rd IEEE/ACM Annual International Symposium on Computer Architecture
+    arxivDoi: 10.48550/ARXIV.2408.06003
+    arxivBibtex:
+      "@article{Mo2024LUT,\tauthor = {Mo, Zhiwen and Wang, Lei and Wei,
+      Jianyu and Zeng, Zhichen and Cao, Shijie and Ma, Lingxiao and Jing,
+      Naifeng and Cao, Ting and Xue, Jilong and Yang, Fan and Yang, Mao},\tdoi =
+      {10.48550/ARXIV.2408.06003},\tyear = {2024},\tpublisher = {arXiv},\ttitle
+      = {LUT {Tensor} {Core}: Lookup {Table} {Enables} {Efficient} {Low}-{Bit}
+      {LLM} {Inference} {Acceleration}},\turl =
+      {https://arxiv.org/abs/2408.06003},}"
+    notPncel: true
+    tags:
+      - type: venue
+        label: ISCA
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +009p0J
+    title: "SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs"
+    authorIds:
+      - $00cl1D
+      - zhichen
+      - $00fG1I
+      - $00b81A
+      - $00fn1J
+      - $00eI1G
+      - $00ep1H
+      - $00hK1M
+      - $00ah19
+      - $00dj1F
+      - $00cE1C
+    time: 2024-10-01
+    arxivDoi: 10.48550/arXiv.2410.13276
+    arxivBibtex:
+      "@article{Gao2024SeerAttention,\tauthor = {Gao, Yizhao and Zeng,
+      Zhichen and Du, Dayou and Cao, Shijie and Zhou, Peiyuan and Qi, Jiaxing
+      and Lai, Junjie and So, Hayden Kwok-Hay and Cao, Ting and Yang, Fan and
+      Yang, Mao},\tdoi = {10.48550/ARXIV.2410.13276},\tyear = {2024},\tpublisher
+      = {arXiv},\ttitle = {SeerAttention: Learning {Intrinsic} {Sparse}
+      {Attention} in {Your} {LLMs}},\turl =
+      {https://arxiv.org/abs/2410.13276},}"
+    equalContrib: 2
+    notPncel: true
+    tags:
+      - type: venue
+        label: Under Review
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +00AK0K
+    title: "Tactic: Adaptive Sparse Attention with Clustering and Distribution
+      Fitting for Long-Context LLMs"
+    authorIds:
+      - $00hr1N
+      - $00gM1K
+      - $00gt1L
+      - $00jO1Q
+      - zhichen
+      - $00jv1R
+      - $00iQ1O
+      - ang
+      - $00ix1P
+      - $00lS1U
+    time: 2025-02-01
+    arxivDoi: 10.48550/arXiv.2502.12216
+    arxivBibtex:
+      "@article{Zhu2025Tactic,\tauthor = {Zhu, Kan and Tang, Tian and Xu,
+      Qinyu and Gu, Yile and Zeng, Zhichen and Kadekodi, Rohan and Zhao, Liangyu
+      and Li, Ang and Krishnamurthy, Arvind and Kasikci, Baris},\tdoi =
+      {10.48550/ARXIV.2502.12216},\tyear = {2025},\tpublisher = {arXiv},\ttitle
+      = {Tactic: Adaptive {Sparse} {Attention} with {Clustering} and
+      {Distribution} {Fitting} for {Long}-{Context} {LLMs}},\turl =
+      {https://arxiv.org/abs/2502.12216},}"
+    equalContrib: 3
+    tags:
+      - type: venue
+        label: Under Review
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +00Ar0L
+    title: "Fusion-3D: Integrated Acceleration for Instant 3D Reconstruction and
+      Real-Time Rendering"
+    authorIds:
+      - $00lz1V
+      - $00kU1S
+      - $00k-1T
+      - $00nW1Z
+      - jingqun
+      - $00n11Y
+      - $00mY1X
+      - $00m31W
+      - $00pa1d
+    time: 2024-11-02
+    booktitle: 2024 57th IEEE/ACM International Symposium on Microarchitecture
+    doi: 10.1109/MICRO61859.2024.00016
+    bibtex: >+
+      @inproceedings{Li2024Fusion,
+      	author = {Li, Sixu and Zhao, Yang and Li, Chaojian and Guo, Bowei and Zhang, Jingqun and Zhu, Wenbo and Ye, Zhifan and Wan, Cheng and Lin, Yingyan Celine},
+      	booktitle = {2024 57th {IEEE}/{ACM} {International} {Symposium} on {Microarchitecture} ({MICRO})},
+      	doi = {10.1109/micro61859.2024.00016},
+      	year = {2024},
+      	month = {nov 2},
+      	pages = {78--91},
+      	organization = {IEEE},
+      	title = {Fusion-3D: Integrated {Acceleration} for {Instant} 3D {Reconstruction} and {Real}-{Time} {Rendering}},
+      	url = {http://dx.doi.org/10.1109/MICRO61859.2024.00016},
+      }
+
+    notPncel: true
+    tags:
+      - type: venue
+        label: MICRO
+      - type: award
+        label: Best Paper Award
+        icon: medal
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +00BM0M
+    title: "Instant-NeRF: Instant On-Device Neural Radiance Field Training via
+      Algorithm-Accelerator Co-Designed Near-Memory Processing"
+    authorIds:
+      - $00p51c
+      - $00oc1b
+      - jingqun
+      - $00lz1V
+      - $00k-1T
+      - $00pa1d
+    time: 2023-07-09
+    booktitle: 2023 60th ACM/IEEE Design Automation Conference (DAC)
+    doi: 10.1109/DAC56929.2023.10247710
+    bibtex: >+
+      @inproceedings{Zhao2023Instant,
+      	author = {Zhao, Yang Katie and Wu, Shang and Zhang, Jingqun and Li, Sixu and Li, Chaojian and Lin, Yingyan Celine},
+      	booktitle = {2023 60th {ACM}/{IEEE} {Design} {Automation} {Conference} ({DAC})},
+      	doi = {10.1109/dac56929.2023.10247710},
+      	year = {2023},
+      	month = {jul 9},
+      	pages = {1--6},
+      	organization = {IEEE},
+      	title = {Instant-{NeRF}: Instant {On}-{Device} {Neural} {Radiance} {Field} {Training} via {Algorithm}-{Accelerator} {Co}-{Designed} {Near}-{Memory} {Processing}},
+      	url = {http://dx.doi.org/10.1109/DAC56929.2023.10247710},
+      }
+
+    notPncel: true
+    tags:
+      - type: venue
+        label: DAC
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +00Bt0N
+    title:
+      "EN-T: Optimizing Tensor Computing Engines Performance via Encoder-Based
+      Methodology"
+    authorIds:
+      - $00o71a
+      - $00re1h
+      - zhichen
+      - $00r91g
+      - $00qg1f
+      - $00qB1e
+    time: 2024-11-18
+    booktitle: 2024 IEEE 42nd International Conference on Computer Design (ICCD)
+    doi: 10.1109/ICCD63220.2024.00097
+    bibtex: >+
+      @inproceedings{Wu2024EN,
+      	author = {Wu, Qizhe and Gui, Yuchen and Zeng, Zhichen and Wang, Xiaotian and Liang, Huawen and Jin, Xi},
+      	booktitle = {2024 {IEEE} 42nd {International} {Conference} on {Computer} {Design} ({ICCD})},
+      	doi = {10.1109/iccd63220.2024.00097},
+      	year = {2024},
+      	month = {nov 18},
+      	pages = {608--615},
+      	organization = {IEEE},
+      	title = {EN-{T}: Optimizing {Tensor} {Computing} {Engines} {Performance} via {Encoder}-{Based} {Methodology}},
+      	url = {http://dx.doi.org/10.1109/ICCD63220.2024.00097},
+      }
+
+    notPncel: true
+    tags:
+      - type: venue
+        label: ICCD
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +00CO0O
+    title:
+      Highly stable and fast response photodetector based on double perovskite
+      Cs<sub>2</sub>AgBiCl<sub>6</sub> crystals
+    authorIds:
+      - $00ti1l
+      - $00WZ11
+      - zhichen
+      - $00tD1k
+      - $00sk1j
+      - $00sF1i
+      - $00vm1p
+      - $00vH1o
+    time: 2024-02-27
+    booktitle: "Journal of Physics D: Applied Physics"
+    doi: 10.1088/1361-6463/ad291a
+    bibtex: >+
+      @article{Han2024Highly,
+      	author = {Han, Zhengyu and Dai, Mengjia and Zeng, Zhichen and Ye, Chunhui and Dai, Rucheng and Wang, Zhongping and Sun, Xiaoyu and Zhang, Zengming},
+      	journal = {Journal of Physics D: Applied Physics},
+      	doi = {10.1088/1361-6463/ad291a},
+      	issn = {0022-3727},
+      	number = {21},
+      	year = {2024},
+      	month = {feb 27},
+      	pages = {215102},
+      	publisher = {IOP Publishing},
+      	title = {Highly stable and fast response photodetector based on double perovskite {Cs}\textsubscript{2}{AgBiCl}\textsubscript{6} crystals},
+      	url = {http://dx.doi.org/10.1088/1361-6463/ad291a},
+      	volume = {57},
+      }
+
+    equalContrib: 3
+    notPncel: true
+    tags:
+      - type: venue
+        label: Journal of Physics D
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false
+  - id: +00DQ0Q
+    title: Exploring the Performance Improvement of Tensor Processing Engines
+      through Transformation in the Bit-weight Dimension of MACs
+    authorIds:
+      - $00o71a
+      - $00qg1f
+      - $00re1h
+      - zhichen
+      - $00uo1n
+      - $00uJ1m
+      - $00r91g
+      - $00xq1t
+      - $00xL1s
+      - $00ws1r
+      - $00wN1q
+      - $00qB1e
+    time: 2025-03-01
+    booktitle: 2025 IEEE International Symposium on High-Performance Computer Architecture
+    arxivDoi: 10.48550/ARXIV.2503.06342
+    arxivBibtex: >+
+      @article{Wu2025Exploring,
+      	author = {Wu, Qizhe and Liang, Huawen and Gui, Yuchen and Zeng, Zhichen and He, Zerong and Tao, Linfeng and Wang, Xiaotian and Zhao, Letian and Zeng, Zhaoxi and Yuan, Wei and Wu, Wei and Jin, Xi},
+      	doi = {10.48550/ARXIV.2503.06342},
+      	year = {2025},
+      	publisher = {arXiv},
+      	title = {Exploring the {Performance} {Improvement} of {Tensor} {Processing} {Engines} through {Transformation} in the {Bit}-weight {Dimension} of {MACs}},
+      	url = {https://arxiv.org/abs/2503.06342},
+      }
+
+    tags:
+      - type: venue
+        label: HPCA
+    attachments: []
+    _meta:
+      lwt: 1744674898758.26
+    _deleted: false

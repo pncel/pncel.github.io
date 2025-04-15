@@ -317,11 +317,41 @@ export class DatabaseMutator extends Object {
     });
   }
 
-  public async persist() {
-    await this.pendingJob;
-    if (this.dirty) {
+  public async settle() {
+    return this.pendingJob;
+  }
+
+  public async persist(force: boolean = false) {
+    await this.settle();
+    if (force || this.dirty) {
       await this.db.persist();
       this.dirty = false;
     }
+  }
+
+  public async createPerson(
+    person: Omit<Person, "id"> & { id?: string },
+  ): Promise<Person> {
+    await this.settle();
+    if (person.id === undefined) {
+      person.id = this.personsMutator.allocId();
+    }
+    const p = await this.db.db.persons.insert(encodePerson(person as Person));
+    this.dirty = true;
+    return decodePerson(p);
+  }
+
+  public async createPublication(
+    pub: Omit<Publication, "id"> & { id?: string },
+  ): Promise<Publication> {
+    await this.settle();
+    if (pub.id === undefined) {
+      pub.id = this.pubsMutator.allocId();
+    }
+    const p = await this.db.db.publications.insert(
+      encodePublication(pub as Publication),
+    );
+    this.dirty = true;
+    return decodePublication(p);
   }
 }
