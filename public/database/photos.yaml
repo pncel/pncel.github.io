@@ -8,9 +8,9 @@ docs:
     height: 4000
     time: 2025-04-01
     thumbnail: /photos/thumbnails/PNCEL_2025.JPG
-    id: "!000X01"
+    id: p-000X01
     _meta:
-      lwt: 1744674898764.09
+      lwt: 1744694515497.09
     _deleted: false
   - title: PNCEL Group, Spring 2025
     subtitle: "Zhichen: 👍"
@@ -19,9 +19,9 @@ docs:
     height: 4000
     time: 2025-04-01
     thumbnail: /photos/thumbnails/IMG_2317.JPG
-    id: "!001202"
+    id: p-001202
     _meta:
-      lwt: 1744674898764.09
+      lwt: 1744694515497.09
     _deleted: false
   - title: First Batch of PNCEL PhDs
     image: /photos/IMG_2632.jpg
@@ -29,9 +29,9 @@ docs:
     height: 2825
     time: 2025-04-01
     thumbnail: /photos/thumbnails/IMG_2632.jpg
-    id: "!001Z03"
+    id: p-001Z03
     _meta:
-      lwt: 1744674898764.09
+      lwt: 1744694515497.09
     _deleted: false
   - title: '"PNCEL"'
     image: /photos/IMG_2382.jpg
@@ -39,9 +39,9 @@ docs:
     height: 3190
     time: 2025-04-01
     thumbnail: /photos/thumbnails/IMG_2382.jpg
-    id: "!002404"
+    id: p-002404
     _meta:
-      lwt: 1744674898764.09
+      lwt: 1744694515497.09
     _deleted: false
   - title: '"UW"'
     image: /photos/IMG_2383.jpg
@@ -49,20 +49,20 @@ docs:
     height: 3213
     time: 2025-04-01
     thumbnail: /photos/thumbnails/IMG_2383.jpg
-    id: "!002b05"
+    id: p-002b05
     _meta:
-      lwt: 1744674898764.09
+      lwt: 1744694515497.09
     _deleted: false
   - title: PhDs Chilling out (MICRO 2024)
-    subtitle: 'Ang: "Y''all should be working!"'
+    subtitle: "Ang: \"Y'all should be working!\""
     image: /photos/IMG_7221.jpg
     width: 4032
     height: 3024
     time: 2024-11-02
     thumbnail: /photos/thumbnails/IMG_7221.jpg
-    id: "!003606"
+    id: p-003606
     _meta:
-      lwt: 1744674898764.09
+      lwt: 1744694515497.09
     _deleted: false
   - title: MICRO 2024
     image: /photos/IMG_0143.png
@@ -70,9 +70,9 @@ docs:
     height: 2250
     time: 2024-11-05
     thumbnail: /photos/thumbnails/IMG_0143.png
-    id: "!003d07"
+    id: p-003d07
     _meta:
-      lwt: 1744674898764.09
+      lwt: 1744694515497.09
     _deleted: false
   - title: UTexas Austin Book Store (MICRO 2024)
     image: /photos/IMG_3213.jpg
@@ -80,7 +80,7 @@ docs:
     height: 3024
     time: 2024-11-02
     thumbnail: /photos/thumbnails/IMG_3213.jpg
-    id: "!004808"
+    id: p-004808
     _meta:
-      lwt: 1744674898764.09
+      lwt: 1744694515497.09
     _deleted: false

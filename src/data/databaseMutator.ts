@@ -133,7 +133,7 @@ class CollectionMutator<JsonT, ObjT extends { id: string }> extends Object {
           const obj = this.decode(doc);
           if (obj.id.startsWith(this.numberedIdPrefix)) {
             try {
-              const n = unmarshalId(obj.id.slice(1));
+              const n = unmarshalId(obj.id.slice(this.numberedIdPrefix.length));
               if (n < this.maxNumberedId) {
                 this.recycledNumberedIds = this.recycledNumberedIds.filter(
                   (v) => v !== n,
@@ -209,7 +209,7 @@ export class DatabaseMutator extends Object {
     );
     this.photosMutator = new CollectionMutator(
       _db.db.photos,
-      "!",
+      "p-",
       decodePhoto,
       encodePhoto,
     );
