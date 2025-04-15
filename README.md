@@ -2,7 +2,9 @@
 
 ## For Group Members
 
-If you wish to add personalized contents to your own page, contact Ang for your member ID. Once you have the member ID, create an [MDX](https://mdxjs.com/) (Markdown w/ embedded JSX) file under [`src/app/team/\[memberId\]`](https://github.com/pncel/pncel.github.io/tree/main/src/app/team/%5BmemberId%5D) with your member ID (i.e., `[memberId].mdx`). Edit the file as you wish, then create a PR/branch and ask Ang to merge it into the main branch.
+If you wish to add personalized contents to your own page, check `public/database/persons.yaml` for your member ID, or check the last part of your person page's URL.
+Once you have the member ID, create an [MDX](https://mdxjs.com/) (Markdown w/ embedded JSX) file under `src/app/team/\[memberId\]` with your member ID (i.e., `[memberId].mdx`).
+Edit the file as you wish, then create a PR/branch and ask Ang to merge it into the main branch.
 
 The website also supports links to your other personal pages, including: your own website, Google Scholar, OrcID, GitHub, LinkedIn, X (formerly Twitter), Facebook, Instagram, Youtube. In addition, a short statement can be shown at the team page.
 
@@ -10,10 +12,10 @@ Once we have more publications (or you're welcome to add your pre-UW publication
 
 ## Tech Stack
 
-- [Next.js](https://nextjs.org)
-- [Prisma ORM](https://www.prisma.io/) with [SQLite](https://www.sqlite.org/)
-- [TailwindCSS](https://tailwindcss.com/)
-- [DaisyUI](https://daisyui.com/)
+- Main framework: [Next.js](https://nextjs.org)
+- Database: [RxDB](https://rxdb.info/) with YAML(https://yaml.org/)
+- CSS: [TailwindCSS](https://tailwindcss.com/)
+- UI: [DaisyUI](https://daisyui.com/)
 
 # For developers
 
@@ -56,27 +58,26 @@ npm run blog "Your title here"
 # creates /src/app/blogs/[blogId]/your-title-here-YYYY-MM-DD.mdx if the file does not already exists
 ```
 
-#### Add publication with DOI
+#### Add publication from DOI
 
 ```bash
-npm run pub add-doi <doi> [<doi> ...]
+npm run db add-doi <doi> [<doi> ...]
 # then follow the interactive command lines for more
 ```
 
-#### Update all publications' bibtex with DOI
+#### Update all publications' bibtex from DOI
 
 ```bash
-npm run pub update-doi
+npm run db update-bibtex
+```
+
+#### Add a photo
+
+```bash
+npm run db add-photo --date 2024-01-01 --title "Hello, world!" --subtitle "Bye, world!" ~/my_photo.jpg
 ```
 
 ## Dev tools
-
-#### Edit database using web GUI (no changes made to [`/prisma/schema.prisma`](/prisma/schema.prisma))
-
-```bash
-npx prisma studio
-# then visit http://localhost:5555 (or another port according to the command line output)
-```
 
 #### Live server
 
