@@ -5,7 +5,7 @@ docs:
     news: "`pncel.init();`"
     time: 2024-09-16
     _meta:
-      lwt: 1767170427427.05
+      lwt: 1771307159927.05
     _deleted: false
   - id: "2"
     news: Welcome our first PhD cohort, @jiayi, @jingqun, @darren, and @zhichen!
@@ -17,7 +17,7 @@ docs:
       - darren
       - zhichen
     _meta:
-      lwt: 1767170427427.05
+      lwt: 1771307159927.05
     _deleted: false
   - news: Selected by UW Clean Energy Institute (CEI)'s [collaborative seed
       grant](https://www.cei.washington.edu/research/collaborative-seed-grants/).
@@ -28,7 +28,7 @@ docs:
     relatedMembersIds:
       - ang
     _meta:
-      lwt: 1767170427427.05
+      lwt: 1771307159927.05
     _deleted: false
   - news: "@zhichen is selected for the 2025-2026 [Meta AI
       Mentorship](https://www.metacareers.com/careerprograms/research?tab=AI+Me\
@@ -39,5 +39,5 @@ docs:
       - zhichen
     id: n-001202
     _meta:
-      lwt: 1767170427427.05
+      lwt: 1771307159927.05
     _deleted: false
