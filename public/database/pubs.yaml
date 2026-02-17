@@ -2,7 +2,8 @@ name: publications
 schemaHash: fcf2bf1a93f91526643a901267dddc12336d1dff07e51babd342a40e1f4c7473
 docs:
   - id: +000X01
-    title: Nonvolatile Memory Allocation and Hierarchy Optimization for High-Level
+    title:
+      Nonvolatile Memory Allocation and Hierarchy Optimization for High-Level
       Synthesis
     authorIds:
       - $002b05
@@ -35,7 +36,8 @@ docs:
       }
 
   - id: "+001202"
-    title: Leveraging Emerging Nonvolatile Memory in High-Level Synthesis with Loop
+    title:
+      Leveraging Emerging Nonvolatile Memory in High-Level Synthesis with Loop
       Transformations
     authorIds:
       - $002b05
@@ -252,7 +254,8 @@ docs:
       - $00Ar0L
       - $00Dx0R
     time: 2020-08-01
-    booktitle: 2020 30th International Conference on Field-Programmable Logic and
+    booktitle:
+      2020 30th International Conference on Field-Programmable Logic and
       Applications
     doi: 10.1109/FPL50879.2020.00042
     bibtex: >+
@@ -283,7 +286,8 @@ docs:
       - ang
       - $00Dx0R
     time: 2021-02-01
-    booktitle: The 2021 ACM/SIGDA International Symposium on Field-Programmable Gate
+    booktitle:
+      The 2021 ACM/SIGDA International Symposium on Field-Programmable Gate
       Arrays
     doi: 10.1145/3431920.3439294
     bibtex: >+
@@ -485,7 +489,8 @@ docs:
       - ang
       - $00Qq0r
     time: 2023-04-01
-    booktitle: 2023 IEEE International Symposium on Performance Analysis of Systems
+    booktitle:
+      2023 IEEE International Symposium on Performance Analysis of Systems
       and Software
     doi: 10.1109/ISPASS57527.2023.00028
     bibtex: >+
@@ -650,7 +655,8 @@ docs:
       lwt: 1767170427477.26
     _deleted: false
   - id: +009I0I
-    title: "LUT Tensor Core: Lookup Table Enables Efficient Low-Bit LLM Inference
+    title:
+      "LUT Tensor Core: Lookup Table Enables Efficient Low-Bit LLM Inference
       Acceleration"
     authorIds:
       - $00Zb17
@@ -667,7 +673,8 @@ docs:
     time: 2025-06-21
     booktitle: 2025 52rd IEEE/ACM Annual International Symposium on Computer Architecture
     arxivDoi: 10.48550/ARXIV.2408.06003
-    arxivBibtex: "@article{Mo2024LUT,\tauthor = {Mo, Zhiwen and Wang, Lei and Wei,
+    arxivBibtex:
+      "@article{Mo2024LUT,\tauthor = {Mo, Zhiwen and Wang, Lei and Wei,
       Jianyu and Zeng, Zhichen and Cao, Shijie and Ma, Lingxiao and Jing,
       Naifeng and Cao, Ting and Xue, Jilong and Yang, Fan and Yang, Mao},\tdoi =
       {10.48550/ARXIV.2408.06003},\tyear = {2024},\tpublisher = {arXiv},\ttitle
@@ -698,7 +705,8 @@ docs:
       - $00cE1C
     time: 2024-10-01
     arxivDoi: 10.48550/arXiv.2410.13276
-    arxivBibtex: "@article{Gao2024SeerAttention,\tauthor = {Gao, Yizhao and Zeng,
+    arxivBibtex:
+      "@article{Gao2024SeerAttention,\tauthor = {Gao, Yizhao and Zeng,
       Zhichen and Du, Dayou and Cao, Shijie and Zhou, Peiyuan and Qi, Jiaxing
       and Lai, Junjie and So, Hayden Kwok-Hay and Cao, Ting and Yang, Fan and
       Yang, Mao},\tdoi = {10.48550/ARXIV.2410.13276},\tyear = {2024},\tpublisher
@@ -730,7 +738,8 @@ docs:
       - $00lS1U
     time: 2025-02-01
     arxivDoi: 10.48550/arXiv.2502.12216
-    arxivBibtex: "@article{Zhu2025Tactic,\tauthor = {Zhu, Kan and Tang, Tian and Xu,
+    arxivBibtex:
+      "@article{Zhu2025Tactic,\tauthor = {Zhu, Kan and Tang, Tian and Xu,
       Qinyu and Gu, Yile and Zeng, Zhichen and Kadekodi, Rohan and Zhao, Liangyu
       and Li, Ang and Krishnamurthy, Arvind and Kasikci, Baris},\tdoi =
       {10.48550/ARXIV.2502.12216},\tyear = {2025},\tpublisher = {arXiv},\ttitle
@@ -820,7 +829,8 @@ docs:
       lwt: 1767170427477.26
     _deleted: false
   - id: +00Bt0N
-    title: "EN-T: Optimizing Tensor Computing Engines Performance via Encoder-Based
+    title:
+      "EN-T: Optimizing Tensor Computing Engines Performance via Encoder-Based
       Methodology"
     authorIds:
       - $00o71a
@@ -854,7 +864,8 @@ docs:
       lwt: 1767170427477.26
     _deleted: false
   - id: +00CO0O
-    title: Highly stable and fast response photodetector based on double perovskite
+    title:
+      Highly stable and fast response photodetector based on double perovskite
       Cs<sub>2</sub>AgBiCl<sub>6</sub> crystals
     authorIds:
       - $00ti1l

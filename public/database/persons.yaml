@@ -44,6 +44,18 @@ docs:
     _meta:
       lwt: 1767170427395.28
     _deleted: false
+  - id: amanoj3
+    firstname: Aadithya
+    lastname: Manoj
+    avatar: /avatar/amanoj3.jpg
+    memberInfo:
+      role: ug
+      whenJoined: 2025-02-15
+      position: Undergrad
+      email: amanoj3@uw.edu
+    _meta:
+      lwt: 1767170427395.28
+    _deleted: false
   - id: $007E0E
     firstname: Alexey
     lastname: Lavrov
