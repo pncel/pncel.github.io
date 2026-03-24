@@ -41,3 +41,114 @@ docs:
     _meta:
       lwt: 1771313853035.05
     _deleted: false
+  - id: n-002501
+    news: "@zhichen joins ByteDance Seed as a Research Scientist Intern this summer!"
+    time: 2025-06-01
+    type: other
+    relatedMembersIds:
+      - zhichen
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
+  - id: n-002601
+    news: "Two papers accepted to ICLR 2026, congrats to @zhichen!"
+    time: 2026-02-01
+    type: publication
+    relatedMembersIds:
+      - zhichen
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
+  - id: n-002602
+    news: "\"STEP: Spatially Threaded Execution Pipeline\" accepted to the LATTE workshop at ASPLOS 2026, congrats to @darren and @jiayi!"
+    time: 2026-03-01
+    type: publication
+    relatedMembersIds:
+      - darren
+      - jiayi
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
+  - id: n-002603
+    news: "TransDot accepted as a short paper at FCCM 2026, congrats to @jiayi!"
+    time: 2026-03-01
+    type: publication
+    relatedMembersIds:
+      - jiayi
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
+  - id: n-002604
+    news: "@s2chitni's paper \"Precision-Aware Communication in CGRAs\" accepted as a poster at FCCM 2026. Congrats!"
+    time: 2026-03-01
+    type: publication
+    relatedMembersIds:
+      - s2chitni
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
+  - id: n-002605
+    news: Rambod will join IBM as a CPU Performance Intern this summer!
+    time: 2026-05-01
+    type: other
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
+  - id: n-002606
+    news: "@cyungjen will join Apple as a Physical Design Engineer. Congrats!"
+    time: 2026-04-01
+    type: graduation
+    relatedMembersIds:
+      - cyungjen
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
+  - id: n-002607
+    news: Mike Huang will join TSMC. Congrats!
+    time: 2026-04-01
+    type: other
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
+  - id: n-002608
+    news: Shi Han Lin will join Apple as a SoC Power Engineer. Congrats!
+    time: 2026-04-01
+    type: other
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
+  - id: n-002609
+    news: "@ayush will join Apple as a SoC Physical Design Intern this summer. Congrats!"
+    time: 2026-06-01
+    type: other
+    relatedMembersIds:
+      - ayush
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
+  - id: n-002610
+    news: "@amanoj3 will join AMD (Xilinx) as a Post-Silicon Validation Intern this summer. Congrats!"
+    time: 2026-06-01
+    type: other
+    relatedMembersIds:
+      - amanoj3
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
+  - id: n-002611
+    news: "@jiayi and @jingqun will join NVIDIA this summer — Computer Performance Intern and GPU Profiling & Tools Intern. Congrats!"
+    time: 2026-06-01
+    type: other
+    relatedMembersIds:
+      - jiayi
+      - jingqun
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
+  - id: n-002612
+    news: Kearnan will join TSMC as an Intern this summer!
+    time: 2026-06-01
+    type: other
+    _meta:
+      lwt: 1771313853035.05
+    _deleted: false
