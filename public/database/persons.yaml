@@ -468,7 +468,7 @@ docs:
   - id: kearnan
     firstname: Kearnan
     lastname: Bishop
-    avatar: /avatar/kernan.jpg
+    avatar: /avatar/kearnan.jpg
     memberInfo:
       role: ug
       whenJoined: 2025-10-21

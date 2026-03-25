@@ -31,12 +31,12 @@ export default async function MemberCard({
             }
           >
             {avatar ? (
-              <div className="avatar">
+              <div className="avatar relative w-full h-full">
                 <Image
-                  width={512}
-                  height={512}
+                  fill
                   src={avatar}
                   alt={fullname}
+                  style={{ objectFit: "cover" }}
                 ></Image>
               </div>
             ) : (
