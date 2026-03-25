@@ -31,6 +31,7 @@ export enum NewsType {
   tapeout,
   newmember,
   graduation,
+  internship,
 }
 
 export enum MemberRole {

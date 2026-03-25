@@ -253,7 +253,7 @@ export class Database extends Object {
                       // Replace with the current schema hash
                       data.schemaHash = await db.persons.schema.hash;
                     }
-                    db.persons.importJSON(data);
+                    await db.persons.importJSON(data);
                   })
                   .catch(() => {
                     // persons.yaml might not exist yet, that's okay
@@ -272,7 +272,7 @@ export class Database extends Object {
                       // Replace with the current schema hash
                       data.schemaHash = await db.publications.schema.hash;
                     }
-                    db.publications.importJSON(data);
+                    await db.publications.importJSON(data);
                   })
                   .catch(() => {
                     // pubs.yaml might not exist yet, that's okay
@@ -291,7 +291,7 @@ export class Database extends Object {
                       // Replace with the current schema hash
                       data.schemaHash = await db.photos.schema.hash;
                     }
-                    db.photos.importJSON(data);
+                    await db.photos.importJSON(data);
                   })
                   .catch(() => {
                     // photos.yaml might not exist yet, that's okay
@@ -308,7 +308,7 @@ export class Database extends Object {
                       // Replace with the current schema hash
                       data.schemaHash = await db.news.schema.hash;
                     }
-                    db.news.importJSON(data);
+                    await db.news.importJSON(data);
                   })
                   .catch(() => {
                     // news.yaml might not exist yet, that's okay
