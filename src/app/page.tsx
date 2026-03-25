@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default async function Home() {
   const db = await Database.get();
-  const latestNews = await db.getManyNews(undefined, 10);
+  const latestNews = await db.getManyNews(undefined, 10, true);
 
   return (
     <DefaultMain>

@@ -287,6 +287,7 @@ const newsSchemaLiteral = {
       type: "array",
       items: tagSchemaLiteral,
     },
+    featured: { type: "boolean" },
     attachments: {
       type: "array",
       items: {
@@ -309,8 +310,12 @@ const newsSchemaTyped = toTypedRxJsonSchema(newsSchemaLiteral);
 export type NewsJson = ExtractDocumentTypeFromTypedRxJsonSchema<
   typeof newsSchemaTyped
 >;
-export type News = Omit<NewsJson, "time" | "type" | "tags" | "attachments"> & {
+export type News = Omit<
+  NewsJson,
+  "time" | "type" | "tags" | "attachments" | "featured"
+> & {
   time: Date;
+  featured: boolean;
   type?: NewsType;
   tags?: Tag[];
   attachments?: {

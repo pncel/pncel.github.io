@@ -183,6 +183,7 @@ export function decodePhoto(doc: RxDocument<PhotoJson>): Photo {
 export function encodeNews(n: News): NewsJson {
   return {
     ...n,
+    featured: n.featured,
     time: encodeDate(n.time)!,
     type: encodeEnum(NewsType, n.type),
     tags: n.tags?.map(encodeTag),
@@ -193,6 +194,7 @@ export function decodeNews(doc: RxDocument<NewsJson>): News {
   const n = doc.toJSON() as NewsJson;
   return {
     ...n,
+    featured: n.featured || false,
     time: decodeDate(n.time),
     type: decodeEnum(NewsType, n.type),
     tags: n.tags?.map(decodeTag),
@@ -571,9 +573,11 @@ export class Database extends Object {
   public async getManyNews(
     newsIds?: string[],
     limit?: number,
+    featuredOnly?: boolean,
   ): Promise<News[]> {
     if (!newsIds) {
-      let query = this.db.news.find().sort({ time: "desc" });
+      const selector = featuredOnly ? { featured: { $eq: true } } : {};
+      let query = this.db.news.find({ selector }).sort({ time: "desc" });
       if (limit !== undefined) {
         query = query.limit(limit);
       }
@@ -581,6 +585,9 @@ export class Database extends Object {
     } else {
       const newsMap = await this.db.news.findByIds(newsIds).exec();
       let news = Array.from(newsMap.values()).map(decodeNews);
+      if (featuredOnly) {
+        news = news.filter((n) => n.featured);
+      }
       news.sort((a, b) => b.time.getTime() - a.time.getTime());
       if (limit !== undefined) {
         news = news.slice(0, limit);
