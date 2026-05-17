@@ -18,7 +18,7 @@ export default function GalleryItem({
   const context = useContext(DataContext);
   if (!context) {
     throw new Error(
-      "Source code error: PubEntry must be used inside ContextProvider",
+      "Source code error: GalleryItem must be used inside ContextProvider",
     );
   }
 
