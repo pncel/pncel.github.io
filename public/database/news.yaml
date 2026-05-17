@@ -117,10 +117,10 @@ docs:
       lwt: 1778997238693.21
     _deleted: false
   - id: n-005A0A
-    news: '"TransDot: An Area-efficient Reconfigurable Floating-Point Unit for
-      Trans-Precision Dot-Product Accumulation for FPGA AI Engines" accepted as
+    news: '%+00ES0S accepted as
       a short paper at FCCM 2026, congrats to @jiayi, Maohua, and Sin-Chen!'
     time: 2026-02-28
+    featured: true
     type: publication
     relatedMembersIds:
       - jiayi
@@ -128,7 +128,7 @@ docs:
       lwt: 1778997238693.21
     _deleted: false
   - id: n-005h0B
-    news: '"Precision-Aware Communication in CGRAs" accepted as a poster at FCCM
+    news: '%+00F-0V accepted as a poster at FCCM
       2026. Congrats to @s2chitni, @fergusxu, @ramprana, @ayush, and all!'
     time: 2026-02-28
     featured: true
@@ -202,8 +202,7 @@ docs:
       lwt: 1778997238693.21
     _deleted: false
   - id: n-009I0I
-    news: '"DICE: Enabling Efficient General-Purpose SIMT Execution with Statically
-      Scheduled Coarse-Grained Reconfigurable Arrays" accepted to ISCA 2026,
+    news: '%+00Dx0R accepted to ISCA 2026,
       congrats to @jiayi, @darren, and @zhichen!'
     time: 2026-04-30
     featured: true

@@ -1,15 +1,21 @@
-import { Person } from "@/lib/types";
-import { composeFullName } from "@/lib/utils";
+import { Person, Publication } from "@/lib/types";
+import { composeFullName, pubAnchorId } from "@/lib/utils";
 import { marked } from "marked";
 
 /**
- * Process content with markdown and @mentions
- * @param text - The text containing markdown and potential @mentions
+ * Process content with markdown, @mentions, and %pub-id references
+ * @param text - The text containing markdown, potential @mentions, and %pub-id references
  * @param members - Array of members to check IDs against
- * @returns HTML string with markdown rendered and @mentions converted to links
+ * @param publications - Array of publications to check IDs against
+ * @returns HTML string with markdown rendered, @mentions converted to team links, and %pub-id converted to publication anchor links
  */
-export function processContent(text: string, members: Person[]): string {
+export function processContent(
+  text: string,
+  members: Person[],
+  publications: Publication[],
+): string {
   const memberMap = new Map(members.map((m) => [m.id, m]));
+  const pubMap = new Map(publications.map((p) => [p.id, p]));
 
   // First, process markdown
   let html = marked.parse(text, {
@@ -39,6 +45,16 @@ export function processContent(text: string, members: Person[]): string {
     if (member) {
       const fullName = composeFullName(member);
       return `<a href="/team/${personId}" class="link link-hover font-semibold text-secondary">${fullName}</a>`;
+    }
+    return match;
+  });
+
+  // Then process %pub-id references
+  const pubRegex = /%([A-Za-z0-9._+-]*)/g;
+  html = html.replace(pubRegex, (match, pubId) => {
+    const pub = pubMap.get(pubId);
+    if (pub) {
+      return `<a href="/pubs#${pubAnchorId(pubId)}" class="link link-hover italic text-secondary">${pub.title}</a>`;
     }
     return match;
   });

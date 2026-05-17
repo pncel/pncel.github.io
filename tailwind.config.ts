@@ -32,6 +32,6 @@ const config: Config = {
       },
     ],
   },
-  safelist: ["columns-1", "columns-2", "columns-3"],
+  safelist: ["columns-1", "columns-2", "columns-3", "italic"],
 };
 export default config;

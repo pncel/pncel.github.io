@@ -4,7 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TagBadge from "./tagBadge";
 import { processContent } from "@/lib/processContent";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { News, Person, TagType, NewsType, type IconName } from "@/lib/types";
+import {
+  News,
+  Person,
+  Publication,
+  TagType,
+  NewsType,
+  type IconName,
+} from "@/lib/types";
 import { getIcon } from "@/lib/icon-registry";
 import DataContext from "@/app/context";
 config.autoAddCss = false;
@@ -12,10 +19,12 @@ config.autoAddCss = false;
 export default function NewsEntry({
   news,
   allMembers,
+  allPublications,
   altStyle,
 }: Readonly<{
   news: News;
   allMembers: Person[];
+  allPublications: Publication[];
   altStyle: boolean;
 }>) {
   const context = useContext(DataContext);
@@ -86,7 +95,7 @@ export default function NewsEntry({
           )}
           <span
             dangerouslySetInnerHTML={{
-              __html: processContent(news.news, allMembers),
+              __html: processContent(news.news, allMembers, allPublications),
             }}
           />
         </p>
@@ -101,7 +110,7 @@ export default function NewsEntry({
           <div
             className="text-sm 2xl:text-md"
             dangerouslySetInnerHTML={{
-              __html: processContent(news.details, allMembers),
+              __html: processContent(news.details, allMembers, allPublications),
             }}
           />
         )}

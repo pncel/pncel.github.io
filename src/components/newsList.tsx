@@ -15,8 +15,11 @@ export default async function NewsList({
 }>) {
   const db = await Database.get();
 
-  // Get all members for mention processing (only persons with memberInfo)
-  const allMembers = await db.getManyMembers();
+  // Get all members for @mention processing and publications for %pub-id processing
+  const [allMembers, allPublications] = await Promise.all([
+    db.getManyMembers(),
+    db.getManyPublications(),
+  ]);
 
   const sortedNews = news.toSorted(
     (a, b) => b.time.getTime() - a.time.getTime(),
@@ -29,6 +32,7 @@ export default async function NewsList({
           <NewsEntry
             news={news}
             allMembers={allMembers}
+            allPublications={allPublications}
             altStyle={(idx % 2 === 0) === (altStyle || false)}
             key={news.id}
           ></NewsEntry>
