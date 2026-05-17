@@ -11,6 +11,12 @@ export function composeFullName(person: Person) {
   }
 }
 
+export function pubAnchorId(id: string): string {
+  const stripped = id.replace(/^\+/, "");
+  const safe = stripped.replace(/[^A-Za-z0-9._-]/g, "-");
+  return `pub-${safe}`;
+}
+
 export function composeAvatarPlaceholder(person: Person) {
   const { firstname, goby, lastname } = person;
   const placeholder = [goby || firstname, lastname]

@@ -1,6 +1,6 @@
 "use client";
-import React, { useRef, useState, useContext } from "react";
-import { composeFullName } from "@/lib/utils";
+import React, { useRef, useState, useContext, useEffect } from "react";
+import { composeFullName, pubAnchorId } from "@/lib/utils";
 import { getIcon } from "@/lib/icon-registry";
 import CopyableCode from "./copyableCode";
 import TagBadge from "./tagBadge";
@@ -48,11 +48,54 @@ export default function PubEntry({
 
   const { useDarkTheme } = context;
 
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const anchor = pubAnchorId(pub.id);
+
+  useEffect(() => {
+    const selectIfMatch = () => {
+      if (window.location.hash === `#${anchor}`) {
+        wrapperRef.current?.focus({ preventScroll: false });
+      }
+    };
+    selectIfMatch();
+    window.addEventListener("hashchange", selectIfMatch);
+    return () => window.removeEventListener("hashchange", selectIfMatch);
+  }, [anchor]);
+
   return (
     <div
+      id={anchor}
+      ref={wrapperRef}
+      tabIndex={0}
+      onMouseDown={(e) => {
+        const target = e.target as HTMLElement;
+        if (
+          !target.closest(
+            'button, a, input, textarea, [contenteditable="true"]',
+          )
+        ) {
+          wrapperRef.current?.focus();
+        }
+      }}
+      onFocus={() => {
+        if (window.location.hash !== `#${anchor}`) {
+          history.replaceState(null, "", `#${anchor}`);
+        }
+      }}
+      onBlur={(e) => {
+        if (!wrapperRef.current?.contains(e.relatedTarget as Node | null)) {
+          history.replaceState(
+            null,
+            "",
+            window.location.pathname + window.location.search,
+          );
+        }
+      }}
       className={
         `${altStyle || (useDarkTheme ? "bg-base-300" : "bg-base-200")} text-base-content ` +
-        "flex flex-col items-start px-2 pt-1 pb-2 rounded-lg gap-1 max-w-5xl"
+        "flex flex-col items-start px-2 pt-1 pb-2 rounded-lg gap-1 max-w-5xl " +
+        "scroll-mt-4 outline-none cursor-pointer " +
+        "focus-within:ring-2 focus-within:ring-secondary focus-within:cursor-auto"
       }
     >
       <p

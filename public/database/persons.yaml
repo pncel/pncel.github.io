@@ -108,6 +108,8 @@ docs:
         - +005h0B
         - +006C0C
         - +008G0G
+        - +00Dx0R
+        - +00ES0S
     _meta:
       lwt: 1778997238756.43
     _deleted: false

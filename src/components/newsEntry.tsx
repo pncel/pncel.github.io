@@ -62,7 +62,7 @@ export default function NewsEntry({
     <div
       className={
         `${altStyle || (useDarkTheme ? "bg-base-300" : "bg-base-200")} text-base-content ` +
-        "flex flex-row items-start p-2 rounded-lg gap-3 max-w-5xl"
+        "flex flex-row items-start p-2 rounded-lg gap-3"
       }
     >
       {/* Left column: Date badge */}
