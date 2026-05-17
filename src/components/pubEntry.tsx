@@ -173,7 +173,11 @@ export default function PubEntry({
           {pub.doi && (
             <a
               className="flex-none btn btn-xs btn-secondary px-2 py-1"
-              href={`https://doi.org/${pub.doi}`}
+              href={
+                pub.doi.startsWith("https://")
+                  ? pub.doi
+                  : `https://doi.org/${pub.doi}`
+              }
               target="_blank"
             >
               <FontAwesomeIcon icon={faPaperPlane} />

@@ -19,7 +19,7 @@ docs:
         label: ASP-DAC
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
     bibtex: >+
       @inproceedings{Li2015Nonvolatile,
@@ -69,7 +69,7 @@ docs:
         label: ISLPED
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +001Z03
     title: "OpenPiton: An Emerging Standard for Open-Source EDA Tool Development"
@@ -101,7 +101,7 @@ docs:
         label: Workshop
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: "+002404"
     title: "PRGA: An Open-source Framework for Building and Using Custom FPGAs"
@@ -121,7 +121,7 @@ docs:
         link: /pdfs/osda19.pdf
         icon: file-pdf
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +002b05
     title: Cycle-Free FPGA Routing Graphs
@@ -157,7 +157,7 @@ docs:
         link: /pdfs/fpga20_poster.pdf
         icon: file-pdf
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: "+003606"
     title: "BYOC: A “Bring Your Own Core” Framework for Heterogeneous-ISA Research"
@@ -201,7 +201,7 @@ docs:
         label: Open-Source
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +003d07
     title: "OpenPiton at 5: A Nexus for Open and Agile Hardware Design"
@@ -243,7 +243,7 @@ docs:
         label: IEEE Micro
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: "+004808"
     title: Automated Design of FPGAs Facilitated by Cycle-Free Routing
@@ -275,7 +275,7 @@ docs:
         label: FPL
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +004f09
     title: "PRGA: An Open-Source FPGA Research and Prototyping Framework"
@@ -320,7 +320,7 @@ docs:
         link: https://prga.readthedocs.io/
         icon: globe
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +005A0A
     title: "Duet: Creating Harmony between Processors and Embedded FPGAs"
@@ -367,7 +367,7 @@ docs:
         link: https://github.com/PrincetonUniversity/Duet
         icon: github
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +005h0B
     title: "DECADES: A 67mm<sup>2</sup>, 1.46TOPS, 55 Giga Cache-Coherent 64-bit
@@ -423,7 +423,7 @@ docs:
         link: https://decades.cs.princeton.edu/
         icon: globe
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +006C0C
     title: "CIFER: A 12nm, 16mm<sup>2</sup>, 22-Core SoC with a 1541
@@ -476,7 +476,7 @@ docs:
         icon: microchip
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +006j0D
     title: "Redwood: Flexible and Portable Heterogeneous Tree Traversal Workloads"
@@ -510,7 +510,7 @@ docs:
         label: Open-Source
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +007E0E
     title: "Open-Source FPGA on Silicon: Case Studies on PRGA, an Open-Source
@@ -533,7 +533,7 @@ docs:
         link: /pdfs/oscar23_prga.pdf
         icon: file-pdf
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +007l0F
     title: Evaluating Shared Memory Heterogeneous Systems Using Traverse-Compute
@@ -558,7 +558,7 @@ docs:
         link: https://www.youtube.com/watch?v=Ebvd9IFk1g8
         icon: video
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +008G0G
     title: "CIFER: A Cache-Coherent 12nm 16mm<sup>2</sup> SoC with Four 64-Bit
@@ -611,7 +611,7 @@ docs:
         icon: microchip
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +008n0H
     title: "Allo: A Programming Model for Composable Accelerator Design"
@@ -647,7 +647,7 @@ docs:
         label: PLDI
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +009I0I
     title: "LUT Tensor Core: Lookup Table Enables Efficient Low-Bit LLM Inference
@@ -666,22 +666,39 @@ docs:
       - $00cE1C
     time: 2025-06-21
     booktitle: 2025 52rd IEEE/ACM Annual International Symposium on Computer Architecture
+    doi: 10.1145/3695053.3731057
     arxivDoi: 10.48550/ARXIV.2408.06003
-    arxivBibtex: "@article{Mo2024LUT,\tauthor = {Mo, Zhiwen and Wang, Lei and Wei,
-      Jianyu and Zeng, Zhichen and Cao, Shijie and Ma, Lingxiao and Jing,
-      Naifeng and Cao, Ting and Xue, Jilong and Yang, Fan and Yang, Mao},\tdoi =
-      {10.48550/ARXIV.2408.06003},\tyear = {2024},\tpublisher = {arXiv},\ttitle
-      = {LUT {Tensor} {Core}: Lookup {Table} {Enables} {Efficient} {Low}-{Bit}
-      {LLM} {Inference} {Acceleration}},\turl =
-      {https://arxiv.org/abs/2408.06003},}"
+    arxivBibtex: >+
+      @article{Mo2024LUT,
+      	author = {Mo, Zhiwen and Wang, Lei and Wei, Jianyu and Zeng, Zhichen and Cao, Shijie and Ma, Lingxiao and Jing, Naifeng and Cao, Ting and Xue, Jilong and Yang, Fan and Yang, Mao},
+      	doi = {10.48550/ARXIV.2408.06003},
+      	year = {2024},
+      	publisher = {arXiv},
+      	title = {LUT {Tensor} {Core}: A {Software}-{Hardware} {Co}-{Design} for {LUT}-{Based} {Low}-{Bit} {LLM} {Inference}},
+      	url = {https://arxiv.org/abs/2408.06003},
+      }
+
     notPncel: true
     tags:
       - type: venue
         label: ISCA
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
+    bibtex: >+
+      @inproceedings{Mo2025LUT,
+      	author = {Mo, Zhiwen and Wang, Lei and Wei, Jianyu and Zeng, Zhichen and Cao, Shijie and Ma, Lingxiao and Jing, Naifeng and Cao, Ting and Xue, Jilong and Yang, Fan and Yang, Mao},
+      	booktitle = {Proceedings of the 52nd {Annual} {International} {Symposium} on {Computer} {Architecture}},
+      	doi = {10.1145/3695053.3731057},
+      	year = {2025},
+      	month = {jun 20},
+      	pages = {514--528},
+      	organization = {ACM},
+      	title = {LUT {Tensor} {Core}: A {Software}-{Hardware} {Co}-{Design} for {LUT}-{Based} {Low}-{Bit} {LLM} {Inference}},
+      	url = {http://dx.doi.org/10.1145/3695053.3731057},
+      }
+
   - id: +009p0J
     title: "SeerAttention: Learning Intrinsic Sparse Attention in Your LLMs"
     authorIds:
@@ -696,54 +713,28 @@ docs:
       - $00ah19
       - $00dj1F
       - $00cE1C
-    time: 2024-10-01
+    time: 2025-12-01
+    booktitle: The Thirty-ninth Annual Conference on Neural Information Processing Systems
+    tags:
+      - type: venue
+        label: NeurIPS
+    doi: https://openreview.net/forum?id=Nf8yfPDFTl
     arxivDoi: 10.48550/arXiv.2410.13276
-    arxivBibtex: "@article{Gao2024SeerAttention,\tauthor = {Gao, Yizhao and Zeng,
-      Zhichen and Du, Dayou and Cao, Shijie and Zhou, Peiyuan and Qi, Jiaxing
-      and Lai, Junjie and So, Hayden Kwok-Hay and Cao, Ting and Yang, Fan and
-      Yang, Mao},\tdoi = {10.48550/ARXIV.2410.13276},\tyear = {2024},\tpublisher
-      = {arXiv},\ttitle = {SeerAttention: Learning {Intrinsic} {Sparse}
-      {Attention} in {Your} {LLMs}},\turl =
-      {https://arxiv.org/abs/2410.13276},}"
+    arxivBibtex: >+
+      @article{Gao2024SeerAttention,
+      	author = {Gao, Yizhao and Zeng, Zhichen and Du, Dayou and Cao, Shijie and Zhou, Peiyuan and Qi, Jiaxing and Lai, Junjie and So, Hayden Kwok-Hay and Cao, Ting and Yang, Fan and Yang, Mao},
+      	doi = {10.48550/ARXIV.2410.13276},
+      	year = {2024},
+      	publisher = {arXiv},
+      	title = {SeerAttention: Learning {Intrinsic} {Sparse} {Attention} in {Your} {LLMs}},
+      	url = {https://arxiv.org/abs/2410.13276},
+      }
+
     equalContrib: 2
     notPncel: true
-    tags:
-      - type: venue
-        label: Under Review
     attachments: []
     _meta:
-      lwt: 1774415301446.26
-    _deleted: false
-  - id: +00AK0K
-    title: "Tactic: Adaptive Sparse Attention with Clustering and Distribution
-      Fitting for Long-Context LLMs"
-    authorIds:
-      - $00hr1N
-      - $00gM1K
-      - $00gt1L
-      - $00jO1Q
-      - zhichen
-      - $00jv1R
-      - $00iQ1O
-      - ang
-      - $00ix1P
-      - $00lS1U
-    time: 2025-02-01
-    arxivDoi: 10.48550/arXiv.2502.12216
-    arxivBibtex: "@article{Zhu2025Tactic,\tauthor = {Zhu, Kan and Tang, Tian and Xu,
-      Qinyu and Gu, Yile and Zeng, Zhichen and Kadekodi, Rohan and Zhao, Liangyu
-      and Li, Ang and Krishnamurthy, Arvind and Kasikci, Baris},\tdoi =
-      {10.48550/ARXIV.2502.12216},\tyear = {2025},\tpublisher = {arXiv},\ttitle
-      = {Tactic: Adaptive {Sparse} {Attention} with {Clustering} and
-      {Distribution} {Fitting} for {Long}-{Context} {LLMs}},\turl =
-      {https://arxiv.org/abs/2502.12216},}"
-    equalContrib: 3
-    tags:
-      - type: venue
-        label: Under Review
-    attachments: []
-    _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +00Ar0L
     title: "Fusion-3D: Integrated Acceleration for Instant 3D Reconstruction and
@@ -783,7 +774,7 @@ docs:
         icon: medal
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +00BM0M
     title: "Instant-NeRF: Instant On-Device Neural Radiance Field Training via
@@ -817,7 +808,7 @@ docs:
         label: DAC
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +00Bt0N
     title: "EN-T: Optimizing Tensor Computing Engines Performance via Encoder-Based
@@ -851,7 +842,7 @@ docs:
         label: ICCD
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +00CO0O
     title: Highly stable and fast response photodetector based on double perovskite
@@ -891,7 +882,7 @@ docs:
         label: Journal of Physics D
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
     _deleted: false
   - id: +00DQ0Q
     title: Exploring the Performance Improvement of Tensor Processing Engines
@@ -911,6 +902,7 @@ docs:
       - $00qB1e
     time: 2025-03-01
     booktitle: 2025 IEEE International Symposium on High-Performance Computer Architecture
+    doi: 10.1109/HPCA61900.2025.00058
     arxivDoi: 10.48550/ARXIV.2503.06342
     arxivBibtex: >+
       @article{Wu2025Exploring,
@@ -927,5 +919,192 @@ docs:
         label: HPCA
     attachments: []
     _meta:
-      lwt: 1774415301446.26
+      lwt: 1778997238796.3
+    _deleted: false
+    bibtex: >+
+      @inproceedings{Wu2025Exploring,
+      	author = {Wu, Qizhe and Liang, Huawen and Gui, Yuchen and Zeng, Zhichen and He, Zerong and Tao, Linfeng and Wang, Xiaotian and Zhao, Letian and Zeng, Zhaoxi and Yuan, Wei and Wu, Wei and Jin, Xi},
+      	booktitle = {2025 {IEEE} {International} {Symposium} on {High} {Performance} {Computer} {Architecture} ({HPCA})},
+      	doi = {10.1109/hpca61900.2025.00058},
+      	year = {2025},
+      	month = {mar 1},
+      	pages = {685--700},
+      	organization = {IEEE},
+      	title = {Exploring the {Performance} {Improvement} of {Tensor} {Processing} {Engines} through {Transformation} in the {Bit}-weight {Dimension} of {MACs}},
+      	url = {http://dx.doi.org/10.1109/HPCA61900.2025.00058},
+      }
+
+  - title: "DICE: Enabling Efficient General-Purpose SIMT Execution with Statically
+      Scheduled Coarse-Grained Reconfigurable Arrays"
+    authorIds:
+      - jiayi
+      - darren
+      - zhichen
+      - ang
+    time: 2026-06-27
+    booktitle: The 53rd IEEE/ACM International Symposium on Computer Architecture
+    tags:
+      - type: venue
+        label: ISCA (to appear)
+    arxivDoi: 10.48550/arXiv.2605.05496
+    arxivBibtex: >+
+      @article{Wang2026DICE,
+      	author = {Wang, Jiayi and Da Lu, Ang and Zeng, Zhichen and Li, Ang},
+      	doi = {10.48550/ARXIV.2605.05496},
+      	year = {2026},
+      	publisher = {arXiv},
+      	title = {DICE: Enabling {Efficient} {General}-{Purpose} {SIMT} {Execution} with {Statically} {Scheduled} {Coarse}-{Grained} {Reconfigurable} {Arrays}},
+      	url = {https://arxiv.org/abs/2605.05496},
+      }
+
+    id: +00Dx0R
+    _meta:
+      lwt: 1778997238796.3
+    _deleted: false
+  - title: "TransDot: An Area-efficient Reconfigurable Floating-Point Unit for
+      Trans-Precision Dot-Product Accumulation for FPGA AI Engines"
+    authorIds:
+      - jiayi
+      - $00XX13
+      - $00X012
+      - $00VV0_
+      - ang
+    time: 2026-05-13
+    booktitle: The 34th IEEE International Symposium on Field-Programmable Custom
+      Computing Machines
+    tags:
+      - type: venue
+        label: FCCM
+    arxivDoi: 10.48550/arXiv.2605.07245
+    arxivBibtex: >+
+      @article{Wang2026TransDot,
+      	author = {Wang, Jiayi and Nie, Maohua and Lin, Sin-Chen and Shi, C. -J. Richard and Li, Ang},
+      	doi = {10.48550/ARXIV.2605.07245},
+      	year = {2026},
+      	publisher = {arXiv},
+      	title = {TransDot: An {Area}-efficient {Reconfigurable} {Floating}-{Point} {Unit} for {Trans}-{Precision} {Dot}-{Product} {Accumulation} for {FPGA} {AI} {Engines}},
+      	url = {https://arxiv.org/abs/2605.07245},
+      }
+
+    id: +00ES0S
+    _meta:
+      lwt: 1778997238796.3
+    _deleted: false
+  - title: "Tactic: Adaptive Sparse Attention with Clustering and Distribution
+      Fitting for Long-Context LLMs"
+    authorIds:
+      - $00hr1N
+      - $00gM1K
+      - $00gt1L
+      - $00jO1Q
+      - zhichen
+      - $00jv1R
+      - $00iQ1O
+      - ang
+      - $00ix1P
+      - $00lS1U
+    time: 2025-04-24
+    booktitle: The Fourteenth International Conference on Learning Representations
+    doi: https://openreview.net/forum?id=tJod11fK1A
+    tags:
+      - type: venue
+        label: ICLR
+    arxivDoi: 10.48550/arXiv.2502.12216
+    arxivBibtex: >+
+      @article{Zhu2025Tactic,
+      	author = {Zhu, Kan and Tang, Tian and Xu, Qinyu and Gu, Yile and Zeng, Zhichen and Kadekodi, Rohan and Zhao, Liangyu and Li, Ang and Krishnamurthy, Arvind and Kasikci, Baris},
+      	doi = {10.48550/ARXIV.2502.12216},
+      	year = {2025},
+      	publisher = {arXiv},
+      	title = {Tactic: Adaptive {Sparse} {Attention} with {Clustering} and {Distribution} {Fitting} for {Long}-{Context} {LLMs}},
+      	url = {https://arxiv.org/abs/2502.12216},
+      }
+
+    id: +00Ez0T
+    _meta:
+      lwt: 1778997238796.3
+    _deleted: false
+  - id: +00F-0V
+    title: Precision-aware Communication in CGRAs
+    authorIds:
+      - s2chitni
+      - fergusxu
+      - ayush
+      - jiayi
+      - jingqun
+      - $00W210
+      - ang
+    time: 2026-05-12
+    booktitle: The 34th IEEE International Symposium on Field-Programmable Custom
+      Computing Machines
+    notPncel: true
+    tags:
+      - type: venue
+        label: FCCM
+      - type: other
+        label: Poster
+    _meta:
+      lwt: 1778997238796.3
+    _deleted: false
+  - title: "Local Linear Attention: An Optimal Interpolation of Linear and Softmax
+      Attention For Test-Time Regression"
+    authorIds:
+      - $00V_0-
+      - $00UT0y
+      - zhichen
+      - ang
+      - $00Uy0z
+      - $00TR0w
+    booktitle: The Fourteenth International Conference on Learning Representations
+    doi: https://openreview.net/forum?id=WGpzi489XY
+    tags:
+      - type: venue
+        label: ICLR
+    time: 2025-04-24
+    arxivDoi: 10.48550/arXiv.2510.01450
+    arxivBibtex: >+
+      @article{Zuo2025Local,
+      	author = {Zuo, Yifei and Yin, Yutong and Zeng, Zhichen and Li, Ang and Zhu, Banghua and Wang, Zhaoran},
+      	doi = {10.48550/ARXIV.2510.01450},
+      	year = {2025},
+      	publisher = {arXiv},
+      	title = {Local {Linear} {Attention}: An {Optimal} {Interpolation} of {Linear} and {Softmax} {Attention} {For} {Test}-{Time} {Regression}},
+      	url = {https://arxiv.org/abs/2510.01450},
+      }
+
+    id: +00FU0U
+    _meta:
+      lwt: 1778997238796.3
+    _deleted: false
+  - title: "DisagMoE: Computation-Communication overlapped MoE Training via
+      Disaggregated AF-Pipe Parallelism"
+    authorIds:
+      - zhichen
+      - $00Tw0x
+      - jiayi
+      - $00QL0q
+      - $002404
+      - $001Z03
+      - $001202
+      - $000X01
+      - $00zu1x
+      - $00zP1w
+      - $00Uy0z
+      - ang
+      - $00yw1v
+    time: 2026-05-01
+    arxivDoi: 10.48550/arXiv.2605.11005
+    arxivBibtex: >+
+      @article{Zeng2026DisagMoE,
+      	author = {Zeng, Zhichen and Chang, Chi-Chih and Wang, Jiayi and Wang, Zezhou and Zheng, Ningxin and Zhong, Zheng and Stuardo, Cesar A. and Wang, Dongyang and Abdelfattah, Mohamed S. and Lin, Haibin and Zhu, Banghua and Li, Ang and Jiang, Ziheng},
+      	doi = {10.48550/ARXIV.2605.11005},
+      	year = {2026},
+      	publisher = {arXiv},
+      	title = {DisagMoE: Computation-{Communication} overlapped {MoE} {Training} via {Disaggregated} {AF}-{Pipe} {Parallelism}},
+      	url = {https://arxiv.org/abs/2605.11005},
+      }
+
+    id: +00GW0X
+    _meta:
+      lwt: 1778997245927.01
     _deleted: false
