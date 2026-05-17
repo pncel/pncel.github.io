@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 
 import { Photo } from "@/lib/types";
@@ -25,20 +25,38 @@ export default function Gallery({
     return () => window.removeEventListener("resize", update);
   }, []);
 
+  const columns = useMemo(() => {
+    const cols_: Photo[][] = Array.from({ length: cols }, () => []);
+    const heights: number[] = new Array(cols).fill(0);
+    for (const photo of specs) {
+      let minIdx = 0;
+      let minHeight = heights[0]!;
+      for (let i = 1; i < cols; i++) {
+        if (heights[i]! < minHeight) {
+          minIdx = i;
+          minHeight = heights[i]!;
+        }
+      }
+      cols_[minIdx]!.push(photo);
+      heights[minIdx] = minHeight + photo.height / photo.width;
+    }
+    return cols_;
+  }, [specs, cols]);
+
   return (
     <>
-      <div className={`mt-8 columns-${cols} gap-4`}>
-        {Array.from({ length: cols }, (_, idx) =>
-          Array.from(
-            { length: Math.ceil((specs.length - idx) / cols) },
-            (_, k) => specs[idx + k * cols],
-          ),
-        )
-          .flat()
-          .filter((photo): photo is Photo => photo !== undefined)
-          .map((photo, i) => (
-            <GalleryItem spec={photo} setHighlight={setHighlight} key={i} />
-          ))}
+      <div className="mt-8 flex gap-4">
+        {columns.map((col, c) => (
+          <div key={c} className="flex-1 flex flex-col gap-4 min-w-0">
+            {col.map((photo, i) => (
+              <GalleryItem
+                spec={photo}
+                setHighlight={setHighlight}
+                key={`${c}-${i}`}
+              />
+            ))}
+          </div>
+        ))}
       </div>
       <dialog id="gallery-highlight" className="modal">
         <div className="modal-box max-w-full">

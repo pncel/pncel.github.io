@@ -26,7 +26,7 @@ export default function GalleryItem({
 
   return (
     <div
-      className={`rounded-lg overflow-clip relative mb-4`}
+      className="rounded-lg overflow-clip relative"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onMouseDown={() => {
