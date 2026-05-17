@@ -93,7 +93,7 @@ export default function PubEntry({
       }}
       className={
         `${altStyle || (useDarkTheme ? "bg-base-300" : "bg-base-200")} text-base-content ` +
-        "flex flex-col items-start px-2 pt-1 pb-2 rounded-lg gap-1 max-w-5xl " +
+        "flex flex-col items-start px-2 pt-1 pb-2 rounded-lg gap-1 " +
         "scroll-mt-4 outline-none cursor-pointer " +
         "focus-within:ring-2 focus-within:ring-secondary focus-within:cursor-auto"
       }
