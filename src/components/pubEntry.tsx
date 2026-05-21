@@ -16,7 +16,7 @@ import {
   fa1,
 } from "@fortawesome/free-solid-svg-icons";
 import sanitizeHtml from "sanitize-html";
-import { Publication, Person } from "@/lib/types";
+import { Publication, Person, TagType } from "@/lib/types";
 import DataContext from "@/app/context";
 config.autoAddCss = false;
 
@@ -38,6 +38,14 @@ export default function PubEntry({
   // arxiv bibtex
   const [showArxivBibtex, setShowArxivBibtex] = useState(false);
   const arxivBibtexRef = useRef<HTMLDivElement>(null);
+
+  // "To appear" status. Computed in the browser so it reflects the visitor's
+  // current time while the page stays statically generated. `now` starts null
+  // so the build-time HTML and the first client render agree (no hydration
+  // mismatch), then resolves after mount.
+  const [now, setNow] = useState<Date | null>(null);
+  useEffect(() => setNow(new Date()), []);
+  const toAppear = now !== null && pub.time.getTime() > now.getTime();
 
   const context = useContext(DataContext);
   if (!context) {
@@ -102,11 +110,12 @@ export default function PubEntry({
         className="font-semibold text-lg 2xl:text-xl"
         dangerouslySetInnerHTML={{ __html: sanitizeHtml(pub.title) }}
       />
-      {pub.tags && pub.tags.length > 0 && (
+      {(toAppear || (pub.tags && pub.tags.length > 0)) && (
         <div className="flex flex-row items-start gap-1 flex-wrap">
-          {pub.tags.map((tag, i) => (
-            <TagBadge tag={tag} key={i} />
-          ))}
+          {toAppear && (
+            <TagBadge tag={{ label: "To appear", type: TagType.other }} />
+          )}
+          {pub.tags?.map((tag, i) => <TagBadge tag={tag} key={i} />)}
         </div>
       )}
       <p className="text-sm 2xl:text-md">
