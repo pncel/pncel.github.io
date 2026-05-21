@@ -62,6 +62,8 @@ export default function NewsEntry({
         return "graduation-cap";
       case NewsType.internship:
         return "user-tie";
+      case NewsType.sponsorship:
+        return "handshake";
       default:
         return undefined;
     }

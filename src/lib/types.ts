@@ -32,6 +32,7 @@ export enum NewsType {
   newmember,
   graduation,
   internship,
+  sponsorship,
 }
 
 export enum MemberRole {
