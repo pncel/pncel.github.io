@@ -81,9 +81,10 @@ export default async function MemberPage({ params }: Params) {
   const {
     avatar,
     externalLink,
-    memberInfo: { position, email, office },
+    memberInfo: { position, email, office, whenLeft },
   } = member;
   const useSelectedPubs = member.memberInfo.selectedPubIds !== undefined;
+  const isAlumni = whenLeft !== undefined && whenLeft < new Date();
 
   return (
     <DefaultMain className="flex flex-col lg:flex-row gap-2 lg:gap-6">
@@ -130,7 +131,12 @@ export default async function MemberPage({ params }: Params) {
           <p className="text-lg font-bold lg:text-center text-left">
             {fullname}
           </p>
-          {position && <p className="lg:text-center text-left">{position}</p>}
+          {position && (
+            <p className="lg:text-center text-left">
+              {position}
+              {isAlumni && ", Alumni"}
+            </p>
+          )}
           {office && (
             <p className="lg:text-center text-left">
               <FontAwesomeIcon icon={faLocationDot} />
