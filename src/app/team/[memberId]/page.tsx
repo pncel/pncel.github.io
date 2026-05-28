@@ -76,7 +76,9 @@ export default async function MemberPage({ params }: Params) {
   const pubs = await (member.memberInfo.selectedPubIds
     ? db.getManyPublications(member.memberInfo.selectedPubIds)
     : db.getAllPublicationsByPerson(member.id));
-  const memberNews = await db.getAllNewsByPerson(member.id);
+  const allMemberNews = await db.getAllNewsByPerson(member.id);
+  const hasMoreNews = allMemberNews.length > 10;
+  const memberNews = hasMoreNews ? allMemberNews.slice(0, 10) : allMemberNews;
   const mdxSrc = await getMemberMdxSrc(memberId);
   const {
     avatar,
@@ -202,7 +204,8 @@ export default async function MemberPage({ params }: Params) {
           {memberNews.length > 0 && (
             <li>
               <Link href="#news">
-                <FontAwesomeIcon icon={faNewspaper} /> News
+                <FontAwesomeIcon icon={faNewspaper} />{" "}
+                {hasMoreNews ? "Latest" : ""} News
               </Link>
             </li>
           )}
@@ -231,9 +234,20 @@ export default async function MemberPage({ params }: Params) {
           <>
             <div className="divider"></div>
             <DefaultMDX className="py-4">
-              <h2 className="mt-0" id="news">
-                <FontAwesomeIcon icon={faNewspaper} /> News
-              </h2>
+              <div className="flex justify-between items-baseline">
+                <h2 className="mt-0" id="news">
+                  <FontAwesomeIcon icon={faNewspaper} />{" "}
+                  {hasMoreNews ? "Latest" : ""} News
+                </h2>
+                {hasMoreNews && (
+                  <Link
+                    className="btn btn-sm btn-ghost sm:text-xl text-lg"
+                    href={`/news/${memberId}`}
+                  >
+                    All news
+                  </Link>
+                )}
+              </div>
             </DefaultMDX>
             <NewsList news={memberNews} />
           </>

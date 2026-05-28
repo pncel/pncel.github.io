@@ -210,7 +210,7 @@ export default function NavAndDrawer({
           </nav>
         </div>
         {children}
-        <div className="bg-base-300">
+        <div className="bg-base-300 mt-4">
           <footer className="footer items-center p-2 text-base-content mx-auto max-w-screen-2xl">
             <aside className="items-center grid-flow-col">
               <Link className="btn btn-ghost" href="/" aria-label="PNCEL home">
