@@ -140,8 +140,6 @@ Improvement suggestions for the research group website.
 - All pages include proper meta tags in HTML output
 - Static export compatible with `export const dynamic = "force-static"`
 
-**Note:** OG image currently set to `/vercel.svg` - consider creating a custom 1200x630px image for better social media appearance.
-
 **Rationale:** Improve discoverability and social media presence.
 
 ### Accessibility

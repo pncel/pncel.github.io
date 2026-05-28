@@ -87,8 +87,24 @@ export default function NavAndDrawer({
           <nav className="navbar justify-between mx-auto max-w-screen-2xl">
             <div className="flex grow flex-row justify-start gap-1">
               <div className="flex-none">
-                <Link className="btn btn-ghost text-xl" href="/">
-                  PᴺCEL
+                <Link
+                  className="btn btn-ghost"
+                  href="/"
+                  aria-label="PNCEL home"
+                >
+                  <span
+                    className="block h-7 w-11 bg-current"
+                    style={{
+                      WebkitMaskImage: "url('/compact.svg')",
+                      maskImage: "url('/compact.svg')",
+                      WebkitMaskRepeat: "no-repeat",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskPosition: "center",
+                      maskPosition: "center",
+                      WebkitMaskSize: "contain",
+                      maskSize: "contain",
+                    }}
+                  />
                 </Link>
               </div>
               {navData.length > 0 && (
@@ -197,8 +213,20 @@ export default function NavAndDrawer({
         <div className="bg-base-300">
           <footer className="footer items-center p-2 text-base-content mx-auto max-w-screen-2xl">
             <aside className="items-center grid-flow-col">
-              <Link className="btn btn-ghost text-xl" href="/">
-                PᴺCEL
+              <Link className="btn btn-ghost" href="/" aria-label="PNCEL home">
+                <span
+                  className="block h-7 w-11 bg-current"
+                  style={{
+                    WebkitMaskImage: "url('/compact.svg')",
+                    maskImage: "url('/compact.svg')",
+                    WebkitMaskRepeat: "no-repeat",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskPosition: "center",
+                    maskPosition: "center",
+                    WebkitMaskSize: "contain",
+                    maskSize: "contain",
+                  }}
+                />
               </Link>
               <p>Copyright © 2024 - All right reserved</p>
             </aside>

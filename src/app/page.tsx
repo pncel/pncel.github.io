@@ -11,7 +11,24 @@ export default async function Home() {
 
   return (
     <DefaultMain>
-      <div className="my-8">
+      <div className="mt-12 mb-6 flex justify-center">
+        <div
+          className="bg-current w-72 sm:w-96 lg:w-[28rem] aspect-[390/130]"
+          role="img"
+          aria-label="PNCEL logo"
+          style={{
+            WebkitMaskImage: "url('/notext.svg')",
+            maskImage: "url('/notext.svg')",
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+            WebkitMaskPosition: "center",
+            maskPosition: "center",
+            WebkitMaskSize: "contain",
+            maskSize: "contain",
+          }}
+        />
+      </div>
+      <div className="mb-8">
         <FancySlogan />
       </div>
       <DefaultMDX>

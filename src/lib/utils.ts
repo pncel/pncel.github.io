@@ -35,7 +35,7 @@ export const siteConfig = {
   description:
     "PNCEL: {Programmable, Parallel, high-Performance, Power-efficient, ...} Computer Engineering Lab at University of Washington (UW)",
   url: "https://pncel.github.io",
-  ogImage: "/vercel.svg",
+  ogImage: "/og-image.png",
   keywords: [
     "PNCEL",
     "University of Washington",
