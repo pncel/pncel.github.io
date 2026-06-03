@@ -9,9 +9,6 @@ docs:
     time: 2025-04-01
     thumbnail: /photos/thumbnails/PNCEL_2025.JPG
     id: p-000X01
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false
   - title: PNCEL Group, Spring 2025
     subtitle: "Zhichen: 👍"
     image: /photos/IMG_2317.JPG
@@ -20,9 +17,6 @@ docs:
     time: 2025-04-01
     thumbnail: /photos/thumbnails/IMG_2317.JPG
     id: p-001202
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false
   - title: First Batch of PNCEL PhDs
     image: /photos/IMG_2632.jpg
     width: 4284
@@ -30,9 +24,6 @@ docs:
     time: 2025-04-01
     thumbnail: /photos/thumbnails/IMG_2632.jpg
     id: p-001Z03
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false
   - title: '"PNCEL"'
     image: /photos/IMG_2382.jpg
     width: 5165
@@ -40,9 +31,6 @@ docs:
     time: 2025-04-01
     thumbnail: /photos/thumbnails/IMG_2382.jpg
     id: p-002404
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false
   - title: '"UW"'
     image: /photos/IMG_2383.jpg
     width: 5712
@@ -50,9 +38,6 @@ docs:
     time: 2025-04-01
     thumbnail: /photos/thumbnails/IMG_2383.jpg
     id: p-002b05
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false
   - title: PhDs Chilling out (MICRO 2024)
     subtitle: "Ang: \"Y'all should be working!\""
     image: /photos/IMG_7221.jpg
@@ -61,9 +46,6 @@ docs:
     time: 2024-11-02
     thumbnail: /photos/thumbnails/IMG_7221.jpg
     id: p-003606
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false
   - title: MICRO 2024
     image: /photos/IMG_0143.png
     width: 3000
@@ -71,9 +53,6 @@ docs:
     time: 2024-11-05
     thumbnail: /photos/thumbnails/IMG_0143.png
     id: p-003d07
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false
   - title: UTexas Austin Book Store (MICRO 2024)
     image: /photos/IMG_3213.jpg
     width: 4032
@@ -81,9 +60,6 @@ docs:
     time: 2024-11-02
     thumbnail: /photos/thumbnails/IMG_3213.jpg
     id: p-004808
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false
   - id: p-004f09
     image: /photos/p-004f09.jpg
     thumbnail: /photos/thumbnails/p-004f09.jpg
@@ -91,9 +67,6 @@ docs:
     height: 1925
     title: 2025 End-of-Year Party
     time: 2025-05-20
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false
   - id: p-005A0A
     image: /photos/p-005A0A.jpg
     thumbnail: /photos/thumbnails/p-005A0A.jpg
@@ -101,9 +74,6 @@ docs:
     height: 4672
     title: 2025 Mt. Rainier
     time: 2025-08-01
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false
   - id: p-005h0B
     image: /photos/p-005h0B.jpeg
     thumbnail: /photos/thumbnails/p-005h0B.jpeg
@@ -111,9 +81,6 @@ docs:
     height: 4672
     title: "2025 Mt. Rainier: Jiayi teaches Mr./Mrs. Squirrel computer architecture"
     time: 2025-08-01
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false
   - id: p-006C0C
     image: /photos/p-006C0C.jpeg
     thumbnail: /photos/thumbnails/p-006C0C.jpeg
@@ -121,9 +88,6 @@ docs:
     height: 4672
     title: 2025 Mt. Rainier
     time: 2025-08-01
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false
   - id: p-006j0D
     image: /photos/p-006j0D.jpg
     thumbnail: /photos/thumbnails/p-006j0D.jpg
@@ -131,6 +95,3 @@ docs:
     height: 3024
     title: Jiayi presenting TransDot at FCCM 2026
     time: 2026-05-16
-    _meta:
-      lwt: 1780523216216.14
-    _deleted: false

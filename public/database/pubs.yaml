@@ -18,9 +18,6 @@ docs:
       - type: venue
         label: ASP-DAC
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
     bibtex: >+
       @inproceedings{Li2015Nonvolatile,
       	author = {Li, Shuangchen and {Ang Li} and Liu, Yongpan and Xie, Yuan and {Huazhong Yang}},
@@ -68,9 +65,6 @@ docs:
       - type: venue
         label: ISLPED
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +001Z03
     title: "OpenPiton: An Emerging Standard for Open-Source EDA Tool Development"
     authorIds:
@@ -100,9 +94,6 @@ docs:
       - type: other
         label: Workshop
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: "+002404"
     title: "PRGA: An Open-source Framework for Building and Using Custom FPGAs"
     authorIds:
@@ -120,9 +111,6 @@ docs:
       - label: Poster
         link: /pdfs/osda19.pdf
         icon: file-pdf
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +002b05
     title: Cycle-Free FPGA Routing Graphs
     authorIds:
@@ -156,9 +144,6 @@ docs:
       - label: Poster
         link: /pdfs/fpga20_poster.pdf
         icon: file-pdf
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: "+003606"
     title: "BYOC: A “Bring Your Own Core” Framework for Heterogeneous-ISA Research"
     authorIds:
@@ -200,9 +185,6 @@ docs:
       - type: other
         label: Open-Source
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +003d07
     title: "OpenPiton at 5: A Nexus for Open and Agile Hardware Design"
     authorIds:
@@ -242,9 +224,6 @@ docs:
       - type: venue
         label: IEEE Micro
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: "+004808"
     title: Automated Design of FPGAs Facilitated by Cycle-Free Routing
     authorIds:
@@ -274,9 +253,6 @@ docs:
       - type: venue
         label: FPL
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +004f09
     title: "PRGA: An Open-Source FPGA Research and Prototyping Framework"
     authorIds:
@@ -319,9 +295,6 @@ docs:
       - label: Documentation
         link: https://prga.readthedocs.io/
         icon: globe
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +005A0A
     title: "Duet: Creating Harmony between Processors and Embedded FPGAs"
     authorIds:
@@ -366,9 +339,6 @@ docs:
       - label: GitHub
         link: https://github.com/PrincetonUniversity/Duet
         icon: github
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +005h0B
     title: "DECADES: A 67mm<sup>2</sup>, 1.46TOPS, 55 Giga Cache-Coherent 64-bit
       RISC-V Instructions per second, Heterogeneous Manycore SoC with 109 Tiles
@@ -422,9 +392,6 @@ docs:
       - label: Website
         link: https://decades.cs.princeton.edu/
         icon: globe
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +006C0C
     title: "CIFER: A 12nm, 16mm<sup>2</sup>, 22-Core SoC with a 1541
       LUT6/mm<sup>2</sup>, 1.92 MOPS/LUT, Fully Synthesizable, Cache-Coherent,
@@ -475,9 +442,6 @@ docs:
         label: Prototype Chip
         icon: microchip
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +006j0D
     title: "Redwood: Flexible and Portable Heterogeneous Tree Traversal Workloads"
     authorIds:
@@ -509,9 +473,6 @@ docs:
       - type: other
         label: Open-Source
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +007E0E
     title: "Open-Source FPGA on Silicon: Case Studies on PRGA, an Open-Source
       Framework for Building & Programming Custom FPGAs"
@@ -532,9 +493,6 @@ docs:
       - label: Slides
         link: /pdfs/oscar23_prga.pdf
         icon: file-pdf
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +007l0F
     title: Evaluating Shared Memory Heterogeneous Systems Using Traverse-Compute
       Workloads
@@ -557,9 +515,6 @@ docs:
       - label: Recorded Talk
         link: https://www.youtube.com/watch?v=Ebvd9IFk1g8
         icon: video
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +008G0G
     title: "CIFER: A Cache-Coherent 12nm 16mm<sup>2</sup> SoC with Four 64-Bit
       RISC-V Application Cores, 18 32-Bit RISC-V Compute Cores, and a 1541
@@ -610,9 +565,6 @@ docs:
         label: Prototype Chip
         icon: microchip
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +008n0H
     title: "Allo: A Programming Model for Composable Accelerator Design"
     authorIds:
@@ -646,9 +598,6 @@ docs:
       - type: venue
         label: PLDI
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +009I0I
     title: "LUT Tensor Core: Lookup Table Enables Efficient Low-Bit LLM Inference
       Acceleration"
@@ -683,9 +632,6 @@ docs:
       - type: venue
         label: ISCA
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
     bibtex: >+
       @inproceedings{Mo2025LUT,
       	author = {Mo, Zhiwen and Wang, Lei and Wei, Jianyu and Zeng, Zhichen and Cao, Shijie and Ma, Lingxiao and Jing, Naifeng and Cao, Ting and Xue, Jilong and Yang, Fan and Yang, Mao},
@@ -733,9 +679,6 @@ docs:
     equalContrib: 2
     notPncel: true
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +00Ar0L
     title: "Fusion-3D: Integrated Acceleration for Instant 3D Reconstruction and
       Real-Time Rendering"
@@ -773,9 +716,6 @@ docs:
         label: Best Paper Award
         icon: medal
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +00BM0M
     title: "Instant-NeRF: Instant On-Device Neural Radiance Field Training via
       Algorithm-Accelerator Co-Designed Near-Memory Processing"
@@ -807,9 +747,6 @@ docs:
       - type: venue
         label: DAC
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +00Bt0N
     title: "EN-T: Optimizing Tensor Computing Engines Performance via Encoder-Based
       Methodology"
@@ -841,9 +778,6 @@ docs:
       - type: venue
         label: ICCD
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +00CO0O
     title: Highly stable and fast response photodetector based on double perovskite
       Cs<sub>2</sub>AgBiCl<sub>6</sub> crystals
@@ -881,9 +815,6 @@ docs:
       - type: venue
         label: Journal of Physics D
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +00DQ0Q
     title: Exploring the Performance Improvement of Tensor Processing Engines
       through Transformation in the Bit-weight Dimension of MACs
@@ -918,9 +849,6 @@ docs:
       - type: venue
         label: HPCA
     attachments: []
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
     bibtex: >+
       @inproceedings{Wu2025Exploring,
       	author = {Wu, Qizhe and Liang, Huawen and Gui, Yuchen and Zeng, Zhichen and He, Zerong and Tao, Linfeng and Wang, Xiaotian and Zhao, Letian and Zeng, Zhaoxi and Yuan, Wei and Wu, Wei and Jin, Xi},
@@ -958,9 +886,6 @@ docs:
       }
 
     id: +00Dx0R
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - title: "TransDot: An Area-efficient Reconfigurable Floating-Point Unit for
       Trans-Precision Dot-Product Accumulation for FPGA AI Engines"
     authorIds:
@@ -987,9 +912,6 @@ docs:
       }
 
     id: +00ES0S
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - title: "Tactic: Adaptive Sparse Attention with Clustering and Distribution
       Fitting for Long-Context LLMs"
     authorIds:
@@ -1021,9 +943,6 @@ docs:
       }
 
     id: +00Ez0T
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +00F-0V
     title: Precision-aware Communication in CGRAs
     authorIds:
@@ -1047,9 +966,6 @@ docs:
       - label: Poster
         link: /pdfs/fccm26_cgra.pdf
         icon: file-pdf
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - title: "Local Linear Attention: An Optimal Interpolation of Linear and Softmax
       Attention For Test-Time Regression"
     authorIds:
@@ -1077,9 +993,6 @@ docs:
       }
 
     id: +00FU0U
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - id: +00G10W
     title: "STEP: Spatially Threaded Execution Pipeline"
     authorIds:
@@ -1095,9 +1008,6 @@ docs:
     booktitle: The 2026 Workshop on Languages, Tools, and Techniques for Accelerator
       Design
     authorsCopy: /pdfs/latte26_step.pdf
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - title: "DisagMoE: Computation-Communication overlapped MoE Training via
       Disaggregated AF-Pipe Parallelism"
     authorIds:
@@ -1127,9 +1037,6 @@ docs:
       }
 
     id: +00GW0X
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false
   - title: All-Digital Bluetooth Low Energy (BLE) Backscatter ASIC using Standard
       I/O Pad Drivers in 180 nm CMOS
     authorIds:
@@ -1148,6 +1055,3 @@ docs:
       - type: venue
         label: RFID
     booktitle: 2026 IEEE International Conference on RFID
-    _meta:
-      lwt: 1780523216237.17
-    _deleted: false

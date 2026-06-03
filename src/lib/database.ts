@@ -202,6 +202,32 @@ export function decodeNews(doc: RxDocument<NewsJson>): News {
 }
 
 // ==============================================================================
+// == Persistence helpers =======================================================
+// ==============================================================================
+/**
+ * Strip RxDB-internal fields from a collection dump before writing it to disk.
+ *
+ * RxDB's json-dump export already drops `_rev` and `_attachments`, but keeps
+ * `_meta` (last-write-time) and `_deleted`. Neither is meaningful to persist:
+ * on import (`importDumpRxCollection`) RxDB unconditionally overwrites both with
+ * a fresh `_meta.lwt` and `_deleted: false`, so the stored values are never read
+ * back. Removing them keeps the YAML files clean and free of volatile churn.
+ */
+function stripInternalFields<T extends { docs: Record<string, unknown>[] }>(
+  dump: T,
+): T {
+  return {
+    ...dump,
+    docs: dump.docs.map((doc) => {
+      const { _meta, _deleted, ...rest } = doc;
+      void _meta;
+      void _deleted;
+      return rest;
+    }),
+  };
+}
+
+// ==============================================================================
 // == Database Class ============================================================
 // ==============================================================================
 export class Database extends Object {
@@ -382,25 +408,27 @@ export class Database extends Object {
   }
 
   public async persist() {
-    const personsJson = await this.db.persons.exportJSON();
+    const personsJson = stripInternalFields(await this.db.persons.exportJSON());
     await writeFile(
       `${process.cwd()}/public/database/persons.yaml`,
       stringify(personsJson),
     );
 
-    const pubsJson = await this.db.publications.exportJSON();
+    const pubsJson = stripInternalFields(
+      await this.db.publications.exportJSON(),
+    );
     await writeFile(
       `${process.cwd()}/public/database/pubs.yaml`,
       stringify(pubsJson),
     );
 
-    const photosJson = await this.db.photos.exportJSON();
+    const photosJson = stripInternalFields(await this.db.photos.exportJSON());
     await writeFile(
       `${process.cwd()}/public/database/photos.yaml`,
       stringify(photosJson),
     );
 
-    const newsJson = await this.db.news.exportJSON();
+    const newsJson = stripInternalFields(await this.db.news.exportJSON());
     await writeFile(
       `${process.cwd()}/public/database/news.yaml`,
       stringify(newsJson),

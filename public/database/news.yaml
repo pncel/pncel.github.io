@@ -7,9 +7,6 @@ docs:
     featured: true
     relatedMembersIds:
       - ang
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: "2"
     news: Welcome our first PhD cohort, @jiayi, @jingqun, @darren, and @zhichen!
     time: 2024-09-16
@@ -21,9 +18,6 @@ docs:
       - jingqun
       - darren
       - zhichen
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - news: Selected by UW Clean Energy Institute (CEI)'s [collaborative seed
       grant](https://www.cei.washington.edu/research/collaborative-seed-grants/).
       Thank you, CEI!
@@ -33,9 +27,6 @@ docs:
     id: n-000X01
     relatedMembersIds:
       - ang
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - news: "@zhichen is selected for the 2025-2026 [Meta AI
       Mentorship](https://www.metacareers.com/careerprograms/research?tab=AI+Me\
       ntorship) program. Congrats!"
@@ -46,18 +37,12 @@ docs:
       - ang
       - zhichen
     id: n-001202
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-001Z03
     news: "@zhichen joins ByteDance Seed as a Research Scientist Intern this summer!"
     time: 2025-05-31
     type: internship
     relatedMembersIds:
       - zhichen
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-002404
     news: "@ayush will join Apple as a SoC Physical Design Intern this summer.
       Congrats!"
@@ -65,9 +50,6 @@ docs:
     type: internship
     relatedMembersIds:
       - ayush
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-002b05
     news: "@amanoj3 will join AMD (Xilinx) as a Post-Silicon Validation Intern this
       summer. Congrats!"
@@ -75,9 +57,6 @@ docs:
     type: internship
     relatedMembersIds:
       - amanoj3
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-003606
     news: "@jiayi and @jingqun will join NVIDIA this summer — Computer Performance
       Intern and GPU Profiling & Tools Intern. Congrats!"
@@ -86,18 +65,12 @@ docs:
     relatedMembersIds:
       - jiayi
       - jingqun
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-003d07
     news: "@kearnan will join TSMC as an Intern this summer!"
     time: 2026-05-31
     type: internship
     relatedMembersIds:
       - kearnan
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-004808
     news: "%+00Ez0T and %+00FU0U accepted to **ICLR 2026**, congrats to @zhichen and
       our collaborators!"
@@ -107,9 +80,6 @@ docs:
     relatedMembersIds:
       - ang
       - zhichen
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-004f09
     news: '"STEP: Spatially Threaded Execution Pipeline" accepted to the **LATTE
       workshop at ASPLOS 2026**, congrats to @darren and @jiayi!'
@@ -120,9 +90,6 @@ docs:
       - ang
       - darren
       - jiayi
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-005A0A
     news: "%+00ES0S accepted as a short paper at **FCCM 2026**, congrats to @jiayi,
       Maohua, and Sin-Chen!"
@@ -132,9 +99,6 @@ docs:
     relatedMembersIds:
       - ang
       - jiayi
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-005h0B
     news: "%+00F-0V accepted as a poster at **FCCM 2026**. Congrats to @s2chitni,
       @fergusxu, @ramprana, @ayush, and all!"
@@ -147,41 +111,26 @@ docs:
       - fergusxu
       - ramprana
       - ayush
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-006C0C
     news: "@rambodt will join IBM as a CPU Performance Intern this summer!"
     time: 2026-04-30
     type: internship
     relatedMembersIds:
       - rambodt
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-006j0D
     news: "@cyungjen will join Apple as a Physical Design Engineer. Congrats!"
     time: 2026-03-31
     type: graduation
     relatedMembersIds:
       - cyungjen
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-007E0E
     news: Mike Huang will join TSMC. Congrats!
     time: 2026-03-31
     type: graduation
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-007l0F
     news: Shi Han Lin will join Apple as a SoC Power Engineer. Congrats!
     time: 2026-03-31
     type: graduation
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-008G0G
     news: '"piPE-SA: Enabling Deeply Pipelined Processing Elements in Systolic
       Arrays" accepted to the **EMC2 workshop at ASPLOS 2026**, congrats to
@@ -193,9 +142,6 @@ docs:
       - ang
       - jiayi
       - chenyi
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-008n0H
     news: '"CacheFlex: Explicitly Control What You Need in Your Cache" accepted to
       the **EMC2 workshop at ASPLOS 2026**, congrats to @jingqun, @cyungjen,
@@ -209,9 +155,6 @@ docs:
       - cyungjen
       - jiayi
       - s2chitni
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-009I0I
     news: "%+00Dx0R accepted to **ISCA 2026**, congrats to @jiayi, @darren, and
       @zhichen!"
@@ -223,9 +166,6 @@ docs:
       - jiayi
       - darren
       - zhichen
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-009p0J
     news: "%+00HY0Z accepted to **RFID 2026**, congrats to @ryanlee, Kate, Te Min,
       @andrep24 (undergraduate team on @ang 's digital VLSI tape-out class, EE
@@ -237,9 +177,6 @@ docs:
     relatedMembersIds:
       - ang
       - jiayi
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
   - id: n-00AK0K
     news: Great thanks to **Apple** for sponsoring the UW ECE chip tape-out courses
       (Prof. [Chris Rudell](https://people.ece.uw.edu/rudell_chris/)'s analog
@@ -249,6 +186,3 @@ docs:
     type: sponsorship
     relatedMembersIds:
       - ang
-    _meta:
-      lwt: 1780523216171.23
-    _deleted: false
