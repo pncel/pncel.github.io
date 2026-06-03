@@ -1,5 +1,5 @@
 import { Person, Publication } from "@/lib/types";
-import { composeFullName, pubAnchorId } from "@/lib/utils";
+import { pubAnchorId } from "@/lib/utils";
 import { marked } from "marked";
 
 /**
@@ -43,8 +43,8 @@ export function processContent(
   html = html.replace(mentionRegex, (match, personId) => {
     const member = memberMap.get(personId);
     if (member) {
-      const fullName = composeFullName(member);
-      return `<a href="/team/${personId}" class="link link-hover font-semibold text-secondary">${fullName}</a>`;
+      const displayName = member.goby || member.firstname;
+      return `<a href="/team/${personId}" class="link link-hover font-semibold text-secondary">${displayName}</a>`;
     }
     return match;
   });
