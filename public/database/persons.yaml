@@ -351,7 +351,13 @@ docs:
     lastname: Zhu
   - firstname: Kate
     lastname: Tseng
-    id: $00-y1-
+    id: lingant
+    avatar: /avatar/kate.jpeg
+    memberInfo:
+      role: ug
+      whenJoined: 2024-12-23
+      position: Undergrad
+      email: lingant@uw.edu
   - id: $009p0J
     firstname: Katie
     lastname: Lim
