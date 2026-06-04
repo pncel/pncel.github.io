@@ -592,8 +592,15 @@ docs:
     firstname: Sixu
     lastname: Li
   - firstname: Te Min
+    goby: Tyoma
     lastname: Yu
-    id: $012024
+    avatar: /avatar/tyoma.jpg
+    id: tyoma
+    memberInfo:
+      role: ug
+      whenJoined: 2024-12-02
+      position: Undergrad
+      email: tyu7@uw.edu
   - id: $00gM1K
     firstname: Tian
     lastname: Tang
