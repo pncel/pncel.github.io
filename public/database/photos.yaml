@@ -95,3 +95,66 @@ docs:
     height: 3024
     title: Jiayi presenting TransDot at FCCM 2026
     time: 2026-05-16
+  - id: p-007E0E
+    image: /photos/p-007E0E.jpg
+    thumbnail: /photos/thumbnails/p-007E0E.jpg
+    width: 6192
+    height: 4128
+    title: PNCEL 2026 End-of-Year Retreat @HUB
+    time: 2026-06-10
+  - id: p-007l0F
+    image: /photos/p-007l0F.jpeg
+    thumbnail: /photos/thumbnails/p-007l0F.jpeg
+    width: 2048
+    height: 1536
+    title: Jianming Tong giving invited talk on PNCEL group meeting
+    time: 2026-05-20
+  - id: p-008G0G
+    image: /photos/p-008G0G.jpeg
+    thumbnail: /photos/thumbnails/p-008G0G.jpeg
+    width: 2048
+    height: 1536
+    title: PNCEL group lunch. Feat. Jianming Tong
+    time: 2026-05-20
+  - id: p-008n0H
+    image: /photos/p-008n0H.jpg
+    thumbnail: /photos/thumbnails/p-008n0H.jpg
+    width: 4032
+    height: 3024
+    title: EE478 Sp26 MiniDICE team at ECE ENGINE showcase
+    time: 2026-06-01
+  - id: p-009I0I
+    image: /photos/p-009I0I.jpg
+    thumbnail: /photos/thumbnails/p-009I0I.jpg
+    width: 5712
+    height: 4284
+    title: EE478 Sp26 RTA team at ECE ENGINE showcase
+    time: 2026-06-01
+  - id: p-009p0J
+    image: /photos/p-009p0J.jpeg
+    thumbnail: /photos/thumbnails/p-009p0J.jpeg
+    width: 1600
+    height: 1200
+    title: EE478 Sp26 systolic array teams at ECE ENGINE showcase
+    time: 2026-06-01
+  - id: p-00AK0K
+    image: /photos/p-00AK0K.jpg
+    thumbnail: /photos/thumbnails/p-00AK0K.jpg
+    width: 4032
+    height: 3024
+    title: EE478 Sp26 tactile-compute team at ECE ENGINE showcase
+    time: 2026-06-01
+  - id: p-00Ar0L
+    image: /photos/p-00Ar0L.jpg
+    thumbnail: /photos/thumbnails/p-00Ar0L.jpg
+    width: 5712
+    height: 4284
+    title: EE478 Sp26 tactile-control team at ECE ENGINE showcase
+    time: 2026-06-01
+  - id: p-00BM0M
+    image: /photos/p-00BM0M.jpg
+    thumbnail: /photos/thumbnails/p-00BM0M.jpg
+    width: 4032
+    height: 3024
+    title: EE478 Sp26 micro-LED decoder team at ECE ENGINE showcase
+    time: 2026-06-01
