@@ -900,6 +900,7 @@ docs:
     tags:
       - type: venue
         label: FCCM
+    doi: 10.1109/FCCM68464.2026.00034
     arxivDoi: 10.48550/arXiv.2605.07245
     arxivBibtex: >+
       @article{Wang2026TransDot,
@@ -912,6 +913,19 @@ docs:
       }
 
     id: +00ES0S
+    bibtex: >+
+      @inproceedings{Wang2026TransDot,
+      	author = {Wang, Jiayi and Nie, Maohua and Lin, Sin-Chen and Shi, C.-J. Richard and Li, Ang},
+      	booktitle = {2026 {IEEE} 34th {Annual} {International} {Symposium} on {Field}-{Programmable} {Custom} {Computing} {Machines} ({FCCM})},
+      	doi = {10.1109/fccm68464.2026.00034},
+      	year = {2026},
+      	month = {may 13},
+      	pages = {171--175},
+      	organization = {IEEE},
+      	title = {TransDot: An {Area}-efficient {Reconfigurable} {Floating}-{Point} {Unit} for {Trans}-{Precision} {Dot}-{Product} {Accumulation} for {FPGA} {AI} {Engines}},
+      	url = {http://dx.doi.org/10.1109/FCCM68464.2026.00034},
+      }
+
   - title: "Tactic: Adaptive Sparse Attention with Clustering and Distribution
       Fitting for Long-Context LLMs"
     authorIds:
