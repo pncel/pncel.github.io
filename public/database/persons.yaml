@@ -30,6 +30,7 @@ docs:
     memberInfo:
       role: ms
       whenJoined: 2025-03-31
+      whenLeft: 2025-09-26
       position: M.S. Student
       email: adr29@uw.edu
   - id: thatton9
@@ -329,6 +330,7 @@ docs:
     memberInfo:
       role: ms
       whenJoined: 2025-03-31
+      whenLeft: 2025-09-16
       position: M.S. Student
       email: jovank@uw.edu
   - id: $00ep1H
@@ -356,6 +358,7 @@ docs:
     memberInfo:
       role: ug
       whenJoined: 2024-12-23
+      whenLeft: 2026-06-17
       position: Undergrad
       email: lingant@uw.edu
   - id: $009p0J
@@ -515,6 +518,7 @@ docs:
     memberInfo:
       role: ug
       whenJoined: 2025-04-21
+      whenLeft: 2026-06-17
       position: Undergrad
       email: ramprana@uw.edu
   - id: rishi
@@ -549,6 +553,7 @@ docs:
     memberInfo:
       role: ug
       whenJoined: 2024-12-02
+      whenLeft: 2026-06-17
       position: Undergrad
       email: rhlee1@uw.edu
   - id: $00CO0O
@@ -605,6 +610,7 @@ docs:
     memberInfo:
       role: ug
       whenJoined: 2024-12-02
+      whenLeft: 2026-06-17
       position: Undergrad
       email: tyu7@uw.edu
   - id: $00gM1K
