@@ -1051,6 +1051,22 @@ docs:
       }
 
     id: +00GW0X
+  - title: "CacheFlex: Direct Software-Managed Access to Higher-Level Cache for
+      Scalable Vector Support"
+    authorIds:
+      - jingqun
+      - $00XX13
+      - jiayi
+      - $00__1z
+      - rishi
+      - s2chitni
+      - ang
+    time: 2026-10-30
+    id: +00H30Y
+    tags:
+      - type: venue
+        label: MICRO
+    booktitle: 59th IEEE/ACM International Symposium on Microarchitecture
   - title: All-Digital Bluetooth Low Energy (BLE) Backscatter ASIC using Standard
       I/O Pad Drivers in 180 nm CMOS
     authorIds:

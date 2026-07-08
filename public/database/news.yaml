@@ -186,3 +186,17 @@ docs:
     type: sponsorship
     relatedMembersIds:
       - ang
+  - id: n-00Ar0L
+    news: "%+00H30Y accepted to **MICRO 2026**, congrats to @jingqun, Maohua,
+      @jiayi, Weihang, @rishi, @s2chitni!"
+    time: 2026-07-06
+    featured: true
+    type: publication
+    relatedMembersIds:
+      - jingqun
+      - $00XX13
+      - jiayi
+      - $00__1z
+      - rishi
+      - s2chitni
+      - ang

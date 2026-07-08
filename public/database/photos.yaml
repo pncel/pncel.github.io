@@ -158,3 +158,59 @@ docs:
     height: 3024
     title: EE478 Sp26 micro-LED decoder team at ECE ENGINE showcase
     time: 2026-06-01
+  - id: p-00Bt0N
+    image: /photos/p-00Bt0N.jpg
+    thumbnail: /photos/thumbnails/p-00Bt0N.jpg
+    width: 4032
+    height: 3024
+    title: Ryan and Kate attending RFID 2026
+    time: 2026-06-15
+  - id: p-00CO0O
+    image: /photos/p-00CO0O.jpg
+    thumbnail: /photos/thumbnails/p-00CO0O.jpg
+    width: 4032
+    height: 3024
+    title: Ryan presenting at RFID 2026
+    time: 2026-06-17
+  - id: p-00Cv0P
+    image: /photos/p-00Cv0P.jpg
+    thumbnail: /photos/thumbnails/p-00Cv0P.jpg
+    width: 5712
+    height: 4284
+    title: ISCA 2026
+    time: 2026-06-30
+  - id: p-00DQ0Q
+    image: /photos/p-00DQ0Q.jpg
+    thumbnail: /photos/thumbnails/p-00DQ0Q.jpg
+    width: 4284
+    height: 5712
+    title: ISCA 2026
+    time: 2026-06-30
+  - id: p-00Dx0R
+    image: /photos/p-00Dx0R.jpg
+    thumbnail: /photos/thumbnails/p-00Dx0R.jpg
+    width: 5712
+    height: 4284
+    title: Jiayi presenting DICE at ISCA 2026
+    time: 2026-06-30
+  - id: p-00ES0S
+    image: /photos/p-00ES0S.jpg
+    thumbnail: /photos/thumbnails/p-00ES0S.jpg
+    width: 5712
+    height: 4284
+    title: Jiayi presenting DICE at ISCA 2026
+    time: 2026-06-30
+  - id: p-00Ez0T
+    image: /photos/p-00Ez0T.jpg
+    thumbnail: /photos/thumbnails/p-00Ez0T.jpg
+    width: 4032
+    height: 3024
+    title: Shwet presenting DORA at OSCAR 2026 (co-located with ISCA 2026)
+    time: 2026-06-26
+  - id: p-00FU0U
+    image: /photos/p-00FU0U.jpg
+    thumbnail: /photos/thumbnails/p-00FU0U.jpg
+    width: 4032
+    height: 3024
+    title: Shwet presenting DORA at OSCAR 2026 (co-located with ISCA 2026)
+    time: 2026-06-26
