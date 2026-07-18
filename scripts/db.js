@@ -490,7 +490,7 @@ if (mainOptions.command === "add-photo") {
     width: metadata.width,
     height: metadata.height,
     title: options.title || "__no_name__",
-    time: encodeDate(new Date(options.date)),
+    time: encodeDate(options.date ? new Date(options.date) : new Date()),
     subtitle: options.subtitle,
   });
   console.log(`Successfully added photo ${photo} -- new id: ${id}`);
