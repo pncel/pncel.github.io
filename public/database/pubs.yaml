@@ -1021,7 +1021,10 @@ docs:
         label: Workshop
     booktitle: The 2026 Workshop on Languages, Tools, and Techniques for Accelerator
       Design
-    authorsCopy: /pdfs/latte26_step.pdf
+    attachments:
+      - label: Abstract
+        link: /pdfs/latte26_step.pdf
+        icon: file-pdf
   - title: "DisagMoE: Computation-Communication overlapped MoE Training via
       Disaggregated AF-Pipe Parallelism"
     authorIds:
@@ -1085,3 +1088,30 @@ docs:
       - type: venue
         label: RFID
     booktitle: 2026 IEEE International Conference on RFID
+  - id: +00Ia0b
+    title: "DORA: Open-Source Infrastructure for Prototyping Reconfigurable Fabrics"
+    authorIds:
+      - s2chitni
+      - jiayi
+      - fergusxu
+      - ayush
+      - ramprana
+      - juwon
+      - jingqun
+      - ang
+    time: 2026-06-27
+    booktitle: 2026 Open-Source Computer Architecture Research
+    tags:
+      - type: venue
+        label: OSCAR
+      - type: other
+        label: Workshop
+      - type: other
+        label: Poster
+    attachments:
+      - label: Abstract
+        link: /pdfs/OSCAR_2026_DORA_Abstract.pdf
+        icon: file-pdf
+      - label: Poster
+        link: /pdfs/DORA_OSCAR_Poster.pdf
+        icon: file-pdf

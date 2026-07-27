@@ -200,3 +200,18 @@ docs:
       - rishi
       - s2chitni
       - ang
+  - id: n-00BM0M
+    news: "%+00Ia0b accepted as a poster to **OSCAR workshop at ISCA 2026**, congrats to
+      @s2chitni, @jiayi, @fergusxu, @ayush, @ramprana, @juwon, and @jingqun!"
+    time: 2026-05-24
+    featured: true
+    type: publication
+    relatedMembersIds:
+      - s2chitni
+      - jiayi
+      - fergusxu
+      - ayush
+      - ramprana
+      - juwon
+      - jingqun
+      - ang
