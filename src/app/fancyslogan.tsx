@@ -10,7 +10,7 @@ const keywords = [
   "Low-Power",
   "Pacific Northwest",
   "Pipelined",
-  "Polymorphous",
+  "Polymorphic",
 ];
 
 export default function FancySlogan() {
