@@ -1,5 +1,4 @@
 "use client";
-import React, { useState } from "react";
 import Typewriter from "typewriter-effect";
 
 const keywords = [
@@ -11,15 +10,10 @@ const keywords = [
   "Low-Power",
   "Pacific Northwest",
   "Pipelined",
+  "Polymorphous",
 ];
 
 export default function FancySlogan() {
-  const [currentIdx, setCurrentIdx] = useState(0);
-
-  setTimeout(() => {
-    setCurrentIdx((currentIdx + 1) % keywords.length);
-  }, 3000);
-
   return (
     <div className="font-serif text-2xl lg:text-3xl text-center">
       <span className="text-4xl lg:text-5xl align-middle">&#8203;</span>
