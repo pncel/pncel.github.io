@@ -1,6 +1,8 @@
 import { metadataTmpl } from "@/lib/utils";
 import DefaultMain from "@/layouts/defaultMain";
 import DefaultMDX from "@/layouts/defaultMdx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 
 export const metadata = {
   ...metadataTmpl,
@@ -12,13 +14,23 @@ export const metadata = {
 
 # Join Us
 
+<div role="alert" className="alert">
+  <FontAwesomeIcon icon={faCircleExclamation} />
+  <span>Ang sometimes misses emails or marks them for later responding. So, if you do not hear from us, please (1) come to our open-door group meeting; (2) reach out to our group members instead; and/or (3) ping Ang again after 1-2 weeks.</span>
+</div>
+
+<p/>
+
+<div role="alert" className="alert">
+  <FontAwesomeIcon icon={faCircleExclamation} />
+  <span>Group meeting schedule TBD for Autumn 2026.</span>
+</div>
+
 ## Group Meetings
 
 We run open-door group meetings every week when group members or invited
 speakers present their work or other state-of-the-art research.
 This is the best way to connect with and learn about our lab.
-For Winter 2026, group meetings happen on every Thursday, 4-5pm PST in ECE 403,
-except for 01/15 and 01/29 when meetings are canceled due to room availability.
 
 ## UW ECE Undergrad/Master Students
 

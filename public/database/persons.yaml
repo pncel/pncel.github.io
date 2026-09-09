@@ -285,6 +285,7 @@ docs:
     firstname: Jiayi
     lastname: Wang
     avatar: /avatar/Jiayi.jpg
+    externalLink: https://jiayi-wang98.github.io/
     memberInfo:
       role: phd
       whenJoined: 2023-10-31
