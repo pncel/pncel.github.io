@@ -201,8 +201,9 @@ docs:
       - s2chitni
       - ang
   - id: n-00BM0M
-    news: "%+00Ia0b accepted as a poster to **OSCAR workshop at ISCA 2026**, congrats to
-      @s2chitni, @jiayi, @fergusxu, @ayush, @ramprana, @juwon, and @jingqun!"
+    news: "%+00Ia0b accepted as a poster to **OSCAR workshop at ISCA 2026**,
+      congrats to @s2chitni, @jiayi, @fergusxu, @ayush, @ramprana, @juwon, and
+      @jingqun!"
     time: 2026-05-24
     featured: true
     type: publication
@@ -214,4 +215,13 @@ docs:
       - ramprana
       - juwon
       - jingqun
+      - ang
+  - id: n-00Bt0N
+    news: "%+00I50a accepted to **ICCD 2026**, congrats to @jiayi and @kearnan!"
+    time: 2026-09-10
+    featured: true
+    type: publication
+    relatedMembersIds:
+      - jiayi
+      - kearnan
       - ang

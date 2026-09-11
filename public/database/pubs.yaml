@@ -886,6 +886,7 @@ docs:
       }
 
     id: +00Dx0R
+    doi: 10.1109/ISCA66397.2026.00184
   - title: "TransDot: An Area-efficient Reconfigurable Floating-Point Unit for
       Trans-Precision Dot-Product Accumulation for FPGA AI Engines"
     authorIds:
@@ -1088,6 +1089,17 @@ docs:
       - type: venue
         label: RFID
     booktitle: 2026 IEEE International Conference on RFID
+  - id: +00I50a
+    title: "MFSA: A Multi-Format Systolic Array with Native Micro Scaling Support"
+    authorIds:
+      - jiayi
+      - kearnan
+      - ang
+    time: 2026-11-15
+    booktitle: The 44th IEEE International Conference on Computer Design
+    tags:
+      - type: venue
+        label: ICCD
   - id: +00Ia0b
     title: "DORA: Open-Source Infrastructure for Prototyping Reconfigurable Fabrics"
     authorIds:
