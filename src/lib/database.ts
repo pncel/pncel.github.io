@@ -3,6 +3,8 @@ import {
   RxDatabase as _RxDatabase,
   RxCollection,
   RxDocument,
+  RxStorageBulkWriteResponse,
+  RxStorageWriteError,
   addRxPlugin,
 } from "rxdb";
 import { getRxStorageMemory } from "rxdb/plugins/storage-memory";
@@ -75,14 +77,37 @@ export function decodeEnum<E extends Record<string, string | number>>(
   }
 }
 
+/**
+ * Serialize a Date to the `YYYY-MM-DD` form stored in the YAML files.
+ *
+ * `decodeDate` builds UTC midnight, so this must read the UTC fields back out:
+ * the two have to be exact inverses. Subtracting the local timezone offset here
+ * instead made every decode/encode round trip -- which `DatabaseMutator` does to
+ * any document it reassigns an ID to -- walk the date back by a day in
+ * timezones behind UTC.
+ *
+ * Use `localDateString()` when you mean "today", not `encodeDate(new Date())`.
+ */
 export function encodeDate(d: Date | undefined): string | undefined {
   if (d === undefined) {
     return undefined;
   } else {
-    const offset = d.getTimezoneOffset();
-    const dd = new Date(d.getTime() - offset * 60 * 1000);
-    return dd.toISOString().split("T")[0];
+    return d.toISOString().split("T")[0];
   }
+}
+
+/**
+ * `YYYY-MM-DD` for a wall-clock date in the local timezone, defaulting to today.
+ *
+ * `encodeDate` reads UTC fields, so `encodeDate(new Date())` returns tomorrow's
+ * date for part of each day in timezones behind UTC. Call sites that mean the
+ * current calendar date want this instead.
+ */
+export function localDateString(d: Date = new Date()): string {
+  const offset = d.getTimezoneOffset();
+  return new Date(d.getTime() - offset * 60 * 1000)
+    .toISOString()
+    .split("T")[0]!;
 }
 
 export function decodeDate(dateString: string): Date {
@@ -227,6 +252,87 @@ function stripInternalFields<T extends { docs: Record<string, unknown>[] }>(
   };
 }
 
+/**
+ * Load one collection's YAML dump into the in-memory database.
+ *
+ * RxDB's `importJSON` bottoms out in the storage's `bulkWrite`, which reports
+ * per-document failures in its *return value* rather than throwing. Left
+ * unchecked, a single malformed row (an unquoted numeric-looking ID, say) is
+ * silently dropped -- and because `persist()` dumps the in-memory collection
+ * back over the YAML file, the very next write erases that row from disk. So we
+ * inspect the result and refuse to continue with a partial collection.
+ *
+ * A genuinely absent file is still fine to skip; anything else is fatal.
+ */
+async function importCollectionYaml<T>(
+  collection: RxCollection<T>,
+  fileName: string,
+  ignoreSchemaHash: boolean,
+): Promise<void> {
+  let raw: string;
+  try {
+    raw = await readFile(
+      `${process.cwd()}/public/database/${fileName}`,
+      "utf-8",
+    );
+  } catch (e) {
+    if ((e as NodeJS.ErrnoException).code === "ENOENT") {
+      console.log(`No ${fileName} found, skipping ${collection.name} import`);
+      return;
+    }
+    throw e;
+  }
+
+  const data = parse(raw);
+  if (ignoreSchemaHash && data.schemaHash) {
+    // Replace with the current schema hash
+    data.schemaHash = await collection.schema.hash;
+  }
+
+  // RxDB declares `importJSON` as `Promise<void>`, but `importDumpRxCollection`
+  // hands back the storage's bulk-write response. Read it for the per-document
+  // reasons; the document count is the backstop that still catches dropped rows
+  // if a future version really does return nothing.
+  const response = (await collection.importJSON(data)) as
+    | RxStorageBulkWriteResponse<T>
+    | undefined;
+  const failures: RxStorageWriteError<T>[] = response?.error ?? [];
+  const expected: number = Array.isArray(data.docs) ? data.docs.length : 0;
+  const imported = await collection.count().exec();
+
+  if (failures.length === 0 && imported === expected) {
+    return;
+  }
+
+  // `documentId` is the *parsed* primary key, so an unquoted `.2` surfaces here
+  // as `0.2` -- a value that appears nowhere in the file. Point at the document's
+  // position instead, and leave the line numbers to `npm run validate-yaml`.
+  const docs: { id?: unknown }[] = Array.isArray(data.docs) ? data.docs : [];
+  const details =
+    failures.length > 0
+      ? failures
+          .map((e) => {
+            const index = docs.findIndex((d) => d.id === e.documentId);
+            const where =
+              index >= 0 ? `docs.${index}` : `id=${String(e.documentId)}`;
+            return (
+              `  - at "${where}": ` +
+              (e.status === 422
+                ? JSON.stringify(e.validationErrors)
+                : `write failed with status ${e.status}`)
+            );
+          })
+          .join("\n")
+      : "  (storage reported no per-document errors)";
+
+  throw new Error(
+    `[FATAL] ${expected - imported} of ${expected} document(s) in ${fileName} ` +
+      `were rejected on import. Refusing to continue: the next write would ` +
+      `erase them from disk.\n${details}\n` +
+      `  Run \`npm run validate-yaml\` for line numbers and source text.`,
+  );
+}
+
 // ==============================================================================
 // == Database Class ============================================================
 // ==============================================================================
@@ -271,83 +377,23 @@ export class Database extends Object {
                 return db;
               })
               .then(async (db) => {
-                const pReadPersons = readFile(
-                  `${process.cwd()}/public/database/persons.yaml`,
-                  "utf-8",
-                )
-                  .then((raw) => parse(raw))
-                  .then(async (data) => {
-                    if (ignoreSchemaHash && data.schemaHash) {
-                      // Replace with the current schema hash
-                      data.schemaHash = await db.persons.schema.hash;
-                    }
-                    await db.persons.importJSON(data);
-                  })
-                  .catch(() => {
-                    // persons.yaml might not exist yet, that's okay
-                    console.log(
-                      "No persons.yaml found, skipping persons import",
-                    );
-                  });
-
-                const pReadPublications = readFile(
-                  `${process.cwd()}/public/database/pubs.yaml`,
-                  "utf-8",
-                )
-                  .then((raw) => parse(raw))
-                  .then(async (data) => {
-                    if (ignoreSchemaHash && data.schemaHash) {
-                      // Replace with the current schema hash
-                      data.schemaHash = await db.publications.schema.hash;
-                    }
-                    await db.publications.importJSON(data);
-                  })
-                  .catch(() => {
-                    // pubs.yaml might not exist yet, that's okay
-                    console.log(
-                      "No pubs.yaml found, skipping publications import",
-                    );
-                  });
-
-                const pReadPhotos = readFile(
-                  `${process.cwd()}/public/database/photos.yaml`,
-                  "utf-8",
-                )
-                  .then((raw) => parse(raw))
-                  .then(async (data) => {
-                    if (ignoreSchemaHash && data.schemaHash) {
-                      // Replace with the current schema hash
-                      data.schemaHash = await db.photos.schema.hash;
-                    }
-                    await db.photos.importJSON(data);
-                  })
-                  .catch(() => {
-                    // photos.yaml might not exist yet, that's okay
-                    console.log("No photos.yaml found, skipping photos import");
-                  });
-
-                const pReadNews = readFile(
-                  `${process.cwd()}/public/database/news.yaml`,
-                  "utf-8",
-                )
-                  .then((raw) => parse(raw))
-                  .then(async (data) => {
-                    if (ignoreSchemaHash && data.schemaHash) {
-                      // Replace with the current schema hash
-                      data.schemaHash = await db.news.schema.hash;
-                    }
-                    await db.news.importJSON(data);
-                  })
-                  .catch(() => {
-                    // news.yaml might not exist yet, that's okay
-                    console.log("No news.yaml found, skipping news import");
-                  });
-
                 await Promise.all([
-                  pReadPersons,
-                  pReadPublications,
-                  pReadPhotos,
-                  pReadNews,
+                  importCollectionYaml(
+                    db.persons,
+                    "persons.yaml",
+                    ignoreSchemaHash,
+                  ),
+                  importCollectionYaml(
+                    db.publications,
+                    "pubs.yaml",
+                    ignoreSchemaHash,
+                  ),
+                  importCollectionYaml(
+                    db.photos,
+                    "photos.yaml",
+                    ignoreSchemaHash,
+                  ),
+                  importCollectionYaml(db.news, "news.yaml", ignoreSchemaHash),
                 ]);
                 return db;
               }),

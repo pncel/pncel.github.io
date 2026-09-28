@@ -225,3 +225,13 @@ docs:
       - jiayi
       - kearnan
       - ang
+  - id: n-00CO0O
+    news: "%+00Jc0d accepted to **NeurIPS 2026**, congrats to @zhichen and our
+      collaborators!"
+    time: 2026-09-24
+    featured: true
+    type: publication
+    relatedMembersIds:
+      - zhichen
+      - jiayi
+      - ang

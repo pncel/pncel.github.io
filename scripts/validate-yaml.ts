@@ -11,7 +11,7 @@
  */
 
 import { readFile } from "fs/promises";
-import { parse } from "yaml";
+import { parse, parseDocument, isNode, isScalar, type Document } from "yaml";
 import {
   validatePersonsYaml,
   validatePublicationsYaml,
@@ -25,11 +25,60 @@ interface ValidationResult {
   warnings?: string[];
 }
 
+/** 1-indexed line containing `offset`. */
+function lineOf(content: string, offset: number): number {
+  return content.slice(0, offset).split("\n").length;
+}
+
+/**
+ * Restate a schema error in terms of the file it came from.
+ *
+ * Zod reports paths against the *parsed* data, which has already lost the YAML
+ * that produced it -- most painfully for an unquoted ID like `.2`, which YAML
+ * resolves to the number 0.2, so "docs.35.authorIds.1: expected string,
+ * received number" names a value that appears nowhere in the file. Resolving
+ * the path back to a node recovers the line and the text as written.
+ */
+function annotateIssue(
+  doc: Document,
+  content: string,
+  filePath: string,
+  issue: { path: PropertyKey[]; message: string },
+): string {
+  const path = issue.path.map((key) =>
+    typeof key === "symbol" ? String(key) : key,
+  );
+
+  // A path can name a key that isn't in the file at all (a missing required
+  // field), so walk up to the nearest node that is: the line still lands on the
+  // enclosing entry, which is where the fix goes.
+  let node: unknown;
+  for (let depth = path.length; depth > 0; depth--) {
+    node = doc.getIn(path.slice(0, depth), true);
+    if (node !== undefined) break;
+  }
+
+  const where =
+    isNode(node) && node.range
+      ? `${filePath}:${lineOf(content, node.range[0])}`
+      : filePath;
+  const at = path.length > 0 ? ` at "${path.join(".")}"` : "";
+  // Only a scalar resolved at the exact path carries useful source text; an
+  // ancestor we walked up to is a map or sequence and has none.
+  const source =
+    isScalar(node) && typeof node.source === "string"
+      ? `  (source: \`${node.source}\`)`
+      : "";
+
+  return `${where}${at}: ${issue.message}${source}`;
+}
+
 async function validateYamlFile(
   filePath: string,
   validator: (data: unknown) => {
     success: boolean;
     errors?: string[];
+    issues?: { path: PropertyKey[]; message: string }[];
     data?: unknown;
   },
 ): Promise<ValidationResult> {
@@ -44,11 +93,21 @@ async function validateYamlFile(
         success: true,
       };
     } else {
-      return {
-        file: filePath,
-        success: false,
-        errors: result.errors,
-      };
+      // Re-point each failure at the line and source text that caused it; fall
+      // back to the pre-formatted strings if the file won't re-parse as a
+      // document (it already parsed once, so this should not happen).
+      let errors = result.errors ?? [];
+      if (result.issues) {
+        try {
+          const doc = parseDocument(content);
+          errors = result.issues.map((issue) =>
+            annotateIssue(doc, content, filePath, issue),
+          );
+        } catch {
+          /* keep the unannotated errors */
+        }
+      }
+      return { file: filePath, success: false, errors };
     }
   } catch (error) {
     return {

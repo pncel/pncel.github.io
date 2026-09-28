@@ -1,4 +1,9 @@
-import { Database, decodePublication, encodeDate } from "./dist/database.js";
+import {
+  Database,
+  decodePublication,
+  encodeDate,
+  localDateString,
+} from "./dist/database.js";
 import { DatabaseMutator } from "./dist/databaseMutator.js";
 import commandLineUsage from "command-line-usage";
 import commandLineArgs from "command-line-args";
@@ -61,7 +66,7 @@ const help_commands = {
       {
         name: "--date",
         typeLabel: "{underline 2020-01-01}",
-        description: `Date of the photo. Default to today (${encodeDate(new Date())})`,
+        description: `Date of the photo. Default to today (${localDateString()})`,
       },
     ],
   },
@@ -80,7 +85,7 @@ const help_commands = {
       {
         name: "--date",
         typeLabel: "{underline 2020-01-01}",
-        description: `Date of the news. Default to today (${encodeDate(new Date())})`,
+        description: `Date of the news. Default to today (${localDateString()})`,
       },
       {
         name: "--details",
@@ -357,7 +362,7 @@ if (mainOptions.command === "add-doi") {
         const year = yearDigits >= 90 ? 1900 + yearDigits : 2000 + yearDigits;
         const month = parseInt(match[2]) - 1; // JS months are 0-indexed
         const day = 1;
-        pub.time = new Date(year, month, day);
+        pub.time = new Date(Date.UTC(year, month, day));
       }
       pub.arxivDoi = doi;
       pub.arxivBibtex = cite.format("bibtex");
@@ -380,13 +385,11 @@ if (mainOptions.command === "add-doi") {
           if (dateParts.length >= 2) {
             // We have at least year and month
             pub.time = new Date(
-              dateParts[0],
-              dateParts[1] - 1,
-              dateParts[2] || 1,
+              Date.UTC(dateParts[0], dateParts[1] - 1, dateParts[2] || 1),
             );
           } else if (dateParts.length === 1) {
             // We only have year
-            pub.time = new Date(dateParts[0], 0, 1);
+            pub.time = new Date(Date.UTC(dateParts[0], 0, 1));
           }
           break;
         }
@@ -490,7 +493,7 @@ if (mainOptions.command === "add-photo") {
     width: metadata.width,
     height: metadata.height,
     title: options.title || "__no_name__",
-    time: encodeDate(options.date ? new Date(options.date) : new Date()),
+    time: options.date ? encodeDate(new Date(options.date)) : localDateString(),
     subtitle: options.subtitle,
   });
   console.log(`Successfully added photo ${photo} -- new id: ${id}`);
@@ -556,7 +559,7 @@ if (mainOptions.command === "add-news") {
   // Create the news item
   const newsData = {
     news: newsContent,
-    time: new Date(options.date || encodeDate(new Date())),
+    time: new Date(options.date || localDateString()),
     details: newsDetails,
     type: options.type,
     relatedMembersIds:

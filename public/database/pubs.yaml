@@ -1127,3 +1127,24 @@ docs:
       - label: Poster
         link: /pdfs/DORA_OSCAR_Poster.pdf
         icon: file-pdf
+  - id: +00Jc0d
+    title: "Step-dLLM: Adaptive Step-aware Sparse Attention for Efficient Diffusion
+      LLM Inference"
+    authorIds:
+      - zhichen
+      - $012X25
+      - $012024
+      - $00V_0-
+      - $00Tw0x
+      - jiayi
+      - $00XX13
+      - $00_V1y
+      - ang
+      - $00Uy0z
+    time: 2026-12-06
+    booktitle: The Fortieth Annual Conference on Neural Information Processing Systems
+    tags:
+      - type: venue
+        label: NeurIPS
+    doi: https://openreview.net/forum?id=5sFFGPtDy2#discussion
+    attachments: []

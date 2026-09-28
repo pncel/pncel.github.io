@@ -275,6 +275,9 @@ docs:
   - firstname: James
     lastname: Rosenthal
     id: $00yR1u
+  - firstname: Ji
+    lastname: Liu
+    id: $00_V1y
   - id: $00Yd15
     firstname: Jianyu
     lastname: Wei
@@ -336,6 +339,9 @@ docs:
   - id: $00ep1H
     firstname: Junjie
     lastname: Lai
+  - firstname: Junpan
+    lastname: Wu
+    id: $012024
   - id: juwon
     firstname: Juwon
     lastname: Jun
@@ -661,6 +667,9 @@ docs:
   - id: $00vm1p
     firstname: Xiaoyu
     lastname: Sun
+  - firstname: Xichong
+    lastname: Zhang
+    id: $012X25
   - id: $00kU1S
     firstname: Yang
     lastname: Zhao

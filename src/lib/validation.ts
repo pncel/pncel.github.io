@@ -188,13 +188,19 @@ export const PhotosYamlSchema = z.object({
 // ==============================================================================
 
 /**
- * Validates a data object against a schema and returns detailed errors
+ * Validates a data object against a schema and returns detailed errors.
+ *
+ * The raw `issues` come back alongside the formatted strings: their structured
+ * paths let a caller that still has the source document resolve each failure
+ * back to the line and text that produced it.
  */
 export function validateData<T>(
   schema: z.ZodSchema<T>,
   data: unknown,
   context: string,
-): { success: true; data: T } | { success: false; errors: string[] } {
+):
+  | { success: true; data: T }
+  | { success: false; errors: string[]; issues: z.ZodIssue[] } {
   const result = schema.safeParse(data);
 
   if (result.success) {
@@ -206,7 +212,7 @@ export function validateData<T>(
     return `${context}${path ? ` at "${path}"` : ""}: ${err.message}`;
   });
 
-  return { success: false, errors };
+  return { success: false, errors, issues: result.error.issues };
 }
 
 /**
