@@ -17,6 +17,7 @@ docs:
     memberInfo:
       role: ms
       whenJoined: 2024-09-26
+      whenLeft: 2026-06-16
       position: M.S. Student
       email: akumar08@uw.edu
   - id: $00Bt0N
@@ -210,9 +211,9 @@ docs:
     lastname: Norman
     avatar: /avatar/enorman.jpg
     memberInfo:
-      role: ug
+      role: ms
       whenJoined: 2025-09-01
-      position: Undergrad
+      position: M.S. Student
       email: enorman@uw.edu
       links:
         - icon: linkedin
@@ -236,6 +237,7 @@ docs:
     memberInfo:
       role: ug
       whenJoined: 2025-03-04
+      whenLeft: 2026-09-29
       position: Undergrad
       email: xu000380@uw.edu
   - id: $00F-0V
@@ -349,6 +351,7 @@ docs:
     memberInfo:
       role: ug
       whenJoined: 2025-03-31
+      whenLeft: 2026-06-16
       position: Undergrad
       email: jami3jun@uw.edu
   - id: $00Ke0f
@@ -801,3 +804,14 @@ docs:
   - firstname: Ziheng
     lastname: Jiang
     id: $00yw1v
+  - id: ysqin
+    firstname: Yongsheng
+    lastname: Qin
+    avatar: /avatar/yongsheng.jpg
+    externalLink: https://boucii.github.io/
+    memberInfo:
+      role: phd
+      whenJoined: 2026-09-28
+      position: Ph.D.
+      email: ysqin@uw.edu
+      office: ECE 409
