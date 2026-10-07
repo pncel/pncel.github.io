@@ -29,6 +29,15 @@ docs:
       whenJoined: 2026-06-01
       position: M.S. Student
       email: priyar19@uw.edu
+  - id: diya05
+    firstname: Diya
+    lastname: Shetty
+    avatar: /avatar/diya.png
+    memberInfo:
+      role: ms
+      whenJoined: 2026-06-01
+      position: M.S. Student
+      email: diya05@uw.edu
   - id: sashwath
     firstname: Sashwath
     lastname: Narayanan
