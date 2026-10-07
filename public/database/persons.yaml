@@ -20,6 +20,15 @@ docs:
       whenLeft: 2026-06-16
       position: M.S. Student
       email: akumar08@uw.edu
+  - id: priyar19
+    firstname: Priya
+    lastname: Rana
+    avatar: /avatar/priya_rana.jpg
+    memberInfo:
+      role: ms
+      whenJoined: 2026-06-01
+      position: M.S. Student
+      email: priyar19@uw.edu
   - id: sashwath
     firstname: Sashwath
     lastname: Narayanan
