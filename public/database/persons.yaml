@@ -20,6 +20,15 @@ docs:
       whenLeft: 2026-06-16
       position: M.S. Student
       email: akumar08@uw.edu
+  - id: sashwath
+    firstname: Sashwath
+    lastname: Narayanan
+    avatar: /avatar/sashwath.png
+    memberInfo:
+      role: ug
+      whenJoined: 2025-09-01
+      position: Undergrad
+      email: sash07@uw.edu
   - id: $00Bt0N
     firstname: Adi
     lastname: Fuchs
