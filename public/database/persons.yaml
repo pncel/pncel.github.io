@@ -20,33 +20,6 @@ docs:
       whenLeft: 2026-06-16
       position: M.S. Student
       email: akumar08@uw.edu
-  - id: priyar19
-    firstname: Priya
-    lastname: Rana
-    avatar: /avatar/priya_rana.jpg
-    memberInfo:
-      role: ms
-      whenJoined: 2026-06-01
-      position: M.S. Student
-      email: priyar19@uw.edu
-  - id: diya05
-    firstname: Diya
-    lastname: Shetty
-    avatar: /avatar/diya.png
-    memberInfo:
-      role: ms
-      whenJoined: 2026-06-01
-      position: M.S. Student
-      email: diya05@uw.edu
-  - id: sashwath
-    firstname: Sashwath
-    lastname: Narayanan
-    avatar: /avatar/sashwath.png
-    memberInfo:
-      role: ug
-      whenJoined: 2025-09-01
-      position: Undergrad
-      email: sash07@uw.edu
   - id: $00Bt0N
     firstname: Adi
     lastname: Fuchs
@@ -220,6 +193,15 @@ docs:
   - id: $00fG1I
     firstname: Dayou
     lastname: Du
+  - id: diya05
+    firstname: Diya
+    lastname: Shetty
+    avatar: /avatar/diya.png
+    memberInfo:
+      role: ms
+      whenJoined: 2026-06-01
+      position: M.S. Student
+      email: diya05@uw.edu
   - firstname: Dongyang
     lastname: Wang
     id: $000X01
@@ -476,6 +458,15 @@ docs:
     firstname: Mohammad
     lastname: Shahrad
     externalLink: https://mshahrad.github.io/
+  - id: morrishuang520
+    firstname: Morris
+    lastname: Huang
+    avatar: /avatar/morris.jpg
+    memberInfo:
+      role: ug
+      whenJoined: 2025-10-31
+      position: Undergrad
+      email: morrishuang520@uw.edu
   - id: $00Nk0l
     firstname: Moyang
     lastname: Wang
@@ -532,6 +523,15 @@ docs:
       whenLeft: 2025-06-01
       position: Undergrad
       email: krishpri@uw.edu
+  - id: priyar19
+    firstname: Priya
+    lastname: Rana
+    avatar: /avatar/priya_rana.jpg
+    memberInfo:
+      role: ms
+      whenJoined: 2026-06-01
+      position: M.S. Student
+      email: priyar19@uw.edu
   - id: $00gt1L
     firstname: Qinyu
     lastname: Xu
@@ -595,6 +595,15 @@ docs:
   - id: $00CO0O
     firstname: Samuel
     lastname: Payne
+  - id: sashwath
+    firstname: Sashwath
+    lastname: Narayanan
+    avatar: /avatar/sashwath.png
+    memberInfo:
+      role: ug
+      whenJoined: 2025-09-01
+      position: Undergrad
+      email: sash07@uw.edu
   - id: $00NF0k
     firstname: Shady
     lastname: Agwa
@@ -737,6 +746,17 @@ docs:
   - id: $003d07
     firstname: Yongpan
     lastname: Liu
+  - id: ysqin
+    firstname: Yongsheng
+    lastname: Qin
+    avatar: /avatar/yongsheng.jpg
+    externalLink: https://boucii.github.io/
+    memberInfo:
+      role: phd
+      whenJoined: 2026-09-28
+      position: Ph.D.
+      email: ysqin@uw.edu
+      office: ECE 409
   - id: $005A0A
     firstname: Yu
     lastname: Wang
@@ -831,14 +851,3 @@ docs:
   - firstname: Ziheng
     lastname: Jiang
     id: $00yw1v
-  - id: ysqin
-    firstname: Yongsheng
-    lastname: Qin
-    avatar: /avatar/yongsheng.jpg
-    externalLink: https://boucii.github.io/
-    memberInfo:
-      role: phd
-      whenJoined: 2026-09-28
-      position: Ph.D.
-      email: ysqin@uw.edu
-      office: ECE 409

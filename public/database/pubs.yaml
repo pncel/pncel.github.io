@@ -887,6 +887,19 @@ docs:
 
     id: +00Dx0R
     doi: 10.1109/ISCA66397.2026.00184
+    bibtex: >+
+      @inproceedings{Wang2026DICE,
+      	author = {Wang, Jiayi and Da Lu, Ang and Zeng, Zhichen and Li, Ang},
+      	booktitle = {2026 {ACM}/{IEEE} 53rd {Annual} {International} {Symposium} on {Computer} {Architecture} ({ISCA})},
+      	doi = {10.1109/isca66397.2026.00184},
+      	year = {2026},
+      	month = {6},
+      	pages = {2648--2663},
+      	organization = {IEEE},
+      	title = {DICE: Enabling {Efficient} {General}-{Purpose} {SIMT} {Execution} with {Statically} {Scheduled} {Coarse}-{Grained} {Reconfigurable} {Arrays}},
+      	url = {http://dx.doi.org/10.1109/ISCA66397.2026.00184},
+      }
+
   - title: "TransDot: An Area-efficient Reconfigurable Floating-Point Unit for
       Trans-Precision Dot-Product Accumulation for FPGA AI Engines"
     authorIds:
@@ -1057,6 +1070,7 @@ docs:
     id: +00GW0X
   - title: "CacheFlex: Direct Software-Managed Access to Higher-Level Cache for
       Scalable Vector Support"
+    arxivDoi: 10.48550/arXiv.2610.12940
     authorIds:
       - jingqun
       - $00XX13
@@ -1071,6 +1085,16 @@ docs:
       - type: venue
         label: MICRO
     booktitle: 59th IEEE/ACM International Symposium on Microarchitecture
+    arxivBibtex: >+
+      @article{Zhang2026CacheFlex,
+      	author = {Zhang, Jingqun and Nie, Maohua and Wang, Jiayi and Li, Weihang and Sappidi, Rishi and Chitnis, Shwet and Li, Ang},
+      	doi = {10.48550/ARXIV.2610.12940},
+      	year = {2026},
+      	publisher = {arXiv},
+      	title = {CacheFlex: Direct {Software}-{Managed} {Access} to {Higher}-{Level} {Cache} for {Scalable} {Vector} {Support}},
+      	url = {https://arxiv.org/abs/2610.12940},
+      }
+
   - title: All-Digital Bluetooth Low Energy (BLE) Backscatter ASIC using Standard
       I/O Pad Drivers in 180 nm CMOS
     authorIds:
