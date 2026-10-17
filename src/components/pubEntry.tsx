@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState, useContext, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { composeFullName, pubAnchorId } from "@/lib/utils";
 import { getIcon } from "@/lib/icon-registry";
 import CopyableCode from "./copyableCode";
@@ -17,18 +17,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import sanitizeHtml from "sanitize-html";
 import { Publication, Person, TagType } from "@/lib/types";
-import DataContext from "@/app/context";
 config.autoAddCss = false;
 
 export default function PubEntry({
   pub,
   authors,
-  altStyle,
+  lifted,
   highlightedPersonId,
 }: Readonly<{
   pub: Publication;
   authors: Person[];
-  altStyle: boolean;
+  /** Zebra stripe: true renders on the raised base-100 surface. */
+  lifted: boolean;
   highlightedPersonId?: string;
 }>) {
   // regular bibtex
@@ -46,15 +46,6 @@ export default function PubEntry({
   const [now, setNow] = useState<Date | null>(null);
   useEffect(() => setNow(new Date()), []);
   const toAppear = now !== null && pub.time.getTime() > now.getTime();
-
-  const context = useContext(DataContext);
-  if (!context) {
-    throw new Error(
-      "Source code error: PubEntry must be used inside ContextProvider",
-    );
-  }
-
-  const { useDarkTheme } = context;
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const anchor = pubAnchorId(pub.id);
@@ -100,9 +91,15 @@ export default function PubEntry({
         }
       }}
       className={
-        `${altStyle || (useDarkTheme ? "bg-base-300" : "bg-base-200")} text-base-content ` +
-        "flex flex-col items-start px-2 pt-1 pb-2 rounded-lg gap-1 " +
+        // Zebra: lifted rows sit on base-100, the rest let the base-200 page
+        // show through. Both themes ramp base-100 -> base-300 light -> dark, so
+        // the lifted row is brighter than the page either way.
+        `${lifted ? "bg-base-100" : "bg-transparent"} text-base-content ` +
+        "flex flex-col items-start p-4 rounded-xl gap-2 " +
         "scroll-mt-4 outline-none cursor-pointer " +
+        // A ring rather than a border, so hover composes over either stripe
+        // without reserving layout space or fighting the zebra.
+        "transition-shadow duration-200 hover:ring-1 hover:ring-base-content/15 " +
         "focus-within:ring-2 focus-within:ring-secondary focus-within:cursor-auto"
       }
     >
@@ -118,7 +115,7 @@ export default function PubEntry({
           {pub.tags?.map((tag, i) => <TagBadge tag={tag} key={i} />)}
         </div>
       )}
-      <p className="text-sm 2xl:text-md">
+      <p className="text-sm 2xl:text-base">
         {authors.map((author, i) => {
           const fullName = composeFullName(author);
           const equalContrib =
@@ -204,7 +201,7 @@ export default function PubEntry({
         })}
       </p>
       {pub.booktitle && (
-        <p className="text-sm 2xl:text-md font-light text-base-content/60">
+        <p className="text-sm 2xl:text-base font-light text-base-content/60">
           {pub.booktitle}
           {pub.time &&
             `, ${pub.time.toLocaleDateString("en-US", {

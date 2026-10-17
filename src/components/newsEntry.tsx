@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TagBadge from "./tagBadge";
 import { processContent } from "@/lib/processContent";
@@ -13,29 +13,20 @@ import {
   type IconName,
 } from "@/lib/types";
 import { getIcon } from "@/lib/icon-registry";
-import DataContext from "@/app/context";
 config.autoAddCss = false;
 
 export default function NewsEntry({
   news,
   allMembers,
   allPublications,
-  altStyle,
+  lifted,
 }: Readonly<{
   news: News;
   allMembers: Person[];
   allPublications: Publication[];
-  altStyle: boolean;
+  /** Zebra stripe: true renders on the raised base-100 surface. */
+  lifted: boolean;
 }>) {
-  const context = useContext(DataContext);
-  if (!context) {
-    throw new Error(
-      "Source code error: NewsEntry must be used inside ContextProvider",
-    );
-  }
-
-  const { useDarkTheme } = context;
-
   // Format date as MM/DD/YYYY with zero-padding
   // Use UTC methods to avoid timezone offset issues
   const formatDate = (date: Date): string => {
@@ -72,8 +63,11 @@ export default function NewsEntry({
   return (
     <div
       className={
-        `${altStyle || (useDarkTheme ? "bg-base-300" : "bg-base-200")} text-base-content ` +
-        "flex flex-col lg:flex-row items-start p-2 rounded-lg gap-1 lg:gap-3"
+        // See pubEntry.tsx for the zebra/ring rationale. News items are usually a
+        // single line, so they run tighter than publication entries.
+        `${lifted ? "bg-base-100" : "bg-transparent"} text-base-content ` +
+        "flex flex-col lg:flex-row items-start px-4 py-2 rounded-xl gap-1 lg:gap-3 " +
+        "transition-shadow duration-200 hover:ring-1 hover:ring-base-content/15"
       }
     >
       {/* Left column: Date badge */}
@@ -88,8 +82,8 @@ export default function NewsEntry({
       </div>
 
       {/* Right column: Everything else */}
-      <div className="flex flex-col items-start gap-1 flex-1 min-w-0">
-        <p className="text-lg 2xl:text-xl">
+      <div className="flex flex-col items-start gap-0.5 flex-1 min-w-0">
+        <p className="text-base 2xl:text-lg">
           {getNewsTypeIcon(news.type) !== undefined && (
             <span className="mr-2">
               <FontAwesomeIcon icon={getIcon(getNewsTypeIcon(news.type)!)} />
@@ -110,7 +104,7 @@ export default function NewsEntry({
         )}
         {news.details && (
           <div
-            className="text-sm 2xl:text-md"
+            className="text-sm 2xl:text-base"
             dangerouslySetInnerHTML={{
               __html: processContent(news.details, allMembers, allPublications),
             }}

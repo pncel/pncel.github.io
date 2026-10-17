@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
 import { useContext } from "react";
 
 import DataContext from "@/app/context";
@@ -13,8 +12,6 @@ export default function GalleryItem({
   spec: Photo;
   setHighlight: (highlight: Photo) => void;
 }>) {
-  const [isHovered, setIsHovered] = useState(false);
-
   const context = useContext(DataContext);
   if (!context) {
     throw new Error(
@@ -26,9 +23,7 @@ export default function GalleryItem({
 
   return (
     <div
-      className="rounded-lg overflow-clip relative"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="group rounded-lg overflow-clip relative cursor-pointer"
       onMouseDown={() => {
         setHighlight(spec);
         setTimeout(() => {
@@ -45,21 +40,25 @@ export default function GalleryItem({
         height={spec.height}
         className="pointer-events-none object-cover"
       />
-      {isHovered && (
-        <div
-          className={`absolute inset-0 ${useDarkTheme ? "bg-base-300" : "bg-base-100"} bg-opacity-80 flex items-center justify-center text-base-content flex flex-col gap-1 p-8 pointer-events-none`}
-        >
-          <p className="text-center text-xl font-semibold">{spec.title}</p>
-          {spec.subtitle && (
-            <p className="text-center text-md">{spec.subtitle}</p>
-          )}
-          {spec.time && (
-            <p className="text-center text-md">
-              {spec.time.toLocaleDateString("en-US", { timeZone: "UTC" })}
-            </p>
-          )}
-        </div>
-      )}
+      {/* Kept mounted so it can fade; `group-hover` replaces the old hover state. */}
+      <div
+        className={
+          `absolute inset-0 ${useDarkTheme ? "bg-base-300" : "bg-base-100"} bg-opacity-80 ` +
+          "flex flex-col items-center justify-center text-base-content gap-1 p-8 " +
+          "pointer-events-none opacity-0 group-hover:opacity-100 " +
+          "transition-opacity duration-200"
+        }
+      >
+        <p className="text-center text-xl font-semibold">{spec.title}</p>
+        {spec.subtitle && (
+          <p className="text-center text-base">{spec.subtitle}</p>
+        )}
+        {spec.time && (
+          <p className="text-center text-base">
+            {spec.time.toLocaleDateString("en-US", { timeZone: "UTC" })}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

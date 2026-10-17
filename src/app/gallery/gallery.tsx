@@ -70,9 +70,9 @@ export default function Gallery({
             <>
               <h3 className="font-bold text-xl pb-2">{highlight.title}</h3>
               {highlight.subtitle && (
-                <p className="text-md pb-2">{highlight.subtitle}</p>
+                <p className="text-base pb-2">{highlight.subtitle}</p>
               )}
-              <p className="text-md pb-2">
+              <p className="text-base pb-2">
                 {highlight.time.toLocaleDateString("en-US", {
                   timeZone: "UTC",
                 })}

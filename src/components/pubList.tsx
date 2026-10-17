@@ -11,11 +11,16 @@ config.autoAddCss = false;
 export default async function PubList({
   pubs,
   highlightedPersonId,
-  altStyle,
+  startIndex = 0,
 }: Readonly<{
   pubs: Publication[];
   highlightedPersonId?: string;
-  altStyle?: boolean;
+  /**
+   * Zebra parity offset. /pubs renders one PubList per year, so each needs to
+   * know how many entries preceded it for the stripes to stay alternating
+   * across the year boundaries.
+   */
+  startIndex?: number;
 }>) {
   const db = await Database.get();
   const pubAndAuthors = await Promise.all(
@@ -32,7 +37,7 @@ export default async function PubList({
       ),
   );
   return (
-    <div className="flex flex-col gap-4 min-w-0 w-full">
+    <div className="flex flex-col gap-1 min-w-0 w-full">
       <dialog id="modal_pncel_members" className="modal">
         <div className="modal-box">
           <h3 className="font-bold text-lg">
@@ -63,13 +68,13 @@ export default async function PubList({
           <button>close</button>
         </form>
       </dialog>
-      {pubAndAuthors.map(({ pub, authors }, idx) => {
+      {pubAndAuthors.map(({ pub, authors }, i) => {
         return (
           <PubEntry
             pub={pub}
             authors={authors}
+            lifted={(startIndex + i) % 2 === 0}
             highlightedPersonId={highlightedPersonId}
-            altStyle={(idx % 2 === 0) === (altStyle || false)}
             key={pub.id}
           ></PubEntry>
         );

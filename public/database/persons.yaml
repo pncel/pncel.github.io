@@ -613,6 +613,15 @@ docs:
   - id: $00SP0u
     firstname: Shaojie
     lastname: Xiang
+  - id: sheehg
+    firstname: Sheehan
+    lastname: Ganguly
+    avatar: /avatar/sheehan.png
+    memberInfo:
+      role: ug
+      whenJoined: 2026-01-10
+      position: Undergrad
+      email: sheehg@uw.edu
   - id: $00b81A
     firstname: Shijie
     lastname: Cao

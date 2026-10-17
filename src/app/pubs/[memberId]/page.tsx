@@ -78,7 +78,7 @@ export default async function PubsByMember({ params }: Params) {
       {sortedByYear.map(({ year, pubs, idx }) => (
         <div key={year} className="lg:flex lg:flex-row lg:p-2 lg:gap-4">
           <h2 className="divider lg:divider-horizontal lg:divider-start text-2xl">{`${year}`}</h2>
-          <PubList pubs={pubs} altStyle={idx % 2 !== 0} />
+          <PubList pubs={pubs} startIndex={idx} />
         </div>
       ))}
       <PubListFootnote />

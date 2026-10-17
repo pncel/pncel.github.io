@@ -19,7 +19,9 @@ export default async function MemberCard({
     <div
       className={
         "w-full max-w-sm mb-4 mx-auto " +
-        "shadow-xl rounded-xl overflow-clip break-inside-avoid-column"
+        "rounded-xl overflow-clip break-inside-avoid-column " +
+        "shadow-sm hover:shadow-md hover:-translate-y-0.5 " +
+        "transition-[transform,box-shadow] duration-200"
       }
     >
       <Link href={`/team/${id}`}>
@@ -48,12 +50,12 @@ export default async function MemberCard({
             )}
           </div>
           <div className="flex flex-col justify-center items-start text-neutral-content">
-            <h2 className="text-md lg:text-lg font-bold">{fullname}</h2>
-            <p className="text-sm lg:text-md text-neutral-content/60">
+            <h2 className="text-base lg:text-lg font-bold">{fullname}</h2>
+            <p className="text-sm lg:text-base text-neutral-content/60">
               {position}
             </p>
             {/* whenLeft &&
-              <p className="text-sm lg:text-md text-neutral-content/60">
+              <p className="text-sm lg:text-base text-neutral-content/60">
                 {`${whenJoined.getFullYear()}/${whenJoined.getMonth() + 1} - ${whenLeft.getFullYear()}/${whenLeft.getMonth() + 1}`}
               </p>
             */}

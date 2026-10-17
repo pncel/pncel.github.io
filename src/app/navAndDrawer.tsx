@@ -78,7 +78,11 @@ export default function NavAndDrawer({
       />
       <div
         className={
-          "drawer-content bg-base-100 text-base-content overflow-x-hidden " +
+          // base-200, not base-100: the page is the recessed surface so that
+          // content laid on it (list entries, cards) can sit above it on
+          // base-100. Entries have nowhere to rise to if the page takes the
+          // brightest surface for itself.
+          "drawer-content bg-base-200 text-base-content overflow-x-hidden " +
           "flex flex-col " +
           "h-screen overflow-y-auto" /* force creation of scrollable area */
         }

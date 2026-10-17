@@ -8,10 +8,8 @@ config.autoAddCss = false;
 
 export default async function NewsList({
   news,
-  altStyle,
 }: Readonly<{
   news: News[];
-  altStyle?: boolean;
 }>) {
   const db = await Database.get();
 
@@ -26,14 +24,14 @@ export default async function NewsList({
   );
 
   return (
-    <div className="flex flex-col gap-0 min-w-0 w-full">
-      {sortedNews.map((news, idx) => {
+    <div className="flex flex-col gap-1 min-w-0 w-full">
+      {sortedNews.map((news, i) => {
         return (
           <NewsEntry
             news={news}
             allMembers={allMembers}
             allPublications={allPublications}
-            altStyle={(idx % 2 === 0) === (altStyle || false)}
+            lifted={i % 2 === 0}
             key={news.id}
           ></NewsEntry>
         );
