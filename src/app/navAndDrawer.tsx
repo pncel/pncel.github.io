@@ -3,7 +3,7 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Link from "next/link";
-import ContentContainer from "@/layouts/contentContainer";
+import { ContentWidth } from "@/layouts/pageMain";
 import ThemeToggle from "./themeToggle";
 import React, { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
@@ -216,10 +216,7 @@ export default function NavAndDrawer({
         </div>
         {children}
         <div className="bg-base-300 mt-8">
-          {/* Lined up with the main column via CONTENT_WIDTH, so the footer
-              text starts where the page text starts. The band itself still
-              spans the window. */}
-          <ContentContainer>
+          <ContentWidth>
             <footer className="footer md:justify-between items-start gap-x-8 gap-y-6 py-8 text-base-content">
               <aside className="max-w-md">
                 <Link href="/" aria-label="PNCEL home">
@@ -272,7 +269,7 @@ export default function NavAndDrawer({
                 </div>
               </nav>
             </footer>
-          </ContentContainer>
+          </ContentWidth>
           {/* The legal line keeps the full window width, so its rule reads as
               the bottom edge of the page rather than of the footer column. */}
           <div className="border-t border-base-content/10">

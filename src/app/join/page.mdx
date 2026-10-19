@@ -1,6 +1,6 @@
 import { metadataTmpl } from "@/lib/utils";
-import DefaultMain from "@/layouts/defaultMain";
-import DefaultMDX from "@/layouts/defaultMdx";
+import PageMain from "@/layouts/pageMain";
+import Prose from "@/components/prose";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,8 +9,8 @@ export const metadata = {
   title: metadataTmpl.title + " | Join Us",
 };
 
-<DefaultMain>
-<DefaultMDX>
+<PageMain>
+<Prose className="mt-8">
 
 # Join Us
 
@@ -114,5 +114,5 @@ quarter ends.
 Warning ahead -- to make it fair to all other students taking classes, it
 won't be easy to get a 4.0 from me.
 
-</DefaultMDX>
-</DefaultMain>
+</Prose>
+</PageMain>

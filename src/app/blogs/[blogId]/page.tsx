@@ -1,8 +1,8 @@
 import { readdir, readFile } from "fs/promises";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { metadataTmpl } from "@/lib/utils";
-import DefaultMain from "@/layouts/defaultMain";
-import DefaultMDX from "@/layouts/defaultMdx";
+import PageMain from "@/layouts/pageMain";
+import Prose from "@/components/prose";
 import matter from "gray-matter";
 
 interface Params {
@@ -63,11 +63,11 @@ export default async function BlogPage({ params }: Params) {
   }
 
   return (
-    <DefaultMain>
-      <DefaultMDX>
+    <PageMain>
+      <Prose className="mt-8">
         <h1>{title}</h1>
         <MDXRemote source={mdxSrc} />
-      </DefaultMDX>
-    </DefaultMain>
+      </Prose>
+    </PageMain>
   );
 }

@@ -1,15 +1,14 @@
 import FancySlogan from "@/app/fancyslogan";
-import DefaultMain from "@/layouts/defaultMain";
+import PageMain from "@/layouts/pageMain";
 import NewsList from "@/components/newsList";
+import { SectionHeading } from "@/components/prose";
 import { Database } from "@/lib/database";
-import Link from "next/link";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faRobot,
   faLayerGroup,
   faMicrochip,
-  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
@@ -75,7 +74,7 @@ export default async function Home() {
   const latestNews = await db.getManyNews(undefined, 10, true);
 
   return (
-    <DefaultMain>
+    <PageMain>
       <section className="py-8 flex flex-col items-center gap-6">
         <div
           className="bg-current w-72 sm:w-96 lg:w-[28rem] aspect-[390/130]"
@@ -100,10 +99,12 @@ export default async function Home() {
       {/* Vision. No heading of its own -- the positioning sentence is the
           heading. */}
       <section className="py-8">
-        <p className="mx-auto max-w-3xl text-center font-serif text-xl lg:text-2xl">
+        {/* The page's h1. Tailwind preflight strips heading styles, so these
+            utilities render it exactly as the paragraph it replaces. */}
+        <h1 className="mx-auto max-w-3xl text-center font-serif text-xl lg:text-2xl">
           We design computer architectures for ubiquitous intelligence &mdash;
           efficient, general-purpose, and proven in real silicon.
-        </p>
+        </h1>
         <div className="mt-8 grid gap-4 lg:grid-cols-3">
           {pillars.map((p, i) => (
             // base-100 over the base-200 page, the same elevation the entry
@@ -128,16 +129,7 @@ export default async function Home() {
       {/* Named for what it will hold, not for what it holds today: project
           cards join this section later without a rename. */}
       <section className="py-8">
-        {/* Same heading shape as every other section: `items-center` rather
-            than `items-baseline`, so a section with an action link sits at the
-            same height as one without. `btn-sm` is 2rem and the prose h2 line
-            box is 2rem (2.25rem at 2xl), so the heading always defines the row
-            height and never gets nudged by the button. */}
-        <div className="prose 2xl:prose-lg max-w-full">
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="m-0">What We&apos;ve Built</h2>
-          </div>
-        </div>
+        <SectionHeading>What We&apos;ve Built</SectionHeading>
         <div className="stats stats-vertical sm:stats-horizontal mt-6 w-full bg-base-100">
           {stats.map((s, i) => (
             <div className="stat place-items-center text-center" key={i}>
@@ -157,24 +149,15 @@ export default async function Home() {
         <>
           <div className="divider"></div>
           <section className="py-8">
-            <div className="prose 2xl:prose-lg max-w-full">
-              <div className="flex items-center justify-between gap-4">
-                <h2 className="m-0">Latest News</h2>
-                <Link
-                  className="btn btn-sm btn-ghost sm:text-xl text-lg flex-none"
-                  href="/news"
-                >
-                  All news
-                  <FontAwesomeIcon className="text-sm" icon={faArrowRight} />
-                </Link>
-              </div>
-            </div>
+            <SectionHeading action={{ label: "All news", href: "/news" }}>
+              Latest News
+            </SectionHeading>
             <div className="mt-6">
               <NewsList news={latestNews} />
             </div>
           </section>
         </>
       )}
-    </DefaultMain>
+    </PageMain>
   );
 }

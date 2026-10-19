@@ -1,7 +1,7 @@
 import PubList, { PubListFootnote } from "@/components/pubList";
 import { metadataTmpl } from "@/lib/utils";
-import DefaultMDX from "@/layouts/defaultMdx";
-import DefaultMain from "@/layouts/defaultMain";
+import { PageTitle } from "@/components/prose";
+import PageMain from "@/layouts/pageMain";
 import { Publication } from "@/lib/types";
 import { Database } from "@/lib/database";
 
@@ -41,10 +41,8 @@ export default async function Pubs() {
     }, new Array<{ year: number; pubs: Publication[]; idx: number }>());
 
   return (
-    <DefaultMain>
-      <DefaultMDX>
-        <h1 className="lg:pb-4">Publications</h1>
-      </DefaultMDX>
+    <PageMain>
+      <PageTitle className="lg:pb-4">Publications</PageTitle>
       {sortedByYear.map(({ year, pubs, idx }) => (
         <div key={year} className="lg:flex lg:flex-row lg:p-2 lg:gap-4">
           <h2 className="divider lg:divider-horizontal lg:divider-start text-2xl">{`${year}`}</h2>
@@ -52,6 +50,6 @@ export default async function Pubs() {
         </div>
       ))}
       <PubListFootnote />
-    </DefaultMain>
+    </PageMain>
   );
 }

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import NewsList from "@/components/newsList";
-import DefaultMDX from "@/layouts/defaultMdx";
-import DefaultMain from "@/layouts/defaultMain";
+import Prose from "@/components/prose";
+import PageMain from "@/layouts/pageMain";
 import { Database } from "@/lib/database";
 import { metadataTmpl, composeFullName } from "@/lib/utils";
 import { config } from "@fortawesome/fontawesome-svg-core";
@@ -40,8 +40,8 @@ export default async function NewsByMember({ params }: Params) {
   const memberNews = await db.getAllNewsByPerson(member.id);
 
   return (
-    <DefaultMain>
-      <DefaultMDX>
+    <PageMain>
+      <Prose className="mt-8">
         <h1 className="lg:pb-4">
           All News:{" "}
           <Link className="link link-hover" href={`/team/${memberId}`}>
@@ -49,8 +49,8 @@ export default async function NewsByMember({ params }: Params) {
           </Link>
         </h1>
         {memberNews.length === 0 && <p>No news items yet.</p>}
-      </DefaultMDX>
+      </Prose>
       {memberNews.length > 0 && <NewsList news={memberNews} />}
-    </DefaultMain>
+    </PageMain>
   );
 }

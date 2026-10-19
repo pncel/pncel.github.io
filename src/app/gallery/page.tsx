@@ -1,8 +1,8 @@
 import { Database } from "@/lib/database";
 import Gallery from "@/app/gallery/gallery";
 import { metadataTmpl } from "@/lib/utils";
-import DefaultMain from "@/layouts/defaultMain";
-import DefaultMDX from "@/layouts/defaultMdx";
+import PageMain from "@/layouts/pageMain";
+import { PageTitle } from "@/components/prose";
 
 export const metadata = {
   ...metadataTmpl,
@@ -16,11 +16,9 @@ export default async function GalleryPage() {
   );
 
   return (
-    <DefaultMain>
-      <DefaultMDX>
-        <h1>Gallery</h1>
-      </DefaultMDX>
+    <PageMain>
+      <PageTitle>Gallery</PageTitle>
       <Gallery specs={photos} />
-    </DefaultMain>
+    </PageMain>
   );
 }

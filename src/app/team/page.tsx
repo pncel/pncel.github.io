@@ -1,5 +1,5 @@
-import DefaultMain from "@/layouts/defaultMain";
-import DefaultMDX from "@/layouts/defaultMdx";
+import PageMain from "@/layouts/pageMain";
+import Prose, { PageTitle } from "@/components/prose";
 import MemberCard from "./memberCard";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -63,10 +63,8 @@ export default async function Team() {
   const alums_ordered = toOrderedGroups(allAlumni);
 
   return (
-    <DefaultMain>
-      <DefaultMDX>
-        <h1>Team</h1>
-      </DefaultMDX>
+    <PageMain>
+      <PageTitle>Team</PageTitle>
       {groups_ordered.map(
         ([role, members]) =>
           members.length > 0 && (
@@ -83,18 +81,18 @@ export default async function Team() {
       <div className="collapse">
         <input type="checkbox" className="peer" />
         <div className="collapse-title peer-checked:hidden">
-          <DefaultMDX>
-            <h1>
+          <Prose className="mt-8">
+            <h2 className="m-0 text-[2.25em] font-extrabold leading-[1.1111111]">
               Alumni <FontAwesomeIcon icon={faAngleDown}></FontAwesomeIcon>
-            </h1>
-          </DefaultMDX>
+            </h2>
+          </Prose>
         </div>
         <div className="collapse-title hidden peer-checked:block">
-          <DefaultMDX>
-            <h1>
+          <Prose className="mt-8">
+            <h2 className="m-0 text-[2.25em] font-extrabold leading-[1.1111111]">
               Alumni <FontAwesomeIcon icon={faAngleUp}></FontAwesomeIcon>
-            </h1>
-          </DefaultMDX>
+            </h2>
+          </Prose>
         </div>
         <div className="collapse-content">
           {alums_ordered.map(
@@ -112,6 +110,6 @@ export default async function Team() {
           )}
         </div>
       </div>
-    </DefaultMain>
+    </PageMain>
   );
 }

@@ -14,8 +14,8 @@ import {
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import PubList, { PubListFootnote } from "@/components/pubList";
 import NewsList from "@/components/newsList";
-import DefaultMDX from "@/layouts/defaultMdx";
-import DefaultMain from "@/layouts/defaultMain";
+import Prose, { SectionHeading } from "@/components/prose";
+import PageMain from "@/layouts/pageMain";
 import Link from "next/link";
 import { Database } from "@/lib/database";
 import {
@@ -89,7 +89,7 @@ export default async function MemberPage({ params }: Params) {
   const isAlumni = whenLeft !== undefined && whenLeft < new Date();
 
   return (
-    <DefaultMain className="flex flex-col lg:flex-row gap-2 lg:gap-6">
+    <PageMain className="flex flex-col lg:flex-row gap-2 lg:gap-6">
       {/* let's have a sticky sidebar for avatar and contact info */}
       {/* sidebar becomes a normal section on top of page on small screens */}
       <div
@@ -220,7 +220,7 @@ export default async function MemberPage({ params }: Params) {
         </ul>
       </div>
       <div className="flex-grow min-w-0 lg:max-w-screen-sm xl:max-w-screen-md 2xl:max-w-screen-lg lg:py-4">
-        <DefaultMDX>
+        <Prose className="mt-8">
           <h2 id="personal-statement">
             <FontAwesomeIcon icon={faQuoteLeft} /> Personal Statement
           </h2>
@@ -229,51 +229,45 @@ export default async function MemberPage({ params }: Params) {
               source={mdxSrc || "This person is busy changing the world..."}
             />
           </div>
-        </DefaultMDX>
+        </Prose>
         {memberNews.length > 0 && (
           <>
             <div className="divider"></div>
-            <DefaultMDX className="py-4">
-              <div className="flex justify-between items-baseline">
-                <h2 className="mt-0" id="news">
-                  <FontAwesomeIcon icon={faNewspaper} />{" "}
-                  {hasMoreNews ? "Latest" : ""} News
-                </h2>
-                {hasMoreNews && (
-                  <Link
-                    className="btn btn-sm btn-ghost sm:text-xl text-lg"
-                    href={`/news/${memberId}`}
-                  >
-                    All news
-                  </Link>
-                )}
-              </div>
-            </DefaultMDX>
+            <SectionHeading
+              className="mt-8 py-4"
+              id="news"
+              action={
+                hasMoreNews
+                  ? { label: "All news", href: `/news/${memberId}` }
+                  : undefined
+              }
+            >
+              <FontAwesomeIcon icon={faNewspaper} />{" "}
+              {hasMoreNews ? "Latest" : ""} News
+            </SectionHeading>
             <NewsList news={memberNews} />
           </>
         )}
         {pubs.length > 0 && (
           <>
             <div className="divider"></div>
-            <DefaultMDX className="py-4">
-              <div className="flex justify-between items-baseline">
-                <h2
-                  className="mt-0"
-                  id={`#${useSelectedPubs ? "selected-" : ""}publications`}
-                >
-                  <FontAwesomeIcon icon={faBook} />{" "}
-                  {useSelectedPubs ? "Selected" : ""} Publications
-                </h2>
-                {useSelectedPubs && (
-                  <Link
-                    className="btn btn-sm btn-ghost sm:text-xl text-lg"
-                    href={`/pubs/${memberId}`}
-                  >
-                    Full publication list
-                  </Link>
-                )}
-              </div>
-            </DefaultMDX>
+            {/* The `#` used to be part of the id itself, so the sidebar link
+                never resolved; it belongs only in the href. */}
+            <SectionHeading
+              className="mt-8 py-4"
+              id={`${useSelectedPubs ? "selected-" : ""}publications`}
+              action={
+                useSelectedPubs
+                  ? {
+                      label: "Full publication list",
+                      href: `/pubs/${memberId}`,
+                    }
+                  : undefined
+              }
+            >
+              <FontAwesomeIcon icon={faBook} />{" "}
+              {useSelectedPubs ? "Selected" : ""} Publications
+            </SectionHeading>
             <div className="pl-4">
               <PubList pubs={pubs} highlightedPersonId={member.id} />
               <PubListFootnote />
@@ -281,6 +275,6 @@ export default async function MemberPage({ params }: Params) {
           </>
         )}
       </div>
-    </DefaultMain>
+    </PageMain>
   );
 }

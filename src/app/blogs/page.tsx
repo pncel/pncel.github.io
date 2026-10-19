@@ -1,7 +1,7 @@
 import { readdir } from "fs/promises";
 import { metadataTmpl } from "@/lib/utils";
-import DefaultMDX from "@/layouts/defaultMdx";
-import DefaultMain from "@/layouts/defaultMain";
+import Prose from "@/components/prose";
+import PageMain from "@/layouts/pageMain";
 
 export const metadata = {
   ...metadataTmpl,
@@ -27,8 +27,8 @@ async function getAllBlogs() {
 export default async function Blogs() {
   const blogs = await getAllBlogs();
   return (
-    <DefaultMain>
-      <DefaultMDX>
+    <PageMain>
+      <Prose className="mt-8">
         <h1>Blogs</h1>
         {blogs.length === 0 && <p>Under construction...</p>}
         {blogs.map(({ exports }) => {
@@ -42,7 +42,7 @@ export default async function Blogs() {
             </p>
           );
         })}
-      </DefaultMDX>
-    </DefaultMain>
+      </Prose>
+    </PageMain>
   );
 }
