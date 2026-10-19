@@ -11,6 +11,39 @@ export function composeFullName(person: Person) {
   }
 }
 
+/**
+ * Buckets dated items by year, newest year first, carrying a running
+ * `startIndex` so a list rendered one bucket at a time can keep its zebra
+ * stripes alternating across the year boundaries.
+ *
+ * Order within a year is left as given -- `PubList` and `NewsList` both sort
+ * their own contents.
+ */
+export function groupByYear<T>(
+  items: T[],
+  getTime: (item: T) => Date,
+): { year: number; items: T[]; startIndex: number }[] {
+  const byYear = new Map<number, T[]>();
+  for (const item of items) {
+    const year = getTime(item).getUTCFullYear();
+    const bucket = byYear.get(year);
+    if (bucket) {
+      bucket.push(item);
+    } else {
+      byYear.set(year, [item]);
+    }
+  }
+
+  let startIndex = 0;
+  return Array.from(byYear.entries())
+    .toSorted(([a], [b]) => b - a)
+    .map(([year, yearItems]) => {
+      const group = { year, items: yearItems, startIndex };
+      startIndex += yearItems.length;
+      return group;
+    });
+}
+
 export function pubAnchorId(id: string): string {
   const stripped = id.replace(/^\+/, "");
   const safe = stripped.replace(/[^A-Za-z0-9._-]/g, "-");

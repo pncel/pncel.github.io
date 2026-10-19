@@ -3,7 +3,7 @@ import NewsList from "@/components/newsList";
 import Prose from "@/components/prose";
 import PageMain from "@/layouts/pageMain";
 import { Database } from "@/lib/database";
-import { metadataTmpl, composeFullName } from "@/lib/utils";
+import { metadataTmpl, composeFullName, groupByYear } from "@/lib/utils";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
@@ -38,6 +38,7 @@ export default async function NewsByMember({ params }: Params) {
   const db = await Database.get();
   const member = await db.getMember(memberId);
   const memberNews = await db.getAllNewsByPerson(member.id);
+  const byYear = groupByYear(memberNews, (n) => n.time);
 
   return (
     <PageMain>
@@ -50,7 +51,12 @@ export default async function NewsByMember({ params }: Params) {
         </h1>
         {memberNews.length === 0 && <p>No news items yet.</p>}
       </Prose>
-      {memberNews.length > 0 && <NewsList news={memberNews} />}
+      {byYear.map(({ year, items, startIndex }) => (
+        <div key={year} className="lg:flex lg:flex-row lg:p-2 lg:gap-4">
+          <h2 className="divider lg:divider-horizontal lg:divider-start text-2xl">{`${year}`}</h2>
+          <NewsList news={items} startIndex={startIndex} />
+        </div>
+      ))}
     </PageMain>
   );
 }

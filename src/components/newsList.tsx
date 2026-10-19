@@ -8,8 +8,15 @@ config.autoAddCss = false;
 
 export default async function NewsList({
   news,
+  startIndex = 0,
 }: Readonly<{
   news: News[];
+  /**
+   * Zebra parity offset. /news renders one NewsList per year, so each needs to
+   * know how many entries preceded it for the stripes to stay alternating
+   * across the year boundaries.
+   */
+  startIndex?: number;
 }>) {
   const db = await Database.get();
 
@@ -31,7 +38,7 @@ export default async function NewsList({
             news={news}
             allMembers={allMembers}
             allPublications={allPublications}
-            lifted={i % 2 === 0}
+            lifted={(startIndex + i) % 2 === 0}
             key={news.id}
           ></NewsEntry>
         );

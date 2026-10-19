@@ -1,8 +1,7 @@
 import PubList, { PubListFootnote } from "@/components/pubList";
-import { metadataTmpl } from "@/lib/utils";
+import { metadataTmpl, groupByYear } from "@/lib/utils";
 import { PageTitle } from "@/components/prose";
 import PageMain from "@/layouts/pageMain";
-import { Publication } from "@/lib/types";
 import { Database } from "@/lib/database";
 
 export const metadata = {
@@ -13,40 +12,18 @@ export const metadata = {
 export default async function Pubs() {
   const db = await Database.get();
   const pubs = await db.getManyPublications();
-  const mByYear = pubs
-    .filter((pub) => !pub.notPncel)
-    .reduce((g, pub) => {
-      const year = pub.time.getUTCFullYear();
-      const pubs = g.get(year) || [];
-      pubs.push(pub);
-      g.set(year, pubs);
-      return g;
-    }, new Map<number, Publication[]>());
-  const sortedByYear = Array.from(mByYear.entries())
-    .toSorted(([year1], [year2]) => year2 - year1)
-    .reduce((a, [year, pubs]) => {
-      if (a.length === 0) {
-        a.push({ year, pubs, idx: 0 });
-      } else {
-        const lastEntry = a[a.length - 1];
-        if (lastEntry) {
-          a.push({
-            year,
-            pubs,
-            idx: lastEntry.idx + lastEntry.pubs.length,
-          });
-        }
-      }
-      return a;
-    }, new Array<{ year: number; pubs: Publication[]; idx: number }>());
+  const byYear = groupByYear(
+    pubs.filter((pub) => !pub.notPncel),
+    (p) => p.time,
+  );
 
   return (
     <PageMain>
       <PageTitle className="lg:pb-4">Publications</PageTitle>
-      {sortedByYear.map(({ year, pubs, idx }) => (
+      {byYear.map(({ year, items, startIndex }) => (
         <div key={year} className="lg:flex lg:flex-row lg:p-2 lg:gap-4">
           <h2 className="divider lg:divider-horizontal lg:divider-start text-2xl">{`${year}`}</h2>
-          <PubList pubs={pubs} startIndex={idx} />
+          <PubList pubs={items} startIndex={startIndex} />
         </div>
       ))}
       <PubListFootnote />
