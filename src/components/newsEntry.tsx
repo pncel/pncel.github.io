@@ -8,12 +8,54 @@ import {
   News,
   Person,
   Publication,
-  TagType,
   NewsType,
   type IconName,
 } from "@/lib/types";
 import { getIcon } from "@/lib/icon-registry";
 config.autoAddCss = false;
+
+// Spelled out rather than taken from Intl, so the string is identical in the
+// build and in the browser and cannot drift with the platform's ICU data.
+const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+// UTC throughout, so an entry does not slide into the neighbouring month for
+// readers west of Greenwich.
+const formatMonthYear = (date: Date): string =>
+  `${MONTHS[date.getUTCMonth()] ?? ""} ${date.getUTCFullYear()}`;
+
+/**
+ * What the icon column shows. The label is the tooltip: an icon on its own
+ * says nothing until you have learnt the set.
+ */
+const NEWS_TYPE_META: Partial<
+  Record<NewsType, { icon: IconName; label: string }>
+> = {
+  [NewsType.grant]: { icon: "award", label: "Grant" },
+  [NewsType.award]: { icon: "medal", label: "Award" },
+  [NewsType.publication]: { icon: "file-lines", label: "Publication" },
+  [NewsType.presentation]: {
+    icon: "person-chalkboard",
+    label: "Presentation",
+  },
+  [NewsType.tapeout]: { icon: "microchip", label: "Tape-out" },
+  [NewsType.newmember]: { icon: "user-plus", label: "New member" },
+  [NewsType.graduation]: { icon: "graduation-cap", label: "Graduation" },
+  [NewsType.internship]: { icon: "user-tie", label: "Internship" },
+  [NewsType.sponsorship]: { icon: "handshake", label: "Sponsorship" },
+};
 
 export default function NewsEntry({
   news,
@@ -27,68 +69,42 @@ export default function NewsEntry({
   /** Zebra stripe: true renders on the raised base-100 surface. */
   lifted: boolean;
 }>) {
-  // Format date as MM/DD/YYYY with zero-padding
-  // Use UTC methods to avoid timezone offset issues
-  const formatDate = (date: Date): string => {
-    const month = String(date.getUTCMonth() + 1).padStart(2, "0");
-    const day = String(date.getUTCDate()).padStart(2, "0");
-    const year = date.getUTCFullYear();
-    return `${month}/${day}/${year}`;
-  };
-
-  // Get icon for news type
-  const getNewsTypeIcon = (type?: NewsType): IconName | undefined => {
-    switch (type) {
-      case NewsType.grant:
-        return "award";
-      case NewsType.award:
-        return "medal";
-      case NewsType.publication:
-        return "file-lines";
-      case NewsType.tapeout:
-        return "microchip";
-      case NewsType.newmember:
-        return "user-plus";
-      case NewsType.graduation:
-        return "graduation-cap";
-      case NewsType.internship:
-        return "user-tie";
-      case NewsType.sponsorship:
-        return "handshake";
-      default:
-        return undefined;
-    }
-  };
+  const typeMeta =
+    news.type === undefined ? undefined : NEWS_TYPE_META[news.type];
 
   return (
     <div
       className={
-        // See pubEntry.tsx for the zebra/ring rationale. News items are usually a
-        // single line, so they run tighter than publication entries.
+        // See pubEntry.tsx for the zebra/ring rationale. Every row declares the
+        // same explicit track sizes, which is what makes the three columns line
+        // up down the list -- no subgrid needed, and no dependence on content.
         `${lifted ? "bg-base-100" : "bg-transparent"} text-base-content ` +
-        "flex flex-col lg:flex-row items-start px-4 py-2 rounded-xl gap-1 lg:gap-3 " +
+        "grid grid-cols-[4.5rem_1.25rem_minmax(0,1fr)] " +
+        "2xl:grid-cols-[5.5rem_1.5rem_minmax(0,1fr)] " +
+        "items-center gap-x-3 2xl:gap-x-4 px-4 py-2 rounded-xl " +
         "transition-shadow duration-200 hover:ring-1 hover:ring-base-content/15"
       }
     >
-      {/* Left column: Date badge */}
-      <div className="flex-none">
-        <TagBadge
-          tag={{
-            label: formatDate(news.time),
-            type: TagType.venue, // reuse venue tag's styling
-            icon: "calendar",
-          }}
-        />
+      {/* 1. When */}
+      <time
+        className="text-sm 2xl:text-base text-base-content/70 whitespace-nowrap"
+        dateTime={news.time.toISOString().slice(0, 7)}
+      >
+        {formatMonthYear(news.time)}
+      </time>
+
+      {/* 2. What kind */}
+      <div className="text-center text-base-content/70">
+        {typeMeta && (
+          <span className="tooltip tooltip-secondary" data-tip={typeMeta.label}>
+            <FontAwesomeIcon icon={getIcon(typeMeta.icon)} />
+          </span>
+        )}
       </div>
 
-      {/* Right column: Everything else */}
-      <div className="flex flex-col items-start gap-0.5 flex-1 min-w-0">
+      {/* 3. The news itself */}
+      <div className="flex flex-col items-start gap-0.5 min-w-0">
         <p className="text-base 2xl:text-lg">
-          {getNewsTypeIcon(news.type) !== undefined && (
-            <span className="mr-2">
-              <FontAwesomeIcon icon={getIcon(getNewsTypeIcon(news.type)!)} />
-            </span>
-          )}
           <span
             dangerouslySetInnerHTML={{
               __html: processContent(news.news, allMembers, allPublications),

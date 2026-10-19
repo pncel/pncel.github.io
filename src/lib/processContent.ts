@@ -54,7 +54,7 @@ export function processContent(
   html = html.replace(pubRegex, (match, pubId) => {
     const pub = pubMap.get(pubId);
     if (pub) {
-      return `<a href="/pubs#${pubAnchorId(pubId)}" class="link link-hover italic text-secondary">${pub.title}</a>`;
+      return `<a href="/pubs#${pubAnchorId(pubId)}" class="link link-hover text-secondary">${pub.title}</a>`;
     }
     return match;
   });

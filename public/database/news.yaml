@@ -13,7 +13,6 @@ docs:
     featured: true
     type: newmember
     relatedMembersIds:
-      - ang
       - jiayi
       - jingqun
       - darren
@@ -235,3 +234,10 @@ docs:
       - zhichen
       - jiayi
       - ang
+  - id: n-00Cv0P
+    news: Welcome @ysqin, our new PhD!
+    time: 2026-09-28
+    featured: true
+    type: newmember
+    relatedMembersIds:
+      - ysqin
