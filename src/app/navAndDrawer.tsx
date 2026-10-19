@@ -3,6 +3,7 @@ import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import Link from "next/link";
+import ContentContainer from "@/layouts/contentContainer";
 import ThemeToggle from "./themeToggle";
 import React, { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
@@ -214,27 +215,71 @@ export default function NavAndDrawer({
           </nav>
         </div>
         {children}
-        <div className="bg-base-300 mt-4">
-          <footer className="footer items-center p-2 text-base-content mx-auto max-w-screen-2xl">
-            <aside className="items-center grid-flow-col">
-              <Link className="btn btn-ghost" href="/" aria-label="PNCEL home">
-                <span
-                  className="block h-7 w-11 bg-current"
-                  style={{
-                    WebkitMaskImage: "url('/compact.svg')",
-                    maskImage: "url('/compact.svg')",
-                    WebkitMaskRepeat: "no-repeat",
-                    maskRepeat: "no-repeat",
-                    WebkitMaskPosition: "center",
-                    maskPosition: "center",
-                    WebkitMaskSize: "contain",
-                    maskSize: "contain",
-                  }}
-                />
-              </Link>
-              <p>Copyright © 2024 - All right reserved</p>
-            </aside>
-          </footer>
+        <div className="bg-base-300 mt-8">
+          {/* Lined up with the main column via CONTENT_WIDTH, so the footer
+              text starts where the page text starts. The band itself still
+              spans the window. */}
+          <ContentContainer>
+            <footer className="footer md:justify-between items-start gap-x-8 gap-y-6 py-8 text-base-content">
+              <aside className="max-w-md">
+                <Link href="/" aria-label="PNCEL home">
+                  <span
+                    className="block w-48 aspect-[390/130] bg-current"
+                    style={{
+                      WebkitMaskImage: "url('/logo.svg')",
+                      maskImage: "url('/logo.svg')",
+                      WebkitMaskRepeat: "no-repeat",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskPosition: "left center",
+                      maskPosition: "left center",
+                      WebkitMaskSize: "contain",
+                      maskSize: "contain",
+                    }}
+                  />
+                </Link>
+                {/*
+                <p>
+                  Computer architecture for ubiquitous intelligence, built and
+                  measured in real silicon.
+                </p>
+                */}
+                <p>
+                  Department of Electrical &amp; Computer Engineering
+                  <br />
+                  University of Washington, Seattle
+                </p>
+              </aside>
+              {/* Built from the same navData as the top bar, so the two can never
+                drift apart. A dropdown with no page of its own falls back to
+                its first child. */}
+              <nav>
+                <h2 className="footer-title">Explore</h2>
+                <div className="grid grid-flow-col grid-rows-3 gap-x-10 gap-y-2">
+                  {navData.map((item) => {
+                    const target = item.target ?? item.sub[0]?.target;
+                    return (
+                      target && (
+                        <Link
+                          className="link link-hover"
+                          href={target}
+                          key={item.title}
+                        >
+                          {item.title}
+                        </Link>
+                      )
+                    );
+                  })}
+                </div>
+              </nav>
+            </footer>
+          </ContentContainer>
+          {/* The legal line keeps the full window width, so its rule reads as
+              the bottom edge of the page rather than of the footer column. */}
+          <div className="border-t border-base-content/10">
+            <p className="px-4 py-3 text-center text-sm text-base-content/70">
+              Copyright © 2024&ndash;2026 PᴺCEL. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
       <div className="drawer-side">

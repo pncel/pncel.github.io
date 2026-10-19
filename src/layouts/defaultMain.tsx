@@ -1,4 +1,5 @@
 import React from "react";
+import ContentContainer from "@/layouts/contentContainer";
 
 export default function DefaultMain({
   children,
@@ -8,14 +9,10 @@ export default function DefaultMain({
   className?: string;
 }>) {
   return (
-    <div
-      className={
-        "flex-grow flex-shrink-0 basis-auto mx-auto py-4 max-lg:px-4 " +
-        "w-full max-w-screen-sm lg:max-w-screen-md xl:max-w-screen-lg 2xl:max-w-screen-xl " +
-        className
-      }
+    <ContentContainer
+      className={"flex-grow flex-shrink-0 basis-auto py-4 " + className}
     >
       {children}
-    </div>
+    </ContentContainer>
   );
 }
