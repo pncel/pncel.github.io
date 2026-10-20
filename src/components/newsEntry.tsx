@@ -25,14 +25,20 @@ const NEWS_TYPE_META: Partial<
   [NewsType.grant]: { icon: "award", label: "Grant" },
   [NewsType.award]: { icon: "medal", label: "Award" },
   [NewsType.publication]: { icon: "file-lines", label: "Publication" },
+  // Speech bubbles rather than a second file-shaped glyph: a workshop or poster
+  // session is where work gets discussed rather than filed, and `file-pen` next
+  // to `file-lines` is indistinguishable at 16px. `person-chalkboard` stays
+  // with `presentation`, where one person addresses a room.
+  [NewsType.workshop]: { icon: "comments", label: "Workshop or poster" },
   [NewsType.presentation]: {
     icon: "person-chalkboard",
     label: "Presentation",
   },
+  [NewsType.media]: { icon: "newspaper", label: "Media coverage" },
   [NewsType.tapeout]: { icon: "microchip", label: "Tape-out" },
   [NewsType.newmember]: { icon: "user-plus", label: "New member" },
   [NewsType.graduation]: { icon: "graduation-cap", label: "Graduation" },
-  [NewsType.internship]: { icon: "user-tie", label: "Internship" },
+  [NewsType.work]: { icon: "user-tie", label: "Work" },
   [NewsType.sponsorship]: { icon: "handshake", label: "Sponsorship" },
 };
 

@@ -26,12 +26,23 @@ export enum NewsType {
   other,
   grant,
   award,
+  // The four "research output" types, in order of how the work was published.
+  // `publication` is archival only -- conference proceedings and journals.
+  // Workshop papers, posters, and extended abstracts are `workshop`: they are
+  // real results, but they are not the citable record, and a reader scanning
+  // the news column should be able to tell the two apart at a glance.
   publication,
+  workshop,
   presentation,
+  // Coverage the lab receives rather than output it produces: a department
+  // feature, a trade article, an interview. Named `media` rather than
+  // `featured`, which is already a boolean field on News, or `press`, which
+  // also reads as a press release the lab itself issued.
+  media,
   tapeout,
   newmember,
   graduation,
-  internship,
+  work,
   sponsorship,
 }
 

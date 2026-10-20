@@ -1,9 +1,11 @@
 import {
   Database,
+  decodeEnum,
   decodePublication,
   encodeDate,
   localDateString,
 } from "./dist/database.js";
+import { NewsType } from "./dist/types.js";
 import { DatabaseMutator } from "./dist/databaseMutator.js";
 import commandLineUsage from "command-line-usage";
 import commandLineArgs from "command-line-args";
@@ -556,12 +558,29 @@ if (mainOptions.command === "add-news") {
     }
   }
 
+  // `--type` arrives as the enum's *name*; everything downstream expects its
+  // value. Without this, encodeEnum resolves the name through the numeric
+  // enum's reverse mapping and writes the number to YAML, which then decodes
+  // back to a string the icon table has no key for -- a news item that renders
+  // with a blank type column and no error anywhere.
+  let newsType;
+  if (options.type !== undefined) {
+    newsType = decodeEnum(NewsType, options.type);
+    if (newsType === undefined) {
+      const valid = Object.keys(NewsType).filter((k) => isNaN(Number(k)));
+      console.error(
+        `Unknown --type '${options.type}'. Valid types: ${valid.join(", ")}`,
+      );
+      await flush_and_exit(true);
+    }
+  }
+
   // Create the news item
   const newsData = {
     news: newsContent,
     time: new Date(options.date || localDateString()),
     details: newsDetails,
-    type: options.type,
+    type: newsType,
     relatedMembersIds:
       relatedMembersIds.length > 0 ? relatedMembersIds : undefined,
   };

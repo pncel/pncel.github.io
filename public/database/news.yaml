@@ -1,5 +1,5 @@
 name: news
-schemaHash: ca8dba6373d22fd45c5a56ce459bd72915fe6e3befd589e173e5b1ffe37cba65
+schemaHash: f75a00f87d985afc66cfb5bf3b9c4b237525f32e2b33499b31f4eecf37d5a1d5
 docs:
   - id: "1"
     news: "`pncel.init();`"
@@ -39,35 +39,35 @@ docs:
   - id: n-001Z03
     news: "@zhichen joins ByteDance Seed as a Research Scientist Intern this summer!"
     time: 2025-05-31
-    type: internship
+    type: work
     relatedMembersIds:
       - zhichen
   - id: n-002404
     news: "@ayush will join Apple as a SoC Physical Design Intern this summer.
       Congrats!"
     time: 2026-05-31
-    type: internship
+    type: work
     relatedMembersIds:
       - ayush
   - id: n-002b05
     news: "@amanoj3 will join AMD (Xilinx) as a Post-Silicon Validation Intern this
       summer. Congrats!"
     time: 2026-05-31
-    type: internship
+    type: work
     relatedMembersIds:
       - amanoj3
   - id: n-003606
     news: "@jiayi and @jingqun will join NVIDIA this summer — Computer Performance
       Intern and GPU Profiling & Tools Intern. Congrats!"
     time: 2026-05-31
-    type: internship
+    type: work
     relatedMembersIds:
       - jiayi
       - jingqun
   - id: n-003d07
     news: "@kearnan will join TSMC as an Intern this summer!"
     time: 2026-05-31
-    type: internship
+    type: work
     relatedMembersIds:
       - kearnan
   - id: n-004808
@@ -84,7 +84,7 @@ docs:
       workshop at ASPLOS 2026**, congrats to @darren and @jiayi!'
     time: 2026-02-28
     featured: true
-    type: publication
+    type: workshop
     relatedMembersIds:
       - ang
       - darren
@@ -103,7 +103,7 @@ docs:
       @fergusxu, @ramprana, @ayush, and all!"
     time: 2026-02-28
     featured: true
-    type: publication
+    type: workshop
     relatedMembersIds:
       - ang
       - s2chitni
@@ -113,7 +113,7 @@ docs:
   - id: n-006C0C
     news: "@rambodt will join IBM as a CPU Performance Intern this summer!"
     time: 2026-04-30
-    type: internship
+    type: work
     relatedMembersIds:
       - rambodt
   - id: n-006j0D
@@ -136,7 +136,7 @@ docs:
       @jiayi and @chenyi!'
     time: 2026-02-27
     featured: true
-    type: publication
+    type: workshop
     relatedMembersIds:
       - ang
       - jiayi
@@ -147,7 +147,7 @@ docs:
       @jiayi, @s2chitni, and all!'
     time: 2026-02-27
     featured: true
-    type: publication
+    type: workshop
     relatedMembersIds:
       - ang
       - jingqun
@@ -205,7 +205,7 @@ docs:
       @jingqun!"
     time: 2026-05-24
     featured: true
-    type: publication
+    type: workshop
     relatedMembersIds:
       - s2chitni
       - jiayi
@@ -241,3 +241,47 @@ docs:
     type: newmember
     relatedMembersIds:
       - ysqin
+  - news: UW ECE's [Training the next generation of microchip
+      designers](https://www.ece.uw.edu/spotlight/next-generation-chip-designers/)
+      features our digital VLSI tape-out course, taught by @ang, alongside UW
+      ECE's analog VLSI tape-out course taught by Prof. [Chris
+      Rudell](https://people.ece.uw.edu/rudell_chris/).
+    time: 2026-09-28
+    featured: true
+    type: media
+    relatedMembersIds:
+      - ang
+    id: n-00DQ0Q
+  - id: n-00Dx0R
+    news: "@ang gave invited talks titled **Advancing Efficiency with
+      (Re-)Configurable Hardware** at Nvidia Research, AMD, Apple, Meta, UC
+      Berkeley, and Efficient Computer."
+    time: 2026-08-05
+    featured: true
+    type: presentation
+    relatedMembersIds:
+      - ang
+  - id: n-00ES0S
+    news: "@ang joined [Netpreme](https://netpreme.com/) part-time as Chief
+      Architecture Scientist."
+    time: 2026-06-01
+    featured: true
+    type: work
+    relatedMembersIds:
+      - ang
+  - id: n-00Ez0T
+    news: "@ang gave an invited talk titled **Modern AI Infrastructure and the Chips
+      Inside** to Winbond managers at UW Foster School of Business."
+    time: 2026-09-25
+    featured: true
+    type: presentation
+    relatedMembersIds:
+      - ang
+  - id: n-00FU0U
+    news: "@ang gave an invited talk titled **Advancing Efficiency with
+      (Re-)Configurable Hardware** at Boeing."
+    time: 2026-10-14
+    featured: true
+    type: presentation
+    relatedMembersIds:
+      - ang
