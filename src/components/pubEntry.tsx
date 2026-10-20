@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
-import { composeFullName, pubAnchorId } from "@/lib/utils";
+import { composeFullName, formatMonthYear, pubAnchorId } from "@/lib/utils";
 import { getIcon } from "@/lib/icon-registry";
 import CopyableCode from "./copyableCode";
 import TagBadge from "./tagBadge";
@@ -203,12 +203,7 @@ export default function PubEntry({
       {pub.booktitle && (
         <p className="text-sm 2xl:text-base font-light text-base-content/60">
           {pub.booktitle}
-          {pub.time &&
-            `, ${pub.time.toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "short",
-              timeZone: "UTC",
-            })}`}
+          {pub.time && `, ${formatMonthYear(pub.time)}`}
           {/* pub.location && `, ${pub.location}` */}
         </p>
       )}

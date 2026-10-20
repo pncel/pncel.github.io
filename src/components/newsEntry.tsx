@@ -12,29 +12,8 @@ import {
   type IconName,
 } from "@/lib/types";
 import { getIcon } from "@/lib/icon-registry";
+import { formatMonthYear } from "@/lib/utils";
 config.autoAddCss = false;
-
-// Spelled out rather than taken from Intl, so the string is identical in the
-// build and in the browser and cannot drift with the platform's ICU data.
-const MONTHS = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-
-// UTC throughout, so an entry does not slide into the neighbouring month for
-// readers west of Greenwich.
-const formatMonthYear = (date: Date): string =>
-  `${MONTHS[date.getUTCMonth()] ?? ""} ${date.getUTCFullYear()}`;
 
 /**
  * What the icon column shows. The label is the tooltip: an icon on its own
@@ -76,10 +55,17 @@ export default function NewsEntry({
     <div
       className={
         // See pubEntry.tsx for the zebra/ring rationale. Every row declares the
-        // same explicit track sizes, which is what makes the three columns line
-        // up down the list -- no subgrid needed, and no dependence on content.
+        // same explicit track sizes, which is what makes the columns line up
+        // down the list -- no subgrid needed, and no dependence on content.
+        //
+        // Below `sm` the three columns would leave the headline about 220px on
+        // a phone, so the date and the type icon fold into a meta line of their
+        // own and the contents take the full width underneath. The date track
+        // stays a fixed 4.5rem in both layouts, so the icon does not shift
+        // about from row to row as the month names change width.
         `${lifted ? "bg-base-100" : "bg-transparent"} text-base-content ` +
-        "grid grid-cols-[4.5rem_1.25rem_minmax(0,1fr)] " +
+        "grid grid-cols-[4.5rem_minmax(0,1fr)] gap-y-1 " +
+        "sm:grid-cols-[4.5rem_1.25rem_minmax(0,1fr)] sm:gap-y-0 " +
         "2xl:grid-cols-[5.5rem_1.5rem_minmax(0,1fr)] " +
         "items-center gap-x-3 2xl:gap-x-4 px-4 py-2 rounded-xl " +
         "transition-shadow duration-200 hover:ring-1 hover:ring-base-content/15"
@@ -94,7 +80,7 @@ export default function NewsEntry({
       </time>
 
       {/* 2. What kind */}
-      <div className="text-center text-base-content/70">
+      <div className="text-base-content/70 sm:text-center">
         {typeMeta && (
           <span className="tooltip tooltip-secondary" data-tip={typeMeta.label}>
             <FontAwesomeIcon icon={getIcon(typeMeta.icon)} />
@@ -103,7 +89,7 @@ export default function NewsEntry({
       </div>
 
       {/* 3. The news itself */}
-      <div className="flex flex-col items-start gap-0.5 min-w-0">
+      <div className="col-span-2 sm:col-span-1 flex flex-col items-start gap-0.5 min-w-0">
         <p className="text-base 2xl:text-lg">
           <span
             dangerouslySetInnerHTML={{

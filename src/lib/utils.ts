@@ -44,6 +44,34 @@ export function groupByYear<T>(
     });
 }
 
+// Spelled out rather than taken from Intl, so the string is identical in the
+// build and in the browser and cannot drift with the platform's ICU data.
+const MONTHS = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+/**
+ * "Sep 2025" -- the one date format the entry lists use, shared so a news row
+ * and a publication row can never print the same month differently.
+ *
+ * UTC throughout, so an item does not slide into the neighbouring month for
+ * readers west of Greenwich.
+ */
+export function formatMonthYear(date: Date): string {
+  return `${MONTHS[date.getUTCMonth()] ?? ""} ${date.getUTCFullYear()}`;
+}
+
 export function pubAnchorId(id: string): string {
   const stripped = id.replace(/^\+/, "");
   const safe = stripped.replace(/[^A-Za-z0-9._-]/g, "-");
