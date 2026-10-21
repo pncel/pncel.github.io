@@ -1198,3 +1198,30 @@ docs:
         label: NeurIPS
     doi: https://openreview.net/forum?id=5sFFGPtDy2#discussion
     attachments: []
+  - title: "HierSVA: A Data Synthesis Pipeline, Dataset, and Benchmark for
+      LLM-Driven Hierarchical Hardware Formal Verification"
+    authorIds:
+      - $00XX13
+      - $00-y1-
+      - jingqun
+      - zhichen
+      - jiayi
+      - sz330
+      - $013226
+      - $00VV0_
+    time: 2026-12-06
+    arxivDoi: 10.48550/arXiv.2606.13706
+    arxivBibtex: >+
+      @article{Nie2026HierSVA,
+      	author = {Nie, Maohua and Zhu, Jiang and Zhang, Jingqun and Zeng, Zhichen and Wang, Jiayi and Zhang, Sibo and Wang, Jialin and Shi, C. -J. Richard},
+      	doi = {10.48550/ARXIV.2606.13706},
+      	year = {2026},
+      	publisher = {arXiv},
+      	title = {HierSVA: A {Data} {Synthesis} {Pipeline}, {Dataset}, and {Benchmark} for {LLM}-{Driven} {Hierarchical} {Hardware} {Formal} {Verification}},
+      	url = {https://arxiv.org/abs/2606.13706},
+      }
+    booktitle: The Fortieth Annual Conference on Neural Information Processing Systems
+    tags:
+      - type: venue
+        label: NeurIPS
+    id: +00Ke0f

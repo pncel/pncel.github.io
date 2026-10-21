@@ -225,8 +225,7 @@ docs:
       - kearnan
       - ang
   - id: n-00CO0O
-    news: "%+00Jc0d accepted to **NeurIPS 2026**, congrats to @zhichen and our
-      collaborators!"
+    news: "%+00Jc0d and %+00Ke0f accepted to **NeurIPS 2026**, congrats to @zhichen, @jingqun, @jiayi, @sz330, and our collaborators!"
     time: 2026-09-24
     featured: true
     type: publication
@@ -278,8 +277,8 @@ docs:
     relatedMembersIds:
       - ang
   - id: n-00F-0V
-    news: "%+00J70c accepted to the **A3 Workshop**, congrats to @sz330,
-      @jiayi and our collaborators!"
+    news: "%+00J70c accepted to the **A3 Workshop**, congrats to @sz330, @jiayi and
+      our collaborators!"
     time: 2026-09-27
     type: workshop
     featured: true

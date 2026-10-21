@@ -290,6 +290,12 @@ docs:
   - firstname: Ji
     lastname: Liu
     id: $00_V1y
+  - firstname: Jialin
+    lastname: Wang
+    id: $013226
+  - firstname: Jiang
+    lastname: Zhu
+    id: $00-y1-
   - id: $00Yd15
     firstname: Jianyu
     lastname: Wei
