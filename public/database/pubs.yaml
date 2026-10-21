@@ -1165,16 +1165,16 @@ docs:
   - id: +00J70c
     title: "CHIALU: A Comprehensive ALU Generation and Optimization Library"
     authorIds:
-      - $00cE1C
-      - sz300
+      - $00XX13
+      - sz330
       - jiayi
       - ang
       - $00VV0_
     time: 2026-11-01
-    booktitle: the 1st A3 Workshop CHIA Hackathon 2026 (A3 CHIA Hackathon 2026)
+    booktitle: First International Workshop on Agentic Approaches to Computer Architecture
     tags:
       - type: venue
-        label: A3 CHIA Hackathon
+        label: A3
       - type: other
         label: Workshop
   - id: +00Jc0d
