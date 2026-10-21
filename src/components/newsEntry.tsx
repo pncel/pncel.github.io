@@ -29,7 +29,10 @@ const NEWS_TYPE_META: Partial<
   // session is where work gets discussed rather than filed, and `file-pen` next
   // to `file-lines` is indistinguishable at 16px. `person-chalkboard` stays
   // with `presentation`, where one person addresses a room.
-  [NewsType.workshop]: { icon: "comments", label: "Workshop or poster" },
+  [NewsType.workshop]: {
+    icon: "screwdriver-wrench",
+    label: "Workshop or poster",
+  },
   [NewsType.presentation]: {
     icon: "person-chalkboard",
     label: "Presentation",

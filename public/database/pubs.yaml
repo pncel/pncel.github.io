@@ -1121,9 +1121,20 @@ docs:
       - ang
     time: 2026-11-15
     booktitle: The 44th IEEE International Conference on Computer Design
+    arxivDoi: 10.48550/arXiv.2610.19645
     tags:
       - type: venue
         label: ICCD
+    arxivBibtex: >+
+      @article{Wang2026MFSA,
+      	author = {Wang, Jiayi and Bishop, Kearnan and Li, Ang},
+      	doi = {10.48550/ARXIV.2610.19645},
+      	year = {2026},
+      	publisher = {arXiv},
+      	title = {MFSA: A {Multi}-{Format} {Systolic} {Array} with {Native} {Micro} {Scaling} {Support}},
+      	url = {https://arxiv.org/abs/2610.19645},
+      }
+
   - id: +00Ia0b
     title: "DORA: Open-Source Infrastructure for Prototyping Reconfigurable Fabrics"
     authorIds:
@@ -1151,6 +1162,21 @@ docs:
       - label: Poster
         link: /pdfs/DORA_OSCAR_Poster.pdf
         icon: file-pdf
+  - id: +00J70c
+    title: "CHIALU: A Comprehensive ALU Generation and Optimization Library"
+    authorIds:
+      - $00cE1C
+      - sz300
+      - jiayi
+      - ang
+      - $00VV0_
+    time: 2026-11-01
+    booktitle: the 1st A3 Workshop CHIA Hackathon 2026 (A3 CHIA Hackathon 2026)
+    tags:
+      - type: venue
+        label: A3 CHIA Hackathon
+      - type: other
+        label: Workshop
   - id: +00Jc0d
     title: "Step-dLLM: Adaptive Step-aware Sparse Attention for Efficient Diffusion
       LLM Inference"

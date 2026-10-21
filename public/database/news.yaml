@@ -277,6 +277,16 @@ docs:
     type: presentation
     relatedMembersIds:
       - ang
+  - id: n-00F-0V
+    news: "%+00J70c accepted to **A3 CHIA Hackathon 2026**, congrats to @sz330,
+      @jiayi and our collaborators!"
+    time: 2026-09-27
+    type: workshop
+    featured: true
+    relatedMembersIds:
+      - sz330
+      - jiayi
+      - ang
   - id: n-00FU0U
     news: "@ang gave an invited talk titled **Advancing Efficiency with
       (Re-)Configurable Hardware** at Boeing."
